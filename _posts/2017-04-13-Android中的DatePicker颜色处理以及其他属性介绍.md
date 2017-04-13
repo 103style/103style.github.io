@@ -1,46 +1,54 @@
-ÏàĞÅºÜ¶àÂëÓÑ¶¼Åöµ½¹ıÕâÖÖÇé¿ö£¬ÔÚÒ»¸ö½çÃæ·ÅÁËÒ»¸ödatepicker.
+---
+layout: post
+title: Androidä¸­çš„DatePickeré¢œè‰²å¤„ç†ä»¥åŠå…¶ä»–å±æ€§ä»‹ç»
+date: 2017-04-13
+categories: blog
+tags: [Android,DatePicker]
+description: csdbé“¾æ¥http://blog.csdn.net/lxk_1993/article/details/51351365ã€‚
+---
 
-µ«ÊÇÔÚ5.0ÒÔÉÏµÄÊÖ»úÉÏÑÕÉ«ÏÔÊ¾µÄĞ§¹û²»ÔõÃ´ºÃ¡£
-
-¾ÍÏñÏÂÍ¼ÕâÑù£¬ÑÕÉ«´¦ÀíµÄ²»ÔõÃ´ºÃ¡£
 
 
-Ò»¿ªÊ¼°Ù¶ÈÕÒ½â¾ö°ì·¨£¬ËÑÁËÒ»ÏÂÃ»Ê²Ã´½á¹û£¬Ö»ÄÜ¿Ğ¹Ù·½µÄapiÁË£¬È»ºó¾ÍÕÒµ½ÁË¡£
+ç›¸ä¿¡å¾ˆå¤šç å‹éƒ½ç¢°åˆ°è¿‡è¿™ç§æƒ…å†µï¼Œåœ¨ä¸€ä¸ªç•Œé¢æ”¾äº†ä¸€ä¸ªdatepicker.
 
-ÆäÊµÕâÖÖĞ§¹ûºÜºÃ´¦Àí¡£
+ä½†æ˜¯åœ¨5.0ä»¥ä¸Šçš„æ‰‹æœºä¸Šé¢œè‰²æ˜¾ç¤ºçš„æ•ˆæœä¸æ€ä¹ˆå¥½ã€‚
 
-Ö»ÒªÔÚxmlÎÄ¼şÖĞÉèÖÃÒ»ÏÂÊôĞÔ¾Í¿ÉÒÔÁË
+å°±åƒä¸‹å›¾è¿™æ ·ï¼Œé¢œè‰²å¤„ç†çš„ä¸æ€ä¹ˆå¥½ã€‚
 
+![æ•ˆæœå›¾](http://img.blog.csdn.net/20160509104408491?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
+
+
+ä¸€å¼€å§‹ç™¾åº¦æ‰¾è§£å†³åŠæ³•ï¼Œæœäº†ä¸€ä¸‹æ²¡ä»€ä¹ˆç»“æœï¼Œåªèƒ½å•ƒå®˜æ–¹çš„apiäº†ï¼Œç„¶åå°±æ‰¾åˆ°äº†ã€‚
+
+å…¶å®è¿™ç§æ•ˆæœå¾ˆå¥½å¤„ç†ã€‚
+
+åªè¦åœ¨xmlæ–‡ä»¶ä¸­è®¾ç½®ä¸€ä¸‹å±æ€§å°±å¯ä»¥äº†
 
 android:headerBackground
-Í·²¿±³¾°£¬ÉèÖÃÕâ¸öÊôĞÔÎª #808080 ¾Í±äÏÂÍ¼ÕâÑùÁË¡£ÊÇ²»ÊÇ¸Ğ¾õºÃ¶àÁË¡£
+
+å¤´éƒ¨èƒŒæ™¯ï¼Œè®¾ç½®è¿™ä¸ªå±æ€§ä¸º #808080 å°±å˜ä¸‹å›¾è¿™æ ·äº†ã€‚æ˜¯ä¸æ˜¯æ„Ÿè§‰å¥½å¤šäº†ã€‚
 
 
+![æ•ˆæœå›¾](http://img.blog.csdn.net/20160509105452645?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
 
 
+å¦å¤–è¿˜æœ‰å…¶ä»–çš„å±æ€§ï¼š
 
-http://blog.csdn.net/lxk_1993/article/details/51351365
+*  android:calendarViewShown="false" æ˜¯å¦æ˜¾ç¤ºæ—¥å†è§†å›¾
+*  android:firstDayOfWeek="" è®¾ç½®æ—¥å†æ˜ŸæœŸç¬¬ä¸€å¤©æ˜¯å“ªä¸€å¤©
+*  android:headerBackground="@color/gray" å¤´éƒ¨çš„èƒŒæ™¯é¢œè‰²
+*  android:endYear="2100" æœ€åä¸€å¹´ï¼Œä¾‹å¦‚2100
+*  android:maxDate="12/31/2100" æ—¥å†è§†å›¾çš„æœ€å¤§æ—¥æœŸ,æ ¼å¼ä¸ºmm/dd/yyyy
+*  android:minDate="01/01/1900" æ—¥å†è§†å›¾çš„æœ€å°æ—¥æœŸï¼Œæ ¼å¼ä¸ºmm/dd/yyyy
+*  android:spinnersShown="false" æ˜¯å¦æ˜¾ç¤ºä¸‹æ‹‰èœå•
+*  android:startYear="1940" ä»å“ªä¸€å¹´å¼€å§‹ ä¾‹å¦‚1940
+*  android:calendarTextColor="@color/white"æ—¥å†çš„åˆ—è¡¨æ–‡å­—é¢œè‰²ï¼ˆApi 21 ä»¥ä¸Šæ‰èƒ½ç”¨ï¼‰
+*  android:datePickerMode="calendar" å®šä¹‰éƒ¨ä»¶çš„å¤–è§‚ï¼Œæœ‰spinnerå’Œcalendarä¸¤ç§é€‰æ‹©ï¼ˆApi 21 ä»¥ä¸Šæ‰èƒ½ç”¨ï¼‰
+*  android:dayOfWeekBackground="@color/gray" å¤´éƒ¨çš„æ˜ŸæœŸçš„èƒŒæ™¯é¢œè‰²ï¼ˆApi 21 ä»¥ä¸Šæ‰èƒ½ç”¨ï¼‰
+*  android:dayOfWeekTextAppearance="@color/gray" å¤´éƒ¨çš„æ˜ŸæœŸçš„æ–‡å­—å¤–è§‚ï¼ˆApi 21 ä»¥ä¸Šæ‰èƒ½ç”¨ï¼‰
+*  android:headerDayOfMonthTextAppearance="@color/white" å¤´éƒ¨å¯¹åº” å·æ•° çš„æ–‡å­—å¤–è§‚ï¼ˆApi 21 ä»¥ä¸Šæ‰èƒ½ç”¨ï¼‰
+*  android:headerMonthTextAppearance="@color/white"å¤´éƒ¨å¯¹åº” æœˆä»½ çš„æ–‡å­—å¤–è§‚ï¼ˆApi 21 ä»¥ä¸Šæ‰èƒ½ç”¨ï¼‰
+*  android:headerYearTextAppearance="@color/white" å¤´éƒ¨å¯¹åº” å¹´ä»½ çš„æ–‡å­—å¤–è§‚ï¼ˆApi 21 ä»¥ä¸Šæ‰èƒ½ç”¨ï¼‰
+*  android:yearListItemTextAppearance="@color/white" é€‰æ‹©å¹´çš„åˆ—è¡¨çš„æ–‡å­—å¤–è§‚ï¼ˆApi 21 ä»¥ä¸Šæ‰èƒ½ç”¨ï¼‰
+*  android:yearListSelectorColor="@color/gray" é€‰æ‹©å¹´çš„åˆ—è¡¨ä¸­é€‰ä¸­çš„é¢œè‰²ï¼ˆApi 21 ä»¥ä¸Šæ‰èƒ½ç”¨ï¼‰
 
-ÁíÍâ»¹ÓĞÆäËûµÄÊôĞÔ£º
-
-
-android:calendarViewShown="false" ÊÇ·ñÏÔÊ¾ÈÕÀúÊÓÍ¼
-android:firstDayOfWeek="" ÉèÖÃÈÕÀúĞÇÆÚµÚÒ»ÌìÊÇÄÄÒ»Ìì
-android:headerBackground="@color/gray" Í·²¿µÄ±³¾°ÑÕÉ«
-android:endYear="2100" ×îºóÒ»Äê£¬ÀıÈç2100
-android:maxDate="12/31/2100" ÈÕÀúÊÓÍ¼µÄ×î´óÈÕÆÚ,¸ñÊ½Îªmm/dd/yyyy
-android:minDate="01/01/1900" ÈÕÀúÊÓÍ¼µÄ×îĞ¡ÈÕÆÚ£¬¸ñÊ½Îªmm/dd/yyyy
-android:spinnersShown="false" ÊÇ·ñÏÔÊ¾ÏÂÀ­²Ëµ¥
-android:startYear="1940" ´ÓÄÄÒ»Äê¿ªÊ¼ ÀıÈç1940
-android:calendarTextColor="@color/white"ÈÕÀúµÄÁĞ±íÎÄ×ÖÑÕÉ«£¨Api 21 ÒÔÉÏ²ÅÄÜÓÃ£©
-android:datePickerMode="calendar" ¶¨Òå²¿¼şµÄÍâ¹Û£¬ÓĞspinnerºÍcalendarÁ½ÖÖÑ¡Ôñ£¨Api 21 ÒÔÉÏ²ÅÄÜÓÃ£©
-android:dayOfWeekBackground="@color/gray" Í·²¿µÄĞÇÆÚµÄ±³¾°ÑÕÉ«£¨Api 21 ÒÔÉÏ²ÅÄÜÓÃ£©
-android:dayOfWeekTextAppearance="@color/gray" Í·²¿µÄĞÇÆÚµÄÎÄ×ÖÍâ¹Û£¨Api 21 ÒÔÉÏ²ÅÄÜÓÃ£©
-android:headerDayOfMonthTextAppearance="@color/white" Í·²¿¶ÔÓ¦ ºÅÊı µÄÎÄ×ÖÍâ¹Û£¨Api 21 ÒÔÉÏ²ÅÄÜÓÃ£©
-android:headerMonthTextAppearance="@color/white"Í·²¿¶ÔÓ¦ ÔÂ·İ µÄÎÄ×ÖÍâ¹Û£¨Api 21 ÒÔÉÏ²ÅÄÜÓÃ£©
-android:headerYearTextAppearance="@color/white" Í·²¿¶ÔÓ¦ Äê·İ µÄÎÄ×ÖÍâ¹Û£¨Api 21 ÒÔÉÏ²ÅÄÜÓÃ£©
-android:yearListItemTextAppearance="@color/white" Ñ¡ÔñÄêµÄÁĞ±íµÄÎÄ×ÖÍâ¹Û£¨Api 21 ÒÔÉÏ²ÅÄÜÓÃ£©
-android:yearListSelectorColor="@color/gray" Ñ¡ÔñÄêµÄÁĞ±íÖĞÑ¡ÖĞµÄÑÕÉ«£¨Api 21 ÒÔÉÏ²ÅÄÜÓÃ£©
-
-
-Èç¹ûÄãÏ²»¶ÎÒµÄ²©¿Í£¬Çë¹Ø×¢ÎÒ¡£
