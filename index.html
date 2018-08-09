@@ -1,41 +1,440 @@
----
-layout: page
-description: "103style"
----
+	<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-{% for post in paginator.posts %}
-<div class="post-preview">
-    <a href="{{ post.url | prepend: site.baseurl }}">
-        <h2 class="post-title">            
-            {{ post.title }}
-        </h2>
-        {% if post.subtitle %}
-        <h3 class="post-subtitle">
-            {{ post.subtitle }}
-        </h3>
-        {% endif %}
-        <div class="post-content-preview">
-            {{ post.content | strip_html | truncate:150 }}
+        <title>湖南智联交控科技有限公司</title>
+        <link rel="shortcut icon" type="image/x-icon" href="assets/images/logo.png"/>
+
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+        <link href="assets/css/bootstrap-theme.min.css" rel="stylesheet">
+
+        <link href="assets/css/owl.carousel.css" rel="stylesheet">
+        <link href="assets/css/owl.theme.default.min.css" rel="stylesheet">
+
+        <link href="assets/css/magnific-popup.css" rel="stylesheet">
+
+        <link href="assets/css/style.css" rel="stylesheet">
+
+
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div id="menu-item" class="menu-item hide-menu">
+            <div class="container">
+                <ul>
+                    <a href="index.html"><li>主页</li></a>
+                    <a href="#expertise"><li>公司简介</li></a>
+					<a href="#team"><li>团队</li></a>
+					<a href="#about"><li>关于</li></a>
+                    <a href="#workstation"><li>公司警言</li></a>
+                    <a href="#contact"><li>联系方式</li></a>
+                    <a href="https://jobs.51job.com/all/co4794477.html" target="_blank"><li>招聘</li></a>
+                </ul>
+            </div>
         </div>
-    </a>
-    <p class="post-meta">Posted by {% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %} on {{ post.date | date: "%B %-d, %Y" }}</p>
-</div>
+        <div class="main">
+            <header class="bg-img header">
+                <nav class="navbar navbar-default navbar-vira">
+                    <div class="container">
+                        <div class="navigation-bar">
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <div class="logo">
+									
+                                        <a href="index.html"> <img class="img-responsive" src="assets/images/logo.png"></span></a>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6 text-right">
+                                    <div class="menu m">
+                                        <a href="#"><span class="ion-navicon _ion-android-menu"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+                <div class="container">
+                    <div class="row">
+                        <div class="intro-box">
+                            <div class="intro">
+                                <h1>湖南智联交控科技有限公司</h1>
+								<br />
+                                <p>专注于车联网技术研发及相关产品整体解决方案的创新型高新技术企业</p>
+                                <a class="btn vira-btn" href="#expertise">了解我们</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+			
+			
+          
+            <section class="purpose section">
+                <div class="container">
+                    <h2 class="title">企业产品与文化</h2>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="vira-card">
+                                <div class="vira-card-header">
+                                    <div class="card-icon">
+                                        <span class="fa fa-diamond" aria-hidden="true"></span>
+                                    </div>
+                                </div>
+                                <div class="vira-card-content">
+                                    <h3>企业产品</h3>
+                                    <p>
+                                         警用的应急指挥中心.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="vira-card">
+                                <div class="vira-card-header">
+                                    <div class="card-icon">
+                                        <span class="fa fa-cogs" aria-hidden="true"></span>
+                                    </div>
+                                </div>
+                                <div class="vira-card-content">
+                                    <h3>发展理念</h3>
+                                    <p>
+                                     积极进取，稳健经营，务实创新，持续发展。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="vira-card">
+                                <div class="vira-card-header">
+                                    <div class="card-icon">
+                                        <span class="fa fa-bicycle" aria-hidden="true"></span>
+                                    </div>
+                                </div>
+                                <div class="vira-card-content">
+                                    <h3> 企业价值观</h3>
+                                    <p>
+									严谨、创新、超越、共赢。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+			<section id="expertise" class="expert">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-6 bg-img">
+                            <div></div>
+                        </div>
+                        <div class="col-sm-5 section">
+                            <h2 class="title">公司简介</h2>
+                            <div id="expert-slider" class="owl-carousel">
+                                <div class="item">
+                                    <p>
+                                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;湖南智联交控科技有限公司成立于2017年，是一家专注于车联网技术研发及相关产品整体解决方案的创新型高新技术企业。公司自成立以来，积极投身国家军民融合战略，促进部队智能化建设，依托国防科技大学，组建了一流的创新研发团队，重点突破道路交通事故预防、预警及智能应急系统等关键技术，自主研发了车辆疲劳驾驶预警系统、车队管理系统及驾驶监控平台，实现信息情报、通信、数据传输、指挥控制四位一体，为驾驶员提供更安全的驾驶体验，为车队提供更先进的车辆安全管理方案，大大提升了部队运输指挥效能和可靠性，可在战场运输、抢险救灾等多样化军事任务后勤保障方面发挥重要作用。
+                                    </p>
+                                </div>
+                                <div class="item">
+                                    <p>
+                                     电子产品、网络技术、通讯技术、电子、通信与自动控制技术的研发；计算机软件、计算机、电子元器件的销售；软件开发；软件技术服务；信息系统集成服务；
+电子商务平台的开发建设；计算机技术开发、技术服务；软件技术转让；通讯设备及配套设备批发；大数据处理技术的研究、开发；智能技术咨询、服务。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+			
+			<section id="team" class="team section">
+                <div class="container">
+                    <h2 class="title">团队简介</h2>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="vira-card">
+                                <!-- <div class="vira-card-header">
+                                    <img class="img-responsive" src="assets/images/8.jpg">
+                                </div>-->
+                                <div class="vira-card-content">
+                                    <h3>李沛</h3>
+                                    <p>
+                                      中国科学技术大学计算机软件与理论专业博士，以访问学者身份赴美国乔治华盛顿大学访问一年。主持国家自然科学基金和教育部博士点基金各1项，以第一作者身份发表学术论文20余篇，其中SCI检索9篇，EI检索6篇。
+                                    </p>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="vira-card">
+                               <!-- <div class="vira-card-header">
+                                    <img class="img-responsive" src="assets/images/9.jpg">
+                                </div>-->
+                                <div class="vira-card-content">
+                                    <h3>王军民</h3>
+                                    <p>
+                                    国防科技大学管理科学与工程专业博士，发表学术论文20篇。其中E1检索5篇。申请发明和外观专利8项，获得军队科技进步二等奖1项，三等奖1项。荣立三等功2次。
+                                    </p>
+                                
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="vira-card">
+                               <!-- <div class="vira-card-header">
+                                    <img class="img-responsive" src="assets/images/10.jpg">
+                                </div>-->
+                                <div class="vira-card-content">
+                                    <h3>李菊芳</h3>
+                                    <p>
+                                    国防科技大学管理科学与工程专业博士，发表学术论文20余篇，其中SCI检索1篇，EI检索10余篇。主持国家自然科学基金项目和863项目各1项，参与完成20余项其它各类科研项目。获省部级科技进步二等奖和三等奖各1项，获国家发明专利3项，其中作为第一著作权人1项。具有丰厚的科研项目研发、管理经验，荣立三等功1次。
+                                    </p>
+                                    
+                                </div>
+                            </div>
+                        </div>
+						 <div class="col-sm-4">
+                            <div class="vira-card">
+                               <!-- <div class="vira-card-header">
+                                    <img class="img-responsive" src="assets/images/10.jpg">
+                                </div>-->
+                                <div class="vira-card-content">
+                                    <h3>邱玲</h3>
+                                    <p>
+                                    国防科技大学电子科学与工程专业博士，国防科技大学信息工程研究所主任、高级工程师、专业技术八级。2002年获嘉奖1次，2006年获嘉奖1次，2009年荣立三等功1次
+                                    </p>
+                                    
+                                </div>
+                            </div>
+                        </div>
+						 <div class="col-sm-4">
+                            <div class="vira-card">
+                               <!-- <div class="vira-card-header">
+                                    <img class="img-responsive" src="assets/images/10.jpg">
+                                </div>-->
+                                <div class="vira-card-content">
+                                    <h3>迟妍</h3>
+                                    <p>
+                                    国防科技大学管理科学与工程专业博士，发表学术论文20余篇，其中E1检索3篇。获得省部级科技进步三等奖2项。
+                                    </p>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+			
+			  <section id="about" class="about section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-8 col-sm-offset-2">
+                            <h2 class="title">企业管理文化</h2>
+                            <p>
+                              管理一个公司，到底需要在哪些方面做好，过去十一年我也不断总结，基本上是三个方面。第一个方面，是目标，大家有一个共同目标。第二，就是一个公司要想做好，一定要有自己非常核心的企业文化。第三点，是流程和制度，这一点在公司早期的时候，可能没有那么重要，因为就是说人少，每天都可以直接跟每一个人进行对话，这个时候没有流程制度是没有关系的，有事情嚷嚷一声就可以了，但是当公司做大以后，就不能靠嚷嚷了。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+			
+			<section class="vira-quote section bg-img">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <img class="quote" src="assets/images/quote.png">
+                           <p>
+                              今天会很残酷，明天会更残酷，后天会很美好，但大部分人会死在明天晚上。
+                           </p>
+                           <p class="author">马云</p>
+                           <img src="assets/images/mouse.png">
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+			<section id="workstation" class="work section">
+                <div class="container">
+                    <h2 class="title">工作写照</h2>
+                    <div id="workstation-slider" class="owl-carousel">
+                        <div class="item">
+                            <div class="vira-card">
+                                <div class="vira-card-header">
+                                    <img class="img-responsive" src="assets/images/4.jpg">
+                                </div>
+                                <div class="vira-card-content">
+                                    <h3>工作态度</h3>
+                                    <p>
+                                      不要小看自己所做的每一件事，即便是最普通的事，也应该全力以赴、尽职尽责地去完成。小任务顺利完成，有利于你对大任务的成功把握。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="vira-card">
+                                <div class="vira-card-header">
+                                    <img class="img-responsive" src="assets/images/5.jpg">
+                                </div>
+                                <div class="vira-card-content">
+                                    <h3>工作作风</h3>
+                                    <p>
+                                树立求真务实、锐意进取、勤于思考、敢于创新的良好风气。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="copyrights">Collect from <a href="http://www.cssmoban.com/"  title="网站模板">网站模板</a></div>
+                        <div class="item">
+                            <div class="vira-card">
+                                <div class="vira-card-header">
+                                    <img class="img-responsive" src="assets/images/6.jpg">
+                                </div>
+                                <div class="vira-card-content">
+                                    <h3>工作总结</h3>
+                                    <p>
+                                     我的生活原则是把工作变成乐趣，把乐趣变成工作。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="vira-card">
+                                <div class="vira-card-header">
+                                    <img class="img-responsive" src="assets/images/4.jpg">
+                                </div>
+                                <div class="vira-card-content">
+                                    <h3>工作态度</h3>
+                                    <p>
+                                          不要小看自己所做的每一件事，即便是最普通的事，也应该全力以赴、尽职尽责地去完成。小任务顺利完成，有利于你对大任务的成功把握。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="vira-card">
+                                <div class="vira-card-header">
+                                    <img class="img-responsive" src="assets/images/5.jpg">
+                                </div>
+                                <div class="vira-card-content">
+                                    <h3>工作作风</h3>
+                                    <p>
+                                       树立求真务实、锐意进取、勤于思考、敢于创新的良好风气。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="vira-card">
+                                <div class="vira-card-header">
+                                    <img class="img-responsive" src="assets/images/6.jpg">
+                                </div>
+                                <div class="vira-card-content">
+                                    <h3>工作总结</h3>
+                                    <p>
+                                            我的生活原则是把工作变成乐趣，把乐趣变成工作。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+			<section class="watch bg-img">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <span>观看我们公司</span>
+                            <a class="popup-youtube btn" href="https://www.youtube.com/watch?v=4KRHIbsl8BE"><span class="fa fa-play"></span></a>
+                            <span> </span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+			
+           
+          
+			
+			<section id="contact" class="contact section">
+                <div class="container">
+                    <h2 class="title">联系我们</h2>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="vira-card">
+                                <div class="vira-card-header">
+                                        <span class="fa fa-map-o" aria-hidden="true"></span>
+                                </div>
+                                <div class="vira-card-content">
+                                    <h3>地址</h3>
+                                    <p>
+                                       长沙市开福区科大佳园北苑16栋A单元701
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="vira-card">
+                                <div class="vira-card-header">
+                                        <span class="fa fa-phone" aria-hidden="true"></span>
+                                </div>
+                                <div class="vira-card-content">
+                                    <h3>电话</h3>
+                                    <p>
+                                        +0731-8630-2333
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="vira-card">
+                                <div class="vira-card-header">
+                                        <span class="fa fa-paper-plane" aria-hidden="true"></span>
+                                </div>
+                                <div class="vira-card-content">
+                                    <h3>邮件</h3>
+                                    <p>
+                                        hey@themewagon.com
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="social-icons">
+                                <ul>
+                              
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+			<footer class="footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p><a href="http://www.cssmoban.com/" target="_blank" title="模板之家">Copyright ©2018 </a> <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">湖南智联交控科技有限公司</a></p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        
+		</div>
 
-<hr>
-{% endfor %}
-
-<!-- Pager -->
-{% if paginator.total_pages > 1 %}
-<ul class="pager">
-    {% if paginator.previous_page %}
-    <li class="previous">
-        <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; Newer Posts</a>
-    </li>
-    {% endif %}
-    {% if paginator.next_page %}
-    <li class="next">
-        <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older Posts &rarr;</a>
-    </li>
-    {% endif %}
-</ul>
-{% endif %}
+        <script src="assets/js/jquery-3.1.1.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/owl.carousel.min.js"></script>
+        <script src="https://use.fontawesome.com/55b73bf748.js"></script>
+        <script src="assets/js/jquery.magnific-popup.js"></script>
+        <script src="assets/js/script.js"></script>
+    </body>
+</html>
