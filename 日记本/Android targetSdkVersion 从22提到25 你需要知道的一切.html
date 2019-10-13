@@ -1,0 +1,2950 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Android targetSdkVersion 从22提到25 你需要知道的一切 · 103style</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="103style">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="Android-子线程切回主线程的方法记录.html" />
+    
+    
+    <link rel="prev" href="Android string.xml  双引号问题的记录.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">文章</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../数据结构/">
+            
+                <a href="../数据结构/">
+            
+                    
+                    数据结构
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../数据结构/ArrayDeque源码解析.html">
+            
+                <a href="../数据结构/ArrayDeque源码解析.html">
+            
+                    
+                    ArrayDeque源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../数据结构/ArrayList源码解析.html">
+            
+                <a href="../数据结构/ArrayList源码解析.html">
+            
+                    
+                    ArrayList源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../数据结构/ConcurrentHashMap源码解析.html">
+            
+                <a href="../数据结构/ConcurrentHashMap源码解析.html">
+            
+                    
+                    ConcurrentHashMap源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../数据结构/HashMap源码解析.html">
+            
+                <a href="../数据结构/HashMap源码解析.html">
+            
+                    
+                    HashMap源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../数据结构/HashSet源码解析.html">
+            
+                <a href="../数据结构/HashSet源码解析.html">
+            
+                    
+                    HashSet源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../数据结构/Hashtable源码解析.html">
+            
+                <a href="../数据结构/Hashtable源码解析.html">
+            
+                    
+                    Hashtable源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="../数据结构/LinkedHashMap源码解析.html">
+            
+                <a href="../数据结构/LinkedHashMap源码解析.html">
+            
+                    
+                    LinkedHashMap源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="../数据结构/LinkedHashSet源码解析.html">
+            
+                <a href="../数据结构/LinkedHashSet源码解析.html">
+            
+                    
+                    LinkedHashSet源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="../数据结构/LinkedList源码解析.html">
+            
+                <a href="../数据结构/LinkedList源码解析.html">
+            
+                    
+                    LinkedList源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" data-path="../数据结构/PriorityQueue源码解析.html">
+            
+                <a href="../数据结构/PriorityQueue源码解析.html">
+            
+                    
+                    PriorityQueue源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.11" data-path="../数据结构/TreeMap源码解析.html">
+            
+                <a href="../数据结构/TreeMap源码解析.html">
+            
+                    
+                    TreeMap源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.12" data-path="../数据结构/WeakHashMap源码解析.html">
+            
+                <a href="../数据结构/WeakHashMap源码解析.html">
+            
+                    
+                    WeakHashMap源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.13" data-path="../数据结构/数据结构源码分析汇总.html">
+            
+                <a href="../数据结构/数据结构源码分析汇总.html">
+            
+                    
+                    数据结构源码分析汇总
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../NDK/">
+            
+                <a href="../NDK/">
+            
+                    
+                    NDK
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="../NDK/NDK开发文章汇总.html">
+            
+                <a href="../NDK/NDK开发文章汇总.html">
+            
+                    
+                    NDK开发文章汇总
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="../NDK/NDK开发（一）NDK入门指南.html">
+            
+                <a href="../NDK/NDK开发（一）NDK入门指南.html">
+            
+                    
+                    NDK开发（一）NDK入门指南
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" data-path="../NDK/NDK开发（七）JNI实现文件夹遍历.html">
+            
+                <a href="../NDK/NDK开发（七）JNI实现文件夹遍历.html">
+            
+                    
+                    NDK开发（七）JNI实现文件夹遍历
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" data-path="../NDK/NDK开发（三）JNI访问Java变量和方法.html">
+            
+                <a href="../NDK/NDK开发（三）JNI访问Java变量和方法.html">
+            
+                    
+                    NDK开发（三）JNI访问Java变量和方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.5" data-path="../NDK/NDK开发（九）Hello-jniCallback.html">
+            
+                <a href="../NDK/NDK开发（九）Hello-jniCallback.html">
+            
+                    
+                    NDK开发（九）Hello-jniCallback
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.6" data-path="../NDK/NDK开发（二）JNI的数据类型.html">
+            
+                <a href="../NDK/NDK开发（二）JNI的数据类型.html">
+            
+                    
+                    NDK开发（二）JNI的数据类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.7" data-path="../NDK/NDK开发（五）JNI实现文件加解密.html">
+            
+                <a href="../NDK/NDK开发（五）JNI实现文件加解密.html">
+            
+                    
+                    NDK开发（五）JNI实现文件加解密
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.8" data-path="../NDK/NDK开发（八）JNI下Bitmap的使用.html">
+            
+                <a href="../NDK/NDK开发（八）JNI下Bitmap的使用.html">
+            
+                    
+                    NDK开发（八）JNI下Bitmap的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.9" data-path="../NDK/NDK开发（六）JNI实现文件拆分和合并.html">
+            
+                <a href="../NDK/NDK开发（六）JNI实现文件拆分和合并.html">
+            
+                    
+                    NDK开发（六）JNI实现文件拆分和合并
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.10" data-path="../NDK/NDK开发（十）Hello-OpenGLES3.html">
+            
+                <a href="../NDK/NDK开发（十）Hello-OpenGLES3.html">
+            
+                    
+                    NDK开发（十）Hello-OpenGLES3
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.11" data-path="../NDK/NDK开发（四）JNI操作Java数组.html">
+            
+                <a href="../NDK/NDK开发（四）JNI操作Java数组.html">
+            
+                    
+                    NDK开发（四）JNI操作Java数组
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../OpenGL ES 3.0/">
+            
+                <a href="../OpenGL ES 3.0/">
+            
+                    
+                    OpenGL ES 3.0
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="../OpenGL ES 3.0/glDrawArrays-is-called-with-VERTEX_ARRAY-client-state-disabled!.html">
+            
+                <a href="../OpenGL ES 3.0/glDrawArrays-is-called-with-VERTEX_ARRAY-client-state-disabled!.html">
+            
+                    
+                    glDrawArrays-is-called-with-VERTEX_ARRAY-client-state-disabled!
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="../OpenGL ES 3.0/OpenGL ES 3.0  Hello_Triangle.html">
+            
+                <a href="../OpenGL ES 3.0/OpenGL ES 3.0  Hello_Triangle.html">
+            
+                    
+                    OpenGL ES 3.0  Hello_Triangle
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" data-path="../OpenGL ES 3.0/OpenGL ES 3.0 学习记录汇总.html">
+            
+                <a href="../OpenGL ES 3.0/OpenGL ES 3.0 学习记录汇总.html">
+            
+                    
+                    OpenGL ES 3.0 学习记录汇总
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4" data-path="../OpenGL ES 3.0/OpenGL ES 3.0 简介.html">
+            
+                <a href="../OpenGL ES 3.0/OpenGL ES 3.0 简介.html">
+            
+                    
+                    OpenGL ES 3.0 简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.5" data-path="../OpenGL ES 3.0/OpenGL ES 着色语言.html">
+            
+                <a href="../OpenGL ES 3.0/OpenGL ES 着色语言.html">
+            
+                    
+                    OpenGL ES 着色语言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.6" data-path="../OpenGL ES 3.0/OpenGL-ES-3-0-高级编程.html">
+            
+                <a href="../OpenGL ES 3.0/OpenGL-ES-3-0-高级编程.html">
+            
+                    
+                    OpenGL-ES-3-0-高级编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.7" data-path="../OpenGL ES 3.0/Windows10 搭建OpenGL ES 3.0 开发环境.html">
+            
+                <a href="../OpenGL ES 3.0/Windows10 搭建OpenGL ES 3.0 开发环境.html">
+            
+                    
+                    Windows10 搭建OpenGL ES 3.0 开发环境
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.8" data-path="../OpenGL ES 3.0/图元装配和光栅化.html">
+            
+                <a href="../OpenGL ES 3.0/图元装配和光栅化.html">
+            
+                    
+                    图元装配和光栅化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.9" data-path="../OpenGL ES 3.0/顶点属性、顶点数组和缓冲区对象.html">
+            
+                <a href="../OpenGL ES 3.0/顶点属性、顶点数组和缓冲区对象.html">
+            
+                    
+                    顶点属性、顶点数组和缓冲区对象
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../Android通用类/">
+            
+                <a href="../Android通用类/">
+            
+                    
+                    Android通用类
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../Android通用类/Android Foreground Service.html">
+            
+                <a href="../Android通用类/Android Foreground Service.html">
+            
+                    
+                    Android Foreground Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" data-path="../Android通用类/Android SIM卡插拔监听.html">
+            
+                <a href="../Android通用类/Android SIM卡插拔监听.html">
+            
+                    
+                    Android SIM卡插拔监听
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3" data-path="../Android通用类/Android判断是否在通话中.html">
+            
+                <a href="../Android通用类/Android判断是否在通话中.html">
+            
+                    
+                    Android判断是否在通话中
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.4" data-path="../Android通用类/Android听筒扬声器切换并且监听音量变化.html">
+            
+                <a href="../Android通用类/Android听筒扬声器切换并且监听音量变化.html">
+            
+                    
+                    Android听筒扬声器切换并且监听音量变化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.5" data-path="../Android通用类/Android检查通知权限是否开启.html">
+            
+                <a href="../Android通用类/Android检查通知权限是否开启.html">
+            
+                    
+                    Android检查通知权限是否开启
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.6" data-path="../Android通用类/Android监听来电状态.html">
+            
+                <a href="../Android通用类/Android监听来电状态.html">
+            
+                    
+                    Android监听来电状态
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../Android错误解决集锦/">
+            
+                <a href="../Android错误解决集锦/">
+            
+                    
+                    Android错误解决集锦
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1.1" data-path="../Android错误解决集锦/Android layout_marginEnd隐藏的坑 or setMargins无效.html">
+            
+                <a href="../Android错误解决集锦/Android layout_marginEnd隐藏的坑 or setMargins无效.html">
+            
+                    
+                    Android layout_marginEnd隐藏的坑 or setMargins无效
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.2" data-path="../Android错误解决集锦/Could not find class 'android.support.v4.widget.DrawerLayout$1'.html">
+            
+                <a href="../Android错误解决集锦/Could not find class 'android.support.v4.widget.DrawerLayout$1'.html">
+            
+                    
+                    Could not find class 'android.support.v4.widget.DrawerLayout$1'
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.3" data-path="../Android错误解决集锦/Duplicate id 0x7f0900af, tag null, or parent id 0xffffffff with another frag.html">
+            
+                <a href="../Android错误解决集锦/Duplicate id 0x7f0900af, tag null, or parent id 0xffffffff with another frag.html">
+            
+                    
+                    Duplicate id 0x7f0900af, tag null, or parent id 0xffffffff with another frag
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.4" data-path="../Android错误解决集锦/Error Execution failed for task 'app transformClassesWithDexForDebug'.html">
+            
+                <a href="../Android错误解决集锦/Error Execution failed for task 'app transformClassesWithDexForDebug'.html">
+            
+                    
+                    Error Execution failed for task 'app transformClassesWithDexForDebug'
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.5" data-path="../Android错误解决集锦/HwLauncher Launcher dialog dismiss failed.html">
+            
+                <a href="../Android错误解决集锦/HwLauncher Launcher dialog dismiss failed.html">
+            
+                    
+                    HwLauncher Launcher dialog dismiss failed
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.6" data-path="../Android错误解决集锦/java.lang.NullPointerException Attempt to invoke virtual method 'int android.widget.Editor.html">
+            
+                <a href="../Android错误解决集锦/java.lang.NullPointerException Attempt to invoke virtual method 'int android.widget.Editor.html">
+            
+                    
+                    java.lang.NullPointerException Attempt to invoke virtual method 'int android.widget.Editor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.7" data-path="../Android错误解决集锦/java.lang.UnsatisfiedLinkError解决方法.html">
+            
+                <a href="../Android错误解决集锦/java.lang.UnsatisfiedLinkError解决方法.html">
+            
+                    
+                    java.lang.UnsatisfiedLinkError解决方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.8" data-path="../Android错误解决集锦/RecyclerView布局异常.html">
+            
+                <a href="../Android错误解决集锦/RecyclerView布局异常.html">
+            
+                    
+                    RecyclerView布局异常
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.9" data-path="../Android错误解决集锦/the bind value at index 2 is null.html">
+            
+                <a href="../Android错误解决集锦/the bind value at index 2 is null.html">
+            
+                    
+                    the bind value at index 2 is null
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../AndroidStudio问题记录/">
+            
+                <a href="../AndroidStudio问题记录/">
+            
+                    
+                    AndroidStudio问题记录
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1.1" data-path="../AndroidStudio问题记录/AndroidStudio App出现红叉问题 解决方法记录.html">
+            
+                <a href="../AndroidStudio问题记录/AndroidStudio App出现红叉问题 解决方法记录.html">
+            
+                    
+                    AndroidStudio App出现红叉问题 解决方法记录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.2" data-path="../AndroidStudio问题记录/AndroidStudio依赖的包文件导入失败.html">
+            
+                <a href="../AndroidStudio问题记录/AndroidStudio依赖的包文件导入失败.html">
+            
+                    
+                    AndroidStudio依赖的包文件导入失败
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.3" data-path="../AndroidStudio问题记录/AndroidStudio在当前位置查看注释快捷方式.html">
+            
+                <a href="../AndroidStudio问题记录/AndroidStudio在当前位置查看注释快捷方式.html">
+            
+                    
+                    AndroidStudio在当前位置查看注释快捷方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.4" data-path="../AndroidStudio问题记录/AndroidStudio找不到Genymotion设备.html">
+            
+                <a href="../AndroidStudio问题记录/AndroidStudio找不到Genymotion设备.html">
+            
+                    
+                    AndroidStudio找不到Genymotion设备
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.5" data-path="../AndroidStudio问题记录/AndroidStudio用久了，磁盘越来越不够用？.html">
+            
+                <a href="../AndroidStudio问题记录/AndroidStudio用久了，磁盘越来越不够用？.html">
+            
+                    
+                    AndroidStudio用久了，磁盘越来越不够用？
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.6" data-path="../AndroidStudio问题记录/AndroidStudio自定义代码模块来实现代码规范.html">
+            
+                <a href="../AndroidStudio问题记录/AndroidStudio自定义代码模块来实现代码规范.html">
+            
+                    
+                    AndroidStudio自定义代码模块来实现代码规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.7" data-path="../AndroidStudio问题记录/AndroidStudio：Unable to start the daemon process.html">
+            
+                <a href="../AndroidStudio问题记录/AndroidStudio：Unable to start the daemon process.html">
+            
+                    
+                    AndroidStudio：Unable to start the daemon process
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="../Android自定义View/">
+            
+                <a href="../Android自定义View/">
+            
+                    
+                    Android自定义View
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.2.1" data-path="../Android自定义View/自定义View实战（一）汽车速度仪表盘.html">
+            
+                <a href="../Android自定义View/自定义View实战（一）汽车速度仪表盘.html">
+            
+                    
+                    自定义View实战（一）汽车速度仪表盘
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.2" data-path="../Android自定义View/自定义View实战（二）QQ健康水滴形加载.html">
+            
+                <a href="../Android自定义View/自定义View实战（二）QQ健康水滴形加载.html">
+            
+                    
+                    自定义View实战（二）QQ健康水滴形加载
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="../热修复/">
+            
+                <a href="../热修复/">
+            
+                    
+                    热修复
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1.1" data-path="../热修复/ClassLoader实现热修复的示例.html">
+            
+                <a href="../热修复/ClassLoader实现热修复的示例.html">
+            
+                    
+                    ClassLoader实现热修复的示例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.2" data-path="../热修复/利用ClassLoader实现检查项目中不符合规范的代码.html">
+            
+                <a href="../热修复/利用ClassLoader实现检查项目中不符合规范的代码.html">
+            
+                    
+                    利用ClassLoader实现检查项目中不符合规范的代码
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="8.1" data-path="../Flutter/">
+            
+                <a href="../Flutter/">
+            
+                    
+                    Flutter
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.1.1" data-path="../Flutter/Flutter学习示例.html">
+            
+                <a href="../Flutter/Flutter学习示例.html">
+            
+                    
+                    Flutter学习示例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.2" data-path="../Flutter/Flutter环境配置及运行示例程序.html">
+            
+                <a href="../Flutter/Flutter环境配置及运行示例程序.html">
+            
+                    
+                    Flutter环境配置及运行示例程序
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="9.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    其他开发问题
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.1.1" data-path="Android string.xml  双引号问题的记录.html">
+            
+                <a href="Android string.xml  双引号问题的记录.html">
+            
+                    
+                    Android string.xml  双引号问题的记录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="9.1.2" data-path="Android targetSdkVersion 从22提到25 你需要知道的一切.html">
+            
+                <a href="Android targetSdkVersion 从22提到25 你需要知道的一切.html">
+            
+                    
+                    Android targetSdkVersion 从22提到25 你需要知道的一切
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.3" data-path="Android-子线程切回主线程的方法记录.html">
+            
+                <a href="Android-子线程切回主线程的方法记录.html">
+            
+                    
+                    Android-子线程切回主线程的方法记录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.4" data-path="Android-数据库加密-android-database-sqlcipher-开源版本编译过程.html">
+            
+                <a href="Android-数据库加密-android-database-sqlcipher-开源版本编译过程.html">
+            
+                    
+                    Android-数据库加密-android-database-sqlcipher-开源版本编译过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.5" data-path="Android6.0的权限记录.html">
+            
+                <a href="Android6.0的权限记录.html">
+            
+                    
+                    Android6.0的权限记录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.6" data-path="Android命令行签名记录.html">
+            
+                <a href="Android命令行签名记录.html">
+            
+                    
+                    Android命令行签名记录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.7" data-path="Android清除通知栏的对应的消息.html">
+            
+                <a href="Android清除通知栏的对应的消息.html">
+            
+                    
+                    Android清除通知栏的对应的消息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.8" data-path="Calendar-HOUR-引发的问题.html">
+            
+                <a href="Calendar-HOUR-引发的问题.html">
+            
+                    
+                    Calendar-HOUR-引发的问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.9" data-path="git提交报错does not match your user account.html">
+            
+                <a href="git提交报错does not match your user account.html">
+            
+                    
+                    git提交报错does not match your user account
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.10" data-path="Git提交流程.html">
+            
+                <a href="Git提交流程.html">
+            
+                    
+                    Git提交流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.11" data-path="Java中运算符  和  以及 & 和 && 区别.html">
+            
+                <a href="Java中运算符  和  以及 & 和 && 区别.html">
+            
+                    
+                    Java中运算符  和  以及 & 和 && 区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.12" data-path="Mysql设置编码，插入不了中文问题.html">
+            
+                <a href="Mysql设置编码，插入不了中文问题.html">
+            
+                    
+                    Mysql设置编码，插入不了中文问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.13" data-path="Tomcat访问本地磁盘文件.html">
+            
+                <a href="Tomcat访问本地磁盘文件.html">
+            
+                    
+                    Tomcat访问本地磁盘文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.14" data-path="W10一些操作问题的记录.html">
+            
+                <a href="W10一些操作问题的记录.html">
+            
+                    
+                    W10一些操作问题的记录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.15" data-path="Windows10-安装VirtualBox出现2502、2503错误解决方法.html">
+            
+                <a href="Windows10-安装VirtualBox出现2502、2503错误解决方法.html">
+            
+                    
+                    Windows10-安装VirtualBox出现2502、2503错误解决方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.16" data-path="windows安装程序无法将windows配置为在此计算机.html">
+            
+                <a href="windows安装程序无法将windows配置为在此计算机.html">
+            
+                    
+                    windows安装程序无法将windows配置为在此计算机
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.17" data-path="【转】Android软键盘的全面解析.html">
+            
+                <a href="【转】Android软键盘的全面解析.html">
+            
+                    
+                    【转】Android软键盘的全面解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.18" data-path="下拉刷新-AppBarLayout.html">
+            
+                <a href="下拉刷新-AppBarLayout.html">
+            
+                    
+                    下拉刷新-AppBarLayout
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.19" data-path="以爬虫工程师身份谈谈Android端的信息安全.html">
+            
+                <a href="以爬虫工程师身份谈谈Android端的信息安全.html">
+            
+                    
+                    以爬虫工程师身份谈谈Android端的信息安全
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.20" data-path="关于魅族手机-安装APP提示安装失败-更新包不兼容的解决方法.html">
+            
+                <a href="关于魅族手机-安装APP提示安装失败-更新包不兼容的解决方法.html">
+            
+                    
+                    关于魅族手机-安装APP提示安装失败-更新包不兼容的解决方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.21" data-path="如何托管你的项目到github上详细教程.html">
+            
+                <a href="如何托管你的项目到github上详细教程.html">
+            
+                    
+                    如何托管你的项目到github上详细教程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.22" data-path="最近的Android面试分享.html">
+            
+                <a href="最近的Android面试分享.html">
+            
+                    
+                    最近的Android面试分享
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.23" data-path="集成微信登录和分享真的很简单.html">
+            
+                <a href="集成微信登录和分享真的很简单.html">
+            
+                    
+                    集成微信登录和分享真的很简单
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.24" data-path="魅族进入开发者模式.html">
+            
+                <a href="魅族进入开发者模式.html">
+            
+                    
+                    魅族进入开发者模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="10.1" data-path="../Java并发编程的艺术笔记/">
+            
+                <a href="../Java并发编程的艺术笔记/">
+            
+                    
+                    Java并发编程的艺术笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.1.1" data-path="../Java并发编程的艺术笔记/Executor框架.html">
+            
+                <a href="../Java并发编程的艺术笔记/Executor框架.html">
+            
+                    
+                    Executor框架
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.2" data-path="../Java并发编程的艺术笔记/Java Thread.join(">
+            
+                <span>
+            
+                    
+                    Java Thread.join()详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.3" data-path="../Java并发编程的艺术笔记/Java中的12个原子操作类介绍.html">
+            
+                <a href="../Java并发编程的艺术笔记/Java中的12个原子操作类介绍.html">
+            
+                    
+                    Java中的12个原子操作类介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.4" data-path="../Java并发编程的艺术笔记/Java中的并发工具类.html">
+            
+                <a href="../Java并发编程的艺术笔记/Java中的并发工具类.html">
+            
+                    
+                    Java中的并发工具类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.5" data-path="../Java并发编程的艺术笔记/Java中的线程池.html">
+            
+                <a href="../Java并发编程的艺术笔记/Java中的线程池.html">
+            
+                    
+                    Java中的线程池
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.6" data-path="../Java并发编程的艺术笔记/Java中的锁的使用和实现介绍.html">
+            
+                <a href="../Java并发编程的艺术笔记/Java中的锁的使用和实现介绍.html">
+            
+                    
+                    Java中的锁的使用和实现介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.7" data-path="../Java并发编程的艺术笔记/Java内存模型.html">
+            
+                <a href="../Java并发编程的艺术笔记/Java内存模型.html">
+            
+                    
+                    Java内存模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.8" data-path="../Java并发编程的艺术笔记/Java并发容器和框架.html">
+            
+                <a href="../Java并发编程的艺术笔记/Java并发容器和框架.html">
+            
+                    
+                    Java并发容器和框架
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.9" data-path="../Java并发编程的艺术笔记/Java并发机制的底层实现原理.html">
+            
+                <a href="../Java并发编程的艺术笔记/Java并发机制的底层实现原理.html">
+            
+                    
+                    Java并发机制的底层实现原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.10" data-path="../Java并发编程的艺术笔记/Java并发编程基础.html">
+            
+                <a href="../Java并发编程的艺术笔记/Java并发编程基础.html">
+            
+                    
+                    Java并发编程基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.11" data-path="../Java并发编程的艺术笔记/并发编程的挑战.html">
+            
+                <a href="../Java并发编程的艺术笔记/并发编程的挑战.html">
+            
+                    
+                    并发编程的挑战
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="11.1" data-path="../Android艺术开发探索学习/">
+            
+                <a href="../Android艺术开发探索学习/">
+            
+                    
+                    Android艺术开发探索学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="11.1.1" data-path="../Android艺术开发探索学习/Android开发艺术探索学习之Activity的生命周期.html">
+            
+                <a href="../Android艺术开发探索学习/Android开发艺术探索学习之Activity的生命周期.html">
+            
+                    
+                    Android开发艺术探索学习之Activity的生命周期
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.1.2" data-path="../Android艺术开发探索学习/Android开发艺术探索学习之结合Activity的生命周期了解Activity的LaunchMode.html">
+            
+                <a href="../Android艺术开发探索学习/Android开发艺术探索学习之结合Activity的生命周期了解Activity的LaunchMode.html">
+            
+                    
+                    Android开发艺术探索学习之结合Activity的生命周期了解Activity的LaunchMode
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.1.3" data-path="../Android艺术开发探索学习/Android艺术开发探索学习之测量view的宽高以及动态设置View的位置.html">
+            
+                <a href="../Android艺术开发探索学习/Android艺术开发探索学习之测量view的宽高以及动态设置View的位置.html">
+            
+                    
+                    Android艺术开发探索学习之测量view的宽高以及动态设置View的位置
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="12.1" data-path="../Android软件安全权威指南笔记/">
+            
+                <a href="../Android软件安全权威指南笔记/">
+            
+                    
+                    Android软件安全权威指南笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.1.1" data-path="../Android软件安全权威指南笔记/Dalvik指令集.html">
+            
+                <a href="../Android软件安全权威指南笔记/Dalvik指令集.html">
+            
+                    
+                    Dalvik指令集
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="13.1" data-path="../深入理解Java虚拟机/">
+            
+                <a href="../深入理解Java虚拟机/">
+            
+                    
+                    深入理解Java虚拟机
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="13.1.1" data-path="../深入理解Java虚拟机/Java虚拟机运行时数据区介绍.html">
+            
+                <a href="../深入理解Java虚拟机/Java虚拟机运行时数据区介绍.html">
+            
+                    
+                    Java虚拟机运行时数据区介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="14.1" data-path="../RXJava源码分析/">
+            
+                <a href="../RXJava源码分析/">
+            
+                    
+                    RXJava源码分析
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="14.1.1" data-path="../RXJava源码分析/Flowable.subscribe流程介绍.html">
+            
+                <a href="../RXJava源码分析/Flowable.subscribe流程介绍.html">
+            
+                    
+                    Flowable.subscribe流程介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.2" data-path="../RXJava源码分析/Observable.subscribe流程介绍.html">
+            
+                <a href="../RXJava源码分析/Observable.subscribe流程介绍.html">
+            
+                    
+                    Observable.subscribe流程介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.3" data-path="../RXJava源码分析/RxJava subscribeOn和observeOn源码介绍.html">
+            
+                <a href="../RXJava源码分析/RxJava subscribeOn和observeOn源码介绍.html">
+            
+                    
+                    RxJava subscribeOn和observeOn源码介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.4" data-path="../RXJava源码分析/RxJava之concatMap系列转换操作符源码介绍.html">
+            
+                <a href="../RXJava源码分析/RxJava之concatMap系列转换操作符源码介绍.html">
+            
+                    
+                    RxJava之concatMap系列转换操作符源码介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.5" data-path="../RXJava源码分析/RxJava之create操作符源码解析.html">
+            
+                <a href="../RXJava源码分析/RxJava之create操作符源码解析.html">
+            
+                    
+                    RxJava之create操作符源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.6" data-path="../RXJava源码分析/RxJava之flatMap系列转换操作符.html">
+            
+                <a href="../RXJava源码分析/RxJava之flatMap系列转换操作符.html">
+            
+                    
+                    RxJava之flatMap系列转换操作符
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.7" data-path="../RXJava源码分析/RxJava之from系列操作符源码解析.html">
+            
+                <a href="../RXJava源码分析/RxJava之from系列操作符源码解析.html">
+            
+                    
+                    RxJava之from系列操作符源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.8" data-path="../RXJava源码分析/RxJava之Schedulers源码介绍.html">
+            
+                <a href="../RXJava源码分析/RxJava之Schedulers源码介绍.html">
+            
+                    
+                    RxJava之Schedulers源码介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.9" data-path="../RXJava源码分析/RxJava之timer和interval操作符源码解析.html">
+            
+                <a href="../RXJava源码分析/RxJava之timer和interval操作符源码解析.html">
+            
+                    
+                    RxJava之timer和interval操作符源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.10" data-path="../RXJava源码分析/RxJava之创建操作符源码介绍.html">
+            
+                <a href="../RXJava源码分析/RxJava之创建操作符源码介绍.html">
+            
+                    
+                    RxJava之创建操作符源码介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.11" data-path="../RXJava源码分析/RxJava之异常捕获操作符介绍.html">
+            
+                <a href="../RXJava源码分析/RxJava之异常捕获操作符介绍.html">
+            
+                    
+                    RxJava之异常捕获操作符介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.12" data-path="../RXJava源码分析/RxJava之组合操作符介绍.html">
+            
+                <a href="../RXJava源码分析/RxJava之组合操作符介绍.html">
+            
+                    
+                    RxJava之组合操作符介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.13" data-path="../RXJava源码分析/RxJava之背压策略.html">
+            
+                <a href="../RXJava源码分析/RxJava之背压策略.html">
+            
+                    
+                    RxJava之背压策略
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.14" data-path="../RXJava源码分析/RxJava之转换操作符源码介绍.html">
+            
+                <a href="../RXJava源码分析/RxJava之转换操作符源码介绍.html">
+            
+                    
+                    RxJava之转换操作符源码介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.15" data-path="../RXJava源码分析/RxJava之过滤操作符介绍.html">
+            
+                <a href="../RXJava源码分析/RxJava之过滤操作符介绍.html">
+            
+                    
+                    RxJava之过滤操作符介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.16" data-path="../RXJava源码分析/RxJava之连接操作符介绍.html">
+            
+                <a href="../RXJava源码分析/RxJava之连接操作符介绍.html">
+            
+                    
+                    RxJava之连接操作符介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="15.1" data-path="../okhttp3/">
+            
+                <a href="../okhttp3/">
+            
+                    
+                    okhttp3
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="15.1.1" data-path="../okhttp3/okhttp之Connection.html">
+            
+                <a href="../okhttp3/okhttp之Connection.html">
+            
+                    
+                    okhttp之Connection
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="15.1.2" data-path="../okhttp3/okhttp之ConnectionPool.html">
+            
+                <a href="../okhttp3/okhttp之ConnectionPool.html">
+            
+                    
+                    okhttp之ConnectionPool
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="15.1.3" data-path="../okhttp3/okhttp之Dispatcher.html">
+            
+                <a href="../okhttp3/okhttp之Dispatcher.html">
+            
+                    
+                    okhttp之Dispatcher
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="15.1.4" data-path="../okhttp3/okhttp之OkHttpClient.html">
+            
+                <a href="../okhttp3/okhttp之OkHttpClient.html">
+            
+                    
+                    okhttp之OkHttpClient
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="15.1.5" data-path="../okhttp3/okhttp之RealCall-execute(">
+            
+                <span>
+            
+                    
+                    okhttp之RealCall-execute()流程介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="15.1.6" data-path="../okhttp3/okhttp之Request.html">
+            
+                <a href="../okhttp3/okhttp之Request.html">
+            
+                    
+                    okhttp之Request
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="15.1.7" data-path="../okhttp3/okhttp之StreamAllocation.html">
+            
+                <a href="../okhttp3/okhttp之StreamAllocation.html">
+            
+                    
+                    okhttp之StreamAllocation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="15.1.8" data-path="../okhttp3/okhttp之五个拦截器的介绍.html">
+            
+                <a href="../okhttp3/okhttp之五个拦截器的介绍.html">
+            
+                    
+                    okhttp之五个拦截器的介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="15.1.9" data-path="../okhttp3/okhttp之自定义拦截器.html">
+            
+                <a href="../okhttp3/okhttp之自定义拦截器.html">
+            
+                    
+                    okhttp之自定义拦截器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="15.1.10" data-path="../okhttp3/okhttp的使用介绍.html">
+            
+                <a href="../okhttp3/okhttp的使用介绍.html">
+            
+                    
+                    okhttp的使用介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Android targetSdkVersion 从22提到25 你需要知道的一切</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><ul><ul><li><span class="title-icon "></span><a href="#android-60"><b></b>Android 6.0</a></li><li><span class="title-icon "></span><a href="#android70"><b></b>Android7.0</a></li><li><span class="title-icon "></span><a href="#&#x5176;&#x4ED6;"><b></b>&#x5176;&#x4ED6;</a></li><li><span class="title-icon "></span><a href="#&#x66F4;&#x591A;&#x4FE1;&#x606F;&#x8BF7;&#x731B;&#x6233;&#x4E0B;&#x9762;&#x7684;&#x5B98;&#x65B9;&#x94FE;&#x63A5;"><b></b>&#x66F4;&#x591A;&#x4FE1;&#x606F;&#x8BF7;&#x731B;&#x6233;&#x4E0B;&#x9762;&#x7684;&#x5B98;&#x65B9;&#x94FE;&#x63A5;</a></li></ul></ul></ul></div><a href="#" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><p><strong>&#x672C;&#x7BC7;&#x6587;&#x7AE0;&#x5DF2;&#x6388;&#x6743;&#x5FAE;&#x4FE1;&#x516C;&#x4F17;&#x53F7; guolin_blog &#xFF08;&#x90ED;&#x9716;&#xFF09;&#x72EC;&#x5BB6;&#x53D1;&#x5E03;</strong></p>
+<h3 id="android-60"><a name="android-60" class="anchor-navigation-ex-anchor" href="#android-60"><i class="fa fa-link" aria-hidden="true"></i></a><a name="android-60" class="plugin-anchor" href="#android-60"><i class="fa fa-link" aria-hidden="true"></i></a>Android 6.0</h3>
+<ul>
+<li><h4 id="&#x8FD0;&#x884C;&#x65F6;&#x6743;&#x9650;"><a name="&#x8FD0;&#x884C;&#x65F6;&#x6743;&#x9650;" class="anchor-navigation-ex-anchor" href="#&#x8FD0;&#x884C;&#x65F6;&#x6743;&#x9650;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x8FD0;&#x884C;&#x65F6;&#x6743;&#x9650;" class="plugin-anchor" href="#&#x8FD0;&#x884C;&#x65F6;&#x6743;&#x9650;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x8FD0;&#x884C;&#x65F6;&#x6743;&#x9650;</h4>
+<strong>&#x76F8;&#x673A;&#xFF0C;&#x56FE;&#x5E93;&#xFF0C;&#x4E0B;&#x8F7D;&#xFF0C;&#x8BED;&#x97F3;&#xFF0C;&#x5B9A;&#x4F4D;....</strong>
+&#x6B64;&#x7248;&#x672C;&#x5F15;&#x5165;&#x4E86;&#x4E00;&#x79CD;&#x65B0;&#x7684;&#x6743;&#x9650;&#x6A21;&#x5F0F;&#xFF0C;&#x5982;&#x4ECA;&#xFF0C;&#x7528;&#x6237;&#x53EF;&#x76F4;&#x63A5;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x7BA1;&#x7406;&#x5E94;&#x7528;&#x6743;&#x9650;&#x3002;&#x8FD9;&#x79CD;&#x6A21;&#x5F0F;&#x8BA9;&#x7528;&#x6237;&#x80FD;&#x591F;&#x66F4;&#x597D;&#x5730;&#x4E86;&#x89E3;&#x548C;&#x63A7;&#x5236;&#x6743;&#x9650;&#xFF0C;&#x540C;&#x65F6;&#x4E3A;&#x5E94;&#x7528;&#x5F00;&#x53D1;&#x8005;&#x7CBE;&#x7B80;&#x4E86;&#x5B89;&#x88C5;&#x548C;&#x81EA;&#x52A8;&#x66F4;&#x65B0;&#x8FC7;&#x7A0B;&#x3002;&#x7528;&#x6237;&#x53EF;&#x4E3A;&#x6240;&#x5B89;&#x88C5;&#x7684;&#x5404;&#x4E2A;&#x5E94;&#x7528;&#x5206;&#x522B;&#x6388;&#x4E88;&#x6216;&#x64A4;&#x9500;&#x6743;&#x9650;&#x3002;
+&#x5BF9;&#x4E8E;&#x4EE5; Android 6.0&#xFF08;API &#x7EA7;&#x522B; 23&#xFF09;&#x6216;&#x66F4;&#x9AD8;&#x7248;&#x672C;&#x4E3A;&#x76EE;&#x6807;&#x5E73;&#x53F0;&#x7684;&#x5E94;&#x7528;&#xFF0C;&#x8BF7;&#x52A1;&#x5FC5;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x68C0;&#x67E5;&#x548C;&#x8BF7;&#x6C42;&#x6743;&#x9650;&#x3002;&#x8981;&#x786E;&#x5B9A;&#x60A8;&#x7684;&#x5E94;&#x7528;&#x662F;&#x5426;&#x5DF2;&#x88AB;&#x6388;&#x4E88;&#x6743;&#x9650;&#xFF0C;&#x8BF7;&#x8C03;&#x7528;&#x65B0;&#x589E;&#x7684; <a href="https://developer.android.google.cn/reference/android/content/Context.html#checkSelfPermission\(java.lang.String\" target="_blank">checkSelfPermission()</a>)&#x65B9;&#x6CD5;&#x3002;&#x8981;&#x8BF7;&#x6C42;&#x6743;&#x9650;&#xFF0C;&#x8BF7;&#x8C03;&#x7528;&#x65B0;&#x589E;&#x7684;<a href="https://developer.android.google.cn/reference/android/app/Activity.html#requestPermissions(java.lang.String[],int" target="_blank">requestPermissions()</a>) &#x65B9;&#x6CD5;&#x3002;&#x5373;&#x4F7F;&#x60A8;&#x7684;&#x5E94;&#x7528;&#x5E76;&#x4E0D;&#x4EE5; Android 6.0&#xFF08;API &#x7EA7;&#x522B; 23&#xFF09;&#x4E3A;&#x76EE;&#x6807;&#x5E73;&#x53F0;&#xFF0C;&#x60A8;&#x4E5F;&#x5E94;&#x8BE5;&#x5728;&#x65B0;&#x6743;&#x9650;&#x6A21;&#x5F0F;&#x4E0B;&#x6D4B;&#x8BD5;&#x60A8;&#x7684;&#x5E94;&#x7528;&#x3002;&#x5982;&#x9700;&#x4E86;&#x89E3;&#x6709;&#x5173;&#x5728;&#x60A8;&#x7684;&#x5E94;&#x7528;&#x4E2D;&#x652F;&#x6301;&#x65B0;&#x6743;&#x9650;&#x6A21;&#x5F0F;&#x7684;&#x8BE6;&#x60C5;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;<a href="https://developer.android.google.cn/training/permissions/index.html" target="_blank">&#x4F7F;&#x7528;&#x7CFB;&#x7EDF;&#x6743;&#x9650;</a>&#x3002;&#x5982;&#x9700;&#x4E86;&#x89E3;&#x6709;&#x5173;&#x5982;&#x4F55;&#x8BC4;&#x4F30;&#x65B0;&#x6A21;&#x5F0F;&#x5BF9;&#x5E94;&#x7528;&#x7684;&#x5F71;&#x54CD;&#x7684;&#x63D0;&#x793A;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;<a href="https://developer.android.google.cn/training/permissions/best-practices.html#testing" target="_blank">&#x6743;&#x9650;&#x6700;&#x4F73;&#x505A;&#x6CD5;</a>&#x3002;
+<strong>&#x6743;&#x9650;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#x7C7B;</strong></li>
+</ul>
+<pre><code>package cn.loveshow.live.util;
+
+import android.Manifest;
+import android.app.Activity;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.os.Build;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
+
+/**
+ * Created by Fungo_Xiaoke on 2017/5/4 14:18.
+ * eamil:luoxiaoke@yuntutv.net
+ * &#x6743;&#x9650;&#x5DE5;&#x5177;&#x7C7B;
+ */
+public class PermissionUtils {
+
+
+/**
+ * @param context     &#x4E0A;&#x4E0B;&#x6587;
+ * @param activity    activity
+ * @param permissions &#x6743;&#x9650;&#x6570;&#x7EC4;
+ * @param requestCode &#x7533;&#x8BF7;&#x7801;
+ * @return true &#x6709;&#x6743;&#x9650;  false &#x65E0;&#x6743;&#x9650;
+ */
+public static boolean checkAndApplyfPermissionActivity(Activity activity, String[] permissions, int requestCode) {
+    if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.M) {
+        permissions = checkPermissions(activity, permissions);
+        if (permissions != null &amp;&amp; permissions.length &gt; 0) {
+            ActivityCompat.requestPermissions(activity, permissions, requestCode);
+            return false;
+        } else {
+            return true;
+        }
+    } else {
+        return true;
+    }
+}
+
+/**
+ * @param context     &#x4E0A;&#x4E0B;&#x6587;
+ * @param mFragment   fragment
+ * @param permissions &#x6743;&#x9650;&#x6570;&#x7EC4;
+ * @param requestCode &#x7533;&#x8BF7;&#x7801;
+ * @return true &#x6709;&#x6743;&#x9650;  false &#x65E0;&#x6743;&#x9650;
+ */
+public static boolean checkAndApplyfPermissionFragment( Fragment mFragment, String[] permissions, int requestCode) {
+    if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.M) {
+        permissions = checkPermissions(mFragment.getActivity(), permissions);
+        if (permissions != null &amp;&amp; permissions.length &gt; 0) {
+            if (mFragment.getActivity() != null) {
+                mFragment.requestPermissions(permissions, requestCode);
+            }
+            return false;
+        } else {
+            return true;
+        }
+    } else {
+        return true;
+    }
+}
+
+/**
+ * @param context     &#x4E0A;&#x4E0B;&#x6587;
+ * @param permissions &#x6743;&#x9650;&#x6570;&#x7EC4;
+ * @return &#x8FD8;&#x9700;&#x8981;&#x7533;&#x8BF7;&#x7684;&#x6743;&#x9650;
+ */
+private static String[] checkPermissions(Context context, String[] permissions) {
+    if (permissions == null || permissions.length == 0) {
+        return new String[0];
+    }
+    ArrayList&lt;String&gt; permissionLists = new ArrayList&lt;&gt;();
+    permissionLists.addAll(Arrays.asList(permissions));
+    for (int i = permissionLists.size() - 1; i &gt;= 0; i--) {
+        if (ContextCompat.checkSelfPermission(context, permissionLists.get(i)) == PackageManager.PERMISSION_GRANTED) {
+            permissionLists.remove(i);
+        }
+    }
+
+    String[] temps = new String[permissionLists.size()];
+    for (int i = 0; i &lt; permissionLists.size(); i++) {
+        temps[i] = permissionLists.get(i);
+    }
+    return temps;
+    }
+
+
+    /**
+     * &#x68C0;&#x67E5;&#x7533;&#x8BF7;&#x7684;&#x6743;&#x9650;&#x662F;&#x5426;&#x5168;&#x90E8;&#x5141;&#x8BB8;
+     */
+    public static boolean checkPermission(int[] grantResults) {
+        if (grantResults == null || grantResults.length == 0) {
+            return true;
+        } else {
+            int temp = 0;
+            for (int i : grantResults) {
+                if (i == PackageManager.PERMISSION_GRANTED) {
+                    temp++;
+                }
+            }
+            return temp == grantResults.length;
+        }
+    }
+
+/**
+ * &#x6CA1;&#x6709;&#x83B7;&#x53D6;&#x5230;&#x6743;&#x9650;&#x7684;&#x63D0;&#x793A;
+ *
+ * @param permissions &#x6743;&#x9650;&#x540D;&#x5B57;&#x6570;&#x7EC4;
+ */
+public static void showPermissionsToast(Activity activity, @NonNull String[] permissions) {
+    if (permissions.length &gt; 0) {
+        for (String permission : permissions) {
+            showPermissionToast(activity, permission);
+        }
+     }
+   }
+
+/**
+ * &#x6CA1;&#x6709;&#x83B7;&#x53D6;&#x5230;&#x6743;&#x9650;&#x7684;&#x63D0;&#x793A;
+ *
+ * @param permission &#x6743;&#x9650;&#x540D;&#x5B57;
+ */
+private static void showPermissionToast(Activity activity, @NonNull String permission) {
+    if (!ActivityCompat.shouldShowRequestPermissionRationale(activity, permission)) {
+        //&#x7528;&#x6237;&#x52FE;&#x9009;&#x4E86;&#x4E0D;&#x518D;&#x8BE2;&#x95EE;,&#x63D0;&#x793A;&#x7528;&#x6237;&#x624B;&#x52A8;&#x6253;&#x5F00;&#x6743;&#x9650;
+        switch (permission) {
+            case Manifest.permission.CAMERA:
+                ToastUtils.showShort(&quot;&#x76F8;&#x673A;&#x6743;&#x9650;&#x5DF2;&#x88AB;&#x7981;&#x6B62;&#xFF0C;&#x8BF7;&#x5728;&#x5E94;&#x7528;&#x7BA1;&#x7406;&#x4E2D;&#x6253;&#x5F00;&#x6743;&#x9650;&quot;);
+                break;
+            case Manifest.permission.WRITE_EXTERNAL_STORAGE:
+                ToastUtils.showShort(&quot;&#x6587;&#x4EF6;&#x6743;&#x9650;&#x5DF2;&#x88AB;&#x7981;&#x6B62;&#xFF0C;&#x8BF7;&#x5728;&#x5E94;&#x7528;&#x7BA1;&#x7406;&#x4E2D;&#x6253;&#x5F00;&#x6743;&#x9650;&quot;);
+                break;
+            case Manifest.permission.RECORD_AUDIO:
+                ToastUtils.showShort(&quot;&#x5F55;&#x5236;&#x97F3;&#x9891;&#x6743;&#x9650;&#x5DF2;&#x88AB;&#x7981;&#x6B62;&#xFF0C;&#x8BF7;&#x5728;&#x5E94;&#x7528;&#x7BA1;&#x7406;&#x4E2D;&#x6253;&#x5F00;&#x6743;&#x9650;&quot;);
+                break;
+            case Manifest.permission.ACCESS_FINE_LOCATION:
+                ToastUtils.showShort(&quot;&#x4F4D;&#x7F6E;&#x6743;&#x9650;&#x5DF2;&#x88AB;&#x7981;&#x6B62;&#xFF0C;&#x8BF7;&#x5728;&#x5E94;&#x7528;&#x7BA1;&#x7406;&#x4E2D;&#x6253;&#x5F00;&#x6743;&#x9650;&quot;);
+                break;
+        }
+    } else {
+        //&#x7528;&#x6237;&#x6CA1;&#x6709;&#x52FE;&#x9009;&#x4E86;&#x4E0D;&#x518D;&#x8BE2;&#x95EE;,&#x62D2;&#x7EDD;&#x4E86;&#x6743;&#x9650;&#x7533;&#x8BF7;
+        switch (permission) {
+            case Manifest.permission.CAMERA:
+                ToastUtils.showShort(&quot;&#x6CA1;&#x6709;&#x76F8;&#x673A;&#x6743;&#x9650;&quot;);
+                break;
+            case Manifest.permission.WRITE_EXTERNAL_STORAGE:
+                ToastUtils.showShort(&quot;&#x6CA1;&#x6709;&#x6587;&#x4EF6;&#x8BFB;&#x53D6;&#x6743;&#x9650;&quot;);
+                break;
+            case Manifest.permission.RECORD_AUDIO:
+                ToastUtils.showShort(&quot;&#x6CA1;&#x6709;&#x5F55;&#x5236;&#x97F3;&#x9891;&#x6743;&#x9650;&quot;);
+                break;
+            case Manifest.permission.ACCESS_FINE_LOCATION:
+                ToastUtils.showShort(&quot;&#x6CA1;&#x6709;&#x4F4D;&#x7F6E;&#x6743;&#x9650;&quot;);
+                break;
+          }
+     }
+  }
+}
+</code></pre><p><strong>&#x7528;&#x6CD5;</strong></p>
+<pre><code>   if (PermissionUtils.checkAndApplyfPermissionActivity(this,
+        new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 
+        REQUESRCARMEA)) {
+       //&#x83B7;&#x53D6;&#x5230;&#x6743;&#x9650;&#x7684;&#x64CD;&#x4F5C;  &#x6CA1;&#x6709;&#x6743;&#x9650;&#x4F1A;&#x7533;&#x8BF7;&#x6743;&#x9650;  &#x7136;&#x540E;&#x5728;onRequestPermissionsResult&#x5904;&#x7406;&#x7533;&#x8BF7;&#x7684;&#x7ED3;&#x679C;
+   }
+
+   @Override
+   public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+       super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+       if (PermissionUtils.checkPermission(grantResults)) {
+           //&#x7533;&#x8BF7;&#x6743;&#x9650;&#x6210;&#x529F;
+            switch (requestCode) {
+                 case 0x001:
+                     //dosomething
+                     break;
+                 case 0x002:
+                    //dosomething
+                     break;
+                 ...
+            }
+       } else {
+           //&#x63D0;&#x793A;&#x6CA1;&#x6709;&#x4EC0;&#x4E48;&#x6743;&#x9650;
+           PermissionUtils.showPermissionsToast(activity, permissions);
+            //or &#x53BB;&#x6743;&#x9650;&#x7BA1;&#x7406;&#x754C;&#x9762;
+            //gotoPermissionManager&#xFF08;mContext&#xFF09;;
+       }
+   }
+</code></pre><p>  <strong>&#x6CA1;&#x6709;&#x6743;&#x9650;&#x53BB;&#x6743;&#x9650;&#x7BA1;&#x7406;&#x754C;&#x9762;</strong></p>
+<pre><code>/**
+ * &#x53BB;&#x5E94;&#x7528;&#x6743;&#x9650;&#x7BA1;&#x7406;&#x754C;&#x9762;
+ */
+public static void gotoPermissionManager(Context context) {
+    Intent intent;
+    ComponentName comp;
+    //&#x9632;&#x6B62;&#x5237;&#x673A;&#x51FA;&#x73B0;&#x7684;&#x95EE;&#x9898;
+    try {
+        switch (Build.MANUFACTURER) {
+            case &quot;Huawei&quot;:
+                intent = new Intent();
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra(&quot;packageName&quot;, BuildConfig.APPLICATION_ID);
+                comp = new ComponentName(&quot;com.huawei.systemmanager&quot;, &quot;com.huawei.permissionmanager.ui.MainActivity&quot;);
+                intent.setComponent(comp);
+                context.startActivity(intent);
+                break;
+            case &quot;Meizu&quot;:
+                intent = new Intent(&quot;com.meizu.safe.security.SHOW_APPSEC&quot;);
+                intent.addCategory(Intent.CATEGORY_DEFAULT);
+                intent.putExtra(&quot;packageName&quot;, BuildConfig.APPLICATION_ID);
+                context.startActivity(intent);
+                break;
+            case &quot;Xiaomi&quot;:
+                String rom = getSystemProperty(&quot;ro.miui.ui.version.name&quot;);
+                if (&quot;v5&quot;.equals(rom)) {
+                    Uri packageURI = Uri.parse(&quot;package:&quot; + context.getApplicationInfo().packageName);
+                    intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, packageURI);
+                } else {//if (&quot;v6&quot;.equals(rom) || &quot;v7&quot;.equals(rom)) {
+                    intent = new Intent(&quot;miui.intent.action.APP_PERM_EDITOR&quot;);
+                    intent.setClassName(&quot;com.miui.securitycenter&quot;, &quot;com.miui.permcenter.permissions.AppPermissionsEditorActivity&quot;);
+                    intent.putExtra(&quot;extra_pkgname&quot;, context.getPackageName());
+                }
+                context.startActivity(intent);
+                break;
+            case &quot;Sony&quot;:
+                intent = new Intent();
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra(&quot;packageName&quot;, BuildConfig.APPLICATION_ID);
+                comp = new ComponentName(&quot;com.sonymobile.cta&quot;, &quot;com.sonymobile.cta.SomcCTAMainActivity&quot;);
+                intent.setComponent(comp);
+                context.startActivity(intent);
+                break;
+            case &quot;OPPO&quot;:
+                intent = new Intent();
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra(&quot;packageName&quot;, BuildConfig.APPLICATION_ID);
+                comp = new ComponentName(&quot;com.color.safecenter&quot;, &quot;com.color.safecenter.permission.PermissionManagerActivity&quot;);
+                intent.setComponent(comp);
+                context.startActivity(intent);
+                break;
+            case &quot;LG&quot;:
+                intent = new Intent(&quot;android.intent.action.MAIN&quot;);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra(&quot;packageName&quot;, BuildConfig.APPLICATION_ID);
+                comp = new ComponentName(&quot;com.android.settings&quot;, &quot;com.android.settings.Settings$AccessLockSummaryActivity&quot;);
+                intent.setComponent(comp);
+                context.startActivity(intent);
+                break;
+            case &quot;Letv&quot;:
+                intent = new Intent();
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra(&quot;packageName&quot;, BuildConfig.APPLICATION_ID);
+                comp = new ComponentName(&quot;com.letv.android.letvsafe&quot;, &quot;com.letv.android.letvsafe.PermissionAndApps&quot;);
+                intent.setComponent(comp);
+                context.startActivity(intent);
+                break;
+            default:
+                getAppDetailSettingIntent(context);
+                break;
+        }
+    } catch (Exception e) {
+        getAppDetailSettingIntent(context);
+    }
+}
+
+/**
+ * &#x83B7;&#x53D6;&#x7CFB;&#x7EDF;&#x5C5E;&#x6027;&#x503C;
+ */
+public static String getSystemProperty(String propName) {
+    String line;
+    BufferedReader input = null;
+    try {
+        Process p = Runtime.getRuntime().exec(&quot;getprop &quot; + propName);
+        input = new BufferedReader(new InputStreamReader(p.getInputStream()), 1024);
+        line = input.readLine();
+        input.close();
+    } catch (IOException ex) {
+        Log.e(TAG, &quot;Unable to read sysprop &quot; + propName, ex);
+        return null;
+    } finally {
+        if (input != null) {
+            try {
+                input.close();
+            } catch (IOException e) {
+                Log.e(TAG, &quot;Exception while closing InputStream&quot;, e);
+            }
+        }
+    }
+    return line;
+}
+
+  //&#x4EE5;&#x4E0B;&#x4EE3;&#x7801;&#x53EF;&#x4EE5;&#x8DF3;&#x8F6C;&#x5230;&#x5E94;&#x7528;&#x8BE6;&#x60C5;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5E94;&#x7528;&#x8BE6;&#x60C5;&#x8DF3;&#x8F6C;&#x5230;&#x6743;&#x9650;&#x754C;&#x9762;(6.0&#x7CFB;&#x7EDF;&#x6D4B;&#x8BD5;&#x53EF;&#x7528;)
+ public static void getAppDetailSettingIntent(Context context) {
+    Intent localIntent = new Intent();
+    localIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+    if (Build.VERSION.SDK_INT &gt;= 9) {
+        localIntent.setAction(&quot;android.settings.APPLICATION_DETAILS_SETTINGS&quot;);
+        localIntent.setData(Uri.fromParts(&quot;package&quot;, context.getPackageName(), null));
+    } else if (Build.VERSION.SDK_INT &lt;= 8) {
+        localIntent.setAction(Intent.ACTION_VIEW);
+        localIntent.setClassName(&quot;com.android.settings&quot;, &quot;com.android.settings.InstalledAppDetails&quot;);
+        localIntent.putExtra(&quot;com.android.settings.ApplicationPkgName&quot;, context.getPackageName());
+    }
+    launchApp(context, localIntent);
+}
+
+  /**
+ * &#x5B89;&#x5168;&#x7684;&#x542F;&#x52A8;APP
+ */
+public static boolean launchApp(Context ctx, Intent intent) {
+    if (ctx == null)
+        throw new NullPointerException(&quot;ctx is null&quot;);
+    try {
+        ctx.startActivity(intent);
+        return true;
+    } catch (ActivityNotFoundException e) {
+        Logger.e(e);
+        return false;
+    }
+}
+</code></pre><ul>
+<li><h4 id="&#x53D6;&#x6D88;&#x652F;&#x6301;-apache-http-&#x5BA2;&#x6237;&#x7AEF;"><a name="&#x53D6;&#x6D88;&#x652F;&#x6301;-apache-http-&#x5BA2;&#x6237;&#x7AEF;" class="anchor-navigation-ex-anchor" href="#&#x53D6;&#x6D88;&#x652F;&#x6301;-apache-http-&#x5BA2;&#x6237;&#x7AEF;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x53D6;&#x6D88;&#x652F;&#x6301;-apache-http-&#x5BA2;&#x6237;&#x7AEF;" class="plugin-anchor" href="#&#x53D6;&#x6D88;&#x652F;&#x6301;-apache-http-&#x5BA2;&#x6237;&#x7AEF;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x53D6;&#x6D88;&#x652F;&#x6301; Apache HTTP &#x5BA2;&#x6237;&#x7AEF;</h4>
+<p>Android 6.0 &#x7248;&#x79FB;&#x9664;&#x4E86;&#x5BF9; Apache HTTP &#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x652F;&#x6301;&#x3002;&#x5982;&#x679C;&#x60A8;&#x7684;&#x5E94;&#x7528;&#x4F7F;&#x7528;&#x8BE5;&#x5BA2;&#x6237;&#x7AEF;&#xFF0C;&#x5E76;&#x4EE5; Android 2.3&#xFF08;API &#x7EA7;&#x522B; 9&#xFF09;&#x6216;&#x66F4;&#x9AD8;&#x7248;&#x672C;&#x4E3A;&#x76EE;&#x6807;&#x5E73;&#x53F0;&#xFF0C;&#x8BF7;&#x6539;&#x7528;<a href="https://developer.android.google.cn/reference/java/net/HttpURLConnection.html" target="_blank">HttpURLConnection</a> &#x7C7B;&#x3002;&#x6B64; API &#x6548;&#x7387;&#x66F4;&#x9AD8;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x900F;&#x660E;&#x538B;&#x7F29;&#x548C;&#x54CD;&#x5E94;&#x7F13;&#x5B58;&#x51CF;&#x5C11;&#x7F51;&#x7EDC;&#x4F7F;&#x7528;&#xFF0C;&#x5E76;&#x53EF;&#x6700;&#x5927;&#x9650;&#x5EA6;&#x964D;&#x4F4E;&#x8017;&#x7535;&#x91CF;&#x3002;&#x8981;&#x7EE7;&#x7EED;&#x4F7F;&#x7528; Apache HTTP API&#xFF0C;&#x60A8;&#x5FC5;&#x987B;&#x5148;&#x5728; build.gradle &#x6587;&#x4EF6;&#x4E2D;&#x58F0;&#x660E;&#x4EE5;&#x4E0B;&#x7F16;&#x8BD1;&#x65F6;&#x4F9D;&#x8D56;&#x9879;&#xFF1A;</p>
+<pre><code>android {
+    useLibrary &apos;org.apache.http.legacy&apos;
+}
+</code></pre></li>
+<li><h4 id="boringssl"><a name="boringssl" class="anchor-navigation-ex-anchor" href="#boringssl"><i class="fa fa-link" aria-hidden="true"></i></a><a name="boringssl" class="plugin-anchor" href="#boringssl"><i class="fa fa-link" aria-hidden="true"></i></a>BoringSSL</h4>
+<p>Android &#x6B63;&#x5728;&#x4ECE;&#x4F7F;&#x7528; OpenSSL &#x5E93;&#x8F6C;&#x5411;&#x4F7F;&#x7528; <a href="https://boringssl.googlesource.com/boringssl/" target="_blank">BoringSSL</a> &#x5E93;&#x3002;&#x5982;&#x679C;&#x60A8;&#x8981;&#x5728;&#x5E94;&#x7528;&#x4E2D;&#x4F7F;&#x7528; Android NDK&#xFF0C;&#x8BF7;&#x52FF;&#x94FE;&#x63A5;&#x5230;&#x5E76;&#x975E; NDK API &#x7EC4;&#x6210;&#x90E8;&#x5206;&#x7684;&#x52A0;&#x5BC6;&#x5E93;&#xFF0C;&#x5982;libcrypto.so&#x548C; libssl.so&#x3002;&#x8FD9;&#x4E9B;&#x5E93;&#x5E76;&#x975E;&#x516C;&#x5171; API&#xFF0C;&#x53EF;&#x80FD;&#x4F1A;&#x5728;&#x4E0D;&#x540C;&#x7248;&#x672C;&#x548C;&#x8BBE;&#x5907;&#x4E0A;&#x6BEB;&#x65E0;&#x5F81;&#x5146;&#x5730;&#x53D1;&#x751F;&#x53D8;&#x5316;&#x6216;&#x51FA;&#x73B0;&#x6545;&#x969C;&#x3002;&#x6B64;&#x5916;&#xFF0C;&#x60A8;&#x8FD8;&#x53EF;&#x80FD;&#x8BA9;&#x81EA;&#x5DF1;&#x66B4;&#x9732;&#x5728;&#x5B89;&#x5168;&#x6F0F;&#x6D1E;&#x7684;&#x98CE;&#x9669;&#x4E4B;&#x4E0B;&#x3002;&#x8BF7;&#x6539;&#x4E3A;&#x4FEE;&#x6539;&#x539F;&#x751F;&#x4EE3;&#x7801;&#xFF0C;&#x4EE5;&#x901A;&#x8FC7; JNI &#x8C03;&#x7528; Java &#x52A0;&#x5BC6; API&#xFF0C;&#x6216;&#x9759;&#x6001;&#x94FE;&#x63A5;&#x5230;&#x60A8;&#x9009;&#x62E9;&#x7684;&#x52A0;&#x5BC6;&#x5E93;&#x3002;</p>
+</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/1709375-0466f1b103500070.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="bugly&#x9519;&#x8BEF;"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1709375-5c6694299fd98daf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="bugly&#x9519;&#x8BEF;"></p>
+<ul>
+<li><h4 id="&#x901A;&#x77E5;"><a name="&#x901A;&#x77E5;" class="anchor-navigation-ex-anchor" href="#&#x901A;&#x77E5;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x901A;&#x77E5;" class="plugin-anchor" href="#&#x901A;&#x77E5;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x901A;&#x77E5;</h4>
+&#x6B64;&#x7248;&#x672C;&#x79FB;&#x9664;&#x4E86; Notification.setLatestEventInfo()&#x65B9;&#x6CD5;&#x3002;&#x8BF7;&#x6539;&#x7528; <a href="https://developer.android.google.cn/reference/android/app/Notification.Builder.html" target="_blank">Notification.Builder</a> &#x7C7B;&#x6765;&#x6784;&#x5EFA;&#x901A;&#x77E5;&#x3002;&#x8981;&#x91CD;&#x590D;&#x66F4;&#x65B0;&#x901A;&#x77E5;&#xFF0C;&#x8BF7;&#x91CD;&#x590D;&#x4F7F;&#x7528;<a href="https://developer.android.google.cn/reference/android/app/Notification.Builder.html" target="_blank">Notification.Builder</a> &#x5B9E;&#x4F8B;&#x3002;&#x8C03;&#x7528; <a href="https://developer.android.google.cn/reference/android/app/Notification.Builder.html#build(" target="_blank">build()</a>) &#x65B9;&#x6CD5;&#x53EF;&#x83B7;&#x53D6;&#x66F4;&#x65B0;&#x540E;&#x7684; <a href="https://developer.android.google.cn/reference/android/app/Notification.html" target="_blank">Notification</a> &#x5B9E;&#x4F8B;&#x3002;
+adb shell dumpsys notification &#x547D;&#x4EE4;&#x4E0D;&#x518D;&#x6253;&#x5370;&#x8F93;&#x51FA;&#x60A8;&#x7684;&#x901A;&#x77E5;&#x6587;&#x672C;&#x3002;&#x8BF7;&#x6539;&#x7528; adb shell dumpsys notification --noredact &#x547D;&#x4EE4;&#x6253;&#x5370;&#x8F93;&#x51FA; notification &#x5BF9;&#x8C61;&#x4E2D;&#x7684;&#x6587;&#x672C;&#x3002;build()&#x65B9;&#x6CD5;&#x5728;4.1&#x4EE5;&#x4E0A;&#xFF08;16+&#xFF09;&#x7684;&#x7CFB;&#x7EDF;&#x624D;&#x80FD;&#x7528;&#x3002;</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/1709375-f35387e6bd961f7e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="notification"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1709375-2d191c7536338961.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="&#x4F8B;&#x5B50;"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1709375-e89ed772e97f2ab1.gif?imageMogr2/auto-orient/strip" alt="gif"></p>
+<ul>
+<li><h4 id="&#x97F3;&#x9891;&#x7BA1;&#x7406;&#x5668;&#x53D8;&#x66F4;"><a name="&#x97F3;&#x9891;&#x7BA1;&#x7406;&#x5668;&#x53D8;&#x66F4;" class="anchor-navigation-ex-anchor" href="#&#x97F3;&#x9891;&#x7BA1;&#x7406;&#x5668;&#x53D8;&#x66F4;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x97F3;&#x9891;&#x7BA1;&#x7406;&#x5668;&#x53D8;&#x66F4;" class="plugin-anchor" href="#&#x97F3;&#x9891;&#x7BA1;&#x7406;&#x5668;&#x53D8;&#x66F4;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x97F3;&#x9891;&#x7BA1;&#x7406;&#x5668;&#x53D8;&#x66F4;</h4>
+&#x4E0D;&#x518D;&#x652F;&#x6301;&#x901A;&#x8FC7; <a href="https://developer.android.google.cn/reference/android/media/AudioManager.html" target="_blank">AudioManager</a> &#x7C7B;&#x76F4;&#x63A5;&#x8BBE;&#x7F6E;&#x97F3;&#x91CF;&#x6216;&#x5C06;&#x7279;&#x5B9A;&#x97F3;&#x9891;&#x6D41; <strong>&#x9759;&#x97F3;</strong>&#x3002;<a href="https://developer.android.google.cn/reference/android/media/AudioManager.html#setStreamSolo(int, boolean" target="_blank">setStreamSolo()</a>) &#x65B9;&#x6CD5;&#x5DF2;&#x5F03;&#x7528;&#xFF0C;&#x60A8;&#x5E94;&#x8BE5;&#x6539;&#x4E3A;&#x8C03;&#x7528; <a href="https://developer.android.google.cn/reference/android/media/AudioManager.html#requestAudioFocus(android.media.AudioManager.OnAudioFocusChangeListener, int, int" target="_blank">requestAudioFocus()</a>) &#x65B9;&#x6CD5;&#x3002;&#x7C7B;&#x4F3C;&#x5730;&#xFF0C;<a href="https://developer.android.google.cn/reference/android/media/AudioManager.html#setStreamMute(int, boolean" target="_blank">setStreamMute()</a>) &#x65B9;&#x6CD5;&#x4E5F;&#x5DF2;&#x5F03;&#x7528;&#xFF0C;&#x8BF7;&#x6539;&#x4E3A;&#x8C03;&#x7528; <a href="https://developer.android.google.cn/reference/android/media/AudioManager.html#adjustStreamVolume(int, int, int" target="_blank">adjustStreamVolume()</a>) &#x65B9;&#x6CD5;&#x5E76;&#x4F20;&#x5165;&#x65B9;&#x5411;&#x503C; <a href="https://developer.android.google.cn/reference/android/media/AudioManager.html#ADJUST_MUTE" target="_blank">ADJUST_MUTE</a> &#x6216; <a href="https://developer.android.google.cn/reference/android/media/AudioManager.html#ADJUST_UNMUTE" target="_blank">ADJUST_UNMUTE</a>&#x3002;</li>
+</ul>
+<ul>
+<li><h4 id="android-&#x5BC6;&#x94A5;&#x5E93;&#x53D8;&#x66F4;"><a name="android-&#x5BC6;&#x94A5;&#x5E93;&#x53D8;&#x66F4;" class="anchor-navigation-ex-anchor" href="#android-&#x5BC6;&#x94A5;&#x5E93;&#x53D8;&#x66F4;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="android-&#x5BC6;&#x94A5;&#x5E93;&#x53D8;&#x66F4;" class="plugin-anchor" href="#android-&#x5BC6;&#x94A5;&#x5E93;&#x53D8;&#x66F4;"><i class="fa fa-link" aria-hidden="true"></i></a>Android &#x5BC6;&#x94A5;&#x5E93;&#x53D8;&#x66F4;</h4>
+&#x4ECE;&#x6B64;&#x7248;&#x672C;&#x5F00;&#x59CB;&#xFF0C;<a href="https://developer.android.google.cn/training/articles/keystore.html" target="_blank">Android &#x5BC6;&#x94A5;&#x5E93;&#x63D0;&#x4F9B;&#x7A0B;&#x5E8F;</a>&#x4E0D;&#x518D;&#x652F;&#x6301; DSA&#x3002;&#x4F46;&#x4ECD;&#x652F;&#x6301; ECDSA&#x3002;
+&#x505C;&#x7528;&#x6216;&#x91CD;&#x7F6E;&#x5B89;&#x5168;&#x9501;&#x5B9A;&#x5C4F;&#x5E55;&#x65F6;&#xFF08;&#x4F8B;&#x5982;&#xFF0C;&#x7531;&#x7528;&#x6237;&#x6216;&#x8BBE;&#x5907;&#x7BA1;&#x7406;&#x5458;&#x6267;&#x884C;&#x6B64;&#x7C7B;&#x64CD;&#x4F5C;&#x65F6;&#xFF09;&#xFF0C;&#x7CFB;&#x7EDF;&#x5C06;&#x4E0D;&#x518D;&#x5220;&#x9664;&#x9700;&#x8981;&#x95F2;&#x65F6;&#x52A0;&#x5BC6;&#x7684;&#x5BC6;&#x94A5;&#xFF0C;&#x4F46;&#x5728;&#x4E0A;&#x8FF0;&#x4E8B;&#x4EF6;&#x671F;&#x95F4;&#x4F1A;&#x5220;&#x9664;&#x9700;&#x8981;&#x95F2;&#x65F6;&#x52A0;&#x5BC6;&#x7684;&#x5BC6;&#x94A5;&#x3002;</li>
+</ul>
+<ul>
+<li><h4 id="apk-&#x9A8C;&#x8BC1;"><a name="apk-&#x9A8C;&#x8BC1;" class="anchor-navigation-ex-anchor" href="#apk-&#x9A8C;&#x8BC1;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="apk-&#x9A8C;&#x8BC1;" class="plugin-anchor" href="#apk-&#x9A8C;&#x8BC1;"><i class="fa fa-link" aria-hidden="true"></i></a>APK &#x9A8C;&#x8BC1;</h4>
+&#x8BE5;&#x5E73;&#x53F0;&#x73B0;&#x5728;&#x6267;&#x884C;&#x7684; APK &#x9A8C;&#x8BC1;&#x66F4;&#x4E3A;&#x4E25;&#x683C;&#x3002;<strong>&#x5982;&#x679C;&#x5728;&#x6E05;&#x5355;&#x4E2D;&#x58F0;&#x660E;&#x7684;&#x6587;&#x4EF6;&#x5728; APK &#x4E2D;&#x5E76;&#x4E0D;&#x5B58;&#x5728;</strong>&#xFF0C;&#x8BE5; APK &#x5C06;&#x88AB;&#x89C6;&#x4E3A;&#x5DF2;&#x635F;&#x574F;&#x3002;&#x79FB;&#x9664;&#x4EFB;&#x4F55;&#x5185;&#x5BB9;&#x540E;&#x5FC5;&#x987B;&#x91CD;&#x65B0;&#x7B7E;&#x7F72; APK&#x3002;</li>
+</ul>
+<p><a href="http://www.jianshu.com/p/95790125b7f4" target="_blank">http://www.jianshu.com/p/95790125b7f4</a>
+<a href="http://blog.csdn.net/lxk_1993/article/details/73784883" target="_blank">http://blog.csdn.net/lxk_1993/article/details/73784883</a></p>
+<h3 id="android70"><a name="android70" class="anchor-navigation-ex-anchor" href="#android70"><i class="fa fa-link" aria-hidden="true"></i></a><a name="android70" class="plugin-anchor" href="#android70"><i class="fa fa-link" aria-hidden="true"></i></a>Android7.0</h3>
+<ul>
+<li><h4 id="&#x7CFB;&#x7EDF;&#x6743;&#x9650;&#x66F4;&#x6539;"><a name="&#x7CFB;&#x7EDF;&#x6743;&#x9650;&#x66F4;&#x6539;" class="anchor-navigation-ex-anchor" href="#&#x7CFB;&#x7EDF;&#x6743;&#x9650;&#x66F4;&#x6539;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x7CFB;&#x7EDF;&#x6743;&#x9650;&#x66F4;&#x6539;" class="plugin-anchor" href="#&#x7CFB;&#x7EDF;&#x6743;&#x9650;&#x66F4;&#x6539;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x7CFB;&#x7EDF;&#x6743;&#x9650;&#x66F4;&#x6539;</h4>
+<p>&#x4E3A;&#x4E86;&#x63D0;&#x9AD8;&#x79C1;&#x6709;&#x6587;&#x4EF6;&#x7684;&#x5B89;&#x5168;&#x6027;&#xFF0C;&#x9762;&#x5411; Android 7.0 &#x6216;&#x66F4;&#x9AD8;&#x7248;&#x672C;&#x7684;&#x5E94;&#x7528;&#x79C1;&#x6709;&#x76EE;&#x5F55;&#x88AB;&#x9650;&#x5236;&#x8BBF;&#x95EE;&#x3000;(0700)&#x3002;&#x6B64;&#x8BBE;&#x7F6E;&#x53EF;&#x9632;&#x6B62;&#x79C1;&#x6709;&#x6587;&#x4EF6;&#x7684;&#x5143;&#x6570;&#x636E;&#x6CC4;&#x6F0F;&#xFF0C;&#x5982;&#x5B83;&#x4EEC;&#x7684;&#x5927;&#x5C0F;&#x6216;&#x5B58;&#x5728;&#x6027;&#x3002;&#x6B64;&#x6743;&#x9650;&#x66F4;&#x6539;&#x6709;&#x591A;&#x91CD;&#x526F;&#x4F5C;&#x7528;&#xFF1A;</p>
+<ul>
+<li><p>&#x79C1;&#x6709;&#x6587;&#x4EF6;&#x7684;&#x6587;&#x4EF6;&#x6743;&#x9650;&#x4E0D;&#x5E94;&#x518D;&#x7531;&#x6240;&#x6709;&#x8005;&#x653E;&#x5BBD;&#xFF0C;&#x4E3A;&#x4F7F;&#x7528; <a href="https://developer.android.google.cn/reference/android/content/Context.html#MODE_WORLD_READABLE" target="_blank">MODE_WORLD_READABLE</a> &#x548C;/&#x6216; <a href="https://developer.android.google.cn/reference/android/content/Context.html#MODE_WORLD_WRITEABLE" target="_blank">MODE_WORLD_WRITEABLE</a> &#x800C;&#x8FDB;&#x884C;&#x7684;&#x6B64;&#x7C7B;&#x5C1D;&#x8BD5;&#x5C06;&#x89E6;&#x53D1; <a href="https://developer.android.google.cn/reference/java/lang/SecurityException.html" target="_blank">SecurityException</a>
+<strong>&#x6CE8;</strong>&#xFF1A;&#x8FC4;&#x4ECA;&#x4E3A;&#x6B62;&#xFF0C;&#x8FD9;&#x79CD;&#x9650;&#x5236;&#x5C1A;&#x4E0D;&#x80FD;&#x5B8C;&#x5168;&#x6267;&#x884C;&#x3002;&#x5E94;&#x7528;&#x4ECD;&#x53EF;&#x80FD;&#x4F7F;&#x7528;&#x539F;&#x751F; API &#x6216; <a href="https://developer.android.google.cn/reference/java/io/File.html" target="_blank">File</a> API &#x6765;&#x4FEE;&#x6539;&#x5B83;&#x4EEC;&#x7684;&#x79C1;&#x6709;&#x76EE;&#x5F55;&#x6743;&#x9650;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x6211;&#x4EEC;&#x5F3A;&#x70C8;&#x53CD;&#x5BF9;&#x653E;&#x5BBD;&#x79C1;&#x6709;&#x76EE;&#x5F55;&#x7684;&#x6743;&#x9650;&#x3002;</p>
+</li>
+<li><p>&#x4F20;&#x9012;&#x8F6F;&#x4EF6;&#x5305;&#x7F51;&#x57DF;&#x5916;&#x7684; file://URI &#x53EF;&#x80FD;&#x7ED9;&#x63A5;&#x6536;&#x5668;&#x7559;&#x4E0B;&#x65E0;&#x6CD5;&#x8BBF;&#x95EE;&#x7684;&#x8DEF;&#x5F84;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x5C1D;&#x8BD5;&#x4F20;&#x9012; file://URI &#x4F1A;&#x89E6;&#x53D1;FileUriExposedException&#x3002;&#x5206;&#x4EAB;&#x79C1;&#x6709;&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#x7684;&#x63A8;&#x8350;&#x65B9;&#x6CD5;&#x662F;&#x4F7F;&#x7528; <a href="https://developer.android.google.cn/reference/android/support/v4/content/FileProvider.html" target="_blank">FileProvider</a>&#x3002;</p>
+</li>
+<li><a href="https://developer.android.google.cn/reference/android/app/DownloadManager.html" target="_blank">DownloadManager</a>&#x4E0D;&#x518D;&#x6309;&#x6587;&#x4EF6;&#x540D;&#x5206;&#x4EAB;&#x79C1;&#x4EBA;&#x5B58;&#x50A8;&#x7684;&#x6587;&#x4EF6;&#x3002;&#x65E7;&#x7248;&#x5E94;&#x7528;&#x5728;&#x8BBF;&#x95EE; <a href="https://developer.android.google.cn/reference/android/app/DownloadManager.html#COLUMN_LOCAL_FILENAME" target="_blank">COLUMN_LOCAL_FILENAME</a>&#x65F6;&#x53EF;&#x80FD;&#x51FA;&#x73B0;&#x65E0;&#x6CD5;&#x8BBF;&#x95EE;&#x7684;&#x8DEF;&#x5F84;&#x3002;&#x9762;&#x5411; Android 7.0 &#x6216;&#x66F4;&#x9AD8;&#x7248;&#x672C;&#x7684;&#x5E94;&#x7528;&#x5728;&#x5C1D;&#x8BD5;&#x8BBF;&#x95EE; <a href="https://developer.android.google.cn/reference/android/app/DownloadManager.html#COLUMN_LOCAL_FILENAME" target="_blank">COLUMN_LOCAL_FILENAME</a>&#x65F6;&#x4F1A;&#x89E6;&#x53D1; <a href="https://developer.android.google.cn/reference/java/lang/SecurityException.html" target="_blank">SecurityException</a>&#x3002;&#x901A;&#x8FC7;&#x4F7F;&#x7528;  <a href="https://developer.android.google.cn/reference/android/app/DownloadManager.Request.html#setDestinationInExternalFilesDir(android.content.Context, java.lang.String, java.lang.String" target="_blank">DownloadManager.Request.setDestinationInExternalFilesDir()</a>)  &#x6216; <a href="https://developer.android.google.cn/reference/android/app/DownloadManager.Request.html#setDestinationInExternalPublicDir(java.lang.String, java.lang.String" target="_blank">DownloadManager.Request.setDestinationInExternalPublicDir()</a>)&#x5C06;&#x4E0B;&#x8F7D;&#x4F4D;&#x7F6E;&#x8BBE;&#x7F6E;&#x4E3A;&#x516C;&#x5171;&#x4F4D;&#x7F6E;&#x7684;&#x65E7;&#x7248;&#x5E94;&#x7528;&#x4ECD;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE; <a href="https://developer.android.google.cn/reference/android/app/DownloadManager.html#COLUMN_LOCAL_FILENAME" target="_blank">COLUMN_LOCAL_FILENAME</a> &#x4E2D;&#x7684;&#x8DEF;&#x5F84;&#xFF0C;&#x4F46;&#x662F;&#x6211;&#x4EEC;&#x5F3A;&#x70C8;&#x53CD;&#x5BF9;&#x4F7F;&#x7528;&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x3002;&#x5BF9;&#x4E8E;&#x7531; <a href="https://developer.android.google.cn/reference/android/app/DownloadManager.html" target="_blank">DownloadManager</a> &#x516C;&#x5F00;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x9996;&#x9009;&#x7684;&#x8BBF;&#x95EE;&#x65B9;&#x5F0F;&#x662F;&#x4F7F;&#x7528;<a href="https://developer.android.google.cn/reference/android/content/ContentResolver.html#openFileDescriptor(android.net.Uri, java.lang.String" target="_blank">ContentResolver.openFileDescriptor()</a>)&#x3002;</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><h4 id="&#x5728;&#x5E94;&#x7528;&#x95F4;&#x5171;&#x4EAB;&#x6587;&#x4EF6;"><a name="&#x5728;&#x5E94;&#x7528;&#x95F4;&#x5171;&#x4EAB;&#x6587;&#x4EF6;" class="anchor-navigation-ex-anchor" href="#&#x5728;&#x5E94;&#x7528;&#x95F4;&#x5171;&#x4EAB;&#x6587;&#x4EF6;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x5728;&#x5E94;&#x7528;&#x95F4;&#x5171;&#x4EAB;&#x6587;&#x4EF6;" class="plugin-anchor" href="#&#x5728;&#x5E94;&#x7528;&#x95F4;&#x5171;&#x4EAB;&#x6587;&#x4EF6;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5728;&#x5E94;&#x7528;&#x95F4;&#x5171;&#x4EAB;&#x6587;&#x4EF6;</h4>
+&#x5BF9;&#x4E8E;&#x9762;&#x5411; Android 7.0 &#x7684;&#x5E94;&#x7528;&#xFF0C;Android &#x6846;&#x67B6;&#x6267;&#x884C;&#x7684; <a href="https://developer.android.google.cn/reference/android/os/StrictMode.html" target="_blank">StrictMode</a>API &#x653F;&#x7B56;&#x7981;&#x6B62;&#x5728;&#x60A8;&#x7684;&#x5E94;&#x7528;&#x5916;&#x90E8;&#x516C;&#x5F00; file://URI&#x3002;&#x5982;&#x679C;&#x4E00;&#x9879;&#x5305;&#x542B;&#x6587;&#x4EF6; URI &#x7684; intent &#x79BB;&#x5F00;&#x60A8;&#x7684;&#x5E94;&#x7528;&#xFF0C;&#x5219;&#x5E94;&#x7528;&#x51FA;&#x73B0;&#x6545;&#x969C;&#xFF0C;&#x5E76;&#x73B0; FileUriExposedException&#x3002;&#x5F02;&#x5E38;&#x3002;&#x8981;&#x5728;&#x5E94;&#x7528;&#x95F4;&#x5171;&#x4EAB;&#x6587;&#x4EF6;&#xFF0C;&#x60A8;&#x5E94;&#x53D1;&#x9001;&#x4E00;&#x9879; content://URI&#xFF0C;&#x5E76;&#x6388;&#x4E88; URI &#x4E34;&#x65F6;&#x8BBF;&#x95EE;&#x6743;&#x9650;&#x3002;&#x8FDB;&#x884C;&#x6B64;&#x6388;&#x6743;&#x7684;&#x6700;&#x7B80;&#x5355;&#x65B9;&#x5F0F;&#x662F;&#x4F7F;&#x7528;<a href="https://developer.android.google.cn/reference/android/support/v4/content/FileProvider.html" target="_blank">FileProvider</a>&#x7C7B;&#x3002;&#x5982;&#x9700;&#x4E86;&#x89E3;&#x6709;&#x5173;&#x6743;&#x9650;&#x548C;&#x5171;&#x4EAB;&#x6587;&#x4EF6;&#x7684;&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;<a href="https://developer.android.google.cn/training/secure-file-sharing/index.html" target="_blank">&#x5171;&#x4EAB;&#x6587;&#x4EF6;</a>&#x3002;</li>
+</ul>
+<ul>
+<li><h4 id="fileprovider&#x7528;&#x6CD5;"><a name="fileprovider&#x7528;&#x6CD5;" class="anchor-navigation-ex-anchor" href="#fileprovider&#x7528;&#x6CD5;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="fileprovider&#x7528;&#x6CD5;" class="plugin-anchor" href="#fileprovider&#x7528;&#x6CD5;"><i class="fa fa-link" aria-hidden="true"></i></a>FileProvider&#x7528;&#x6CD5;</h4>
+<p><strong>AndroidManiFest.xml</strong>&#x6DFB;&#x52A0;</p>
+<pre><code>&lt;application&gt;
+...
+  &lt;provider
+      android:name=&quot;android.support.v4.content.FileProvider&quot;
+      android:authorities=&quot;${applicationId}.fileProvider&quot;
+      android:exported=&quot;false&quot;
+      android:grantUriPermissions=&quot;true&quot;&gt;
+      &lt;meta-data
+          android:name=&quot;android.support.FILE_PROVIDER_PATHS&quot;
+          android:resource=&quot;@xml/provider_paths&quot;/&gt;
+  &lt;/provider&gt;
+...
+&lt;/application&gt;
+</code></pre></li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/1709375-0c5b08203c682528.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="&#x914D;&#x7F6E;applicationId"></p>
+<p> <strong>res</strong>&#x76EE;&#x5F55;&#x4E0B;&#x65B0;&#x5EFA;<strong>xml</strong>&#x6587;&#x4EF6;&#x5939;&#xFF0C;&#x521B;&#x5EFA;<strong>provider_paths.xml</strong>&#x6587;&#x4EF6;</p>
+<pre><code>  &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+  &lt;resources&gt;
+    &lt;paths&gt;
+    &lt;!--  &#x524D;&#x9762;&#x4E24;&#x4E2A;&#x662F;bugly&#x7684; --&gt;
+    &lt;!-- /storage/emulated/0/Download/${applicationId}/.beta/apk--&gt;
+    &lt;external-path
+        name=&quot;beta_external_path&quot;
+        path=&quot;Download/&quot; /&gt;
+    &lt;!--/storage/emulated/0/Android/data/${applicationId}/files/apk/--&gt;
+    &lt;external-path
+        name=&quot;beta_external_files_path&quot;
+        path=&quot;Android/data/&quot; /&gt;
+
+    &lt;external-path
+        name=&quot;sdcard_files&quot;
+        path=&quot;&quot; /&gt;
+    &lt;!--&#x76F8;&#x673A;&#x76F8;&#x518C;&#x88C1;&#x526A;--&gt;
+    &lt;external-files-path
+        name=&quot;camera_has_sdcard&quot;
+        path=&quot;&quot; /&gt;
+    &lt;files-path
+        name=&quot;camera_no_sdcard&quot;
+        path=&quot;&quot; /&gt;
+    &lt;/paths&gt;
+    &lt;!--&lt;paths&gt;--&gt;
+    &lt;!-- xml&#x6587;&#x4EF6;&#x662F;&#x552F;&#x4E00;&#x8BBE;&#x7F6E;&#x5206;&#x4EAB;&#x7684;&#x76EE;&#x5F55; &#xFF0C;&#x4E0D;&#x80FD;&#x7528;&#x4EE3;&#x7801;&#x8BBE;&#x7F6E;--&gt;
+     &lt;!--1.&lt;files-path&gt;        getFilesDir()  /data/data//files&#x76EE;&#x5F55;--&gt;
+     &lt;!--2.&lt;cache-path&gt;        getCacheDir()  /data/data//cache&#x76EE;&#x5F55;--&gt;
+     &lt;!--3.&lt;external-path&gt;       Environment.getExternalStorageDirectory()  --&gt;
+     &lt;!--4.&lt;external-files-path&gt;    
+       Context.getExternalFilesDir(String)  Context.getExternalFilesDir(null)  
+       == SDCard/Android/data/&#x4F60;&#x7684;&#x5E94;&#x7528;&#x7684;&#x5305;&#x540D;/files/ &#x76EE;&#x5F55;--&gt;
+     &lt;!--5.&lt;external-cache-path&gt;      Context.getExternalCacheDir().--&gt;
+
+     &lt;!--  path :&#x4EE3;&#x8868;&#x8BBE;&#x7F6E;&#x7684;&#x76EE;&#x5F55;&#x4E0B;&#x4E00;&#x7EA7;&#x76EE;&#x5F55; eg&#xFF1A;&lt;external-path path=&quot;images/&quot;--&gt;
+     &lt;!--&#x6574;&#x4E2A;&#x76EE;&#x5F55;&#x4E3A;Environment.getExternalStorageDirectory()+&quot;/images/&quot;--&gt;
+     &lt;!--name: &#x4EE3;&#x8868;&#x5B9A;&#x4E49;&#x5728;Content&#x4E2D;&#x7684;&#x5B57;&#x6BB5; eg&#xFF1A;name = &quot;myimages&quot; &#xFF0C;&#x5E76;&#x4E14;&#x8BF7;&#x6C42;&#x7684;&#x5185;&#x5BB9;&#x7684;&#x6587;&#x4EF6;&#x540D;&#x4E3A;default_image.jpg--&gt;
+     &lt;!--&#x5219; &#x8FD4;&#x56DE;&#x4E00;&#x4E2A;URI   content://com.example.myapp.fileprovider/myimages/default_image.jpg--&gt;
+
+   &lt;!--&lt;/paths&gt;--&gt;
+  &lt;/resources&gt;
+</code></pre><p>  <strong>&#x786E;&#x8BA4;&#x4E0B;&#x8DEF;&#x5F84;&#x540D;</strong>
+<img src="http://upload-images.jianshu.io/upload_images/1709375-41841603d864ded3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="&#x8DEF;&#x5F84;">
+<img src="http://upload-images.jianshu.io/upload_images/1709375-488fe3787cf86c52.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="&#x8DEF;&#x5F84;"></p>
+<p>  <strong>FileProvider &#x5934;&#x90E8;&#x8BBE;&#x7F6E;&#x7684;&#x5BF9;&#x5E94;&#x6807;&#x7B7E;</strong>
+<img src="http://upload-images.jianshu.io/upload_images/1709375-09f08ad8c4508cc6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="FileProvider"></p>
+<p>   <strong>FileProvider &#x83B7;&#x53D6;&#x5BF9;&#x5E94;&#x8DEF;&#x5F84;&#x903B;&#x8F91; &#x89E3;&#x6790;xml&#x6587;&#x4EF6;  &#x5BF9;&#x6BD4;&#x5BF9;&#x5E94;&#x7684;&#x6807;&#x7B7E;  &#x83B7;&#x53D6;&#x5BF9;&#x5E94;&#x7684;&#x8DEF;&#x5F84;</strong>
+<img src="http://upload-images.jianshu.io/upload_images/1709375-cfa9143566373e1d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="FileProvider"></p>
+<p> <strong>&#x4FEE;&#x6539;&#x6240;&#x6709;&#x7528;&#x5230;Uri&#x7684;&#x5730;&#x65B9;   &#x56FE;&#x4E2D;&#x7684; BuildConfig.APPLICATION_ID  &#x6700;&#x597D;&#x8FD8;&#x662F;&#x6539;&#x6210;  context.getPackageName() </strong>
+<img src="http://upload-images.jianshu.io/upload_images/1709375-462bce69f306b76f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Uri&#x4FEE;&#x6539;"></p>
+<p> &#x5B98;&#x65B9;&#x94FE;&#x63A5;&#xFF1A;<a href="https://developer.android.google.cn/reference/android/support/v4/content/FileProvider.html" target="_blank">FileProvider</a></p>
+<ul>
+<li><h4 id="apk-signature-scheme-v2"><a name="apk-signature-scheme-v2" class="anchor-navigation-ex-anchor" href="#apk-signature-scheme-v2"><i class="fa fa-link" aria-hidden="true"></i></a><a name="apk-signature-scheme-v2" class="plugin-anchor" href="#apk-signature-scheme-v2"><i class="fa fa-link" aria-hidden="true"></i></a>APK Signature Scheme v2</h4>
+Android 7.0&#x5F15;&#x5165;&#x4E86;&#x5168;&#x65B0;&#x7684; APK Signature Scheme v2&#x3002;&#x8FD9;&#x662F;&#x52A0;&#x5F3A;&#x5BF9;&#x5305;&#x7684;&#x6821;&#x9A8C;&#xFF0C;&#x542F;&#x52A8;&#x4E86;&#x65B0;&#x7684;&#x7B7E;&#x540D;&#x540E;&#xFF0C;&#x50CF;&#x7F8E;&#x56E2;&#x7684;&#x591A;&#x6E20;&#x9053;&#x6253;&#x5305;&#x65B9;&#x6848;&#x5728;7.0&#x673A;&#x5668;&#x4E0A;&#x5C31;&#x4F1A;&#x62A5;&#x9519;&#x4E86;&#x3002;
+&#x89E3;&#x51B3;&#x7684;&#x529E;&#x6CD5;&#x4E5F;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x5B98;&#x65B9;&#x63D0;&#x4F9B;&#x4E86;&#x5173;&#x95ED;v2&#x7B7E;&#x540D;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x5728;gradle&#x4E0A;&#x914D;&#x7F6E;&#x4E00;&#x4E0B;&#x5373;&#x53EF;&#xFF1A;<pre><code>signingConfigs {
+    release {
+    .......
+    v2SigningEnabled false
+   }
+}
+</code></pre>&#x53C2;&#x8003;&#xFF1A;<a href="http://www.jianshu.com/p/55f0e118c62e" target="_blank">Android7.0&#x9002;&#x914D;</a>
+&#x94FE;&#x63A5;&#xFF1A; <a href="http://www.jianshu.com/p/55f0e118c62e" target="_blank">APK Signature Scheme v2&#x8BE6;&#x7EC6;&#x4ECB;&#x7ECD;</a></li>
+</ul>
+<h3 id="&#x5176;&#x4ED6;"><a name="&#x5176;&#x4ED6;" class="anchor-navigation-ex-anchor" href="#&#x5176;&#x4ED6;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x5176;&#x4ED6;" class="plugin-anchor" href="#&#x5176;&#x4ED6;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5176;&#x4ED6;</h3>
+<p>  <strong>Android6.0</strong></p>
+<ul>
+<li><h4 id="usb-&#x8FDE;&#x63A5;"><a name="usb-&#x8FDE;&#x63A5;" class="anchor-navigation-ex-anchor" href="#usb-&#x8FDE;&#x63A5;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="usb-&#x8FDE;&#x63A5;" class="plugin-anchor" href="#usb-&#x8FDE;&#x63A5;"><i class="fa fa-link" aria-hidden="true"></i></a>USB &#x8FDE;&#x63A5;</h4>
+&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x73B0;&#x5728;&#x901A;&#x8FC7; USB &#x7AEF;&#x53E3;&#x8FDB;&#x884C;&#x7684;&#x8BBE;&#x5907;&#x8FDE;&#x63A5;&#x8BBE;&#x7F6E;&#x4E3A;&#x4EC5;&#x5145;&#x7535;&#x6A21;&#x5F0F;&#x3002;&#x8981;&#x901A;&#x8FC7; USB &#x8FDE;&#x63A5;&#x8BBF;&#x95EE;&#x8BBE;&#x5907;&#x53CA;&#x5176;&#x5185;&#x5BB9;&#xFF0C;&#x7528;&#x6237;&#x5FC5;&#x987B;&#x660E;&#x786E;&#x5730;&#x4E3A;&#x6B64;&#x7C7B;&#x4EA4;&#x4E92;&#x6388;&#x4E88;&#x6743;&#x9650;&#x3002;&#x5982;&#x679C;&#x60A8;&#x7684;&#x5E94;&#x7528;&#x652F;&#x6301;&#x7528;&#x6237;&#x901A;&#x8FC7; USB &#x7AEF;&#x53E3;&#x4E0E;&#x8BBE;&#x5907;&#x8FDB;&#x884C;&#x4EA4;&#x4E92;&#xFF0C;&#x8BF7;&#x5C06;&#x5FC5;&#x987B;&#x663E;&#x5F0F;&#x542F;&#x7528;&#x4EA4;&#x4E92;&#x8003;&#x8651;&#x5728;&#x5185;&#x3002;</li>
+</ul>
+<ul>
+<li><h4 id="&#x6D4F;&#x89C8;&#x5668;&#x4E66;&#x7B7E;&#x53D8;&#x66F4;"><a name="&#x6D4F;&#x89C8;&#x5668;&#x4E66;&#x7B7E;&#x53D8;&#x66F4;" class="anchor-navigation-ex-anchor" href="#&#x6D4F;&#x89C8;&#x5668;&#x4E66;&#x7B7E;&#x53D8;&#x66F4;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x6D4F;&#x89C8;&#x5668;&#x4E66;&#x7B7E;&#x53D8;&#x66F4;" class="plugin-anchor" href="#&#x6D4F;&#x89C8;&#x5668;&#x4E66;&#x7B7E;&#x53D8;&#x66F4;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x6D4F;&#x89C8;&#x5668;&#x4E66;&#x7B7E;&#x53D8;&#x66F4;</h4>
+<p>&#x6B64;&#x7248;&#x672C;&#x79FB;&#x9664;&#x4E86;&#x5BF9;&#x5168;&#x5C40;&#x4E66;&#x7B7E;&#x7684;&#x652F;&#x6301;&#x3002;android.provider.Browser.getAllBookmarks() &#x548C; android.provider.Browser.saveBookmark() &#x65B9;&#x6CD5;&#x73B0;&#x5DF2;&#x79FB;&#x9664;&#x3002;&#x540C;&#x6837;&#xFF0C;READ_HISTORY_BOOKMARKS &#x6743;&#x9650;&#x548C; WRITE_HISTORY_BOOKMARKS &#x6743;&#x9650;&#x4E5F;&#x5DF2;&#x79FB;&#x9664;&#x3002;&#x5982;&#x679C;&#x60A8;&#x7684;&#x5E94;&#x7528;&#x4EE5; Android 6.0&#xFF08;API &#x7EA7;&#x522B; 23&#xFF09;&#x6216;&#x66F4;&#x9AD8;&#x7248;&#x672C;&#x4E3A;&#x76EE;&#x6807;&#x5E73;&#x53F0;&#xFF0C;&#x8BF7;&#x52FF;&#x4ECE;&#x5168;&#x5C40;&#x63D0;&#x4F9B;&#x7A0B;&#x5E8F;&#x8BBF;&#x95EE;&#x4E66;&#x7B7E;&#x6216;&#x4F7F;&#x7528;&#x4E66;&#x7B7E;&#x6743;&#x9650;&#x3002;&#x60A8;&#x7684;&#x5E94;&#x7528;&#x5E94;&#x6539;&#x4E3A;&#x5728;&#x5185;&#x90E8;&#x5B58;&#x50A8;&#x4E66;&#x7B7E;&#x6570;&#x636E;&#x3002;</p>
+</li>
+<li><h4 id="&#x786C;&#x4EF6;&#x6807;&#x8BC6;&#x7B26;&#x8BBF;&#x95EE;&#x6743;"><a name="&#x786C;&#x4EF6;&#x6807;&#x8BC6;&#x7B26;&#x8BBF;&#x95EE;&#x6743;" class="anchor-navigation-ex-anchor" href="#&#x786C;&#x4EF6;&#x6807;&#x8BC6;&#x7B26;&#x8BBF;&#x95EE;&#x6743;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x786C;&#x4EF6;&#x6807;&#x8BC6;&#x7B26;&#x8BBF;&#x95EE;&#x6743;" class="plugin-anchor" href="#&#x786C;&#x4EF6;&#x6807;&#x8BC6;&#x7B26;&#x8BBF;&#x95EE;&#x6743;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x786C;&#x4EF6;&#x6807;&#x8BC6;&#x7B26;&#x8BBF;&#x95EE;&#x6743;</h4>
+<p>&#x4E3A;&#x7ED9;&#x7528;&#x6237;&#x63D0;&#x4F9B;&#x66F4;&#x4E25;&#x683C;&#x7684;&#x6570;&#x636E;&#x4FDD;&#x62A4;&#xFF0C;&#x4ECE;&#x6B64;&#x7248;&#x672C;&#x5F00;&#x59CB;&#xFF0C;&#x5BF9;&#x4E8E;&#x4F7F;&#x7528; WLAN API &#x548C; Bluetooth API &#x7684;&#x5E94;&#x7528;&#xFF0C;Android &#x79FB;&#x9664;&#x4E86;&#x5BF9;&#x8BBE;&#x5907;&#x672C;&#x5730;&#x786C;&#x4EF6;&#x6807;&#x8BC6;&#x7B26;&#x7684;&#x7F16;&#x7A0B;&#x8BBF;&#x95EE;&#x6743;&#x3002;<a href="https://developer.android.google.cn/reference/android/net/wifi/WifiInfo.html#getMacAddress(" target="_blank">WifiInfo.getMacAddress()</a>)&#x65B9;&#x6CD5;&#x548C; <a href="https://developer.android.google.cn/reference/android/bluetooth/BluetoothAdapter.html#getAddress(" target="_blank">BluetoothAdapter.getAddress()</a>)&#x65B9;&#x6CD5;&#x73B0;&#x5728;&#x4F1A;&#x8FD4;&#x56DE;&#x5E38;&#x91CF;&#x503C; 02:00:00:00:00:00&#x3002;
+&#x73B0;&#x5728;&#xFF0C;&#x8981;&#x901A;&#x8FC7;&#x84DD;&#x7259;&#x548C; WLAN &#x626B;&#x63CF;&#x8BBF;&#x95EE;&#x9644;&#x8FD1;&#x5916;&#x90E8;&#x8BBE;&#x5907;&#x7684;&#x786C;&#x4EF6;&#x6807;&#x8BC6;&#x7B26;&#xFF0C;&#x60A8;&#x7684;&#x5E94;&#x7528;&#x5FC5;&#x987B;&#x62E5;&#x6709; <a href="https://developer.android.google.cn/reference/android/Manifest.permission.html#ACCESS_FINE_LOCATION" target="_blank">ACCESS_FINE_LOCATION</a> &#x6216; <a href="https://developer.android.google.cn/reference/android/Manifest.permission.html#ACCESS_COARSE_LOCATION" target="_blank">ACCESS_COARSE_LOCATION</a> &#x6743;&#x9650;&#x3002;</p>
+<ul>
+<li><a href="https://developer.android.google.cn/reference/android/net/wifi/WifiManager.html#getScanResults(" target="_blank">WifiManager.getScanResults()</a>)</li>
+<li><a href="https://developer.android.google.cn/reference/android/bluetooth/BluetoothDevice.html#ACTION_FOUND" target="_blank">BluetoothDevice.ACTION_FOUND</a></li>
+<li><a href="https://developer.android.google.cn/reference/android/bluetooth/le/BluetoothLeScanner.html#startScan(android.bluetooth.le.ScanCallback" target="_blank">BluetoothLeScanner.startScan()</a>)</li>
+</ul>
+<p><strong>&#x6CE8;</strong>&#xFF1A;&#x5F53;&#x8FD0;&#x884C; Android 6.0&#xFF08;API &#x7EA7;&#x522B; 23&#xFF09;&#x7684;&#x8BBE;&#x5907;&#x53D1;&#x8D77;&#x540E;&#x53F0; WLAN &#x6216;&#x84DD;&#x7259;&#x626B;&#x63CF;&#x65F6;&#xFF0C;&#x5728;&#x5916;&#x90E8;&#x8BBE;&#x5907;&#x770B;&#x6765;&#xFF0C;&#x8BE5;&#x64CD;&#x4F5C;&#x7684;&#x53D1;&#x8D77;&#x6765;&#x6E90;&#x662F;&#x4E00;&#x4E2A;&#x968F;&#x673A;&#x5316; MAC &#x5730;&#x5740;&#x3002;</p>
+</li>
+<li><h4 id="wlan-&#x548C;&#x7F51;&#x7EDC;&#x8FDE;&#x63A5;&#x53D8;&#x66F4;"><a name="wlan-&#x548C;&#x7F51;&#x7EDC;&#x8FDE;&#x63A5;&#x53D8;&#x66F4;" class="anchor-navigation-ex-anchor" href="#wlan-&#x548C;&#x7F51;&#x7EDC;&#x8FDE;&#x63A5;&#x53D8;&#x66F4;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="wlan-&#x548C;&#x7F51;&#x7EDC;&#x8FDE;&#x63A5;&#x53D8;&#x66F4;" class="plugin-anchor" href="#wlan-&#x548C;&#x7F51;&#x7EDC;&#x8FDE;&#x63A5;&#x53D8;&#x66F4;"><i class="fa fa-link" aria-hidden="true"></i></a>WLAN &#x548C;&#x7F51;&#x7EDC;&#x8FDE;&#x63A5;&#x53D8;&#x66F4;</h4>
+<p>&#x6B64;&#x7248;&#x672C;&#x5BF9; WLAN API &#x548C; Networking API &#x5F15;&#x5165;&#x4E86;&#x4EE5;&#x4E0B;&#x884C;&#x4E3A;&#x53D8;&#x66F4;&#x3002;</p>
+<ul>
+<li>&#x73B0;&#x5728;&#xFF0C;&#x60A8;&#x7684;&#x5E94;&#x7528;&#x53EA;&#x80FD;&#x66F4;&#x6539;&#x7531;&#x60A8;&#x521B;&#x5EFA;&#x7684; <a href="https://developer.android.google.cn/reference/android/net/wifi/WifiConfiguration.html" target="_blank">WifiConfiguration</a> &#x5BF9;&#x8C61;&#x7684;&#x72B6;&#x6001;&#x3002;&#x7CFB;&#x7EDF;&#x4E0D;&#x5141;&#x8BB8;&#x60A8;&#x4FEE;&#x6539;&#x6216;&#x5220;&#x9664;&#x7531;&#x7528;&#x6237;&#x6216;&#x5176;&#x4ED6;&#x5E94;&#x7528;&#x521B;&#x5EFA;&#x7684; <a href="https://developer.android.google.cn/reference/android/net/wifi/WifiConfiguration.html" target="_blank">WifiConfiguration</a> &#x5BF9;&#x8C61;&#x3002;</li>
+<li>&#x5728;&#x4E4B;&#x524D;&#x7684;&#x7248;&#x672C;&#x4E2D;&#xFF0C;&#x5982;&#x679C;&#x5E94;&#x7528;&#x5229;&#x7528;&#x5E26;&#x6709; disableAllOthers=true
+&#x8BBE;&#x7F6E;&#x7684; <a href="https://developer.android.google.cn/reference/android/net/wifi/WifiManager.html#enableNetwork(int, boolean" target="_blank">enableNetwork()</a>) &#x5F3A;&#x5236;&#x8BBE;&#x5907;&#x8FDE;&#x63A5;&#x7279;&#x5B9A; WLAN &#x7F51;&#x7EDC;&#xFF0C;&#x8BBE;&#x5907;&#x5C06;&#x4F1A;&#x65AD;&#x5F00;&#x4E0E;&#x79FB;&#x52A8;&#x6570;&#x636E;&#x7F51;&#x7EDC;&#x7B49;&#x5176;&#x4ED6;&#x7F51;&#x7EDC;&#x7684;&#x8FDE;&#x63A5;&#x3002;&#x5728;&#x6B64;&#x7248;&#x672C;&#x4E2D;&#xFF0C;&#x8BBE;&#x5907;&#x4E0D;&#x518D;&#x65AD;&#x5F00;&#x4E0E;&#x4E0A;&#x8FF0;&#x5176;&#x4ED6;&#x7F51;&#x7EDC;&#x7684;&#x8FDE;&#x63A5;&#x3002;&#x5982;&#x679C;&#x60A8;&#x7684;&#x5E94;&#x7528;&#x7684; targetSdkVersion
+&#x4E3A; &#x201C;20&#x201D; &#x6216;&#x66F4;&#x4F4E;&#xFF0C;&#x5219;&#x4F1A;&#x56FA;&#x5B9A;&#x8FDE;&#x63A5;&#x6240;&#x9009; WLAN &#x7F51;&#x7EDC;&#x3002;&#x5982;&#x679C;&#x60A8;&#x7684;&#x5E94;&#x7528;&#x7684; targetSdkVersion &#x4E3A; &#x201C;21&#x201D;
+&#x6216;&#x66F4;&#x9AD8;&#xFF0C;&#x8BF7;&#x4F7F;&#x7528;&#x591A;&#x7F51;&#x7EDC; API&#xFF08;&#x5982; <a href="https://developer.android.google.cn/reference/android/net/Network.html#openConnection(java.net.URL" target="_blank">openConnection()</a>)&#x3001;<a href="https://developer.android.google.cn/reference/android/net/Network.html#bindSocket(java.net.Socket" target="_blank">bindSocket()</a>) &#x548C;&#x65B0;&#x589E;&#x7684;<a href="https://developer.android.google.cn/reference/android/net/ConnectivityManager.html#bindProcessToNetwork(android.net.Network" target="_blank">bindProcessToNetwork()</a>)
+&#x65B9;&#x6CD5;&#xFF09;&#x6765;&#x786E;&#x4FDD;&#x901A;&#x8FC7;&#x6240;&#x9009;&#x7F51;&#x7EDC;&#x4F20;&#x9001;&#x7F51;&#x7EDC;&#x6D41;&#x91CF;&#x3002;</li>
+</ul>
+</li>
+<li><h4 id="&#x76F8;&#x673A;&#x670D;&#x52A1;&#x53D8;&#x66F4;"><a name="&#x76F8;&#x673A;&#x670D;&#x52A1;&#x53D8;&#x66F4;" class="anchor-navigation-ex-anchor" href="#&#x76F8;&#x673A;&#x670D;&#x52A1;&#x53D8;&#x66F4;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x76F8;&#x673A;&#x670D;&#x52A1;&#x53D8;&#x66F4;" class="plugin-anchor" href="#&#x76F8;&#x673A;&#x670D;&#x52A1;&#x53D8;&#x66F4;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x76F8;&#x673A;&#x670D;&#x52A1;&#x53D8;&#x66F4;</h4>
+<p>&#x5728;&#x6B64;&#x7248;&#x672C;&#x4E2D;&#xFF0C;&#x76F8;&#x673A;&#x670D;&#x52A1;&#x4E2D;&#x5171;&#x4EAB;&#x8D44;&#x6E90;&#x7684;&#x8BBF;&#x95EE;&#x6A21;&#x5F0F;&#x5DF2;&#x4ECE;&#x4E4B;&#x524D;&#x7684;&#x201C;&#x5148;&#x5230;&#x5148;&#x5F97;&#x201D;&#x8BBF;&#x95EE;&#x6A21;&#x5F0F;&#x66F4;&#x6539;&#x4E3A;&#x9AD8;&#x4F18;&#x5148;&#x7EA7;&#x8FDB;&#x7A0B;&#x4F18;&#x5148;&#x7684;&#x8BBF;&#x95EE;&#x6A21;&#x5F0F;&#x3002;&#x5BF9;&#x670D;&#x52A1;&#x884C;&#x4E3A;&#x7684;&#x53D8;&#x66F4;&#x5305;&#x62EC;&#xFF1A;</p>
+<ul>
+<li>&#x6839;&#x636E;&#x5BA2;&#x6237;&#x7AEF;&#x5E94;&#x7528;&#x8FDB;&#x7A0B;&#x7684;&#x201C;&#x4F18;&#x5148;&#x7EA7;&#x201D;&#x6388;&#x4E88;&#x5BF9;&#x76F8;&#x673A;&#x5B50;&#x7CFB;&#x7EDF;&#x8D44;&#x6E90;&#x7684;&#x8BBF;&#x95EE;&#x6743;&#xFF0C;&#x5305;&#x62EC;&#x6253;&#x5F00;&#x548C;&#x914D;&#x7F6E;&#x76F8;&#x673A;&#x8BBE;&#x5907;&#x3002;&#x5E26;&#x6709;&#x5BF9;&#x7528;&#x6237;&#x53EF;&#x89C1; Activity &#x6216;&#x524D;&#x53F0; Activity &#x7684;&#x5E94;&#x7528;&#x8FDB;&#x7A0B;&#x4E00;&#x822C;&#x4F1A;&#x88AB;&#x6388;&#x4E88;&#x8F83;&#x9AD8;&#x7684;&#x4F18;&#x5148;&#x7EA7;&#xFF0C;&#x4ECE;&#x800C;&#x4F7F;&#x76F8;&#x673A;&#x8D44;&#x6E90;&#x7684;&#x83B7;&#x53D6;&#x548C;&#x4F7F;&#x7528;&#x66F4;&#x52A0;&#x53EF;&#x9760;&#xFF1B;</li>
+<li>&#x5F53;&#x9AD8;&#x4F18;&#x5148;&#x7EA7;&#x7684;&#x5E94;&#x7528;&#x5C1D;&#x8BD5;&#x4F7F;&#x7528;&#x76F8;&#x673A;&#x65F6;&#xFF0C;&#x7CFB;&#x7EDF;&#x53EF;&#x80FD;&#x4F1A;&#x201C;&#x9A71;&#x9010;&#x201D;&#x6B63;&#x5728;&#x4F7F;&#x7528;&#x76F8;&#x673A;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x4F4E;&#x4F18;&#x5148;&#x7EA7;&#x5E94;&#x7528;&#x3002;&#x5728;&#x5DF2;&#x5F03;&#x7528;&#x7684; <a href="https://developer.android.google.cn/reference/android/hardware/Camera.html" target="_blank">Camera</a> API &#x4E2D;&#xFF0C;&#x8FD9;&#x4F1A;&#x5BFC;&#x81F4;&#x7CFB;&#x7EDF;&#x4E3A;&#x88AB;&#x9A71;&#x9010;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#x8C03;&#x7528; <a href="https://developer.android.google.cn/reference/android/hardware/Camera.ErrorCallback.html#onError(int, android.hardware.Camera" target="_blank">onError()</a>)&#x3002;&#x5728; <a href="https://developer.android.google.cn/reference/android/hardware/camera2/package-summary.html" target="_blank">Camera2</a> API &#x4E2D;&#xFF0C;&#x8FD9;&#x4F1A;&#x5BFC;&#x81F4;&#x7CFB;&#x7EDF;&#x4E3A;&#x88AB;&#x9A71;&#x9010;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#x8C03;&#x7528; <a href="https://developer.android.google.cn/reference/android/hardware/camera2/CameraDevice.StateCallback.html#onDisconnected(android.hardware.camera2.CameraDevice" target="_blank">onDisconnected()</a>)&#xFF1B; </li>
+<li>&#x5728;&#x914D;&#x5907;&#x76F8;&#x5E94;&#x76F8;&#x673A;&#x786C;&#x4EF6;&#x7684;&#x8BBE;&#x5907;&#x4E0A;&#xFF0C;&#x4E0D;&#x540C;&#x7684;&#x5E94;&#x7528;&#x8FDB;&#x7A0B;&#x53EF;&#x540C;&#x65F6;&#x72EC;&#x7ACB;&#x6253;&#x5F00;&#x548C;&#x4F7F;&#x7528;&#x4E0D;&#x540C;&#x7684;&#x76F8;&#x673A;&#x8BBE;&#x5907;&#x3002;&#x4F46;&#x73B0;&#x5728;&#xFF0C;&#x5982;&#x679C;&#x5728;&#x591A;&#x8FDB;&#x7A0B;&#x7528;&#x4F8B;&#x4E2D;&#x540C;&#x65F6;&#x8BBF;&#x95EE;&#x76F8;&#x673A;&#x4F1A;&#x9020;&#x6210;&#x4EFB;&#x4F55;&#x6253;&#x5F00;&#x7684;&#x76F8;&#x673A;&#x8BBE;&#x5907;&#x7684;&#x6027;&#x80FD;&#x6216;&#x80FD;&#x529B;&#x4E25;&#x91CD;&#x4E0B;&#x964D;&#xFF0C;&#x76F8;&#x673A;&#x670D;&#x52A1;&#x4F1A;&#x68C0;&#x6D4B;&#x5230;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x5E76;&#x7981;&#x6B62;&#x540C;&#x65F6;&#x8BBF;&#x95EE;&#x3002;&#x5373;&#x4F7F;&#x5E76;&#x6CA1;&#x6709;&#x5176;&#x4ED6;&#x5E94;&#x7528;&#x76F4;&#x63A5;&#x5C1D;&#x8BD5;&#x8BBF;&#x95EE;&#x540C;&#x4E00;&#x76F8;&#x673A;&#x8BBE;&#x5907;&#xFF0C;&#x6B64;&#x53D8;&#x66F4;&#x4E5F;&#x53EF;&#x80FD;&#x5BFC;&#x81F4;&#x4F4E;&#x4F18;&#x5148;&#x7EA7;&#x5BA2;&#x6237;&#x7AEF;&#x88AB;&#x201C;&#x9A71;&#x9010;&#x201D;&#x3002;</li>
+<li>&#x66F4;&#x6539;&#x5F53;&#x524D;&#x7528;&#x6237;&#x4F1A;&#x5BFC;&#x81F4;&#x4E4B;&#x524D;&#x7528;&#x6237;&#x5E10;&#x6237;&#x62E5;&#x6709;&#x7684;&#x5E94;&#x7528;&#x5185;&#x6D3B;&#x52A8;&#x76F8;&#x673A;&#x5BA2;&#x6237;&#x7AEF;&#x88AB;&#x9A71;&#x9010;&#x3002;&#x5BF9;&#x76F8;&#x673A;&#x7684;&#x8BBF;&#x95EE;&#x4EC5;&#x9650;&#x4E8E;&#x8BBF;&#x95EE;&#x5F53;&#x524D;&#x8BBE;&#x5907;&#x7528;&#x6237;&#x62E5;&#x6709;&#x7684;&#x7528;&#x6237;&#x4E2A;&#x4EBA;&#x8D44;&#x6599;&#x3002;&#x4E3E;&#x4F8B;&#x6765;&#x8BF4;&#xFF0C;&#x8FD9;&#x610F;&#x5473;&#x7740;&#xFF0C;&#x5F53;&#x7528;&#x6237;&#x5207;&#x6362;&#x5230;&#x5176;&#x4ED6;&#x5E10;&#x6237;&#x540E;&#xFF0C;&#x201C;&#x6765;&#x5BBE;&#x201D;&#x5E10;&#x6237;&#x5B9E;&#x9645;&#x4E0A;&#x65E0;&#x6CD5;&#x8BA9;&#x4F7F;&#x7528;&#x76F8;&#x673A;&#x5B50;&#x7CFB;&#x7EDF;&#x7684;&#x8FDB;&#x7A0B;&#x4FDD;&#x6301;&#x8FD0;&#x884C;&#x72B6;&#x6001;&#x3002;</li>
+</ul>
+</li>
+<li><h4 id="&#x8FD0;&#x884C;&#x65F6;"><a name="&#x8FD0;&#x884C;&#x65F6;" class="anchor-navigation-ex-anchor" href="#&#x8FD0;&#x884C;&#x65F6;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x8FD0;&#x884C;&#x65F6;" class="plugin-anchor" href="#&#x8FD0;&#x884C;&#x65F6;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x8FD0;&#x884C;&#x65F6;</h4>
+<p>ART &#x8FD0;&#x884C;&#x65F6;&#x73AF;&#x5883;&#x73B0;&#x5728;&#x53EF;&#x6B63;&#x786E;&#x5B9E;&#x73B0; <a href="https://developer.android.google.cn/reference/java/lang/reflect/Constructor.html#newInstance(java.lang.Object..." target="_blank">newInstance()</a>) &#x65B9;&#x6CD5;&#x7684;&#x8BBF;&#x95EE;&#x89C4;&#x5219;&#x3002;&#x6B64;&#x53D8;&#x66F4;&#x4FEE;&#x6B63;&#x4E86;&#x4E4B;&#x524D;&#x7248;&#x672C;&#x4E2D; Dalvik &#x65E0;&#x6CD5;&#x6B63;&#x786E;&#x68C0;&#x67E5;&#x8BBF;&#x95EE;&#x89C4;&#x5219;&#x7684;&#x95EE;&#x9898;&#x3002;&#x5982;&#x679C;&#x60A8;&#x7684;&#x5E94;&#x7528;&#x4F7F;&#x7528;<a href="https://developer.android.google.cn/reference/java/lang/reflect/Constructor.html#newInstance(java.lang.Object..." target="_blank">newInstance()</a>) &#x65B9;&#x6CD5;&#xFF0C;&#x5E76;&#x4E14;&#x60A8;&#x60F3;&#x91CD;&#x5199;&#x8BBF;&#x95EE;&#x68C0;&#x67E5;&#xFF0C;&#x8BF7;&#x8C03;&#x7528; <a href="https://developer.android.google.cn/reference/java/lang/reflect/AccessibleObject.html#setAccessible(boolean" target="_blank">setAccessible()</a>) &#x65B9;&#x6CD5;&#xFF08;&#x5C06;&#x8F93;&#x5165;&#x53C2;&#x6570;&#x8BBE;&#x7F6E;&#x4E3A; true&#xFF09;&#x3002;&#x5982;&#x679C;&#x60A8;&#x7684;&#x5E94;&#x7528;&#x4F7F;&#x7528; <a href="https://developer.android.google.cn/tools/support-library/features.html#v7-appcompat" target="_blank">v7 appcompat &#x5E93;</a>&#x6216; <a href="https://developer.android.google.cn/tools/support-library/features.html#v7-recyclerview" target="_blank">v7 recyclerview &#x5E93;</a>&#xFF0C;&#x5219;&#x60A8;&#x5FC5;&#x987B;&#x66F4;&#x65B0;&#x5E94;&#x7528;&#x4EE5;&#x4F7F;&#x7528;&#x8FD9;&#x4E9B;&#x5E93;&#x7684;&#x6700;&#x65B0;&#x7248;&#x672C;&#x3002;&#x5426;&#x5219;&#xFF0C;&#x8BF7;&#x52A1;&#x5FC5;&#x66F4;&#x65B0;&#x4ECE; XML &#x5F15;&#x7528;&#x7684;&#x4EFB;&#x4F55;&#x81EA;&#x5B9A;&#x4E49;&#x7C7B;&#xFF0C;&#x4EE5;&#x4FBF;&#x80FD;&#x591F;&#x8BBF;&#x95EE;&#x5B83;&#x4EEC;&#x7684;&#x7C7B;&#x6784;&#x9020;&#x51FD;&#x6570;&#x3002;&#x6B64;&#x7248;&#x672C;&#x66F4;&#x65B0;&#x4E86;&#x52A8;&#x6001;&#x94FE;&#x63A5;&#x7A0B;&#x5E8F;&#x7684;&#x884C;&#x4E3A;&#x3002;&#x52A8;&#x6001;&#x94FE;&#x63A5;&#x7A0B;&#x5E8F;&#x73B0;&#x5728;&#x53EF;&#x4EE5;&#x8BC6;&#x522B;&#x5E93;&#x7684; soname &#x4E0E;&#x5176;&#x8DEF;&#x5F84;&#x4E4B;&#x95F4;&#x7684;&#x5DEE;&#x5F02;&#xFF08;<a href="https://code.google.com/p/android/issues/detail?id=6670" target="_blank">&#x516C;&#x5F00;&#x9519;&#x8BEF; 6670</a>&#xFF09;&#xFF0C;&#x5E76;&#x4E14;&#x73B0;&#x5728;&#x5DF2;&#x5B9E;&#x73B0;&#x4E86;&#x6309; soname &#x641C;&#x7D22;&#x3002;&#x4E4B;&#x524D;&#x5305;&#x542B;&#x9519;&#x8BEF;&#x7684; DT_NEEDED &#x6761;&#x76EE;&#xFF08;&#x901A;&#x5E38;&#x662F;&#x5F00;&#x53D1;&#x8BA1;&#x7B97;&#x673A;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x4E0A;&#x7684;&#x7EDD;&#x5BF9;&#x8DEF;&#x5F84;&#xFF09;&#x5374;&#x4ECD;&#x5DE5;&#x4F5C;&#x6B63;&#x5E38;&#x7684;&#x5E94;&#x7528;&#xFF0C;&#x5982;&#x4ECA;&#x53EF;&#x80FD;&#x4F1A;&#x51FA;&#x73B0;&#x52A0;&#x8F7D;&#x5931;&#x8D25;&#x3002;&#x73B0;&#x5DF2;&#x6B63;&#x786E;&#x5B9E;&#x73B0; dlopen(3) RTLD_LOCAL &#x6807;&#x8BB0;&#x3002;&#x8BF7;&#x6CE8;&#x610F;&#xFF0C;RTLD_LOCAL &#x662F;&#x9ED8;&#x8BA4;&#x503C;&#xFF0C;&#x56E0;&#x6B64;&#x4E0D;&#x663E;&#x5F0F;&#x4F7F;&#x7528; RTLD_LOCAL &#x7684; dlopen(3) &#x8C03;&#x7528;&#x5C06;&#x53D7;&#x5230;&#x5F71;&#x54CD;&#xFF08;&#x9664;&#x975E;&#x60A8;&#x7684;&#x5E94;&#x7528;&#x663E;&#x5F0F;&#x4F7F;&#x7528; RTLD_GLOBAL&#xFF09;&#x3002;&#x4F7F;&#x7528; RTLD_LOCAL &#x65F6;&#xFF0C;&#x5728;&#x968F;&#x540E;&#x901A;&#x8FC7;&#x8C03;&#x7528; dlopen(3) &#x52A0;&#x8F7D;&#x7684;&#x5E93;&#x4E2D;&#x5E76;&#x4E0D;&#x80FD;&#x4F7F;&#x7528;&#x8FD9;&#x4E9B;&#x7B26;&#x53F7;&#xFF08;&#x8FD9;&#x4E0E;&#x7531; DT_NEEDED &#x6761;&#x76EE;&#x5F15;&#x7528;&#x7684;&#x60C5;&#x51B5;&#x622A;&#x7136;&#x4E0D;&#x540C;&#xFF09;&#x3002;</p>
+<p>&#x5728;&#x4E4B;&#x524D;&#x7248;&#x672C;&#x7684; Android &#x4E0A;&#xFF0C;&#x5982;&#x679C;&#x60A8;&#x7684;&#x5E94;&#x7528;&#x8BF7;&#x6C42;&#x7CFB;&#x7EDF;&#x52A0;&#x8F7D;&#x5305;&#x542B;&#x6587;&#x672C;&#x91CD;&#x5B9A;&#x4F4D;&#x4FE1;&#x606F;&#x7684;&#x5171;&#x4EAB;&#x5E93;&#xFF0C;&#x7CFB;&#x7EDF;&#x4F1A;&#x663E;&#x793A;&#x8B66;&#x544A;&#xFF0C;&#x4F46;&#x4ECD;&#x5141;&#x8BB8;&#x52A0;&#x8F7D;&#x5171;&#x4EAB;&#x5E93;&#x3002;&#x4ECE;&#x6B64;&#x7248;&#x672C;&#x5F00;&#x59CB;&#xFF0C;&#x5982;&#x679C;&#x60A8;&#x7684;&#x5E94;&#x7528;&#x7684;&#x76EE;&#x6807; SDK &#x7248;&#x672C;&#x4E3A; 23 &#x6216;&#x66F4;&#x9AD8;&#xFF0C;&#x5219;&#x7CFB;&#x7EDF;&#x4F1A;&#x62D2;&#x7EDD;&#x52A0;&#x8F7D;&#x8BE5;&#x5E93;&#x3002;&#x4E3A;&#x5E2E;&#x52A9;&#x60A8;&#x68C0;&#x6D4B;&#x5E93;&#x662F;&#x5426;&#x52A0;&#x8F7D;&#x5931;&#x8D25;&#xFF0C;&#x60A8;&#x7684;&#x5E94;&#x7528;&#x5E94;&#x8BE5;&#x8BB0;&#x5F55; dlopen(3) &#x5931;&#x8D25;&#x65E5;&#x5FD7;&#xFF0C;&#x5E76;&#x5728;&#x65E5;&#x5FD7;&#x4E2D;&#x52A0;&#x5165;dlerror(3) &#x8C03;&#x7528;&#x8FD4;&#x56DE;&#x7684;&#x95EE;&#x9898;&#x63CF;&#x8FF0;&#x6587;&#x672C;&#x3002;&#x8981;&#x8BE6;&#x7EC6;&#x4E86;&#x89E3;&#x5982;&#x4F55;&#x5904;&#x7406;&#x6587;&#x672C;&#x91CD;&#x5B9A;&#x4F4D;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;&#x6B64;<a href="https://wiki.gentoo.org/wiki/Hardened/Textrels_Guide" target="_blank">&#x6307;&#x5357;</a>&#x3002;</p>
+</li>
+<li><h4 id="&#x4F4E;&#x7535;&#x8017;&#x6A21;&#x5F0F;&#x548C;&#x5E94;&#x7528;&#x5F85;&#x673A;&#x6A21;&#x5F0F;"><a name="&#x4F4E;&#x7535;&#x8017;&#x6A21;&#x5F0F;&#x548C;&#x5E94;&#x7528;&#x5F85;&#x673A;&#x6A21;&#x5F0F;" class="anchor-navigation-ex-anchor" href="#&#x4F4E;&#x7535;&#x8017;&#x6A21;&#x5F0F;&#x548C;&#x5E94;&#x7528;&#x5F85;&#x673A;&#x6A21;&#x5F0F;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x4F4E;&#x7535;&#x8017;&#x6A21;&#x5F0F;&#x548C;&#x5E94;&#x7528;&#x5F85;&#x673A;&#x6A21;&#x5F0F;" class="plugin-anchor" href="#&#x4F4E;&#x7535;&#x8017;&#x6A21;&#x5F0F;&#x548C;&#x5E94;&#x7528;&#x5F85;&#x673A;&#x6A21;&#x5F0F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4F4E;&#x7535;&#x8017;&#x6A21;&#x5F0F;&#x548C;&#x5E94;&#x7528;&#x5F85;&#x673A;&#x6A21;&#x5F0F;</h4>
+<p>&#x6B64;&#x7248;&#x672C;&#x5F15;&#x5165;&#x4E86;&#x9488;&#x5BF9;&#x7A7A;&#x95F2;&#x8BBE;&#x5907;&#x548C;&#x5E94;&#x7528;&#x7684;&#x6700;&#x65B0;&#x8282;&#x80FD;&#x4F18;&#x5316;&#x6280;&#x672F;&#x3002;&#x8FD9;&#x4E9B;&#x529F;&#x80FD;&#x4F1A;&#x5F71;&#x54CD;&#x6240;&#x6709;&#x5E94;&#x7528;&#xFF0C;&#x56E0;&#x6B64;&#x8BF7;&#x52A1;&#x5FC5;&#x5728;&#x8FD9;&#x4E9B;&#x65B0;&#x6A21;&#x5F0F;&#x4E0B;&#x6D4B;&#x8BD5;&#x60A8;&#x7684;&#x5E94;&#x7528;&#x3002;</p>
+<ul>
+<li><strong>&#x4F4E;&#x7535;&#x8017;&#x6A21;&#x5F0F;</strong>&#xFF1A;&#x5982;&#x679C;&#x7528;&#x6237;&#x62D4;&#x4E0B;&#x8BBE;&#x5907;&#x7684;&#x7535;&#x6E90;&#x63D2;&#x5934;&#xFF0C;&#x5E76;&#x5728;&#x5C4F;&#x5E55;&#x5173;&#x95ED;&#x540E;&#x7684;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x5185;&#x4F7F;&#x5176;&#x4FDD;&#x6301;&#x4E0D;&#x6D3B;&#x52A8;&#x72B6;&#x6001;&#xFF0C;&#x8BBE;&#x5907;&#x4F1A;&#x8FDB;&#x5165;<em>&#x4F4E;&#x7535;&#x8017;</em>&#x6A21;&#x5F0F;&#xFF0C;&#x5728;&#x8BE5;&#x6A21;&#x5F0F;&#x4E0B;&#x8BBE;&#x5907;&#x4F1A;&#x5C1D;&#x8BD5;&#x8BA9;&#x7CFB;&#x7EDF;&#x4FDD;&#x6301;&#x4F11;&#x7720;&#x72B6;&#x6001;&#x3002;&#x5728;&#x8BE5;&#x6A21;&#x5F0F;&#x4E0B;&#xFF0C;&#x8BBE;&#x5907;&#x4F1A;&#x5B9A;&#x671F;&#x77ED;&#x65F6;&#x95F4;&#x6062;&#x590D;&#x6B63;&#x5E38;&#x5DE5;&#x4F5C;&#xFF0C;&#x4EE5;&#x4FBF;&#x8FDB;&#x884C;&#x5E94;&#x7528;&#x540C;&#x6B65;&#xFF0C;&#x8FD8;&#x53EF;&#x8BA9;&#x7CFB;&#x7EDF;&#x6267;&#x884C;&#x4EFB;&#x4F55;&#x6302;&#x8D77;&#x7684;&#x64CD;&#x4F5C;&#x3002;</li>
+<li><strong>&#x5E94;&#x7528;&#x5F85;&#x673A;&#x6A21;&#x5F0F;</strong>&#xFF1A;&#x5E94;&#x7528;&#x5F85;&#x673A;&#x6A21;&#x5F0F;&#x5141;&#x8BB8;&#x7CFB;&#x7EDF;&#x5224;&#x5B9A;&#x5E94;&#x7528;&#x5728;&#x7528;&#x6237;&#x672A;&#x4E3B;&#x52A8;&#x4F7F;&#x7528;&#x5B83;&#x65F6;&#x5904;&#x4E8E;&#x7A7A;&#x95F2;&#x72B6;&#x6001;&#x3002;&#x5F53;&#x7528;&#x6237;&#x6709;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x672A;&#x89E6;&#x6478;&#x5E94;&#x7528;&#x65F6;&#xFF0C;&#x7CFB;&#x7EDF;&#x4FBF;&#x4F1A;&#x4F5C;&#x51FA;&#x6B64;&#x5224;&#x5B9A;&#x3002;&#x5982;&#x679C;&#x62D4;&#x4E0B;&#x4E86;&#x8BBE;&#x5907;&#x7535;&#x6E90;&#x63D2;&#x5934;&#xFF0C;&#x7CFB;&#x7EDF;&#x4F1A;&#x4E3A;&#x5176;&#x89C6;&#x4E3A;&#x7A7A;&#x95F2;&#x7684;&#x5E94;&#x7528;&#x505C;&#x7528;&#x7F51;&#x7EDC;&#x8BBF;&#x95EE;&#x4EE5;&#x53CA;&#x6682;&#x505C;&#x540C;&#x6B65;&#x548C;&#x4F5C;&#x4E1A;&#x3002;</li>
+</ul>
+<p>&#x8981;&#x8BE6;&#x7EC6;&#x4E86;&#x89E3;&#x8FD9;&#x4E9B;&#x8282;&#x80FD;&#x53D8;&#x66F4;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;<a href="https://developer.android.google.cn/training/monitoring-device-state/doze-standby.html" target="_blank">&#x5BF9;&#x4F4E;&#x7535;&#x8017;&#x6A21;&#x5F0F;&#x548C;&#x5E94;&#x7528;&#x5F85;&#x673A;&#x6A21;&#x5F0F;&#x8FDB;&#x884C;&#x9488;&#x5BF9;&#x6027;&#x4F18;&#x5316;</a>&#x3002;</p>
+</li>
+<li><h4 id="&#x6587;&#x672C;&#x9009;&#x62E9;"><a name="&#x6587;&#x672C;&#x9009;&#x62E9;" class="anchor-navigation-ex-anchor" href="#&#x6587;&#x672C;&#x9009;&#x62E9;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x6587;&#x672C;&#x9009;&#x62E9;" class="plugin-anchor" href="#&#x6587;&#x672C;&#x9009;&#x62E9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x6587;&#x672C;&#x9009;&#x62E9;</h4>
+<p>&#x73B0;&#x5728;&#xFF0C;&#x5F53;&#x7528;&#x6237;&#x5728;&#x60A8;&#x7684;&#x5E94;&#x7528;&#x4E2D;&#x9009;&#x62E9;&#x6587;&#x672C;&#x65F6;&#xFF0C;&#x60A8;&#x53EF;&#x4EE5;&#x5728;&#x4E00;&#x4E2A;<a href="http://www.google.com/design/spec/patterns/selection.html#selection-text-selection" target="_blank">&#x6D6E;&#x52A8;&#x5DE5;&#x5177;&#x680F;</a>&#x4E2D;&#x663E;&#x793A;<em>&#x201C;&#x526A;&#x5207;&#x201D;</em>&#x3001;<em>&#x201C;&#x590D;&#x5236;&#x201D;</em>&#x548C;<em>&#x201C;&#x7C98;&#x8D34;&#x201D;</em>&#x7B49;&#x6587;&#x672C;&#x9009;&#x62E9;&#x64CD;&#x4F5C;&#x3002;&#x5176;&#x5728;&#x7528;&#x6237;&#x4EA4;&#x4E92;&#x5B9E;&#x73B0;&#x4E0A;&#x4E0E;<a href="https://developer.android.google.cn/guide/topics/ui/menus.html#CABforViews" target="_blank">&#x4E3A;&#x5355;&#x4E2A;&#x89C6;&#x56FE;&#x542F;&#x7528;&#x4E0A;&#x4E0B;&#x6587;&#x64CD;&#x4F5C;&#x6A21;&#x5F0F;</a>&#x4E2D;&#x6240;&#x8FF0;&#x7684;&#x4E0A;&#x4E0B;&#x6587;&#x64CD;&#x4F5C;&#x680F;&#x7C7B;&#x4F3C;&#x3002;
+&#x8981;&#x5B9E;&#x73B0;&#x53EF;&#x7528;&#x4E8E;&#x6587;&#x672C;&#x9009;&#x62E9;&#x7684;&#x6D6E;&#x52A8;&#x5DE5;&#x5177;&#x680F;&#xFF0C;&#x8BF7;&#x5728;&#x60A8;&#x7684;&#x73B0;&#x6709;&#x5E94;&#x7528;&#x4E2D;&#x505A;&#x51FA;&#x4EE5;&#x4E0B;&#x66F4;&#x6539;&#xFF1A;</p>
+<ul>
+<li>&#x5728; <a href="https://developer.android.google.cn/reference/android/view/View.html" target="_blank">View</a> &#x5BF9;&#x8C61;&#x6216; <a href="https://developer.android.google.cn/reference/android/app/Activity.html" target="_blank">Activity</a> &#x5BF9;&#x8C61;&#x4E2D;&#xFF0C;&#x5C06; <a href="https://developer.android.google.cn/reference/android/view/ActionMode.html" target="_blank">ActionMode</a> &#x8C03;&#x7528;&#x4ECE; startActionMode(Callback)&#x66F4;&#x6539;&#x4E3A; startActionMode(Callback, ActionMode.TYPE_FLOATING)&#x3002;</li>
+<li>&#x6539;&#x4E3A;&#x4F7F;&#x7528; ActionMode.Callback &#x7684;&#x73B0;&#x6709;&#x5B9E;&#x73B0;&#x6269;&#x5C55; <a href="https://developer.android.google.cn/reference/android/view/ActionMode.Callback2.html" target="_blank">ActionMode.Callback2</a>&#x3002;</li>
+<li>&#x66FF;&#x4EE3; <a href="https://developer.android.google.cn/reference/android/view/ActionMode.Callback2.html#onGetContentRect(android.view.ActionMode, android.view.View, android.graphics.Rect" target="_blank">onGetContentRect()</a>) &#x65B9;&#x6CD5;&#xFF0C;&#x7528;&#x4E8E;&#x63D0;&#x4F9B; <a href="https://developer.android.google.cn/reference/android/graphics/Rect.html" target="_blank">Rect</a> &#x5185;&#x5BB9;&#x5BF9;&#x8C61;&#xFF08;&#x5982;&#x6587;&#x672C;&#x9009;&#x62E9;&#x77E9;&#x5F62;&#xFF09;&#x5728;&#x89C6;&#x56FE;&#x4E2D;&#x7684;&#x5750;&#x6807;&#x3002;</li>
+<li>&#x5982;&#x679C;&#x77E9;&#x5F62;&#x7684;&#x5B9A;&#x4F4D;&#x4E0D;&#x518D;&#x6709;&#x6548;&#xFF0C;&#x5E76;&#x4E14;&#x8FD9;&#x662F;&#x552F;&#x4E00;&#x9700;&#x8981;&#x58F0;&#x660E;&#x4E3A;&#x65E0;&#x6548;&#x7684;&#x5143;&#x7D20;&#xFF0C;&#x8BF7;&#x8C03;<a href="https://developer.android.google.cn/reference/android/view/ActionMode.html#invalidateContentRect(" target="_blank">invalidateContentRect()</a>) &#x65B9;&#x6CD5;&#x3002;</li>
+</ul>
+<p>&#x8BF7;&#x6CE8;&#x610F;&#xFF0C;&#x5982;&#x679C;&#x60A8;&#x4F7F;&#x7528; <a href="https://developer.android.google.cn/tools/support-library/index.html" target="_blank">Android &#x652F;&#x6301;&#x5E93;</a> 22.2 &#x4FEE;&#x8BA2;&#x7248;&#xFF0C;&#x6D6E;&#x52A8;&#x5DE5;&#x5177;&#x680F;&#x4E0D;&#x5411;&#x540E;&#x517C;&#x5BB9;&#xFF0C;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B; appcompat &#x4F1A;&#x83B7;&#x5F97;&#x5BF9; <a href="https://developer.android.google.cn/reference/android/view/ActionMode.html" target="_blank">ActionMode</a> &#x5BF9;&#x8C61;&#x7684;&#x63A7;&#x5236;&#x6743;&#x3002;&#x8FD9;&#x4F1A;&#x7981;&#x6B62;&#x663E;&#x793A;&#x6D6E;&#x52A8;&#x5DE5;&#x5177;&#x680F;&#x3002;&#x8981;&#x5728;<a href="https://developer.android.google.cn/reference/android/view/ActionMode.html" target="_blank">ActionMode</a> &#x4E2D;&#x542F;&#x7528; <a href="https://developer.android.google.cn/reference/android/support/v7/app/AppCompatActivity.html" target="_blank">AppCompatActivity</a> &#x652F;&#x6301;&#xFF0C;&#x8BF7;&#x8C03;&#x7528; <a href="https://developer.android.google.cn/reference/android/support/v7/app/AppCompatActivity.html#getDelegate(" target="_blank">getDelegate()</a>)&#xFF0C;&#x7136;&#x540E;&#x5BF9;&#x8FD4;&#x56DE;&#x7684;<a href="https://developer.android.google.cn/reference/android/support/v7/app/AppCompatDelegate.html#setHandleNativeActionModesEnabled(boolean" target="_blank">setHandleNativeActionModesEnabled()</a>) &#x5BF9;&#x8C61;&#x8C03;&#x7528; <a href="https://developer.android.google.cn/reference/android/support/v7/app/AppCompatDelegate.html" target="_blank">AppCompatDelegate</a>&#xFF0C;&#x5E76;&#x5C06;&#x8F93;&#x5165;&#x53C2;&#x6570;&#x8BBE;&#x7F6E;&#x4E3A; false&#x3002;&#x6B64;&#x8C03;&#x7528;&#x4F1A;&#x5C06; <a href="https://developer.android.google.cn/reference/android/view/ActionMode.html" target="_blank">ActionMode</a> &#x5BF9;&#x8C61;&#x7684;&#x63A7;&#x5236;&#x6743;&#x4EA4;&#x8FD8;&#x7ED9;&#x6846;&#x67B6;&#x3002;&#x5728;&#x8FD0;&#x884C; Android 6.0&#xFF08;API &#x7EA7;&#x522B; 23&#xFF09;&#x7684;&#x8BBE;&#x5907;&#x4E0A;&#xFF0C;&#x6846;&#x67B6;&#x53EF;&#x4EE5;&#x652F;&#x6301; <a href="https://developer.android.google.cn/reference/android/support/v7/app/ActionBar.html" target="_blank">ActionBar</a> &#x6A21;&#x5F0F;&#x6216;&#x6D6E;&#x52A8;&#x5DE5;&#x5177;&#x680F;&#x6A21;&#x5F0F;&#xFF1B;&#x800C;&#x5728;&#x8FD0;&#x884C; Android 5.1&#xFF08;API &#x7EA7;&#x522B; 22&#xFF09;&#x6216;&#x4E4B;&#x524D;&#x7248;&#x672C;&#x7684;&#x8BBE;&#x5907;&#x4E0A;&#xFF0C;&#x6846;&#x67B6;&#x4EC5;&#x652F;&#x6301; <a href="https://developer.android.google.cn/reference/android/support/v7/app/ActionBar.html" target="_blank">ActionBar</a> &#x6A21;&#x5F0F;&#x3002;</p>
+</li>
+</ul>
+<ul>
+<li><h4 id="android-for-work-&#x53D8;&#x66F4;"><a name="android-for-work-&#x53D8;&#x66F4;" class="anchor-navigation-ex-anchor" href="#android-for-work-&#x53D8;&#x66F4;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="android-for-work-&#x53D8;&#x66F4;" class="plugin-anchor" href="#android-for-work-&#x53D8;&#x66F4;"><i class="fa fa-link" aria-hidden="true"></i></a>Android for Work &#x53D8;&#x66F4;</h4>
+<p>&#x6B64;&#x7248;&#x672C;&#x5305;&#x542B;&#x4E0B;&#x5217;&#x9488;&#x5BF9; Android for Work &#x7684;&#x884C;&#x4E3A;&#x53D8;&#x66F4;&#xFF1A;</p>
+<ul>
+<li><strong>&#x4E2A;&#x4EBA;&#x4E0A;&#x4E0B;&#x6587;&#x4E2D;&#x7684;&#x5DE5;&#x4F5C;&#x8054;&#x7CFB;&#x4EBA;&#x3002;</strong>Google &#x62E8;&#x53F7;&#x5668;&#x901A;&#x8BDD;&#x8BB0;&#x5F55;&#x73B0;&#x5728;&#x4F1A;&#x5728;&#x7528;&#x6237;&#x67E5;&#x770B;&#x901A;&#x8BDD;&#x8BB0;&#x5F55;&#x65F6;&#x663E;&#x793A;&#x5DE5;&#x4F5C;&#x8054;&#x7CFB;&#x4EBA;&#x3002;&#x5C06; <a href="https://developer.android.google.cn/reference/android/app/admin/DevicePolicyManager.html#setCrossProfileCallerIdDisabled(android.content.ComponentName, boolean" target="_blank">setCrossProfileCallerIdDisabled()</a>) &#x8BBE;&#x7F6E;&#x4E3A; true &#x53EF;&#x5728; Google &#x62E8;&#x53F7;&#x5668;&#x901A;&#x8BDD;&#x8BB0;&#x5F55;&#x4E2D;&#x9690;&#x85CF;&#x6258;&#x7BA1;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x8054;&#x7CFB;&#x4EBA;&#x3002;&#x4EC5;&#x5F53;&#x5C06; <a href="https://developer.android.google.cn/reference/android/app/admin/DevicePolicyManager.html#setBluetoothContactSharingDisabled(android.content.ComponentName, boolean" target="_blank">setBluetoothContactSharingDisabled()</a>) &#x8BBE;&#x7F6E;&#x4E3A; false &#x65F6;&#xFF0C;&#x624D;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x84DD;&#x7259;&#x5C06;&#x5DE5;&#x4F5C;&#x8054;&#x7CFB;&#x4EBA;&#x968F;&#x4E2A;&#x4EBA;&#x8054;&#x7CFB;&#x4EBA;&#x4E00;&#x8D77;&#x663E;&#x793A;&#x7ED9;&#x8BBE;&#x5907;&#x3002;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5B83;&#x8BBE;&#x7F6E;&#x4E3A; true&#x3002;</li>
+<li><strong>WLAN &#x914D;&#x7F6E;&#x5220;&#x9664;</strong>&#xFF1A;&#x73B0;&#x5728;&#xFF0C;&#x5F53;&#x5220;&#x9664;&#x67D0;&#x4E2A;&#x6258;&#x7BA1;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x65F6;&#xFF0C;&#x5C06;&#x4F1A;&#x79FB;&#x9664;&#x7531;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x6240;&#x6709;&#x8005;&#x6DFB;&#x52A0;&#x7684; WLAN &#x914D;&#x7F6E;&#xFF08;&#x4F8B;&#x5982;&#xFF0C;&#x901A;&#x8FC7;&#x8C03;&#x7528; <a href="https://developer.android.google.cn/reference/android/net/wifi/WifiManager.html#addNetwork(android.net.wifi.WifiConfiguration" target="_blank">addNetwork()</a>)
+&#x65B9;&#x6CD5;&#x6DFB;&#x52A0;&#x7684;&#x914D;&#x7F6E;&#xFF09;&#x3002;</li>
+<li><strong>WLAN &#x914D;&#x7F6E;&#x9501;&#x5B9A;</strong>&#xFF1A;&#x5982;&#x679C; <a href="https://developer.android.google.cn/reference/android/provider/Settings.Global.html#WIFI_DEVICE_OWNER_CONFIGS_LOCKDOWN" target="_blank">WIFI_DEVICE_OWNER_CONFIGS_LOCKDOWN</a> &#x4E0D;&#x4E3A;&#x96F6;&#xFF0C;&#x5219;&#x7528;&#x6237;&#x65E0;&#x6CD5;&#x518D;&#x4FEE;&#x6539;&#x6216;&#x5220;&#x9664;&#x4EFB;&#x4F55;&#x7531;&#x6D3B;&#x52A8;&#x8BBE;&#x5907;&#x6240;&#x6709;&#x8005;&#x521B;&#x5EFA;&#x7684; WLAN &#x914D;&#x7F6E;&#x3002;&#x7528;&#x6237;&#x4ECD;&#x53EF;&#x521B;&#x5EFA;&#x548C;&#x4FEE;&#x6539;&#x5176;&#x81EA;&#x5DF1;&#x7684; WLAN &#x914D;&#x7F6E;&#x3002;&#x6D3B;&#x52A8;&#x8BBE;&#x5907;&#x6240;&#x6709;&#x8005;&#x62E5;&#x6709;&#x7F16;&#x8F91;&#x6216;&#x5220;&#x9664;&#x4EFB;&#x4F55; WLAN &#x914D;&#x7F6E;&#xFF08;&#x5305;&#x62EC;&#x5E76;&#x975E;&#x7531;&#x5176;&#x521B;&#x5EFA;&#x7684;&#x914D;&#x7F6E;&#xFF09;&#x7684;&#x6743;&#x9650;&#x3002;</li>
+<li>&#x901A;&#x8FC7;&#x6DFB;&#x52A0; Google &#x5E10;&#x6237;&#x4E0B;&#x8F7D;&#x8BBE;&#x5907;&#x89C4;&#x8303;&#x63A7;&#x5236;&#x5668;&#xFF1A;&#x5411;&#x6258;&#x7BA1;&#x73AF;&#x5883;&#x4EE5;&#x5916;&#x7684;&#x8BBE;&#x5907;&#x6DFB;&#x52A0;&#x9700;&#x8981;&#x901A;&#x8FC7;&#x8BBE;&#x5907;&#x89C4;&#x8303;&#x63A7;&#x5236;&#x5668; (DPC) &#x5E94;&#x7528;&#x7BA1;&#x7406;&#x7684; Google &#x5E10;&#x6237;&#x65F6;&#xFF0C;&#x5E10;&#x6237;&#x6DFB;&#x52A0;&#x6D41;&#x7A0B;&#x73B0;&#x5728;&#x4F1A;&#x63D0;&#x793A;&#x7528;&#x6237;&#x5B89;&#x88C5;&#x76F8;&#x5E94;&#x7684; WPC&#x3002;&#x5728;&#x8BBE;&#x5907;&#x521D;&#x59CB;&#x8BBE;&#x7F6E;&#x5411;&#x5BFC;&#x4E2D;&#x901A;&#x8FC7; Settings &gt; Accounts &#x6DFB;&#x52A0;&#x5E10;&#x6237;&#x65F6;&#xFF0C;&#x4E5F;&#x4F1A;&#x51FA;&#x73B0;&#x6B64;&#x884C;&#x4E3A;&#x3002;</li>
+<li><strong>&#x5BF9;&#x7279;&#x5B9A; <a href="https://developer.android.google.cn/reference/android/app/admin/DevicePolicyManager.html" target="_blank">DevicePolicyManager</a> API &#x884C;&#x4E3A;&#x7684;&#x53D8;&#x66F4;&#xFF1A;</strong><ul>
+<li>&#x8C03;&#x7528; <a href="https://developer.android.google.cn/reference/android/app/admin/DevicePolicyManager.html#setCameraDisabled(android.content.ComponentName, boolean" target="_blank">setCameraDisabled()</a>) &#x65B9;&#x6CD5;&#x53EA;&#x4F1A;&#x5F71;&#x54CD;&#x8C03;&#x7528;&#x8BE5;&#x65B9;&#x6CD5;&#x7684;&#x7528;&#x6237;&#x7684;&#x76F8;&#x673A;&#xFF1B;&#x4ECE;&#x6258;&#x7BA1;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x8C03;&#x7528;&#x5B83;&#x4E0D;&#x4F1A;&#x5F71;&#x54CD;&#x4E3B;&#x7528;&#x6237;&#x8FD0;&#x884C;&#x7684;&#x76F8;&#x673A;&#x5E94;&#x7528;&#x3002;</li>
+<li>&#x6B64;&#x5916;&#xFF0C;<a href="https://developer.android.google.cn/reference/android/app/admin/DevicePolicyManager.html#setKeyguardDisabledFeatures(android.content.ComponentName, int" target="_blank">setKeyguardDisabledFeatures()</a>) &#x65B9;&#x6CD5;&#x73B0;&#x5728;&#x9664;&#x4E86;&#x53EF;&#x4F9B;&#x8BBE;&#x5907;&#x6240;&#x6709;&#x8005;&#x4F7F;&#x7528;&#x5916;&#xFF0C;&#x8FD8;&#x53EF;&#x4F9B;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x6240;&#x6709;&#x8005;&#x4F7F;&#x7528;&#x3002;</li>
+<li>&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x6240;&#x6709;&#x8005;&#x53EF;&#x8BBE;&#x7F6E;&#x4EE5;&#x4E0B;&#x952E;&#x76D8;&#x9501;&#x9650;&#x5236;&#xFF1A;<ul>
+<li><a href="https://developer.android.google.cn/reference/android/app/admin/DevicePolicyManager.html#KEYGUARD_DISABLE_TRUST_AGENTS" target="_blank">KEYGUARD_DISABLE_TRUST_AGENTS</a> &#x548C; <a href="https://developer.android.google.cn/reference/android/app/admin/DevicePolicyManager.html#KEYGUARD_DISABLE_FINGERPRINT" target="_blank">KEYGUARD_DISABLE_FINGERPRINT</a>&#xFF0C;&#x5B83;&#x4EEC;&#x5F71;&#x54CD;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E0A;&#x7EA7;&#x7528;&#x6237;&#x7684;&#x952E;&#x76D8;&#x9501;&#x8BBE;&#x7F6E;&#x3002;</li>
+<li><a href="https://developer.android.google.cn/reference/android/app/admin/DevicePolicyManager.html#KEYGUARD_DISABLE_UNREDACTED_NOTIFICATIONS" target="_blank">KEYGUARD_DISABLE_UNREDACTED_NOTIFICATIONS</a>&#xFF0C;&#x5B83;&#x53EA;&#x5F71;&#x54CD;&#x5E94;&#x7528;&#x5728;&#x6258;&#x7BA1;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x751F;&#x6210;&#x7684;&#x901A;&#x77E5;&#x3002;</li>
+</ul>
+</li>
+<li>DevicePolicyManager.createAndInitializeUser() &#x65B9;&#x6CD5;&#x548C; DevicePolicyManager.createUser() &#x65B9;&#x6CD5;&#x5DF2;&#x5F03;&#x7528;&#x3002;</li>
+<li>&#x5F53;&#x7ED9;&#x5B9A;&#x7528;&#x6237;&#x7684;&#x5E94;&#x7528;&#x5728;&#x524D;&#x53F0;&#x8FD0;&#x884C;&#x65F6;&#xFF0C;<a href="https://developer.android.google.cn/reference/android/app/admin/DevicePolicyManager.html#setScreenCaptureDisabled(android.content.ComponentName, boolean" target="_blank">setScreenCaptureDisabled()</a>) &#x65B9;&#x6CD5;&#x73B0;&#x5728;&#x4E5F;&#x4F1A;&#x5C4F;&#x853D;&#x8F85;&#x52A9;&#x7ED3;&#x6784;&#x3002;</li>
+<li><a href="https://developer.android.google.cn/reference/android/app/admin/DevicePolicyManager.html#EXTRA_PROVISIONING_DEVICE_ADMIN_PACKAGE_CHECKSUM" target="_blank">EXTRA_PROVISIONING_DEVICE_ADMIN_PACKAGE_CHECKSUM</a> &#x73B0;&#x5728;&#x9ED8;&#x8BA4;&#x4E3A; SHA-256&#x3002;&#x51FA;&#x4E8E;&#x5411;&#x540E;&#x517C;&#x5BB9;&#x6027;&#x8003;&#x8651;&#xFF0C;&#x4ECD;&#x7136;&#x652F;&#x6301; SHA-1&#xFF0C;&#x4F46;&#x672A;&#x6765;&#x5C06;&#x4F1A;&#x53D6;&#x6D88;&#x8BE5;&#x652F;&#x6301;&#x3002;</li>
+<li><a href="https://developer.android.google.cn/reference/android/app/admin/DevicePolicyManager.html#EXTRA_PROVISIONING_DEVICE_ADMIN_SIGNATURE_CHECKSUM" target="_blank">EXTRA_PROVISIONING_DEVICE_ADMIN_SIGNATURE_CHECKSUM</a> &#x73B0;&#x5728;&#x53EA;&#x63A5;&#x53D7; SHA-256&#x3002;
+Android 6.0&#xFF08;API &#x7EA7;&#x522B; 23&#xFF09;&#x4E2D;&#x66FE;&#x7ECF;&#x5B58;&#x5728;&#x7684; Device initializer API &#x73B0;&#x5DF2;&#x5220;&#x9664;
+EXTRA_PROVISIONING_RESET_PROTECTION_PARAMETERS
+&#x5DF2;&#x5220;&#x9664;&#xFF0C;&#x56E0;&#x6B64; NFC &#x5360;&#x4F4D;&#x914D;&#x7F6E;&#x65E0;&#x6CD5;&#x901A;&#x8FC7;&#x7F16;&#x7A0B;&#x89E3;&#x9501;&#x53D7;&#x6062;&#x590D;&#x51FA;&#x5382;&#x8BBE;&#x7F6E;&#x4FDD;&#x62A4;&#x7684;&#x8BBE;&#x5907;&#x3002;</li>
+<li>&#x60A8;&#x73B0;&#x5728;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <a href="https://developer.android.google.cn/reference/android/app/admin/DevicePolicyManager.html#EXTRA_PROVISIONING_ADMIN_EXTRAS_BUNDLE" target="_blank">EXTRA_PROVISIONING_ADMIN_EXTRAS_BUNDLE</a> extra &#x5728;&#x5BF9;&#x6258;&#x7BA1;&#x8BBE;&#x5907;&#x8FDB;&#x884C; NFC &#x914D;&#x7F6E;&#x671F;&#x95F4;&#x5411;&#x8BBE;&#x5907;&#x6240;&#x6709;&#x8005;&#x5E94;&#x7528;&#x4F20;&#x9012;&#x6570;&#x636E;&#x3002;</li>
+<li>Android for Work API &#x9488;&#x5BF9; M &#x8FD0;&#x884C;&#x65F6;&#x6743;&#x9650;&#xFF08;&#x5305;&#x62EC; Work &#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x3001;&#x8F85;&#x52A9;&#x5C42;&#x53CA;&#x5176;&#x4ED6;&#x5185;&#x5BB9;&#xFF09;&#x8FDB;&#x884C;&#x4E86;&#x4F18;&#x5316;&#x3002;&#x65B0;&#x589E;&#x7684; <a href="https://developer.android.google.cn/reference/android/app/admin/DevicePolicyManager.html" target="_blank">DevicePolicyManager</a> &#x6743;&#x9650; API &#x4E0D;&#x4F1A;&#x5F71;&#x54CD; M &#x4E4B;&#x524D;&#x7248;&#x672C;&#x7684;&#x5E94;&#x7528;&#x3002;</li>
+<li>&#x5F53;&#x7528;&#x6237;&#x9000;&#x51FA;&#x901A;&#x8FC7; <a href="https://developer.android.google.cn/reference/android/app/admin/DevicePolicyManager.html#ACTION_PROVISION_MANAGED_PROFILE" target="_blank">ACTION_PROVISION_MANAGED_PROFILE</a> &#x6216; <a href="https://developer.android.google.cn/reference/android/app/admin/DevicePolicyManager.html#ACTION_PROVISION_MANAGED_DEVICE" target="_blank">ACTION_PROVISION_MANAGED_DEVICE</a> intent &#x53D1;&#x8D77;&#x7684;&#x8BBE;&#x7F6E;&#x6D41;&#x7A0B;&#x7684;&#x540C;&#x6B65;&#x90E8;&#x5206;&#x65F6;&#xFF0C;&#x7CFB;&#x7EDF;&#x73B0;&#x5728;&#x4F1A;&#x8FD4;&#x56DE;<a href="https://developer.android.google.cn/reference/android/app/Activity.html#RESULT_CANCELED" target="_blank">RESULT_CANCELED</a> &#x7ED3;&#x679C;&#x4EE3;&#x7801;&#x3002;</li>
+</ul>
+</li>
+<li>&#x5BF9;&#x5176;&#x4ED6; API &#x7684;&#x53D8;&#x66F4;&#xFF1A;</li>
+<li>&#x6D41;&#x91CF;&#x6D88;&#x8017;&#xFF1A;android.app.usage.NetworkUsageStats &#x7C7B;&#x5DF2;&#x91CD;&#x547D;&#x540D;&#x4E3A; <a href="https://developer.android.google.cn/reference/android/app/usage/NetworkStats.html" target="_blank">NetworkStats</a>&#x3002;</li>
+<li>&#x5BF9;&#x5168;&#x5C40;&#x8BBE;&#x7F6E;&#x7684;&#x53D8;&#x66F4;&#xFF1A;</li>
+<li>&#x8FD9;&#x4E9B;&#x8BBE;&#x7F6E;&#x4E0D;&#x518D;&#x901A;&#x8FC7; <a href="https://developer.android.google.cn/reference/android/app/admin/DevicePolicyManager.html#setGlobalSetting(android.content.ComponentName, java.lang.String, java.lang.String" target="_blank">setGlobalSettings()</a>) &#x8FDB;&#x884C;&#x8BBE;&#x7F6E;&#xFF1A;<ul>
+<li>BLUETOOTH_ON</li>
+<li>DEVELOPMENT_SETTINGS_ENABLED</li>
+<li>MODE_RINGER</li>
+<li>NETWORK_PREFERENCE</li>
+<li>WIFI_ON</li>
+</ul>
+</li>
+<li>&#x8FD9;&#x4E9B;&#x5168;&#x5C40;&#x8BBE;&#x7F6E;&#x73B0;&#x5728;&#x53EF;&#x901A;&#x8FC7; <a href="https://developer.android.google.cn/reference/android/app/admin/DevicePolicyManager.html#setGlobalSetting(android.content.ComponentName, java.lang.String, java.lang.String" target="_blank">setGlobalSettings()</a>) &#x8FDB;&#x884C;&#x8BBE;&#x7F6E;&#xFF1A;<ul>
+<li><a href="https://developer.android.google.cn/reference/android/provider/Settings.Global.html#WIFI_DEVICE_OWNER_CONFIGS_LOCKDOWN" target="_blank">WIFI_DEVICE_OWNER_CONFIGS_LOCKDOWN</a></li>
+</ul>
+</li>
+</ul>
+<p><strong>Android7.0</strong></p>
+<ul>
+<li><h4 id="&#x65E0;&#x969C;&#x788D;&#x6539;&#x8FDB;"><a name="&#x65E0;&#x969C;&#x788D;&#x6539;&#x8FDB;" class="anchor-navigation-ex-anchor" href="#&#x65E0;&#x969C;&#x788D;&#x6539;&#x8FDB;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x65E0;&#x969C;&#x788D;&#x6539;&#x8FDB;" class="plugin-anchor" href="#&#x65E0;&#x969C;&#x788D;&#x6539;&#x8FDB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x65E0;&#x969C;&#x788D;&#x6539;&#x8FDB;</h4>
+<p>&#x4E3A;&#x63D0;&#x9AD8;&#x5E73;&#x53F0;&#x5BF9;&#x4E8E;&#x89C6;&#x529B;&#x4E0D;&#x4F73;&#x6216;&#x89C6;&#x529B;&#x53D7;&#x635F;&#x7528;&#x6237;&#x7684;&#x6613;&#x7528;&#x6027;&#xFF0C;Android 7.0 &#x505A;&#x51FA;&#x4E86;&#x4E00;&#x4E9B;&#x66F4;&#x6539;&#x3002;&#x8FD9;&#x4E9B;&#x66F4;&#x6539;&#x4E00;&#x822C;&#x5E76;&#x4E0D;&#x8981;&#x6C42;&#x66F4;&#x6539;&#x60A8;&#x7684;&#x5E94;&#x7528;&#x4EE3;&#x7801;&#xFF0C;&#x4E0D;&#x8FC7;&#x60A8;&#x5E94;&#x4ED4;&#x7EC6;&#x68C0;&#x67E5;&#x5E76;&#x4F7F;&#x7528;&#x60A8;&#x7684;&#x5E94;&#x7528;&#x6D4B;&#x8BD5;&#x8FD9;&#x4E9B;&#x529F;&#x80FD;&#xFF0C;&#x4EE5;&#x8BC4;&#x4F30;&#x5B83;&#x4EEC;&#x5BF9;&#x7528;&#x6237;&#x4F53;&#x9A8C;&#x7684;&#x6F5C;&#x5728;&#x5F71;&#x54CD;&#x3002;</p>
+</li>
+<li><h4 id="&#x7535;&#x6C60;&#x548C;&#x5185;&#x5B58;"><a name="&#x7535;&#x6C60;&#x548C;&#x5185;&#x5B58;" class="anchor-navigation-ex-anchor" href="#&#x7535;&#x6C60;&#x548C;&#x5185;&#x5B58;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x7535;&#x6C60;&#x548C;&#x5185;&#x5B58;" class="plugin-anchor" href="#&#x7535;&#x6C60;&#x548C;&#x5185;&#x5B58;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x7535;&#x6C60;&#x548C;&#x5185;&#x5B58;</h4>
+<p>Android 7.0 &#x5305;&#x62EC;&#x65E8;&#x5728;&#x5EF6;&#x957F;&#x8BBE;&#x5907;&#x7535;&#x6C60;&#x5BFF;&#x547D;&#x548C;&#x51CF;&#x5C11; RAM &#x4F7F;&#x7528;&#x7684;&#x7CFB;&#x7EDF;&#x884C;&#x4E3A;&#x53D8;&#x66F4;&#x3002;&#x8FD9;&#x4E9B;&#x53D8;&#x66F4;&#x53EF;&#x80FD;&#x4F1A;&#x5F71;&#x54CD;&#x60A8;&#x7684;&#x5E94;&#x7528;&#x8BBF;&#x95EE;&#x7CFB;&#x7EDF;&#x8D44;&#x6E90;&#xFF0C;&#x4EE5;&#x53CA;&#x60A8;&#x7684;&#x5E94;&#x7528;&#x901A;&#x8FC7;&#x7279;&#x5B9A;&#x9690;&#x5F0F; intent &#x4E0E;&#x5176;&#x4ED6;&#x5E94;&#x7528;&#x4EA4;&#x4E92;&#x7684;&#x65B9;&#x5F0F;&#x3002;</p>
+</li>
+</ul>
+</li>
+<li><h4 id="&#x5C4F;&#x5E55;&#x7F29;&#x653E;"><a name="&#x5C4F;&#x5E55;&#x7F29;&#x653E;" class="anchor-navigation-ex-anchor" href="#&#x5C4F;&#x5E55;&#x7F29;&#x653E;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x5C4F;&#x5E55;&#x7F29;&#x653E;" class="plugin-anchor" href="#&#x5C4F;&#x5E55;&#x7F29;&#x653E;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5C4F;&#x5E55;&#x7F29;&#x653E;</h4>
+<p>Android 7.0 &#x652F;&#x6301;&#x7528;&#x6237;&#x8BBE;&#x7F6E;<strong>&#x663E;&#x793A;&#x5C3A;&#x5BF8;</strong>&#xFF0C;&#x4EE5;&#x653E;&#x5927;&#x6216;&#x7F29;&#x5C0F;&#x5C4F;&#x5E55;&#x4E0A;&#x7684;&#x6240;&#x6709;&#x5143;&#x7D20;&#xFF0C;&#x4ECE;&#x800C;&#x63D0;&#x5347;&#x8BBE;&#x5907;&#x5BF9;&#x89C6;&#x529B;&#x4E0D;&#x4F73;&#x7528;&#x6237;&#x7684;&#x53EF;&#x8BBF;&#x95EE;&#x6027;&#x3002;&#x7528;&#x6237;&#x65E0;&#x6CD5;&#x5C06;&#x5C4F;&#x5E55;&#x7F29;&#x653E;&#x81F3;&#x4F4E;&#x4E8E;&#x6700;&#x5C0F;&#x5C4F;&#x5E55;&#x5BBD;&#x5EA6; <a href="http://developer.android.google.cn/guide/topics/resources/providing-resources.html" target="_blank">sw320dp</a>&#xFF0C;&#x8BE5;&#x5BBD;&#x5EA6;&#x662F; Nexus 4 &#x7684;&#x5BBD;&#x5EA6;&#xFF0C;&#x4E5F;&#x662F;&#x5E38;&#x89C4;&#x4E2D;&#x7B49;&#x5927;&#x5C0F;&#x624B;&#x673A;&#x7684;&#x5BBD;&#x5EA6;&#x3002;
+<img src="http://upload-images.jianshu.io/upload_images/1709375-3f8e0e26c3b965fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="&#x6B63;&#x5E38;&#x6548;&#x679C;">
+<img src="http://upload-images.jianshu.io/upload_images/1709375-72e539bf7e2962ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="&#x8FD0;&#x884C; Android 7.0 &#x7CFB;&#x7EDF;&#x6620;&#x50CF;&#x7684;&#x8BBE;&#x5907;&#x589E;&#x5927;&#x663E;&#x793A;&#x5C3A;&#x5BF8;&#x540E;&#x7684;&#x6548;&#x679C;&#x3002;"></p>
+<p>&#x5F53;&#x8BBE;&#x5907;&#x5BC6;&#x5EA6;&#x53D1;&#x751F;&#x66F4;&#x6539;&#x65F6;&#xFF0C;&#x7CFB;&#x7EDF;&#x4F1A;&#x4EE5;&#x5982;&#x4E0B;&#x65B9;&#x5F0F;&#x901A;&#x77E5;&#x6B63;&#x5728;&#x8FD0;&#x884C;&#x7684;&#x5E94;&#x7528;&#xFF1A;</p>
+<ul>
+<li>&#x5982;&#x679C;&#x662F;&#x9762;&#x5411; API &#x7EA7;&#x522B; 23 &#x6216;&#x66F4;&#x4F4E;&#x7248;&#x672C;&#x7CFB;&#x7EDF;&#x7684;&#x5E94;&#x7528;&#xFF0C;&#x7CFB;&#x7EDF;&#x4F1A;&#x81EA;&#x52A8;&#x7EC8;&#x6B62;&#x5176;&#x6240;&#x6709;&#x540E;&#x53F0;&#x8FDB;&#x7A0B;&#x3002;&#x8FD9;&#x610F;&#x5473;&#x7740;&#x5982;&#x679C;&#x7528;&#x6237;&#x5207;&#x6362;&#x79BB;&#x5F00;&#x6B64;&#x7C7B;&#x5E94;&#x7528;&#xFF0C;&#x8F6C;&#x800C;&#x6253;&#x5F00; <em>Settings</em> &#x5C4F;&#x5E55;&#x5E76;&#x66F4;&#x6539; <strong>Display size</strong> &#x8BBE;&#x7F6E;&#xFF0C;&#x5219;&#x7CFB;&#x7EDF;&#x4F1A;&#x50CF;&#x5904;&#x7406;&#x5185;&#x5B58;&#x4E0D;&#x8DB3;&#x7684;&#x60C5;&#x51B5;&#x4E00;&#x6837;&#x7EC8;&#x6B62;&#x8BE5;&#x5E94;&#x7528;&#x3002;&#x5982;&#x679C;&#x5E94;&#x7528;&#x5177;&#x6709;&#x4EFB;&#x4F55;&#x524D;&#x53F0;&#x8FDB;&#x7A0B;&#xFF0C;&#x5219;&#x7CFB;&#x7EDF;&#x4F1A;&#x5982;<a href="https://developer.android.google.cn/guide/topics/resources/runtime-changes.html" target="_blank">&#x5904;&#x7406;&#x8FD0;&#x884C;&#x65F6;&#x66F4;&#x6539;</a>&#x4E2D;&#x6240;&#x8FF0;&#x5C06;&#x914D;&#x7F6E;&#x53D8;&#x66F4;&#x901A;&#x77E5;&#x7ED9;&#x8FD9;&#x4E9B;&#x8FDB;&#x7A0B;&#xFF0C;&#x5C31;&#x50CF;&#x5BF9;&#x5F85;&#x8BBE;&#x5907;&#x5C4F;&#x5E55;&#x65B9;&#x5411;&#x53D8;&#x66F4;&#x4E00;&#x6837;&#x3002;</li>
+<li>&#x5982;&#x679C;&#x662F;&#x9762;&#x5411; Android 7.0 &#x7684;&#x5E94;&#x7528;&#xFF0C;&#x5219;&#x5176;&#x6240;&#x6709;&#x8FDB;&#x7A0B;&#xFF08;&#x524D;&#x53F0;&#x548C;&#x540E;&#x53F0;&#xFF09;&#x90FD;&#x4F1A;&#x6536;&#x5230;&#x6709;&#x5173;&#x914D;&#x7F6E;&#x53D8;&#x66F4;&#x7684;&#x901A;&#x77E5;&#xFF0C;&#x5982;<a href="https://developer.android.google.cn/guide/topics/resources/runtime-changes.html" target="_blank">&#x5904;&#x7406;&#x8FD0;&#x884C;&#x65F6;&#x66F4;&#x6539;</a>&#x4E2D;&#x6240;&#x8FF0;&#x3002;</li>
+</ul>
+<p>&#x5927;&#x591A;&#x6570;&#x5E94;&#x7528;&#x5E76;&#x4E0D;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x4EFB;&#x4F55;&#x66F4;&#x6539;&#x5373;&#x53EF;&#x652F;&#x6301;&#x6B64;&#x529F;&#x80FD;&#xFF0C;&#x4E0D;&#x8FC7;&#x524D;&#x63D0;&#x662F;&#x8FD9;&#x4E9B;&#x5E94;&#x7528;&#x9075;&#x5FAA; Android &#x6700;&#x4F73;&#x505A;&#x6CD5;&#x3002;&#x5177;&#x4F53;&#x8981;&#x68C0;&#x67E5;&#x7684;&#x4E8B;&#x9879;&#xFF1A;</p>
+<ul>
+<li>&#x5728;&#x5C4F;&#x5E55;&#x5BBD;&#x5EA6;&#x4E3A; <a href="https://developer.android.google.cn/guide/topics/resources/providing-resources.html" target="_blank">sw320dp</a> &#x7684;&#x8BBE;&#x5907;&#x4E0A;&#x6D4B;&#x8BD5;&#x60A8;&#x7684;&#x5E94;&#x7528;&#xFF0C;&#x5E76;&#x786E;&#x4FDD;&#x5176;&#x5145;&#x5206;&#x8FD0;&#x884C;&#x3002;</li>
+<li>&#x5F53;&#x8BBE;&#x5907;&#x914D;&#x7F6E;&#x53D1;&#x751F;&#x53D8;&#x66F4;&#x65F6;&#xFF0C;&#x66F4;&#x65B0;&#x4EFB;&#x4F55;&#x4E0E;&#x5BC6;&#x5EA6;&#x76F8;&#x5173;&#x7684;&#x7F13;&#x5B58;&#x4FE1;&#x606F;&#xFF0C;&#x4F8B;&#x5982;&#x7F13;&#x5B58;&#x4F4D;&#x56FE;&#x6216;&#x4ECE;&#x7F51;&#x7EDC;&#x52A0;&#x8F7D;&#x7684;&#x8D44;&#x6E90;&#x3002;&#x5F53;&#x5E94;&#x7528;&#x4ECE;&#x6682;&#x505C;&#x72B6;&#x6001;&#x6062;&#x590D;&#x8FD0;&#x884C;&#x65F6;&#xFF0C;&#x68C0;&#x67E5;&#x914D;&#x7F6E;&#x53D8;&#x66F4;&#x3002;
+&#x6CE8;&#xFF1A;&#x5982;&#x679C;&#x60A8;&#x8981;&#x7F13;&#x5B58;&#x4E0E;&#x914D;&#x7F6E;&#x76F8;&#x5173;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x5219;&#x6700;&#x597D;&#x4E5F;&#x5305;&#x62EC;&#x76F8;&#x5173;&#x5143;&#x6570;&#x636E;&#xFF0C;&#x4F8B;&#x5982;&#x8BE5;&#x6570;&#x636E;&#x5BF9;&#x5E94;&#x7684;&#x5C4F;&#x5E55;&#x5C3A;&#x5BF8;&#x6216;&#x50CF;&#x7D20;&#x5BC6;&#x5EA6;&#x3002;&#x4FDD;&#x5B58;&#x8FD9;&#x4E9B;&#x5143;&#x6570;&#x636E;&#x4FBF;&#x4E8E;&#x60A8;&#x5728;&#x914D;&#x7F6E;&#x53D8;&#x66F4;&#x540E;&#x51B3;&#x5B9A;&#x662F;&#x5426;&#x9700;&#x8981;&#x5237;&#x65B0;&#x7F13;&#x5B58;&#x6570;&#x636E;&#x3002;</li>
+<li>&#x907F;&#x514D;&#x7528;&#x50CF;&#x7D20;&#x5355;&#x4F4D;&#x6307;&#x5B9A;&#x5C3A;&#x5BF8;&#xFF0C;&#x56E0;&#x4E3A;&#x50CF;&#x7D20;&#x4E0D;&#x4F1A;&#x968F;&#x5C4F;&#x5E55;&#x5BC6;&#x5EA6;&#x7F29;&#x653E;&#x3002;&#x5E94;&#x6539;&#x4E3A;&#x4F7F;&#x7528;<a href="https://developer.android.google.cn/guide/practices/screens_support.html" target="_blank">&#x4E0E;&#x5BC6;&#x5EA6;&#x65E0;&#x5173;&#x50CF;&#x7D20;</a> (dp) &#x5355;&#x4F4D;&#x6307;&#x5B9A;&#x5C3A;&#x5BF8;&#x3002;</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><h4 id="ndk-&#x5E94;&#x7528;&#x94FE;&#x63A5;&#x81F3;&#x5E73;&#x53F0;&#x5E93;"><a name="ndk-&#x5E94;&#x7528;&#x94FE;&#x63A5;&#x81F3;&#x5E73;&#x53F0;&#x5E93;" class="anchor-navigation-ex-anchor" href="#ndk-&#x5E94;&#x7528;&#x94FE;&#x63A5;&#x81F3;&#x5E73;&#x53F0;&#x5E93;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="ndk-&#x5E94;&#x7528;&#x94FE;&#x63A5;&#x81F3;&#x5E73;&#x53F0;&#x5E93;" class="plugin-anchor" href="#ndk-&#x5E94;&#x7528;&#x94FE;&#x63A5;&#x81F3;&#x5E73;&#x53F0;&#x5E93;"><i class="fa fa-link" aria-hidden="true"></i></a>NDK &#x5E94;&#x7528;&#x94FE;&#x63A5;&#x81F3;&#x5E73;&#x53F0;&#x5E93;</h4>
+<p>&#x4ECE; Android 7.0 &#x5F00;&#x59CB;&#xFF0C;&#x7CFB;&#x7EDF;&#x5C06;&#x963B;&#x6B62;&#x5E94;&#x7528;&#x52A8;&#x6001;&#x94FE;&#x63A5;&#x975E;&#x516C;&#x5F00; NDK &#x5E93;&#xFF0C;&#x8FD9;&#x79CD;&#x5E93;&#x53EF;&#x80FD;&#x4F1A;&#x5BFC;&#x81F4;&#x60A8;&#x7684;&#x5E94;&#x7528;&#x5D29;&#x6E83;&#x3002;&#x6B64;&#x884C;&#x4E3A;&#x53D8;&#x66F4;&#x65E8;&#x5728;&#x4E3A;&#x8DE8;&#x5E73;&#x53F0;&#x66F4;&#x65B0;&#x548C;&#x4E0D;&#x540C;&#x8BBE;&#x5907;&#x63D0;&#x4F9B;&#x7EDF;&#x4E00;&#x7684;&#x5E94;&#x7528;&#x4F53;&#x9A8C;&#x3002;&#x5373;&#x4F7F;&#x60A8;&#x7684;&#x4EE3;&#x7801;&#x53EF;&#x80FD;&#x4E0D;&#x4F1A;&#x94FE;&#x63A5;&#x79C1;&#x6709;&#x5E93;&#xFF0C;&#x4F46;&#x60A8;&#x7684;&#x5E94;&#x7528;&#x4E2D;&#x7684;&#x7B2C;&#x4E09;&#x65B9;&#x9759;&#x6001;&#x5E93;&#x53EF;&#x80FD;&#x4F1A;&#x8FD9;&#x4E48;&#x505A;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x6240;&#x6709;&#x5F00;&#x53D1;&#x8005;&#x90FD;&#x5E94;&#x8FDB;&#x884C;&#x76F8;&#x5E94;&#x68C0;&#x67E5;&#xFF0C;&#x786E;&#x4FDD;&#x4ED6;&#x4EEC;&#x7684;&#x5E94;&#x7528;&#x4E0D;&#x4F1A;&#x5728;&#x8FD0;&#x884C; Android 7.0 &#x7684;&#x8BBE;&#x5907;&#x4E0A;&#x5D29;&#x6E83;&#x3002;&#x5982;&#x679C;&#x60A8;&#x7684;&#x5E94;&#x7528;&#x4F7F;&#x7528;&#x539F;&#x751F;&#x4EE3;&#x7801;&#xFF0C;&#x5219;&#x53EA;&#x80FD;&#x4F7F;&#x7528;<a href="https://developer.android.google.cn/ndk/guides/stable_apis.html" target="_blank">&#x516C;&#x5F00; NDK API</a>&#x3002;</p>
+</li>
+<li><h4 id="&#x4F4E;&#x7535;&#x8017;&#x6A21;&#x5F0F;"><a name="&#x4F4E;&#x7535;&#x8017;&#x6A21;&#x5F0F;" class="anchor-navigation-ex-anchor" href="#&#x4F4E;&#x7535;&#x8017;&#x6A21;&#x5F0F;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x4F4E;&#x7535;&#x8017;&#x6A21;&#x5F0F;" class="plugin-anchor" href="#&#x4F4E;&#x7535;&#x8017;&#x6A21;&#x5F0F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4F4E;&#x7535;&#x8017;&#x6A21;&#x5F0F;</h4>
+<p>Android 6.0&#xFF08;API &#x7EA7;&#x522B; 23&#xFF09;&#x5F15;&#x5165;&#x4E86;&#x4F4E;&#x7535;&#x8017;&#x6A21;&#x5F0F;&#xFF0C;&#x5F53;&#x7528;&#x6237;&#x8BBE;&#x5907;&#x672A;&#x63D2;&#x63A5;&#x7535;&#x6E90;&#x3001;&#x5904;&#x4E8E;&#x9759;&#x6B62;&#x72B6;&#x6001;&#x4E14;&#x5C4F;&#x5E55;&#x5173;&#x95ED;&#x65F6;&#xFF0C;&#x8BE5;&#x6A21;&#x5F0F;&#x4F1A;&#x63A8;&#x8FDF; CPU &#x548C;&#x7F51;&#x7EDC;&#x6D3B;&#x52A8;&#xFF0C;&#x4ECE;&#x800C;&#x5EF6;&#x957F;&#x7535;&#x6C60;&#x5BFF;&#x547D;&#x3002;&#x800C; Android 7.0 &#x5219;&#x901A;&#x8FC7;&#x5728;&#x8BBE;&#x5907;&#x672A;&#x63D2;&#x63A5;&#x7535;&#x6E90;&#x4E14;&#x5C4F;&#x5E55;&#x5173;&#x95ED;&#x72B6;&#x6001;&#x4E0B;&#x3001;&#x4F46;&#x4E0D;&#x4E00;&#x5B9A;&#x8981;&#x5904;&#x4E8E;&#x9759;&#x6B62;&#x72B6;&#x6001;&#xFF08;&#x4F8B;&#x5982;&#x7528;&#x6237;&#x5916;&#x51FA;&#x65F6;&#x628A;&#x624B;&#x6301;&#x5F0F;&#x8BBE;&#x5907;&#x88C5;&#x5728;&#x53E3;&#x888B;&#x91CC;&#xFF09;&#x65F6;&#x5E94;&#x7528;&#x90E8;&#x5206; CPU &#x548C;&#x7F51;&#x7EDC;&#x9650;&#x5236;&#xFF0C;&#x8FDB;&#x4E00;&#x6B65;&#x589E;&#x5F3A;&#x4E86;&#x4F4E;&#x7535;&#x8017;&#x6A21;&#x5F0F;&#x3002;
+<img src="http://upload-images.jianshu.io/upload_images/1709375-b41f24ea26df75d1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="&#x56FE; 1. &#x4F4E;&#x7535;&#x8017;&#x6A21;&#x5F0F;&#x5982;&#x4F55;&#x5E94;&#x7528;&#x7B2C;&#x4E00;&#x7EA7;&#x7CFB;&#x7EDF;&#x6D3B;&#x52A8;&#x9650;&#x5236;&#x4EE5;&#x5EF6;&#x957F;&#x7535;&#x6C60;&#x5BFF;&#x547D;&#x7684;&#x56FE;&#x793A;&#x3002;">
+&#x5F53;&#x8BBE;&#x5907;&#x5904;&#x4E8E;&#x5145;&#x7535;&#x72B6;&#x6001;&#x4E14;&#x5C4F;&#x5E55;&#x5DF2;&#x5173;&#x95ED;&#x4E00;&#x5B9A;&#x65F6;&#x95F4;&#x540E;&#xFF0C;&#x8BBE;&#x5907;&#x4F1A;&#x8FDB;&#x5165;&#x4F4E;&#x7535;&#x8017;&#x6A21;&#x5F0F;&#x5E76;&#x5E94;&#x7528;&#x7B2C;&#x4E00;&#x90E8;&#x5206;&#x9650;&#x5236;&#xFF1A;&#x5173;&#x95ED;&#x5E94;&#x7528;&#x7F51;&#x7EDC;&#x8BBF;&#x95EE;&#x3001;&#x63A8;&#x8FDF;&#x4F5C;&#x4E1A;&#x548C;&#x540C;&#x6B65;&#x3002;&#x5982;&#x679C;&#x8FDB;&#x5165;&#x4F4E;&#x7535;&#x8017;&#x6A21;&#x5F0F;&#x540E;&#x8BBE;&#x5907;&#x5904;&#x4E8E;&#x9759;&#x6B62;&#x72B6;&#x6001;&#x8FBE;&#x5230;&#x4E00;&#x5B9A;&#x65F6;&#x95F4;&#xFF0C;&#x7CFB;&#x7EDF;&#x5219;&#x4F1A;&#x5BF9;<a href="https://developer.android.google.cn/reference/android/os/PowerManager.WakeLock.html" target="_blank">PowerManager.WakeLock</a>
+&#x3001;<a href="https://developer.android.google.cn/reference/android/app/AlarmManager.html" target="_blank">AlarmManager</a> &#x95F9;&#x94C3;&#x3001;GPS &#x548C; WLAN &#x626B;&#x63CF;&#x5E94;&#x7528;&#x4F59;&#x4E0B;&#x7684;&#x4F4E;&#x7535;&#x8017;&#x6A21;&#x5F0F;&#x9650;&#x5236;&#x3002;&#x65E0;&#x8BBA;&#x662F;&#x5E94;&#x7528;&#x90E8;&#x5206;&#x8FD8;&#x662F;&#x5168;&#x90E8;&#x4F4E;&#x7535;&#x8017;&#x6A21;&#x5F0F;&#x9650;&#x5236;&#xFF0C;&#x7CFB;&#x7EDF;&#x90FD;&#x4F1A;&#x5524;&#x9192;&#x8BBE;&#x5907;&#x4EE5;&#x63D0;&#x4F9B;&#x7B80;&#x77ED;&#x7684;&#x7EF4;&#x62A4;&#x65F6;&#x95F4;&#x7A97;&#x53E3;&#xFF0C;&#x5728;&#x6B64;&#x7A97;&#x53E3;&#x671F;&#x95F4;&#xFF0C;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE;&#x7F51;&#x7EDC;&#x5E76;&#x6267;&#x884C;&#x4EFB;&#x4F55;&#x88AB;&#x63A8;&#x8FDF;&#x7684;&#x4F5C;&#x4E1A;/&#x540C;&#x6B65;&#x3002;
+<img src="http://upload-images.jianshu.io/upload_images/1709375-f5550e4f0bb40902.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="&#x56FE; 2. &#x4F4E;&#x7535;&#x8017;&#x6A21;&#x5F0F;&#x5982;&#x4F55;&#x5728;&#x8BBE;&#x5907;&#x5904;&#x4E8E;&#x9759;&#x6B62;&#x72B6;&#x6001;&#x8FBE;&#x5230;&#x4E00;&#x5B9A;&#x65F6;&#x95F4;&#x540E;&#x5E94;&#x7528;&#x7B2C;&#x4E8C;&#x7EA7;&#x7CFB;&#x7EDF;&#x6D3B;&#x52A8;&#x9650;&#x5236;&#x7684;&#x56FE;&#x793A;&#x3002;">
+&#x8BF7;&#x6CE8;&#x610F;&#xFF0C;&#x6FC0;&#x6D3B;&#x5C4F;&#x5E55;&#x6216;&#x63D2;&#x63A5;&#x8BBE;&#x5907;&#x7535;&#x6E90;&#x65F6;&#xFF0C;&#x7CFB;&#x7EDF;&#x5C06;&#x9000;&#x51FA;&#x4F4E;&#x7535;&#x8017;&#x6A21;&#x5F0F;&#x5E76;&#x79FB;&#x9664;&#x8FD9;&#x4E9B;&#x5904;&#x7406;&#x9650;&#x5236;&#x3002;&#x6B64;&#x9879;&#x65B0;&#x589E;&#x7684;&#x884C;&#x4E3A;&#x4E0D;&#x4F1A;&#x5F71;&#x54CD;&#x6709;&#x5173;&#x4F7F;&#x60A8;&#x7684;&#x5E94;&#x7528;&#x9002;&#x5E94; Android 6.0&#xFF08;API &#x7EA7;&#x522B; 23&#xFF09;&#x4E2D;&#x6240;&#x63A8;&#x51FA;&#x7684;&#x65E7;&#x7248;&#x672C;&#x4F4E;&#x7535;&#x8017;&#x6A21;&#x5F0F;&#x7684;&#x5EFA;&#x8BAE;&#x548C;&#x6700;&#x4F73;&#x505A;&#x6CD5;&#xFF0C;&#x5982;<a href="https://developer.android.google.cn/training/monitoring-device-state/doze-standby.html" target="_blank">&#x5BF9;&#x4F4E;&#x7535;&#x8017;&#x6A21;&#x5F0F;&#x548C;&#x5E94;&#x7528;&#x5F85;&#x673A;&#x6A21;&#x5F0F;&#x8FDB;&#x884C;&#x9488;&#x5BF9;&#x6027;&#x4F18;&#x5316;</a>&#x4E2D;&#x6240;&#x8BA8;&#x8BBA;&#x3002;&#x60A8;&#x4ECD;&#x5E94;&#x9075;&#x5FAA;&#x8FD9;&#x4E9B;&#x5EFA;&#x8BAE;&#xFF08;&#x4F8B;&#x5982;&#x4F7F;&#x7528; Google &#x4E91;&#x6D88;&#x606F;&#x4F20;&#x9012; (GCM) &#x53D1;&#x9001;&#x548C;&#x63A5;&#x6536;&#x6D88;&#x606F;&#xFF09;&#x5E76;&#x5F00;&#x59CB;&#x5B89;&#x6392;&#x66F4;&#x65B0;&#x8BA1;&#x5212;&#x4EE5;&#x9002;&#x5E94;&#x65B0;&#x589E;&#x7684;&#x4F4E;&#x7535;&#x8017;&#x6A21;&#x5F0F;&#x884C;&#x4E3A;&#x3002;</p>
+</li>
+<li><h4 id="project-svelte&#xFF1A;&#x540E;&#x53F0;&#x4F18;&#x5316;"><a name="project-svelte&#xFF1A;&#x540E;&#x53F0;&#x4F18;&#x5316;" class="anchor-navigation-ex-anchor" href="#project-svelte&#xFF1A;&#x540E;&#x53F0;&#x4F18;&#x5316;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="project-svelte&#xFF1A;&#x540E;&#x53F0;&#x4F18;&#x5316;" class="plugin-anchor" href="#project-svelte&#xFF1A;&#x540E;&#x53F0;&#x4F18;&#x5316;"><i class="fa fa-link" aria-hidden="true"></i></a>Project Svelte&#xFF1A;&#x540E;&#x53F0;&#x4F18;&#x5316;</h4>
+<p>Android 7.0 &#x79FB;&#x9664;&#x4E86;&#x4E09;&#x9879;&#x9690;&#x5F0F;&#x5E7F;&#x64AD;&#xFF0C;&#x4EE5;&#x5E2E;&#x52A9;&#x4F18;&#x5316;&#x5185;&#x5B58;&#x4F7F;&#x7528;&#x548C;&#x7535;&#x91CF;&#x6D88;&#x8017;&#x3002;&#x6B64;&#x9879;&#x53D8;&#x66F4;&#x5F88;&#x6709;&#x5FC5;&#x8981;&#xFF0C;&#x56E0;&#x4E3A;&#x9690;&#x5F0F;&#x5E7F;&#x64AD;&#x4F1A;&#x5728;&#x540E;&#x53F0;&#x9891;&#x7E41;&#x542F;&#x52A8;&#x5DF2;&#x6CE8;&#x518C;&#x4FA6;&#x542C;&#x8FD9;&#x4E9B;&#x5E7F;&#x64AD;&#x7684;&#x5E94;&#x7528;&#x3002;&#x5220;&#x9664;&#x8FD9;&#x4E9B;&#x5E7F;&#x64AD;&#x53EF;&#x4EE5;&#x663E;&#x8457;&#x63D0;&#x5347;&#x8BBE;&#x5907;&#x6027;&#x80FD;&#x548C;&#x7528;&#x6237;&#x4F53;&#x9A8C;&#x3002;
+&#x79FB;&#x52A8;&#x8BBE;&#x5907;&#x4F1A;&#x7ECF;&#x5386;&#x9891;&#x7E41;&#x7684;&#x8FDE;&#x63A5;&#x53D8;&#x66F4;&#xFF0C;&#x4F8B;&#x5982;&#x5728; WLAN &#x548C;&#x79FB;&#x52A8;&#x6570;&#x636E;&#x4E4B;&#x95F4;&#x5207;&#x6362;&#x65F6;&#x3002;&#x76EE;&#x524D;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5728;&#x5E94;&#x7528;&#x6E05;&#x5355;&#x4E2D;&#x6CE8;&#x518C;&#x4E00;&#x4E2A;&#x63A5;&#x6536;&#x5668;&#x6765;&#x4FA6;&#x542C;&#x9690;&#x5F0F; <a href="https://developer.android.google.cn/reference/android/net/ConnectivityManager.html#CONNECTIVITY_ACTION" target="_blank">CONNECTIVITY_ACTION</a>
+&#x5E7F;&#x64AD;&#xFF0C;&#x8BA9;&#x5E94;&#x7528;&#x80FD;&#x591F;&#x76D1;&#x63A7;&#x8FD9;&#x4E9B;&#x53D8;&#x66F4;&#x3002;&#x7531;&#x4E8E;&#x5F88;&#x591A;&#x5E94;&#x7528;&#x4F1A;&#x6CE8;&#x518C;&#x63A5;&#x6536;&#x6B64;&#x5E7F;&#x64AD;&#xFF0C;&#x56E0;&#x6B64;&#x5355;&#x6B21;&#x7F51;&#x7EDC;&#x5207;&#x6362;&#x5373;&#x4F1A;&#x5BFC;&#x81F4;&#x6240;&#x6709;&#x5E94;&#x7528;&#x88AB;&#x5524;&#x9192;&#x5E76;&#x540C;&#x65F6;&#x5904;&#x7406;&#x6B64;&#x5E7F;&#x64AD;&#x3002;
+&#x540C;&#x7406;&#xFF0C;&#x5728;&#x4E4B;&#x524D;&#x7248;&#x672C;&#x7684; Android &#x4E2D;&#xFF0C;&#x5E94;&#x7528;&#x53EF;&#x4EE5;&#x6CE8;&#x518C;&#x63A5;&#x6536;&#x6765;&#x81EA;&#x5176;&#x4ED6;&#x5E94;&#x7528;&#xFF08;&#x4F8B;&#x5982;&#x76F8;&#x673A;&#xFF09;&#x7684;&#x9690;&#x5F0F; <a href="https://developer.android.google.cn/reference/android/hardware/Camera.html#ACTION_NEW_PICTURE" target="_blank">ACTION_NEW_PICTURE</a> &#x548C;<a href="https://developer.android.google.cn/reference/android/hardware/Camera.html#ACTION_NEW_VIDEO" target="_blank">ACTION_NEW_VIDEO</a> &#x5E7F;&#x64AD;&#x3002;&#x5F53;&#x7528;&#x6237;&#x4F7F;&#x7528;&#x76F8;&#x673A;&#x5E94;&#x7528;&#x62CD;&#x6444;&#x7167;&#x7247;&#x65F6;&#xFF0C;&#x8FD9;&#x4E9B;&#x5E94;&#x7528;&#x5373;&#x4F1A;&#x88AB;&#x5524;&#x9192;&#x4EE5;&#x5904;&#x7406;&#x5E7F;&#x64AD;&#x3002;</p>
+<p>&#x4E3A;&#x7F13;&#x89E3;&#x8FD9;&#x4E9B;&#x95EE;&#x9898;&#xFF0C;Android 7.0 &#x5E94;&#x7528;&#x4E86;&#x4EE5;&#x4E0B;&#x4F18;&#x5316;&#x63AA;&#x65BD;&#xFF1A;</p>
+<ul>
+<li>&#x9762;&#x5411; Android 7.0 &#x5F00;&#x53D1;&#x7684;&#x5E94;&#x7528;&#x4E0D;&#x4F1A;&#x6536;&#x5230; <a href="https://developer.android.google.cn/reference/android/net/ConnectivityManager.html#CONNECTIVITY_ACTION" target="_blank">CONNECTIVITY_ACTION</a> &#x5E7F;&#x64AD;&#xFF0C;&#x5373;&#x4F7F;&#x5B83;&#x4EEC;&#x5DF2;&#x6709;&#x6E05;&#x5355;&#x6761;&#x76EE;&#x6765;&#x8BF7;&#x6C42;&#x63A5;&#x53D7;&#x8FD9;&#x4E9B;&#x4E8B;&#x4EF6;&#x7684;&#x901A;&#x77E5;&#x3002;&#x5728;&#x524D;&#x53F0;&#x8FD0;&#x884C;&#x7684;&#x5E94;&#x7528;&#x5982;&#x679C;&#x4F7F;&#x7528; <a href="https://developer.android.google.cn/reference/android/content/BroadcastReceiver.html" target="_blank">BroadcastReceiver</a> &#x8BF7;&#x6C42;&#x63A5;&#x6536;&#x901A;&#x77E5;&#xFF0C;&#x5219;&#x4ECD;&#x53EF;&#x4EE5;&#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x4E2D;&#x4FA6;&#x542C;CONNECTIVITY_CHANGE</li>
+<li>&#x5E94;&#x7528;&#x65E0;&#x6CD5;&#x53D1;&#x9001;&#x6216;&#x63A5;&#x6536; <a href="https://developer.android.google.cn/reference/android/hardware/Camera.html#ACTION_NEW_PICTURE" target="_blank">ACTION_NEW_PICTURE</a> &#x6216; <a href="https://developer.android.google.cn/reference/android/hardware/Camera.html#ACTION_NEW_VIDEO" target="_blank">ACTION_NEW_VIDEO</a> &#x5E7F;&#x64AD;&#x3002;&#x6B64;&#x9879;&#x4F18;&#x5316;&#x4F1A;&#x5F71;&#x54CD;&#x6240;&#x6709;&#x5E94;&#x7528;&#xFF0C;&#x800C;&#x4E0D;&#x4EC5;&#x4EC5;&#x662F;&#x9762;&#x5411; Android 7.0 &#x7684;&#x5E94;&#x7528;&#x3002;</li>
+</ul>
+<p>&#x5982;&#x679C;&#x60A8;&#x7684;&#x5E94;&#x7528;&#x4F7F;&#x7528;&#x4EFB;&#x4F55; intent&#xFF0C;&#x60A8;&#x4ECD;&#x9700;&#x8981;&#x5C3D;&#x5FEB;&#x79FB;&#x9664;&#x5B83;&#x4EEC;&#x7684;&#x4F9D;&#x8D56;&#x5173;&#x7CFB;&#xFF0C;&#x4EE5;&#x6B63;&#x786E;&#x9002;&#x914D; Android 7.0 &#x8BBE;&#x5907;&#x3002;Android &#x6846;&#x67B6;&#x63D0;&#x4F9B;&#x591A;&#x4E2A;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x6765;&#x7F13;&#x89E3;&#x5BF9;&#x8FD9;&#x4E9B;&#x9690;&#x5F0F;&#x5E7F;&#x64AD;&#x7684;&#x9700;&#x6C42;&#x3002;&#x4F8B;&#x5982;&#xFF0C;<a href="https://developer.android.google.cn/reference/android/app/job/JobScheduler.html" target="_blank">JobScheduler</a> API &#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;&#x7A33;&#x5065;&#x53EF;&#x9760;&#x7684;&#x673A;&#x5236;&#x6765;&#x5B89;&#x6392;&#x6EE1;&#x8DB3;&#x6307;&#x5B9A;&#x6761;&#x4EF6;&#xFF08;&#x4F8B;&#x5982;&#x8FDE;&#x5165;&#x65E0;&#x9650;&#x6D41;&#x91CF;&#x7F51;&#x7EDC;&#xFF09;&#x65F6;&#x6240;&#x6267;&#x884C;&#x7684;&#x7F51;&#x7EDC;&#x64CD;&#x4F5C;&#x3002;&#x60A8;&#x751A;&#x81F3;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <a href="https://developer.android.google.cn/reference/android/app/job/JobScheduler.html" target="_blank">JobScheduler</a> &#x6765;&#x9002;&#x5E94;&#x5185;&#x5BB9;&#x63D0;&#x4F9B;&#x7A0B;&#x5E8F;&#x53D8;&#x5316;&#x3002;&#x5982;&#x9700;&#x4E86;&#x89E3;&#x6709;&#x5173; Android N &#x4E2D;&#x540E;&#x53F0;&#x4F18;&#x5316;&#x4EE5;&#x53CA;&#x5982;&#x4F55;&#x6539;&#x5199;&#x5E94;&#x7528;&#x7684;&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;<a href="https://developer.android.google.cn/preview/features/background-optimization.html" target="_blank">&#x540E;&#x53F0;&#x4F18;&#x5316;</a>&#x3002;</p>
+</li>
+</ul>
+<h3 id="&#x66F4;&#x591A;&#x4FE1;&#x606F;&#x8BF7;&#x731B;&#x6233;&#x4E0B;&#x9762;&#x7684;&#x5B98;&#x65B9;&#x94FE;&#x63A5;"><a name="&#x66F4;&#x591A;&#x4FE1;&#x606F;&#x8BF7;&#x731B;&#x6233;&#x4E0B;&#x9762;&#x7684;&#x5B98;&#x65B9;&#x94FE;&#x63A5;" class="anchor-navigation-ex-anchor" href="#&#x66F4;&#x591A;&#x4FE1;&#x606F;&#x8BF7;&#x731B;&#x6233;&#x4E0B;&#x9762;&#x7684;&#x5B98;&#x65B9;&#x94FE;&#x63A5;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x66F4;&#x591A;&#x4FE1;&#x606F;&#x8BF7;&#x731B;&#x6233;&#x4E0B;&#x9762;&#x7684;&#x5B98;&#x65B9;&#x94FE;&#x63A5;" class="plugin-anchor" href="#&#x66F4;&#x591A;&#x4FE1;&#x606F;&#x8BF7;&#x731B;&#x6233;&#x4E0B;&#x9762;&#x7684;&#x5B98;&#x65B9;&#x94FE;&#x63A5;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x66F4;&#x591A;&#x4FE1;&#x606F;&#x8BF7;&#x731B;&#x6233;&#x4E0B;&#x9762;&#x7684;&#x5B98;&#x65B9;&#x94FE;&#x63A5;</h3>
+<p><a href="https://developer.android.google.cn/about/versions/marshmallow/android-6.0-changes.html" target="_blank">Android 6.0 &#x53D8;&#x66F4;</a>
+<a href="https://developer.android.google.cn/about/versions/nougat/android-7.0-changes.html" target="_blank">Android 7.0 &#x53D8;&#x66F4;</a></p>
+<p>&#x8F6C;&#x8F7D;&#x8BF7;&#x4EE5;&#x94FE;&#x63A5;&#x5F62;&#x5F0F;&#x6807;&#x660E;&#x51FA;&#x5904;&#xFF1A; 
+<a href="http://www.jianshu.com/p/95790125b7f4" target="_blank">http://www.jianshu.com/p/95790125b7f4</a>
+&#x672C;&#x6587;&#x51FA;&#x81EA;:<a href="http://www.jianshu.com/u/109656c2d96f" target="_blank">103style</a>
+or
+csdn 
+<a href="http://blog.csdn.net/lxk_1993/article/details/73784883" target="_blank">http://blog.csdn.net/lxk_1993/article/details/73784883</a>
+&#x672C;&#x6587;&#x51FA;&#x81EA;:<a href="http://blog.csdn.net/lxk_1993" target="_blank">lxk_1993</a> </p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Android string.xml  双引号问题的记录.html" class="navigation navigation-prev " aria-label="Previous page: Android string.xml  双引号问题的记录">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="Android-子线程切回主线程的方法记录.html" class="navigation navigation-next " aria-label="Next page: Android-子线程切回主线程的方法记录">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Android targetSdkVersion 从22提到25 你需要知道的一切","level":"9.1.2","depth":2,"next":{"title":"Android-子线程切回主线程的方法记录","level":"9.1.3","depth":2,"path":"日记本/Android-子线程切回主线程的方法记录.md","ref":"日记本/Android-子线程切回主线程的方法记录.md","articles":[]},"previous":{"title":"Android string.xml  双引号问题的记录","level":"9.1.1","depth":2,"path":"日记本/Android string.xml  双引号问题的记录.md","ref":"日记本/Android string.xml  双引号问题的记录.md","articles":[]},"dir":"ltr"},"config":{"plugins":["splitter","expandable-chapters-small","anchors","anchor-navigation-ex"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"expandable-chapters-small":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","author":"103style","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"103style","language":"zh-hans","gitbook":"3.2.3","description":"103style的blog"},"file":{"path":"日记本/Android targetSdkVersion 从22提到25 你需要知道的一切.md","mtime":"2019-10-13T02:36:35.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-10-13T05:45:46.232Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

@@ -1,0 +1,3282 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Java中的锁的使用和实现介绍 · 103style</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="103style">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="Java内存模型.html" />
+    
+    
+    <link rel="prev" href="Java中的线程池.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">文章</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../数据结构/">
+            
+                <a href="../数据结构/">
+            
+                    
+                    数据结构
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../数据结构/ArrayDeque源码解析.html">
+            
+                <a href="../数据结构/ArrayDeque源码解析.html">
+            
+                    
+                    ArrayDeque源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../数据结构/ArrayList源码解析.html">
+            
+                <a href="../数据结构/ArrayList源码解析.html">
+            
+                    
+                    ArrayList源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../数据结构/ConcurrentHashMap源码解析.html">
+            
+                <a href="../数据结构/ConcurrentHashMap源码解析.html">
+            
+                    
+                    ConcurrentHashMap源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../数据结构/HashMap源码解析.html">
+            
+                <a href="../数据结构/HashMap源码解析.html">
+            
+                    
+                    HashMap源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../数据结构/HashSet源码解析.html">
+            
+                <a href="../数据结构/HashSet源码解析.html">
+            
+                    
+                    HashSet源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../数据结构/Hashtable源码解析.html">
+            
+                <a href="../数据结构/Hashtable源码解析.html">
+            
+                    
+                    Hashtable源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="../数据结构/LinkedHashMap源码解析.html">
+            
+                <a href="../数据结构/LinkedHashMap源码解析.html">
+            
+                    
+                    LinkedHashMap源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="../数据结构/LinkedHashSet源码解析.html">
+            
+                <a href="../数据结构/LinkedHashSet源码解析.html">
+            
+                    
+                    LinkedHashSet源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="../数据结构/LinkedList源码解析.html">
+            
+                <a href="../数据结构/LinkedList源码解析.html">
+            
+                    
+                    LinkedList源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" data-path="../数据结构/PriorityQueue源码解析.html">
+            
+                <a href="../数据结构/PriorityQueue源码解析.html">
+            
+                    
+                    PriorityQueue源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.11" data-path="../数据结构/TreeMap源码解析.html">
+            
+                <a href="../数据结构/TreeMap源码解析.html">
+            
+                    
+                    TreeMap源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.12" data-path="../数据结构/WeakHashMap源码解析.html">
+            
+                <a href="../数据结构/WeakHashMap源码解析.html">
+            
+                    
+                    WeakHashMap源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.13" data-path="../数据结构/数据结构源码分析汇总.html">
+            
+                <a href="../数据结构/数据结构源码分析汇总.html">
+            
+                    
+                    数据结构源码分析汇总
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../NDK/">
+            
+                <a href="../NDK/">
+            
+                    
+                    NDK
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="../NDK/NDK开发文章汇总.html">
+            
+                <a href="../NDK/NDK开发文章汇总.html">
+            
+                    
+                    NDK开发文章汇总
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="../NDK/NDK开发（一）NDK入门指南.html">
+            
+                <a href="../NDK/NDK开发（一）NDK入门指南.html">
+            
+                    
+                    NDK开发（一）NDK入门指南
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" data-path="../NDK/NDK开发（七）JNI实现文件夹遍历.html">
+            
+                <a href="../NDK/NDK开发（七）JNI实现文件夹遍历.html">
+            
+                    
+                    NDK开发（七）JNI实现文件夹遍历
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" data-path="../NDK/NDK开发（三）JNI访问Java变量和方法.html">
+            
+                <a href="../NDK/NDK开发（三）JNI访问Java变量和方法.html">
+            
+                    
+                    NDK开发（三）JNI访问Java变量和方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.5" data-path="../NDK/NDK开发（九）Hello-jniCallback.html">
+            
+                <a href="../NDK/NDK开发（九）Hello-jniCallback.html">
+            
+                    
+                    NDK开发（九）Hello-jniCallback
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.6" data-path="../NDK/NDK开发（二）JNI的数据类型.html">
+            
+                <a href="../NDK/NDK开发（二）JNI的数据类型.html">
+            
+                    
+                    NDK开发（二）JNI的数据类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.7" data-path="../NDK/NDK开发（五）JNI实现文件加解密.html">
+            
+                <a href="../NDK/NDK开发（五）JNI实现文件加解密.html">
+            
+                    
+                    NDK开发（五）JNI实现文件加解密
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.8" data-path="../NDK/NDK开发（八）JNI下Bitmap的使用.html">
+            
+                <a href="../NDK/NDK开发（八）JNI下Bitmap的使用.html">
+            
+                    
+                    NDK开发（八）JNI下Bitmap的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.9" data-path="../NDK/NDK开发（六）JNI实现文件拆分和合并.html">
+            
+                <a href="../NDK/NDK开发（六）JNI实现文件拆分和合并.html">
+            
+                    
+                    NDK开发（六）JNI实现文件拆分和合并
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.10" data-path="../NDK/NDK开发（十）Hello-OpenGLES3.html">
+            
+                <a href="../NDK/NDK开发（十）Hello-OpenGLES3.html">
+            
+                    
+                    NDK开发（十）Hello-OpenGLES3
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.11" data-path="../NDK/NDK开发（四）JNI操作Java数组.html">
+            
+                <a href="../NDK/NDK开发（四）JNI操作Java数组.html">
+            
+                    
+                    NDK开发（四）JNI操作Java数组
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../OpenGL ES 3.0/">
+            
+                <a href="../OpenGL ES 3.0/">
+            
+                    
+                    OpenGL ES 3.0
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="../OpenGL ES 3.0/glDrawArrays-is-called-with-VERTEX_ARRAY-client-state-disabled!.html">
+            
+                <a href="../OpenGL ES 3.0/glDrawArrays-is-called-with-VERTEX_ARRAY-client-state-disabled!.html">
+            
+                    
+                    glDrawArrays-is-called-with-VERTEX_ARRAY-client-state-disabled!
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="../OpenGL ES 3.0/OpenGL ES 3.0  Hello_Triangle.html">
+            
+                <a href="../OpenGL ES 3.0/OpenGL ES 3.0  Hello_Triangle.html">
+            
+                    
+                    OpenGL ES 3.0  Hello_Triangle
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" data-path="../OpenGL ES 3.0/OpenGL ES 3.0 学习记录汇总.html">
+            
+                <a href="../OpenGL ES 3.0/OpenGL ES 3.0 学习记录汇总.html">
+            
+                    
+                    OpenGL ES 3.0 学习记录汇总
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4" data-path="../OpenGL ES 3.0/OpenGL ES 3.0 简介.html">
+            
+                <a href="../OpenGL ES 3.0/OpenGL ES 3.0 简介.html">
+            
+                    
+                    OpenGL ES 3.0 简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.5" data-path="../OpenGL ES 3.0/OpenGL ES 着色语言.html">
+            
+                <a href="../OpenGL ES 3.0/OpenGL ES 着色语言.html">
+            
+                    
+                    OpenGL ES 着色语言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.6" data-path="../OpenGL ES 3.0/OpenGL-ES-3-0-高级编程.html">
+            
+                <a href="../OpenGL ES 3.0/OpenGL-ES-3-0-高级编程.html">
+            
+                    
+                    OpenGL-ES-3-0-高级编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.7" data-path="../OpenGL ES 3.0/Windows10 搭建OpenGL ES 3.0 开发环境.html">
+            
+                <a href="../OpenGL ES 3.0/Windows10 搭建OpenGL ES 3.0 开发环境.html">
+            
+                    
+                    Windows10 搭建OpenGL ES 3.0 开发环境
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.8" data-path="../OpenGL ES 3.0/图元装配和光栅化.html">
+            
+                <a href="../OpenGL ES 3.0/图元装配和光栅化.html">
+            
+                    
+                    图元装配和光栅化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.9" data-path="../OpenGL ES 3.0/顶点属性、顶点数组和缓冲区对象.html">
+            
+                <a href="../OpenGL ES 3.0/顶点属性、顶点数组和缓冲区对象.html">
+            
+                    
+                    顶点属性、顶点数组和缓冲区对象
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../Android通用类/">
+            
+                <a href="../Android通用类/">
+            
+                    
+                    Android通用类
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../Android通用类/Android Foreground Service.html">
+            
+                <a href="../Android通用类/Android Foreground Service.html">
+            
+                    
+                    Android Foreground Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" data-path="../Android通用类/Android SIM卡插拔监听.html">
+            
+                <a href="../Android通用类/Android SIM卡插拔监听.html">
+            
+                    
+                    Android SIM卡插拔监听
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3" data-path="../Android通用类/Android判断是否在通话中.html">
+            
+                <a href="../Android通用类/Android判断是否在通话中.html">
+            
+                    
+                    Android判断是否在通话中
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.4" data-path="../Android通用类/Android听筒扬声器切换并且监听音量变化.html">
+            
+                <a href="../Android通用类/Android听筒扬声器切换并且监听音量变化.html">
+            
+                    
+                    Android听筒扬声器切换并且监听音量变化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.5" data-path="../Android通用类/Android检查通知权限是否开启.html">
+            
+                <a href="../Android通用类/Android检查通知权限是否开启.html">
+            
+                    
+                    Android检查通知权限是否开启
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.6" data-path="../Android通用类/Android监听来电状态.html">
+            
+                <a href="../Android通用类/Android监听来电状态.html">
+            
+                    
+                    Android监听来电状态
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../Android错误解决集锦/">
+            
+                <a href="../Android错误解决集锦/">
+            
+                    
+                    Android错误解决集锦
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1.1" data-path="../Android错误解决集锦/Android layout_marginEnd隐藏的坑 or setMargins无效.html">
+            
+                <a href="../Android错误解决集锦/Android layout_marginEnd隐藏的坑 or setMargins无效.html">
+            
+                    
+                    Android layout_marginEnd隐藏的坑 or setMargins无效
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.2" data-path="../Android错误解决集锦/Could not find class 'android.support.v4.widget.DrawerLayout$1'.html">
+            
+                <a href="../Android错误解决集锦/Could not find class 'android.support.v4.widget.DrawerLayout$1'.html">
+            
+                    
+                    Could not find class 'android.support.v4.widget.DrawerLayout$1'
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.3" data-path="../Android错误解决集锦/Duplicate id 0x7f0900af, tag null, or parent id 0xffffffff with another frag.html">
+            
+                <a href="../Android错误解决集锦/Duplicate id 0x7f0900af, tag null, or parent id 0xffffffff with another frag.html">
+            
+                    
+                    Duplicate id 0x7f0900af, tag null, or parent id 0xffffffff with another frag
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.4" data-path="../Android错误解决集锦/Error Execution failed for task 'app transformClassesWithDexForDebug'.html">
+            
+                <a href="../Android错误解决集锦/Error Execution failed for task 'app transformClassesWithDexForDebug'.html">
+            
+                    
+                    Error Execution failed for task 'app transformClassesWithDexForDebug'
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.5" data-path="../Android错误解决集锦/HwLauncher Launcher dialog dismiss failed.html">
+            
+                <a href="../Android错误解决集锦/HwLauncher Launcher dialog dismiss failed.html">
+            
+                    
+                    HwLauncher Launcher dialog dismiss failed
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.6" data-path="../Android错误解决集锦/java.lang.NullPointerException Attempt to invoke virtual method 'int android.widget.Editor.html">
+            
+                <a href="../Android错误解决集锦/java.lang.NullPointerException Attempt to invoke virtual method 'int android.widget.Editor.html">
+            
+                    
+                    java.lang.NullPointerException Attempt to invoke virtual method 'int android.widget.Editor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.7" data-path="../Android错误解决集锦/java.lang.UnsatisfiedLinkError解决方法.html">
+            
+                <a href="../Android错误解决集锦/java.lang.UnsatisfiedLinkError解决方法.html">
+            
+                    
+                    java.lang.UnsatisfiedLinkError解决方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.8" data-path="../Android错误解决集锦/RecyclerView布局异常.html">
+            
+                <a href="../Android错误解决集锦/RecyclerView布局异常.html">
+            
+                    
+                    RecyclerView布局异常
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.9" data-path="../Android错误解决集锦/the bind value at index 2 is null.html">
+            
+                <a href="../Android错误解决集锦/the bind value at index 2 is null.html">
+            
+                    
+                    the bind value at index 2 is null
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../AndroidStudio问题记录/">
+            
+                <a href="../AndroidStudio问题记录/">
+            
+                    
+                    AndroidStudio问题记录
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1.1" data-path="../AndroidStudio问题记录/AndroidStudio App出现红叉问题 解决方法记录.html">
+            
+                <a href="../AndroidStudio问题记录/AndroidStudio App出现红叉问题 解决方法记录.html">
+            
+                    
+                    AndroidStudio App出现红叉问题 解决方法记录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.2" data-path="../AndroidStudio问题记录/AndroidStudio依赖的包文件导入失败.html">
+            
+                <a href="../AndroidStudio问题记录/AndroidStudio依赖的包文件导入失败.html">
+            
+                    
+                    AndroidStudio依赖的包文件导入失败
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.3" data-path="../AndroidStudio问题记录/AndroidStudio在当前位置查看注释快捷方式.html">
+            
+                <a href="../AndroidStudio问题记录/AndroidStudio在当前位置查看注释快捷方式.html">
+            
+                    
+                    AndroidStudio在当前位置查看注释快捷方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.4" data-path="../AndroidStudio问题记录/AndroidStudio找不到Genymotion设备.html">
+            
+                <a href="../AndroidStudio问题记录/AndroidStudio找不到Genymotion设备.html">
+            
+                    
+                    AndroidStudio找不到Genymotion设备
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.5" data-path="../AndroidStudio问题记录/AndroidStudio用久了，磁盘越来越不够用？.html">
+            
+                <a href="../AndroidStudio问题记录/AndroidStudio用久了，磁盘越来越不够用？.html">
+            
+                    
+                    AndroidStudio用久了，磁盘越来越不够用？
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.6" data-path="../AndroidStudio问题记录/AndroidStudio自定义代码模块来实现代码规范.html">
+            
+                <a href="../AndroidStudio问题记录/AndroidStudio自定义代码模块来实现代码规范.html">
+            
+                    
+                    AndroidStudio自定义代码模块来实现代码规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.7" data-path="../AndroidStudio问题记录/AndroidStudio：Unable to start the daemon process.html">
+            
+                <a href="../AndroidStudio问题记录/AndroidStudio：Unable to start the daemon process.html">
+            
+                    
+                    AndroidStudio：Unable to start the daemon process
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="../Android自定义View/">
+            
+                <a href="../Android自定义View/">
+            
+                    
+                    Android自定义View
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.2.1" data-path="../Android自定义View/自定义View实战（一）汽车速度仪表盘.html">
+            
+                <a href="../Android自定义View/自定义View实战（一）汽车速度仪表盘.html">
+            
+                    
+                    自定义View实战（一）汽车速度仪表盘
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.2" data-path="../Android自定义View/自定义View实战（二）QQ健康水滴形加载.html">
+            
+                <a href="../Android自定义View/自定义View实战（二）QQ健康水滴形加载.html">
+            
+                    
+                    自定义View实战（二）QQ健康水滴形加载
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="../热修复/">
+            
+                <a href="../热修复/">
+            
+                    
+                    热修复
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1.1" data-path="../热修复/ClassLoader实现热修复的示例.html">
+            
+                <a href="../热修复/ClassLoader实现热修复的示例.html">
+            
+                    
+                    ClassLoader实现热修复的示例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.2" data-path="../热修复/利用ClassLoader实现检查项目中不符合规范的代码.html">
+            
+                <a href="../热修复/利用ClassLoader实现检查项目中不符合规范的代码.html">
+            
+                    
+                    利用ClassLoader实现检查项目中不符合规范的代码
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="8.1" data-path="../Flutter/">
+            
+                <a href="../Flutter/">
+            
+                    
+                    Flutter
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.1.1" data-path="../Flutter/Flutter学习示例.html">
+            
+                <a href="../Flutter/Flutter学习示例.html">
+            
+                    
+                    Flutter学习示例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.2" data-path="../Flutter/Flutter环境配置及运行示例程序.html">
+            
+                <a href="../Flutter/Flutter环境配置及运行示例程序.html">
+            
+                    
+                    Flutter环境配置及运行示例程序
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="9.1" data-path="../日记本/">
+            
+                <a href="../日记本/">
+            
+                    
+                    其他开发问题
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.1.1" data-path="../日记本/Android string.xml  双引号问题的记录.html">
+            
+                <a href="../日记本/Android string.xml  双引号问题的记录.html">
+            
+                    
+                    Android string.xml  双引号问题的记录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.2" data-path="../日记本/Android targetSdkVersion 从22提到25 你需要知道的一切.html">
+            
+                <a href="../日记本/Android targetSdkVersion 从22提到25 你需要知道的一切.html">
+            
+                    
+                    Android targetSdkVersion 从22提到25 你需要知道的一切
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.3" data-path="../日记本/Android-子线程切回主线程的方法记录.html">
+            
+                <a href="../日记本/Android-子线程切回主线程的方法记录.html">
+            
+                    
+                    Android-子线程切回主线程的方法记录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.4" data-path="../日记本/Android-数据库加密-android-database-sqlcipher-开源版本编译过程.html">
+            
+                <a href="../日记本/Android-数据库加密-android-database-sqlcipher-开源版本编译过程.html">
+            
+                    
+                    Android-数据库加密-android-database-sqlcipher-开源版本编译过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.5" data-path="../日记本/Android6.0的权限记录.html">
+            
+                <a href="../日记本/Android6.0的权限记录.html">
+            
+                    
+                    Android6.0的权限记录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.6" data-path="../日记本/Android命令行签名记录.html">
+            
+                <a href="../日记本/Android命令行签名记录.html">
+            
+                    
+                    Android命令行签名记录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.7" data-path="../日记本/Android清除通知栏的对应的消息.html">
+            
+                <a href="../日记本/Android清除通知栏的对应的消息.html">
+            
+                    
+                    Android清除通知栏的对应的消息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.8" data-path="../日记本/Calendar-HOUR-引发的问题.html">
+            
+                <a href="../日记本/Calendar-HOUR-引发的问题.html">
+            
+                    
+                    Calendar-HOUR-引发的问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.9" data-path="../日记本/git提交报错does not match your user account.html">
+            
+                <a href="../日记本/git提交报错does not match your user account.html">
+            
+                    
+                    git提交报错does not match your user account
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.10" data-path="../日记本/Git提交流程.html">
+            
+                <a href="../日记本/Git提交流程.html">
+            
+                    
+                    Git提交流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.11" data-path="../日记本/Java中运算符  和  以及 & 和 && 区别.html">
+            
+                <a href="../日记本/Java中运算符  和  以及 & 和 && 区别.html">
+            
+                    
+                    Java中运算符  和  以及 & 和 && 区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.12" data-path="../日记本/Mysql设置编码，插入不了中文问题.html">
+            
+                <a href="../日记本/Mysql设置编码，插入不了中文问题.html">
+            
+                    
+                    Mysql设置编码，插入不了中文问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.13" data-path="../日记本/Tomcat访问本地磁盘文件.html">
+            
+                <a href="../日记本/Tomcat访问本地磁盘文件.html">
+            
+                    
+                    Tomcat访问本地磁盘文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.14" data-path="../日记本/W10一些操作问题的记录.html">
+            
+                <a href="../日记本/W10一些操作问题的记录.html">
+            
+                    
+                    W10一些操作问题的记录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.15" data-path="../日记本/Windows10-安装VirtualBox出现2502、2503错误解决方法.html">
+            
+                <a href="../日记本/Windows10-安装VirtualBox出现2502、2503错误解决方法.html">
+            
+                    
+                    Windows10-安装VirtualBox出现2502、2503错误解决方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.16" data-path="../日记本/windows安装程序无法将windows配置为在此计算机.html">
+            
+                <a href="../日记本/windows安装程序无法将windows配置为在此计算机.html">
+            
+                    
+                    windows安装程序无法将windows配置为在此计算机
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.17" data-path="../日记本/【转】Android软键盘的全面解析.html">
+            
+                <a href="../日记本/【转】Android软键盘的全面解析.html">
+            
+                    
+                    【转】Android软键盘的全面解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.18" data-path="../日记本/下拉刷新-AppBarLayout.html">
+            
+                <a href="../日记本/下拉刷新-AppBarLayout.html">
+            
+                    
+                    下拉刷新-AppBarLayout
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.19" data-path="../日记本/以爬虫工程师身份谈谈Android端的信息安全.html">
+            
+                <a href="../日记本/以爬虫工程师身份谈谈Android端的信息安全.html">
+            
+                    
+                    以爬虫工程师身份谈谈Android端的信息安全
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.20" data-path="../日记本/关于魅族手机-安装APP提示安装失败-更新包不兼容的解决方法.html">
+            
+                <a href="../日记本/关于魅族手机-安装APP提示安装失败-更新包不兼容的解决方法.html">
+            
+                    
+                    关于魅族手机-安装APP提示安装失败-更新包不兼容的解决方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.21" data-path="../日记本/如何托管你的项目到github上详细教程.html">
+            
+                <a href="../日记本/如何托管你的项目到github上详细教程.html">
+            
+                    
+                    如何托管你的项目到github上详细教程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.22" data-path="../日记本/最近的Android面试分享.html">
+            
+                <a href="../日记本/最近的Android面试分享.html">
+            
+                    
+                    最近的Android面试分享
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.23" data-path="../日记本/集成微信登录和分享真的很简单.html">
+            
+                <a href="../日记本/集成微信登录和分享真的很简单.html">
+            
+                    
+                    集成微信登录和分享真的很简单
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.24" data-path="../日记本/魅族进入开发者模式.html">
+            
+                <a href="../日记本/魅族进入开发者模式.html">
+            
+                    
+                    魅族进入开发者模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="10.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Java并发编程的艺术笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.1.1" data-path="Executor框架.html">
+            
+                <a href="Executor框架.html">
+            
+                    
+                    Executor框架
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.2" data-path="Java Thread.join(">
+            
+                <span>
+            
+                    
+                    Java Thread.join()详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.3" data-path="Java中的12个原子操作类介绍.html">
+            
+                <a href="Java中的12个原子操作类介绍.html">
+            
+                    
+                    Java中的12个原子操作类介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.4" data-path="Java中的并发工具类.html">
+            
+                <a href="Java中的并发工具类.html">
+            
+                    
+                    Java中的并发工具类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.5" data-path="Java中的线程池.html">
+            
+                <a href="Java中的线程池.html">
+            
+                    
+                    Java中的线程池
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="10.1.6" data-path="Java中的锁的使用和实现介绍.html">
+            
+                <a href="Java中的锁的使用和实现介绍.html">
+            
+                    
+                    Java中的锁的使用和实现介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.7" data-path="Java内存模型.html">
+            
+                <a href="Java内存模型.html">
+            
+                    
+                    Java内存模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.8" data-path="Java并发容器和框架.html">
+            
+                <a href="Java并发容器和框架.html">
+            
+                    
+                    Java并发容器和框架
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.9" data-path="Java并发机制的底层实现原理.html">
+            
+                <a href="Java并发机制的底层实现原理.html">
+            
+                    
+                    Java并发机制的底层实现原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.10" data-path="Java并发编程基础.html">
+            
+                <a href="Java并发编程基础.html">
+            
+                    
+                    Java并发编程基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.11" data-path="并发编程的挑战.html">
+            
+                <a href="并发编程的挑战.html">
+            
+                    
+                    并发编程的挑战
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="11.1" data-path="../Android艺术开发探索学习/">
+            
+                <a href="../Android艺术开发探索学习/">
+            
+                    
+                    Android艺术开发探索学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="11.1.1" data-path="../Android艺术开发探索学习/Android开发艺术探索学习之Activity的生命周期.html">
+            
+                <a href="../Android艺术开发探索学习/Android开发艺术探索学习之Activity的生命周期.html">
+            
+                    
+                    Android开发艺术探索学习之Activity的生命周期
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.1.2" data-path="../Android艺术开发探索学习/Android开发艺术探索学习之结合Activity的生命周期了解Activity的LaunchMode.html">
+            
+                <a href="../Android艺术开发探索学习/Android开发艺术探索学习之结合Activity的生命周期了解Activity的LaunchMode.html">
+            
+                    
+                    Android开发艺术探索学习之结合Activity的生命周期了解Activity的LaunchMode
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.1.3" data-path="../Android艺术开发探索学习/Android艺术开发探索学习之测量view的宽高以及动态设置View的位置.html">
+            
+                <a href="../Android艺术开发探索学习/Android艺术开发探索学习之测量view的宽高以及动态设置View的位置.html">
+            
+                    
+                    Android艺术开发探索学习之测量view的宽高以及动态设置View的位置
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="12.1" data-path="../Android软件安全权威指南笔记/">
+            
+                <a href="../Android软件安全权威指南笔记/">
+            
+                    
+                    Android软件安全权威指南笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.1.1" data-path="../Android软件安全权威指南笔记/Dalvik指令集.html">
+            
+                <a href="../Android软件安全权威指南笔记/Dalvik指令集.html">
+            
+                    
+                    Dalvik指令集
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="13.1" data-path="../深入理解Java虚拟机/">
+            
+                <a href="../深入理解Java虚拟机/">
+            
+                    
+                    深入理解Java虚拟机
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="13.1.1" data-path="../深入理解Java虚拟机/Java虚拟机运行时数据区介绍.html">
+            
+                <a href="../深入理解Java虚拟机/Java虚拟机运行时数据区介绍.html">
+            
+                    
+                    Java虚拟机运行时数据区介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="14.1" data-path="../RXJava源码分析/">
+            
+                <a href="../RXJava源码分析/">
+            
+                    
+                    RXJava源码分析
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="14.1.1" data-path="../RXJava源码分析/Flowable.subscribe流程介绍.html">
+            
+                <a href="../RXJava源码分析/Flowable.subscribe流程介绍.html">
+            
+                    
+                    Flowable.subscribe流程介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.2" data-path="../RXJava源码分析/Observable.subscribe流程介绍.html">
+            
+                <a href="../RXJava源码分析/Observable.subscribe流程介绍.html">
+            
+                    
+                    Observable.subscribe流程介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.3" data-path="../RXJava源码分析/RxJava subscribeOn和observeOn源码介绍.html">
+            
+                <a href="../RXJava源码分析/RxJava subscribeOn和observeOn源码介绍.html">
+            
+                    
+                    RxJava subscribeOn和observeOn源码介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.4" data-path="../RXJava源码分析/RxJava之concatMap系列转换操作符源码介绍.html">
+            
+                <a href="../RXJava源码分析/RxJava之concatMap系列转换操作符源码介绍.html">
+            
+                    
+                    RxJava之concatMap系列转换操作符源码介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.5" data-path="../RXJava源码分析/RxJava之create操作符源码解析.html">
+            
+                <a href="../RXJava源码分析/RxJava之create操作符源码解析.html">
+            
+                    
+                    RxJava之create操作符源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.6" data-path="../RXJava源码分析/RxJava之flatMap系列转换操作符.html">
+            
+                <a href="../RXJava源码分析/RxJava之flatMap系列转换操作符.html">
+            
+                    
+                    RxJava之flatMap系列转换操作符
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.7" data-path="../RXJava源码分析/RxJava之from系列操作符源码解析.html">
+            
+                <a href="../RXJava源码分析/RxJava之from系列操作符源码解析.html">
+            
+                    
+                    RxJava之from系列操作符源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.8" data-path="../RXJava源码分析/RxJava之Schedulers源码介绍.html">
+            
+                <a href="../RXJava源码分析/RxJava之Schedulers源码介绍.html">
+            
+                    
+                    RxJava之Schedulers源码介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.9" data-path="../RXJava源码分析/RxJava之timer和interval操作符源码解析.html">
+            
+                <a href="../RXJava源码分析/RxJava之timer和interval操作符源码解析.html">
+            
+                    
+                    RxJava之timer和interval操作符源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.10" data-path="../RXJava源码分析/RxJava之创建操作符源码介绍.html">
+            
+                <a href="../RXJava源码分析/RxJava之创建操作符源码介绍.html">
+            
+                    
+                    RxJava之创建操作符源码介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.11" data-path="../RXJava源码分析/RxJava之异常捕获操作符介绍.html">
+            
+                <a href="../RXJava源码分析/RxJava之异常捕获操作符介绍.html">
+            
+                    
+                    RxJava之异常捕获操作符介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.12" data-path="../RXJava源码分析/RxJava之组合操作符介绍.html">
+            
+                <a href="../RXJava源码分析/RxJava之组合操作符介绍.html">
+            
+                    
+                    RxJava之组合操作符介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.13" data-path="../RXJava源码分析/RxJava之背压策略.html">
+            
+                <a href="../RXJava源码分析/RxJava之背压策略.html">
+            
+                    
+                    RxJava之背压策略
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.14" data-path="../RXJava源码分析/RxJava之转换操作符源码介绍.html">
+            
+                <a href="../RXJava源码分析/RxJava之转换操作符源码介绍.html">
+            
+                    
+                    RxJava之转换操作符源码介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.15" data-path="../RXJava源码分析/RxJava之过滤操作符介绍.html">
+            
+                <a href="../RXJava源码分析/RxJava之过滤操作符介绍.html">
+            
+                    
+                    RxJava之过滤操作符介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.16" data-path="../RXJava源码分析/RxJava之连接操作符介绍.html">
+            
+                <a href="../RXJava源码分析/RxJava之连接操作符介绍.html">
+            
+                    
+                    RxJava之连接操作符介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="15.1" data-path="../okhttp3/">
+            
+                <a href="../okhttp3/">
+            
+                    
+                    okhttp3
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="15.1.1" data-path="../okhttp3/okhttp之Connection.html">
+            
+                <a href="../okhttp3/okhttp之Connection.html">
+            
+                    
+                    okhttp之Connection
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="15.1.2" data-path="../okhttp3/okhttp之ConnectionPool.html">
+            
+                <a href="../okhttp3/okhttp之ConnectionPool.html">
+            
+                    
+                    okhttp之ConnectionPool
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="15.1.3" data-path="../okhttp3/okhttp之Dispatcher.html">
+            
+                <a href="../okhttp3/okhttp之Dispatcher.html">
+            
+                    
+                    okhttp之Dispatcher
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="15.1.4" data-path="../okhttp3/okhttp之OkHttpClient.html">
+            
+                <a href="../okhttp3/okhttp之OkHttpClient.html">
+            
+                    
+                    okhttp之OkHttpClient
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="15.1.5" data-path="../okhttp3/okhttp之RealCall-execute(">
+            
+                <span>
+            
+                    
+                    okhttp之RealCall-execute()流程介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="15.1.6" data-path="../okhttp3/okhttp之Request.html">
+            
+                <a href="../okhttp3/okhttp之Request.html">
+            
+                    
+                    okhttp之Request
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="15.1.7" data-path="../okhttp3/okhttp之StreamAllocation.html">
+            
+                <a href="../okhttp3/okhttp之StreamAllocation.html">
+            
+                    
+                    okhttp之StreamAllocation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="15.1.8" data-path="../okhttp3/okhttp之五个拦截器的介绍.html">
+            
+                <a href="../okhttp3/okhttp之五个拦截器的介绍.html">
+            
+                    
+                    okhttp之五个拦截器的介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="15.1.9" data-path="../okhttp3/okhttp之自定义拦截器.html">
+            
+                <a href="../okhttp3/okhttp之自定义拦截器.html">
+            
+                    
+                    okhttp之自定义拦截器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="15.1.10" data-path="../okhttp3/okhttp的使用介绍.html">
+            
+                <a href="../okhttp3/okhttp的使用介绍.html">
+            
+                    
+                    okhttp的使用介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Java中的锁的使用和实现介绍</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><ul><ul><li><span class="title-icon "></span><a href="#java&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7684;&#x827A;&#x672F;&#x7B14;&#x8BB0;"><b></b>Java&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7684;&#x827A;&#x672F;&#x7B14;&#x8BB0;</a></li><li><span class="title-icon "></span><a href="#&#x76EE;&#x5F55;"><b></b>&#x76EE;&#x5F55;</a></li><li><span class="title-icon "></span><a href="#lock&#x63A5;&#x53E3;"><b></b>Lock&#x63A5;&#x53E3;</a></li><li><span class="title-icon "></span><a href="#&#x961F;&#x5217;&#x540C;&#x6B65;&#x5668;"><b></b>&#x961F;&#x5217;&#x540C;&#x6B65;&#x5668;</a></li><li><span class="title-icon "></span><a href="#&#x91CD;&#x5165;&#x9501;"><b></b>&#x91CD;&#x5165;&#x9501;</a></li><li><span class="title-icon "></span><a href="#&#x8BFB;&#x5199;&#x9501;"><b></b>&#x8BFB;&#x5199;&#x9501;</a></li><li><span class="title-icon "></span><a href="#locksupport&#x5DE5;&#x5177;"><b></b>LockSupport&#x5DE5;&#x5177;</a></li><li><span class="title-icon "></span><a href="#condition&#x63A5;&#x53E3;"><b></b>Condition&#x63A5;&#x53E3;</a></li><li><span class="title-icon "></span><a href="#&#x5C0F;&#x7ED3;"><b></b>&#x5C0F;&#x7ED3;</a></li></ul></ul></ul></div><a href="#" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><blockquote>
+<p>&#x8F6C;&#x8F7D;&#x8BF7;&#x4EE5;&#x94FE;&#x63A5;&#x5F62;&#x5F0F;&#x6807;&#x660E;&#x51FA;&#x5904;&#xFF1A; 
+&#x672C;&#x6587;&#x51FA;&#x81EA;:<a href="http://blog.csdn.net/lxk_1993" target="_blank"><strong>103style&#x7684;&#x535A;&#x5BA2;</strong></a> </p>
+</blockquote>
+<h3 id="java&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7684;&#x827A;&#x672F;&#x7B14;&#x8BB0;"><a name="java&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7684;&#x827A;&#x672F;&#x7B14;&#x8BB0;" class="anchor-navigation-ex-anchor" href="#java&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7684;&#x827A;&#x672F;&#x7B14;&#x8BB0;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="java&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7684;&#x827A;&#x672F;&#x7B14;&#x8BB0;" class="plugin-anchor" href="#java&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7684;&#x827A;&#x672F;&#x7B14;&#x8BB0;"><i class="fa fa-link" aria-hidden="true"></i></a>Java&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7684;&#x827A;&#x672F;&#x7B14;&#x8BB0;</h3>
+<ul>
+<li><a href="https://www.jianshu.com/p/a2117af9950d" target="_blank">&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7684;&#x6311;&#x6218;</a></li>
+<li><a href="https://www.jianshu.com/p/9d8147ba3092" target="_blank">Java&#x5E76;&#x53D1;&#x673A;&#x5236;&#x7684;&#x5E95;&#x5C42;&#x5B9E;&#x73B0;&#x539F;&#x7406;</a></li>
+<li><a href="https://www.jianshu.com/p/235c777d862c" target="_blank">Java&#x5185;&#x5B58;&#x6A21;&#x578B;</a></li>
+<li><a href="https://www.jianshu.com/p/d50cfcaf8102" target="_blank">Java&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x57FA;&#x7840;</a></li>
+<li><a href="https://www.jianshu.com/p/f3bb5313fce4" target="_blank">Java&#x4E2D;&#x7684;&#x9501;&#x7684;&#x4F7F;&#x7528;&#x548C;&#x5B9E;&#x73B0;&#x4ECB;&#x7ECD;</a></li>
+<li><a href="https://www.jianshu.com/p/50e732981232" target="_blank">Java&#x5E76;&#x53D1;&#x5BB9;&#x5668;&#x548C;&#x6846;&#x67B6;</a></li>
+<li><a href="https://www.jianshu.com/p/cb64f79058c2" target="_blank">Java&#x4E2D;&#x7684;12&#x4E2A;&#x539F;&#x5B50;&#x64CD;&#x4F5C;&#x7C7B;&#x4ECB;&#x7ECD;</a></li>
+<li><a href="https://www.jianshu.com/p/79d9baaa396e" target="_blank">Java&#x4E2D;&#x7684;&#x5E76;&#x53D1;&#x5DE5;&#x5177;&#x7C7B;</a></li>
+<li><a href="https://www.jianshu.com/p/13c82f1a7ad9" target="_blank">Java&#x4E2D;&#x7684;&#x7EBF;&#x7A0B;&#x6C60;</a></li>
+<li><a href="https://www.jianshu.com/p/8933aa93ee74" target="_blank">Executor&#x6846;&#x67B6;</a></li>
+</ul>
+<hr>
+<p>&#x9501;&#x662F;&#x7528;&#x6765;&#x63A7;&#x5236;&#x591A;&#x4E2A;&#x7EBF;&#x7A0B;&#x8BBF;&#x95EE;&#x5171;&#x4EAB;&#x8D44;&#x6E90;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x4E00;&#x4E2A;&#x9501;&#x80FD;&#x591F;&#x9632;&#x6B62;&#x591A;&#x4E2A;&#x7EBF;&#x7A0B;&#x540C;&#x65F6;&#x8BBF;&#x95EE;&#x5171;&#x4EAB;&#x8D44;&#x6E90;&#x3002;
+<code>&#x6E90;&#x4EE3;&#x7801;&#x57FA;&#x4E8E; 1.8.0</code></p>
+<h3 id="&#x76EE;&#x5F55;"><a name="&#x76EE;&#x5F55;" class="anchor-navigation-ex-anchor" href="#&#x76EE;&#x5F55;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x76EE;&#x5F55;" class="plugin-anchor" href="#&#x76EE;&#x5F55;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x76EE;&#x5F55;</h3>
+<ul>
+<li><code>Lock&#x63A5;&#x53E3;</code></li>
+<li><code>&#x961F;&#x5217;&#x540C;&#x6B65;&#x5668;</code></li>
+<li><code>&#x91CD;&#x5165;&#x9501;</code></li>
+<li><code>&#x8BFB;&#x5199;&#x9501;</code></li>
+<li><code>LockSupport&#x5DE5;&#x5177;</code></li>
+<li><code>Condition&#x63A5;&#x53E3;</code></li>
+<li><code>&#x5C0F;&#x7ED3;</code></li>
+</ul>
+<hr>
+<h3 id="lock&#x63A5;&#x53E3;"><a name="lock&#x63A5;&#x53E3;" class="anchor-navigation-ex-anchor" href="#lock&#x63A5;&#x53E3;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="lock&#x63A5;&#x53E3;" class="plugin-anchor" href="#lock&#x63A5;&#x53E3;"><i class="fa fa-link" aria-hidden="true"></i></a>Lock&#x63A5;&#x53E3;</h3>
+<p>&#x5728;<code>Java SE 5</code>&#x4E4B;&#x540E;&#xFF0C;&#x5E76;&#x53D1;&#x5305;&#x4E2D;&#x65B0;&#x589E;&#x4E86;<code>Lock</code>&#x63A5;&#x53E3;&#xFF08;&#x4EE5;&#x53CA;&#x76F8;&#x5173;&#x5B9E;&#x73B0;&#x7C7B;&#xFF09;&#x7528;&#x6765;&#x5B9E;&#x73B0;&#x9501;&#x529F;&#x80FD;&#xFF0C;&#x5B83;&#x63D0;&#x4F9B;&#x4E86;&#x4E0E;<code>synchronized</code>&#x5173;&#x952E;&#x5B57;&#x7C7B;&#x4F3C;&#x7684;&#x540C;&#x6B65;&#x529F;&#x80FD;&#xFF0C;&#x53EA;&#x662F;&#x5728;&#x4F7F;&#x7528;&#x65F6;&#x9700;&#x8981; <strong>&#x663E;&#x5F0F;</strong> &#x5730;&#x83B7;&#x53D6;&#x548C;&#x91CA;&#x653E;&#x9501;&#x3002;
+&#x867D;&#x7136;&#x5B83;&#x7F3A;&#x5C11;&#x4E86;&#xFF08;&#x901A;&#x8FC7;<code>synchronized</code>&#x5757;&#x6216;&#x8005;&#x65B9;&#x6CD5;&#x6240;&#x63D0;&#x4F9B;&#x7684;&#xFF09;&#x9690;&#x5F0F;&#x83B7;&#x53D6;&#x91CA;&#x653E;&#x9501;&#x7684;&#x4FBF;&#x6377;&#x6027;&#xFF0C;&#x4F46;&#x662F;&#x5374;&#x62E5;&#x6709;&#x4E86;&#x9501;&#x83B7;&#x53D6;&#x4E0E;&#x91CA;&#x653E;&#x7684; <strong>&#x53EF;&#x64CD;&#x4F5C;&#x6027;</strong>&#x3001;<strong>&#x53EF;&#x4E2D;&#x65AD;&#x7684;&#x83B7;&#x53D6;&#x9501;</strong> &#x4EE5;&#x53CA; <strong>&#x8D85;&#x65F6;&#x83B7;&#x53D6;&#x9501;</strong> &#x7B49;&#x591A;&#x79CD;<code>synchronized</code>&#x5173;&#x952E;&#x5B57;&#x6240;&#x4E0D;&#x5177;&#x5907;&#x7684;&#x540C;&#x6B65;&#x7279;&#x6027;&#x3002;</p>
+<p>&#x4F7F;&#x7528;<code>synchronized</code>&#x5173;&#x952E;&#x5B57;&#x5C06;&#x4F1A; <strong>&#x9690;&#x5F0F;</strong> &#x5730;&#x83B7;&#x53D6;&#x9501;&#xFF0C;&#x4F46;&#x662F;&#x5B83;&#x5C06;&#x9501;&#x7684;&#x83B7;&#x53D6;&#x548C;&#x91CA;&#x653E;&#x56FA;&#x5316;&#x4E86;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x5148;&#x83B7;&#x53D6;&#x518D;&#x91CA;&#x653E;&#x3002;</p>
+<p><code>Lock</code>&#x7684;&#x4F7F;&#x7528;&#xFF1A;</p>
+<pre><code>Lock lock = new ReentrantLock();
+lock.lock();
+try {
+} finally {
+    lock.unlock();
+}
+</code></pre><p>&#x6CE8;&#x610F; &#xFF1A;</p>
+<blockquote>
+<p>1.&#x5728;<code>finally</code>&#x5757;&#x4E2D;&#x91CA;&#x653E;&#x9501;&#xFF0C;&#x76EE;&#x7684;&#x662F;&#x4FDD;&#x8BC1;&#x5728;&#x83B7;&#x53D6;&#x5230;&#x9501;&#x4E4B;&#x540E;&#xFF0C;&#x6700;&#x7EC8;&#x80FD;&#x591F;&#x88AB;&#x91CA;&#x653E;&#x3002;
+2.&#x4E0D;&#x8981;&#x5C06;&#x83B7;&#x53D6;&#x9501;&#x7684;&#x8FC7;&#x7A0B;&#x5199;&#x5728;<code>try</code>&#x5757;&#x4E2D;&#xFF0C;&#x56E0;&#x4E3A;&#x5982;&#x679C;&#x5728;&#x83B7;&#x53D6;&#x9501;&#xFF08;&#x81EA;&#x5B9A;&#x4E49;&#x9501;&#x7684;&#x5B9E;&#x73B0;&#xFF09;&#x65F6;&#x53D1;&#x751F;&#x4E86;&#x5F02;&#x5E38;&#xFF0C;&#x5F02;&#x5E38;&#x629B;&#x51FA;&#x7684;&#x540C;&#x65F6;&#xFF0C;&#x4E5F;&#x4F1A;&#x5BFC;&#x81F4;&#x9501;&#x65E0;&#x6545;&#x91CA;&#x653E;&#x3002;</p>
+</blockquote>
+<p><code>Lock</code>&#x63A5;&#x53E3;&#x63D0;&#x4F9B;&#x7684;<code>synchronized</code>&#x5173;&#x952E;&#x5B57;&#x6240;&#x4E0D;&#x5177;&#x5907;&#x7684;&#x4E3B;&#x8981;&#x7279;&#x6027;&#xFF1A;</p>
+<ul>
+<li><strong>&#x5C1D;&#x8BD5;&#x975E;&#x963B;&#x585E;&#x6027;&#x83B7;&#x53D6;&#x9501;</strong>&#xFF1A; &#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x5C1D;&#x8BD5;&#x83B7;&#x53D6;&#x9501;&#xFF0C;&#x5982;&#x679C;&#x6B64;&#x65F6;&#x6CA1;&#x6709;&#x5176;&#x4ED6;&#x7EBF;&#x7A0B;&#x5360;&#x7528;&#x6B64;&#x9501;&#xFF0C;&#x5219;&#x6210;&#x529F;&#x83B7;&#x53D6;&#x5230;&#x9501;&#x3002;</li>
+<li><strong>&#x80FD;&#x88AB;&#x4E2D;&#x65AD;&#x7684;&#x83B7;&#x53D6;&#x9501;</strong>&#xFF1A; &#x5F53;&#x83B7;&#x53D6;&#x5230;&#x9501;&#x7684;&#x7EBF;&#x7A0B;&#x88AB;&#x4E2D;&#x65AD;&#x65F6;&#xFF0C;&#x4E2D;&#x65AD;&#x5F02;&#x5E38;&#x4F1A;&#x629B;&#x51FA;&#x5E76;&#x4E14;&#x4F1A;&#x91CA;&#x653E;&#x9501;&#x3002;</li>
+<li><strong>&#x8D85;&#x65F6;&#x83B7;&#x53D6;&#x9501;</strong>&#xFF1A; &#x5728;&#x6307;&#x5B9A;&#x65F6;&#x95F4;&#x5185;&#x83B7;&#x53D6;&#x9501;&#xFF0C;&#x5982;&#x679C;&#x8D85;&#x8FC7;&#x65F6;&#x95F4;&#x8FD8;&#x6CA1;&#x83B7;&#x53D6;&#xFF0C;&#x5219;&#x8FD4;&#x56DE;&#x3002;</li>
+</ul>
+<p><code>Lock</code> &#x76F8;&#x5173;&#x7684;API&#xFF1A;</p>
+<ul>
+<li><code>void lock();</code>&#xFF1A;&#x83B7;&#x53D6;&#x9501;&#xFF0C;&#x83B7;&#x53D6;&#x4E4B;&#x540E;&#x8FD4;&#x56DE;</li>
+<li><code>void lockInterruptibly() throws InterruptedException;</code>&#xFF1A;&#x53EF;&#x4E2D;&#x65AD;&#x7684;&#x83B7;&#x53D6;&#x9501;</li>
+<li><code>boolean tryLock();</code>&#xFF1A;&#x5C1D;&#x8BD5;&#x975E;&#x963B;&#x585E;&#x7684;&#x83B7;&#x53D6;&#x9501;</li>
+<li><code>boolean tryLock(long time, TimeUnit unit) throws InterruptedException;</code>&#xFF1A; &#x8D85;&#x65F6;&#x83B7;&#x53D6;&#x9501;&#x3002; &#x8D85;&#x65F6;&#x65F6;&#x95F4;&#x7ED3;&#x675F;&#xFF0C;&#x672A;&#x83B7;&#x5F97;&#x9501;&#xFF0C;&#x8FD4;&#x56DE;<code>false</code>.</li>
+<li><code>void unlock();</code>&#xFF1A;&#x91CA;&#x653E;&#x9501;</li>
+<li><code>Condition newCondition();</code>&#xFF1A;&#x83B7;&#x53D6;&#x7B49;&#x5F85;&#x901A;&#x77E5;&#x7EC4;&#x4EF6;&#xFF0C;&#x6539;&#x7EC4;&#x4EF6;&#x548C;&#x9501;&#x7ED1;&#x5B9A;&#xFF0C;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x83B7;&#x53D6;&#x5230;&#x9501;&#x624D;&#x80FD;&#x8C03;&#x7528;<code>wait()</code>&#x65B9;&#x6CD5;&#xFF0C;&#x8C03;&#x7528;&#x4E4B;&#x540E;&#x5219;&#x4F1A;&#x91CA;&#x653E;&#x9501;&#x3002;</li>
+</ul>
+<hr>
+<h3 id="&#x961F;&#x5217;&#x540C;&#x6B65;&#x5668;"><a name="&#x961F;&#x5217;&#x540C;&#x6B65;&#x5668;" class="anchor-navigation-ex-anchor" href="#&#x961F;&#x5217;&#x540C;&#x6B65;&#x5668;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x961F;&#x5217;&#x540C;&#x6B65;&#x5668;" class="plugin-anchor" href="#&#x961F;&#x5217;&#x540C;&#x6B65;&#x5668;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x961F;&#x5217;&#x540C;&#x6B65;&#x5668;</h3>
+<p>&#x961F;&#x5217;&#x540C;&#x6B65;&#x5668;<code>AbstractQueuedSynchronizer</code>&#xFF08;&#x4EE5;&#x4E0B;&#x7B80;&#x79F0;&#x540C;&#x6B65;&#x5668;&#xFF09;&#xFF0C;&#x662F;&#x7528;&#x6765;&#x6784;&#x5EFA;&#x9501;&#x6216;&#x8005;&#x5176;&#x4ED6;&#x540C;&#x6B65;&#x7EC4;&#x4EF6;&#x7684;&#x57FA;&#x7840;&#x6846;&#x67B6;&#xFF0C;&#x5B83;&#x4F7F;&#x7528;&#x4E86;&#x4E00;&#x4E2A;<code>int</code> &#x6210;&#x5458;&#x53D8;&#x91CF;&#x8868;&#x793A;&#x540C;&#x6B65;&#x72B6;&#x6001;&#xFF0C;&#x901A;&#x8FC7;&#x5185;&#x7F6E;&#x7684;<code>FIFO</code>&#x961F;&#x5217;&#x6765;&#x5B8C;&#x6210;&#x8D44;&#x6E90;&#x83B7;&#x53D6;&#x7EBF;&#x7A0B;&#x7684;&#x6392;&#x961F;&#x5DE5;&#x4F5C;&#xFF0C;&#x5E76;&#x53D1;&#x5305;&#x7684;&#x4F5C;&#x8005;<code>Doug Lea</code>&#x671F;&#x671B;&#x5B83;&#x80FD;&#x591F;&#x6210;&#x4E3A;&#x5B9E;&#x73B0;&#x5927;&#x90E8;&#x5206;&#x540C;&#x6B65;&#x9700;&#x6C42;&#x7684;&#x57FA;&#x7840;&#x3002;</p>
+<p>&#x540C;&#x6B65;&#x5668;&#x7684;&#x4E3B;&#x8981;&#x4F7F;&#x7528;&#x65B9;&#x5F0F;&#x662F;&#x7EE7;&#x627F;<code>AbstractQueuedSynchronizer</code>&#xFF0C;&#x901A;&#x8FC7;&#x540C;&#x6B65;&#x5668;&#x63D0;&#x4F9B;&#x7684;3&#x4E2A;&#x65B9;&#x6CD5;<code>getState()</code>&#x3001;<code>setState(int newState)</code>&#x548C;<code>compareAndSetState(int expect,int update)</code>&#x6765;&#x8FDB;&#x884C;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x7684;&#x72B6;&#x6001;&#x540C;&#x6B65;&#x3002;</p>
+<p>&#x540C;&#x6B65;&#x5668;&#x662F;&#x5B9E;&#x73B0;&#x9501;&#x7684;&#x5173;&#x952E;&#xFF0C;&#x5728;&#x9501;&#x7684;&#x5B9E;&#x73B0;&#x4E2D;&#x805A;&#x5408;&#x540C;&#x6B65;&#x5668;&#xFF0C;&#x5229;&#x7528;&#x540C;&#x6B65;&#x5668;&#x5B9E;&#x73B0;&#x9501;&#x7684;&#x8BED;&#x4E49;&#x3002;
+&#x53EF;&#x4EE5;&#x8FD9;&#x6837;&#x7406;&#x89E3;&#x4E8C;&#x8005;&#x4E4B;&#x95F4;&#x7684;&#x5173;&#x7CFB;&#xFF1A;</p>
+<ul>
+<li><strong>&#x9501;&#x662F;&#x9762;&#x5411;&#x4F7F;&#x7528;&#x8005;&#x7684;</strong>&#xFF0C;&#x5B83;&#x5B9A;&#x4E49;&#x4E86;&#x4F7F;&#x7528;&#x8005;&#x4E0E;&#x9501;&#x4EA4;&#x4E92;&#x7684;&#x63A5;&#x53E3;&#xFF0C;&#x9690;&#x85CF;&#x4E86;&#x5B9E;&#x73B0;&#x7EC6;&#x8282;&#xFF1B;</li>
+<li><strong>&#x540C;&#x6B65;&#x5668;&#x9762;&#x5411;&#x7684;&#x662F;&#x9501;&#x7684;&#x5B9E;&#x73B0;&#x8005;</strong>&#xFF0C;&#x5B83;&#x7B80;&#x5316;&#x4E86;&#x9501;&#x7684;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;&#xFF0C;&#x5C4F;&#x853D;&#x4E86;&#x540C;&#x6B65;&#x72B6;&#x6001;&#x7BA1;&#x7406;&#x3001;&#x7EBF;&#x7A0B;&#x7684;&#x6392;&#x961F;&#x3001;&#x7B49;&#x5F85;&#x4E0E;&#x5524;&#x9192;&#x7B49;&#x5E95;&#x5C42;&#x64CD;&#x4F5C;&#x3002;</li>
+</ul>
+<h5 id="&#x961F;&#x5217;&#x540C;&#x6B65;&#x5668;&#x7684;&#x63A5;&#x53E3;&#x4E0E;&#x793A;&#x4F8B;"><a name="&#x961F;&#x5217;&#x540C;&#x6B65;&#x5668;&#x7684;&#x63A5;&#x53E3;&#x4E0E;&#x793A;&#x4F8B;" class="anchor-navigation-ex-anchor" href="#&#x961F;&#x5217;&#x540C;&#x6B65;&#x5668;&#x7684;&#x63A5;&#x53E3;&#x4E0E;&#x793A;&#x4F8B;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x961F;&#x5217;&#x540C;&#x6B65;&#x5668;&#x7684;&#x63A5;&#x53E3;&#x4E0E;&#x793A;&#x4F8B;" class="plugin-anchor" href="#&#x961F;&#x5217;&#x540C;&#x6B65;&#x5668;&#x7684;&#x63A5;&#x53E3;&#x4E0E;&#x793A;&#x4F8B;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x961F;&#x5217;&#x540C;&#x6B65;&#x5668;&#x7684;&#x63A5;&#x53E3;&#x4E0E;&#x793A;&#x4F8B;</h5>
+<p><code>AbstractQueuedSynchronizer</code>&#x53EF;&#x91CD;&#x5199;&#x7684;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<ul>
+<li><code>boolean tryAcquire(int arg)</code>&#xFF1A;&#x72EC;&#x5360;&#x5F0F;&#x83B7;&#x53D6;&#x540C;&#x6B65;&#x72B6;&#x6001;&#x3002;</li>
+<li><code>boolean tryRelease(int arg)</code>&#xFF1A;&#x72EC;&#x5360;&#x5F0F;&#x91CA;&#x653E;&#x540C;&#x6B65;&#x72B6;&#x6001;&#x3002;</li>
+<li><code>int tryAcquireShared(int arg)</code>&#xFF1A;&#x5171;&#x4EAB;&#x5F0F;&#x83B7;&#x53D6;&#x540C;&#x6B65;&#x72B6;&#x6001;&#x3002;</li>
+<li><code>boolean tryReleaseShared(int arg)</code>&#xFF1A;&#x5171;&#x4EAB;&#x91CA;&#x653E;&#x53D6;&#x540C;&#x6B65;&#x72B6;&#x6001;&#x3002;</li>
+<li><code>boolean isHeldExclusively()</code>&#xFF1A;&#x5F53;&#x524D;&#x540C;&#x6B65;&#x5668;&#x662F;&#x5426;&#x5728;&#x72EC;&#x5360;&#x5F0F;&#x6A21;&#x5F0F;&#x4E0B;&#x88AB;&#x7EBF;&#x7A0B;&#x5360;&#x7528;&#x3002;</li>
+</ul>
+<p>&#x5B9E;&#x73B0;&#x81EA;&#x5B9A;&#x4E49;&#x540C;&#x6B65;&#x7EC4;&#x4EF6;&#x65F6;&#xFF0C;&#x5C06;&#x4F1A;&#x8C03;&#x7528;&#x540C;&#x6B65;&#x5668;&#x63D0;&#x4F9B; <strong>&#x72EC;&#x5360;&#x5F0F;&#x83B7;&#x53D6;&#x4E0E;&#x91CA;&#x653E;&#x540C;&#x6B65;&#x72B6;&#x6001;</strong>&#x3001;<strong>&#x5171;&#x4EAB;&#x5F0F;&#x83B7;&#x53D6;&#x4E0E;&#x91CA;&#x653E;&#x540C;&#x6B65;&#x72B6;&#x6001;</strong> &#x548C; <strong>&#x67E5;&#x8BE2;&#x540C;&#x6B65;&#x961F;&#x5217;&#x4E2D;&#x7684;&#x7B49;&#x5F85;&#x7EBF;&#x7A0B;&#x60C5;&#x51B5;</strong> &#x4E09;&#x7C7B;&#x6A21;&#x677F;&#x65B9;&#x6CD5;&#x3002;</p>
+<p>&#x72EC;&#x5360;&#x9501;&#x7684;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code>/**
+ * @author https://github.com/103style
+ * @date 2019/6/12 17:32
+ */
+public class TestLock implements Lock {
+    private TestQueuedSync sync;
+    /**
+     * &#x83B7;&#x53D6;&#x9501;
+     */
+    @Override
+    public void lock() {
+        sync.acquire(1);
+    }
+    /**
+     * &#x53EF;&#x4E2D;&#x65AD;&#x7684;&#x83B7;&#x53D6;&#x9501;
+     */
+    @Override
+    public void lockInterruptibly() throws InterruptedException {
+        sync.acquireInterruptibly(1);
+    }
+    /**
+     * &#x5C1D;&#x8BD5;&#x975E;&#x963B;&#x585E;&#x5F0F;&#x83B7;&#x53D6;&#x9501;
+     */
+    @Override
+    public boolean tryLock() {
+        return sync.tryAcquire(1);
+    }
+    /**
+     * &#x5C1D;&#x8BD5;&#x975E;&#x963B;&#x585E;&#x5F0F;&#x83B7;&#x53D6;&#x9501;
+     */
+    @Override
+    public boolean tryLock(long time, TimeUnit unit) throws InterruptedException {
+        return sync.tryAcquire(1);
+    }
+    /**
+     * &#x91CA;&#x653E;&#x9501;
+     */
+    @Override
+    public void unlock() {
+        sync.release(1);
+    }
+    @Override
+    public Condition newCondition() {
+        return sync.newCondition();
+    }
+    /**
+     * &#x662F;&#x5426;&#x6709;&#x540C;&#x6B65;&#x961F;&#x5217;&#x7EBF;&#x7A0B;
+     */
+    public boolean hasQueuedThreads() {
+        return sync.hasQueuedThreads();
+    }
+    /**
+     * &#x9501;&#x662F;&#x5426;&#x88AB;&#x5360;&#x7528;
+     */
+    public boolean isLock() {
+        return sync.isHeldExclusively();
+    }
+    private static class TestQueuedSync extends AbstractQueuedSynchronizer {
+        /**
+         * &#x72EC;&#x5360;&#x5F0F;&#x83B7;&#x53D6;&#x540C;&#x6B65;&#x72B6;&#x6001;
+         */
+        @Override
+        protected boolean tryAcquire(int arg) {
+            if (compareAndSetState(0, 1)) {
+                setExclusiveOwnerThread(Thread.currentThread());
+                return true;
+            }
+            return false;
+        }
+        /**
+         * &#x72EC;&#x5360;&#x5F0F;&#x91CA;&#x653E;&#x540C;&#x6B65;&#x72B6;&#x6001;
+         */
+        @Override
+        protected boolean tryRelease(int arg) {
+            if (getState() == 0) {
+                throw new IllegalStateException();
+            }
+            setExclusiveOwnerThread(null);
+            setState(0);
+            return true;
+        }
+        /**
+         * &#x540C;&#x6B65;&#x72B6;&#x6001;&#x662F;&#x5426;&#x88AB;&#x5360;&#x7528;
+         */
+        @Override
+        protected boolean isHeldExclusively() {
+            return getState() == 1;
+        }
+        /**
+         * &#x8FD4;&#x56DE;&#x4E00;&#x4E2A;Condition&#xFF0C;&#x6BCF;&#x4E2A;condition&#x90FD;&#x5305;&#x542B;&#x4E86;&#x4E00;&#x4E2A;condition&#x961F;&#x5217;
+         */
+        Condition newCondition() {
+            return new ConditionObject();
+        }
+    }
+}
+</code></pre><p>&#x4E0A;&#x8FF0;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;&#x72EC;&#x5360;&#x9501;<code>TestLock</code>&#x662F;&#x4E00;&#x4E2A;&#x81EA;&#x5B9A;&#x4E49;&#x540C;&#x6B65;&#x7EC4;&#x4EF6;&#xFF0C;&#x5B83;&#x5728;&#x540C;&#x4E00;&#x65F6;&#x523B;&#x53EA;&#x5141;&#x8BB8;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x5360;&#x6709;&#x9501;&#x3002;<code>TestLock</code>&#x4E2D;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;&#x9759;&#x6001;&#x5185;&#x90E8;&#x7C7B;<code>TestQueuedSync</code>&#x7EE7;&#x627F;&#x4E86;&#x540C;&#x6B65;&#x5668;&#xFF0C;&#x5728;<code>tryAcquire(int acquires)</code>&#x65B9;&#x6CD5;&#x4E2D;&#xFF0C;&#x5982;&#x679C;&#x7ECF;&#x8FC7;<code>compareAndSetState</code>&#x8BBE;&#x7F6E;&#x6210;&#x529F;&#xFF0C;&#x5219;&#x4EE3;&#x8868;&#x83B7;&#x53D6;&#x4E86;&#x540C;&#x6B65;&#x72B6;&#x6001;<code>1</code>&#xFF0C;&#x800C;&#x5728;<code>tryRelease(int releases)</code>&#x65B9;&#x6CD5;&#x4E2D;&#x53EA;&#x662F;&#x5C06;&#x540C;&#x6B65;&#x72B6;&#x6001;&#x91CD;&#x7F6E;&#x4E3A;<code>0</code>&#x3002;</p>
+<p>&#x7528;&#x6237;&#x4F7F;&#x7528;<code>TestLock</code>&#x65F6;&#x5E76;&#x4E0D;&#x4F1A;&#x76F4;&#x63A5;&#x548C;&#x5185;&#x90E8;&#x540C;&#x6B65;&#x5668;&#x7684;&#x5B9E;&#x73B0;<code>TestQueuedSync</code>&#x6253;&#x4EA4;&#x9053;&#xFF0C;&#x800C;&#x662F;&#x8C03;&#x7528;<code>TestLock</code>&#x63D0;&#x4F9B;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x5728;<code>TestLock</code>&#x7684;&#x5B9E;&#x73B0;&#x4E2D;&#xFF0C;&#x4EE5;&#x83B7;&#x53D6;&#x9501;&#x7684;<code>lock()</code>&#x65B9;&#x6CD5;&#x4E3A;&#x4F8B;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x5728;&#x65B9;&#x6CD5;&#x5B9E;&#x73B0;&#x4E2D;&#x8C03;&#x7528;&#x540C;&#x6B65;&#x5668;&#x7684;&#x6A21;&#x677F;&#x65B9;&#x6CD5;<code>acquire(int args)</code>&#x5373;&#x53EF;&#xFF0C;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x8C03;&#x7528;&#x8BE5;&#x65B9;&#x6CD5;&#x83B7;&#x53D6;&#x540C;&#x6B65;&#x72B6;&#x6001;&#x5931;&#x8D25;&#x540E;&#x4F1A;&#x88AB;&#x52A0;&#x5165;&#x5230;&#x540C;&#x6B65;&#x961F;&#x5217;&#x4E2D;&#x7B49;&#x5F85;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x5927;&#x5927;&#x964D;&#x4F4E;&#x4E86;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x53EF;&#x9760;&#x81EA;&#x5B9A;&#x4E49;&#x540C;&#x6B65;&#x7EC4;&#x4EF6;&#x7684;&#x95E8;&#x69DB;&#x3002;</p>
+<h5 id="&#x961F;&#x5217;&#x540C;&#x6B65;&#x5668;&#x7684;&#x5B9E;&#x73B0;&#x5206;&#x6790;"><a name="&#x961F;&#x5217;&#x540C;&#x6B65;&#x5668;&#x7684;&#x5B9E;&#x73B0;&#x5206;&#x6790;" class="anchor-navigation-ex-anchor" href="#&#x961F;&#x5217;&#x540C;&#x6B65;&#x5668;&#x7684;&#x5B9E;&#x73B0;&#x5206;&#x6790;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x961F;&#x5217;&#x540C;&#x6B65;&#x5668;&#x7684;&#x5B9E;&#x73B0;&#x5206;&#x6790;" class="plugin-anchor" href="#&#x961F;&#x5217;&#x540C;&#x6B65;&#x5668;&#x7684;&#x5B9E;&#x73B0;&#x5206;&#x6790;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x961F;&#x5217;&#x540C;&#x6B65;&#x5668;&#x7684;&#x5B9E;&#x73B0;&#x5206;&#x6790;</h5>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x5C06;&#x4ECE;&#x5B9E;&#x73B0;&#x89D2;&#x5EA6;&#x5206;&#x6790;&#x540C;&#x6B65;&#x5668;&#x662F;&#x5982;&#x4F55;&#x5B8C;&#x6210;&#x7EBF;&#x7A0B;&#x540C;&#x6B65;&#x7684;&#xFF1A;</p>
+<ul>
+<li><p><strong>&#x540C;&#x6B65;&#x961F;&#x5217;</strong> &#xFF1A; &#x4E00;&#x4E2A;<code>FIFO</code>&#x53CC;&#x5411;&#x961F;&#x5217;&#x3002;
+&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x83B7;&#x53D6;&#x540C;&#x6B65;&#x72B6;&#x6001;&#x5931;&#x8D25;&#x65F6;&#xFF0C;&#x540C;&#x6B65;&#x5668;&#x4F1A;&#x5C06;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x4EE5;&#x53CA;&#x7B49;&#x5F85;&#x72B6;&#x6001;&#x7B49;&#x4FE1;&#x606F;&#x6784;&#x9020;&#x6210;&#x4E3A;&#x4E00;&#x4E2A;&#x8282;&#x70B9;<code>Node</code>&#x5E76;&#x5C06;&#x5176;&#x52A0;&#x5165;&#x540C;&#x6B65;&#x961F;&#x5217;&#xFF0C;&#x540C;&#x65F6;&#x4F1A;&#x963B;&#x585E;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#xFF0C;&#x5F53;&#x540C;&#x6B65;&#x72B6;&#x6001;&#x91CA;&#x653E;&#x65F6;&#xFF0C;&#x4F1A;&#x628A;&#x9996;&#x8282;&#x70B9;&#x4E2D;&#x7684;&#x7EBF;&#x7A0B;&#x5524;&#x9192;&#xFF0C;&#x4F7F;&#x5176;&#x518D;&#x6B21;&#x5C1D;&#x8BD5;&#x83B7;&#x53D6;&#x540C;&#x6B65;&#x72B6;&#x6001;&#x3002;
+<code>Node</code> &#x4FDD;&#x5B58; <strong>&#x83B7;&#x53D6;&#x540C;&#x6B65;&#x72B6;&#x6001;&#x5931;&#x8D25;&#x7684;&#x7EBF;&#x7A0B;&#x5F15;&#x7528;</strong>&#x3001;<strong>&#x7B49;&#x5F85;&#x72B6;&#x6001;</strong> &#x4EE5;&#x53CA; <strong>&#x524D;&#x9A71;&#x548C;&#x540E;&#x7EE7;&#x8282;&#x70B9;</strong>&#xFF0C;<strong>&#x8282;&#x70B9;&#x7684;&#x5C5E;&#x6027;&#x7C7B;&#x578B;</strong> &#x4E0E; <strong>&#x540D;&#x79F0;</strong> &#x4EE5;&#x53CA; <strong>&#x63CF;&#x8FF0;</strong> &#x5982;&#x4E0B;:</p>
+<pre><code>/**
+ * &#x7B49;&#x5F85;&#x72B6;&#x6001;&#xFF1A;
+ *  CANCELLED : 1 &#x5728;&#x540C;&#x6B65;&#x961F;&#x5217;&#x4E2D;&#x7B49;&#x5F85;&#x8D85;&#x65F6;&#x6216;&#x88AB;&#x4E2D;&#x65AD;&#xFF0C;&#x9700;&#x8981;&#x4ECE;&#x961F;&#x5217;&#x4E2D;&#x53D6;&#x6D88;&#x7B49;&#x5F85;&#xFF0C;&#x5728;&#x8BE5;&#x72B6;&#x6001;&#x5C06;&#x4E0D;&#x4F1A;&#x53D8;&#x5316;
+ *  SIGNAL : -1  &#x540E;&#x7EE7;&#x8282;&#x70B9;&#x5730;&#x7EBF;&#x7A0B;&#x5904;&#x4E8E;&#x7B49;&#x5F85;&#x72B6;&#x6001;&#xFF0C;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x91CA;&#x653E;&#x83B7;&#x53D6;&#x53D6;&#x6D88;&#x540C;&#x6B65;&#x72B6;&#x6001;&#xFF0C;&#x540E;&#x7EE7;&#x8282;&#x70B9;&#x5730;&#x7EBF;&#x7A0B;&#x5373;&#x5F00;&#x59CB;&#x8FD0;&#x884C;
+ *  CONDITION : -2  &#x5728;&#x7B49;&#x5F85;&#x961F;&#x5217;&#x4E2D;&#xFF0C;
+ *  PROPAGATE : -3 &#x4E0B;&#x4E00;&#x6B21;&#x5171;&#x4EAB;&#x5F0F;&#x540C;&#x6B65;&#x72B6;&#x6001;&#x83B7;&#x53D6;&#x5C06;&#x4F1A;&#x65E0;&#x6761;&#x4EF6;&#x5730;&#x88AB;&#x4F20;&#x64AD;&#x4E0B;&#x53BB;
+ *  INITAL : 0  &#x521D;&#x59CB;&#x72B6;&#x6001;
+ */
+volatile int waitStatus;
+volatile Node prev;//&#x524D;&#x9A71;&#x8282;&#x70B9;
+volatile Node next;//&#x540E;&#x7EE7;&#x8282;&#x70B9;
+volatile Thread thread;//&#x83B7;&#x53D6;&#x540C;&#x6B65;&#x72B6;&#x6001;&#x7684;&#x7EBF;&#x7A0B;
+Node nextWaiter;//&#x7B49;&#x5F85;&#x961F;&#x5217;&#x4E2D;&#x7684;&#x540E;&#x7EE7;&#x8282;&#x70B9;&#x3002; &#x5982;&#x679C;&#x8282;&#x70B9;&#x662F;&#x5171;&#x4EAB;&#x7684;&#x7684;&#xFF0C;&#x8FD9;&#x4E2A;&#x5B57;&#x6BB5;&#x5C06;&#x662F;&#x4E00;&#x4E2A;SHARED&#x5E38;&#x91CF;
+</code></pre><p><img src="https://upload-images.jianshu.io/upload_images/1709375-b3af4d21c384aea3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="&#x540C;&#x6B65;&#x961F;&#x5217;&#x7684;&#x57FA;&#x672C;&#x7ED3;&#x6784;"></p>
+<p>&#x5982;&#x4E0A;&#x56FE;&#x6240;&#x793A;&#xFF0C;&#x540C;&#x6B65;&#x5668;&#x5305;&#x542B;&#x4E86;&#x4E24;&#x4E2A;&#x8282;&#x70B9;&#x7C7B;&#x578B;&#x7684;&#x5F15;&#x7528;&#xFF0C;&#x4E00;&#x4E2A;&#x6307;&#x5411; <strong>&#x5934;&#x8282;&#x70B9;</strong>&#xFF0C;&#x800C;&#x53E6;&#x4E00;&#x4E2A;&#x6307;&#x5411; <strong>&#x5C3E;&#x8282;&#x70B9;</strong>&#x3002;
+&#x8BD5;&#x60F3;&#x4E00;&#x4E0B;&#xFF0C;&#x5F53;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x6210;&#x529F;&#x5730;&#x83B7;&#x53D6;&#x4E86;&#x540C;&#x6B65;&#x72B6;&#x6001;&#xFF08;&#x6216;&#x8005;&#x9501;&#xFF09;&#xFF0C;&#x5176;&#x4ED6;&#x7EBF;&#x7A0B;&#x5C06;&#x65E0;&#x6CD5;&#x83B7;&#x53D6;&#x5230;&#x540C;&#x6B65;&#x72B6;&#x6001;&#xFF0C;&#x8F6C;&#x800C;&#x88AB;&#x6784;&#x9020;&#x6210;&#x4E3A;&#x8282;&#x70B9;&#x5E76;&#x52A0;&#x5165;&#x5230;&#x540C;&#x6B65;&#x961F;&#x5217;&#x4E2D;&#xFF0C;&#x800C;&#x8FD9;&#x4E2A;&#x52A0;&#x5165;&#x961F;&#x5217;&#x7684;&#x8FC7;&#x7A0B;&#x5FC5;&#x987B;&#x8981;&#x4FDD;&#x8BC1;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#xFF0C;&#x56E0;&#x6B64;&#x540C;&#x6B65;&#x5668;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;&#x57FA;&#x4E8E;CAS&#x7684;&#x8BBE;&#x7F6E;&#x5C3E;&#x8282;&#x70B9;&#x7684;&#x65B9;&#x6CD5;&#xFF1A;<code>compareAndSetTail(Node expect,Node update)</code>&#xFF0C;&#x5B83;&#x9700;&#x8981;&#x4F20;&#x9012;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x201C;&#x8BA4;&#x4E3A;&#x201D;&#x7684;&#x5C3E;&#x8282;&#x70B9;&#x548C;&#x5F53;&#x524D;&#x8282;&#x70B9;&#xFF0C;&#x53EA;&#x6709;&#x8BBE;&#x7F6E;&#x6210;&#x529F;&#x540E;&#xFF0C;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x624D;&#x6B63;&#x5F0F;&#x4E0E;&#x4E4B;&#x524D;&#x7684;&#x5C3E;&#x8282;&#x70B9;&#x5EFA;&#x7ACB;&#x5173;&#x8054;&#x3002;</p>
+</li>
+</ul>
+<ul>
+<li><p><strong>&#x72EC;&#x5360;&#x5F0F;&#x540C;&#x6B65;&#x72B6;&#x6001;&#x83B7;&#x53D6;&#x4E0E;&#x91CA;&#x653E;</strong>
+&#x901A;&#x8FC7;&#x8C03;&#x7528;&#x540C;&#x6B65;&#x5668;&#x7684;<code>acquire(int arg)</code>&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x83B7;&#x53D6;&#x540C;&#x6B65;&#x72B6;&#x6001;&#xFF0C;&#x8BE5;&#x65B9;&#x6CD5;&#x5BF9;&#x4E2D;&#x65AD;&#x4E0D;&#x654F;&#x611F;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x7531;&#x4E8E;&#x7EBF;&#x7A0B;&#x83B7;&#x53D6;&#x540C;&#x6B65;&#x72B6;&#x6001;&#x5931;&#x8D25;&#x540E;&#x8FDB;&#x5165;&#x540C;&#x6B65;&#x961F;&#x5217;&#x4E2D;&#xFF0C;&#x540E;&#x7EED;&#x5BF9;&#x7EBF;&#x7A0B;&#x8FDB;&#x884C;&#x4E2D;&#x65AD;&#x64CD;&#x4F5C;&#x65F6;&#xFF0C;&#x7EBF;&#x7A0B;&#x4E0D;&#x4F1A;&#x4ECE;&#x540C;&#x6B65;&#x961F;&#x5217;&#x4E2D;&#x79FB;&#x51FA;&#x3002;<code>acquire(int arg)</code>&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>  public final void acquire(int arg) {
+      if (!tryAcquire(arg) &amp;&amp;
+          acquireQueued(addWaiter(Node.EXCLUSIVE), arg))
+          selfInterrupt();
+  }
+</code></pre><p>  &#x4E0A;&#x8FF0;&#x4EE3;&#x7801;&#x4E3B;&#x8981;&#x5B8C;&#x6210;&#x4E86; <strong>&#x540C;&#x6B65;&#x72B6;&#x6001;&#x83B7;&#x53D6;</strong>&#x3001;<strong>&#x8282;&#x70B9;&#x6784;&#x9020;</strong>&#x3001;<strong>&#x52A0;&#x5165;&#x540C;&#x6B65;&#x961F;&#x5217;</strong> &#x4EE5;&#x53CA; <strong>&#x5728;&#x540C;&#x6B65;&#x961F;&#x5217;&#x4E2D;&#x81EA;&#x65CB;&#x7B49;&#x5F85;</strong>&#x3002;</p>
+<ul>
+<li>&#x9996;&#x5148;&#x8C03;&#x7528;&#x81EA;&#x5B9A;&#x4E49;&#x540C;&#x6B65;&#x5668;&#x5B9E;&#x73B0;&#x7684;<code>tryAcquire(int arg)</code>&#x65B9;&#x6CD5;&#x4FDD;&#x8BC1;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x7684;&#x83B7;&#x53D6;&#x540C;&#x6B65;&#x72B6;&#x6001;</li>
+<li>&#x5982;&#x679C;&#x83B7;&#x53D6;&#x540C;&#x6B65;&#x72B6;&#x6001;&#x5931;&#x8D25;&#xFF0C;&#x6784;&#x9020;&#x540C;&#x6B65;&#x8282;&#x70B9;&#xFF08;&#x72EC;&#x5360;&#x5F0F;<code>Node.EXCLUSIVE</code>&#xFF0C;&#x540C;&#x4E00;&#x65F6;&#x523B;&#x53EA;&#x80FD;&#x6709;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x6210;&#x529F;&#x83B7;&#x53D6;&#x540C;&#x6B65;&#x72B6;&#x6001;&#xFF09;&#x5E76;&#x901A;&#x8FC7;<code>addWaiter(Node node)</code>&#x65B9;&#x6CD5;&#x5C06;&#x8BE5;&#x8282;&#x70B9;&#x52A0;&#x5165;&#x5230;&#x540C;&#x6B65;&#x961F;&#x5217;&#x7684;&#x5C3E;&#x90E8;&#x3002;</li>
+<li>&#x6700;&#x540E;&#x8C03;&#x7528;<code>acquireQueued(Node node,int arg)</code>&#x65B9;&#x6CD5;&#xFF0C;&#x4F7F;&#x5F97;&#x8BE5;&#x8282;&#x70B9;&#x4EE5;&#x201C;&#x6B7B;&#x5FAA;&#x73AF;&#x201D;&#x7684;&#x65B9;&#x5F0F;&#x83B7;&#x53D6;&#x540C;&#x6B65;&#x72B6;&#x6001;</li>
+<li><p>&#x5982;&#x679C;&#x83B7;&#x53D6;&#x4E0D;&#x5230;&#x5219;&#x963B;&#x585E;&#x8282;&#x70B9;&#x4E2D;&#x7684;&#x7EBF;&#x7A0B;&#xFF0C;&#x800C; <strong>&#x88AB;&#x963B;&#x585E;&#x7EBF;&#x7A0B;&#x7684;&#x5524;&#x9192;</strong> &#x4E3B;&#x8981;&#x4F9D;&#x9760; <strong>&#x524D;&#x9A71;&#x8282;&#x70B9;&#x7684;&#x51FA;&#x961F;</strong>&#x6216; <strong>&#x963B;&#x585E;&#x7EBF;&#x7A0B;&#x88AB;&#x4E2D;&#x65AD;</strong> &#x6765;&#x5B9E;&#x73B0;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x6765;&#x770B;&#x4E0B;&#x8282;&#x70B9;&#x7684;&#x6784;&#x9020;&#x4EE5;&#x53CA;&#x52A0;&#x5165;&#x540C;&#x6B65;&#x961F;&#x5217;&#x7684;<code>addWaiter(Node mode)</code>&#x548C;<code>initializeSyncQueue()</code>&#x65B9;&#x6CD5;&#xFF1A;</p>
+<pre><code>private Node addWaiter(Node mode) {
+  Node node = new Node(mode);
+  for (;;) {
+      Node oldTail = tail;
+      if (oldTail != null) {
+          U.putObject(node, Node.PREV, oldTail);
+          if (compareAndSetTail(oldTail, node)) {
+              oldTail.next = node;
+              return node;
+          }
+      } else {
+          initializeSyncQueue();
+      }
+  }
+}
+private final void initializeSyncQueue() {
+  Node h;
+  if (U.compareAndSwapObject(this, HEAD, null, (h = new Node())))
+      tail = h;
+}
+</code></pre><p>&#x4E0A;&#x8FF0;&#x4EE3;&#x7801;&#x901A;&#x8FC7;&#x5728;&#x201C;&#x6B7B;&#x5FAA;&#x73AF;&#x201D;&#x4E2D;&#x4F7F;&#x7528;<code>compareAndSetTail(Node expect,Node update)</code>&#x65B9;&#x6CD5;&#x6765;&#x786E;&#x4FDD;&#x8282;&#x70B9;&#x80FD;&#x591F;&#x88AB;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x6DFB;&#x52A0;&#x3002; &#x5982;&#x679C;&#x6CA1;&#x6709;&#x5C3E;&#x8282;&#x70B9;&#x7684;&#x8BDD;&#xFF0C;&#x5219;&#x6784;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x540C;&#x6B65;&#x961F;&#x5217;&#x3002;</p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x770B;&#x4E0B;<code>acquireQueued(final Node node, int arg)</code>&#x65B9;&#x6CD5;&#xFF1A;</p>
+<pre><code>final boolean acquireQueued(final Node node, int arg) {
+  try {
+      boolean interrupted = false;
+      for (;;) {
+          final Node p = node.predecessor();
+          if (p == head &amp;&amp; tryAcquire(arg)) {
+              setHead(node);
+              p.next = null; // help GC
+              return interrupted;
+          }
+          if (shouldParkAfterFailedAcquire(p, node) &amp;&amp;
+              parkAndCheckInterrupt())
+              interrupted = true;
+      }
+  } catch (Throwable t) {
+      cancelAcquire(node);
+      throw t;
+  }
+}
+</code></pre><p>&#x5728;<code>acquireQueued(final Node node,int arg)</code>&#x65B9;&#x6CD5;&#x4E2D;&#xFF0C;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x5728;&#x201C;&#x6B7B;&#x5FAA;&#x73AF;&#x201D;&#x4E2D;&#x5C1D;&#x8BD5;&#x83B7;&#x53D6;&#x540C;&#x6B65;&#x72B6;&#x6001;&#xFF0C;&#x800C;&#x53EA;&#x6709;&#x524D;&#x9A71;&#x8282;&#x70B9;&#x662F;&#x5934;&#x8282;&#x70B9;&#x624D;&#x80FD;&#x591F;&#x5C1D;&#x8BD5;&#x83B7;&#x53D6;&#x540C;&#x6B65;&#x72B6;&#x6001;&#xFF0C;&#x8FD9;&#x662F;&#x4E3A;&#x4EC0;&#x4E48;&#xFF1F;&#x539F;&#x56E0;&#x6709;&#x4E24;&#x4E2A;:</p>
+</li>
+<li><strong>&#x5934;&#x8282;&#x70B9;&#x662F;&#x6210;&#x529F;&#x83B7;&#x53D6;&#x5230;&#x540C;&#x6B65;&#x72B6;&#x6001;&#x7684;&#x8282;&#x70B9;&#xFF0C;&#x800C;&#x5934;&#x8282;&#x70B9;&#x7684;&#x7EBF;&#x7A0B;&#x91CA;&#x653E;&#x4E86;&#x540C;&#x6B65;&#x72B6;&#x6001;&#x4E4B;&#x540E;&#xFF0C;&#x5C06;&#x4F1A;&#x5524;&#x9192;&#x5176;&#x540E;&#x7EE7;&#x8282;&#x70B9;&#xFF0C;&#x540E;&#x7EE7;&#x8282;&#x70B9;&#x7684;&#x7EBF;&#x7A0B;&#x88AB;&#x5524;&#x9192;&#x540E;&#x9700;&#x8981;&#x68C0;&#x67E5;&#x81EA;&#x5DF1;&#x7684;&#x524D;&#x9A71;&#x8282;&#x70B9;&#x662F;&#x5426;&#x662F;&#x5934;&#x8282;&#x70B9;</strong>&#x3002;</li>
+<li><strong>&#x7EF4;&#x62A4;&#x540C;&#x6B65;&#x961F;&#x5217;&#x7684;FIFO&#x539F;&#x5219;</strong>&#x3002;
+<img src="https://upload-images.jianshu.io/upload_images/1709375-8ce5e9ccfb9e55a3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="&#x8282;&#x70B9;&#x81EA;&#x65CB;&#x83B7;&#x53D6;&#x540C;&#x6B65;&#x72B6;&#x6001;"></li>
+</ul>
+<p>&#x7531;&#x4E8E;&#x975E;&#x9996;&#x8282;&#x70B9;&#x7EBF;&#x7A0B;&#x524D;&#x9A71;&#x8282;&#x70B9;&#x51FA;&#x961F;&#x6216;&#x8005;&#x88AB;&#x4E2D;&#x65AD;&#x800C;&#x4ECE;&#x7B49;&#x5F85;&#x72B6;&#x6001;&#x8FD4;&#x56DE;&#xFF0C;&#x968F;&#x540E;&#x68C0;&#x67E5;&#x81EA;&#x5DF1;&#x7684;&#x524D;&#x9A71;&#x662F;&#x5426;&#x662F;&#x5934;&#x8282;&#x70B9;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x5219;&#x5C1D;&#x8BD5;&#x83B7;&#x53D6;&#x540C;&#x6B65;&#x72B6;&#x6001;&#x3002;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x8282;&#x70B9;&#x548C;&#x8282;&#x70B9;&#x4E4B;&#x95F4;&#x5728;&#x5FAA;&#x73AF;&#x68C0;&#x67E5;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#x57FA;&#x672C;&#x4E0D;&#x76F8;&#x4E92;&#x901A;&#x4FE1;&#xFF0C;&#x800C;&#x662F;&#x7B80;&#x5355;&#x5730;&#x5224;&#x65AD;&#x81EA;&#x5DF1;&#x7684;&#x524D;&#x9A71;&#x662F;&#x5426;&#x4E3A;&#x5934;&#x8282;&#x70B9;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x4F7F;&#x5F97;&#x8282;&#x70B9;&#x7684;&#x91CA;&#x653E;&#x89C4;&#x5219;&#x7B26;&#x5408;FIFO&#xFF0C;&#x5E76;&#x4E14;&#x4E5F;&#x4FBF;&#x4E8E;&#x5BF9;&#x8FC7;&#x65E9;&#x901A;&#x77E5;&#x7684;&#x5904;&#x7406;&#xFF08;&#x8FC7;&#x65E9;&#x901A;&#x77E5;&#x662F;&#x6307;&#x524D;&#x9A71;&#x8282;&#x70B9;&#x4E0D;&#x662F;&#x5934;&#x8282;&#x70B9;&#x7684;&#x7EBF;&#x7A0B;&#x7531;&#x4E8E;&#x4E2D;&#x65AD;&#x800C;&#x88AB;&#x5524;&#x9192;&#xFF09;&#x3002;
+<img src="https://upload-images.jianshu.io/upload_images/1709375-4881fdc50469a93c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="&#x72EC;&#x5360;&#x5F0F;&#x540C;&#x6B65;&#x72B6;&#x6001;&#x83B7;&#x53D6;&#x6D41;&#x7A0B;"></p>
+<p>&#x8C03;&#x7528;&#x540C;&#x6B65;&#x5668;&#x7684;<code>release(int arg)</code>&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x91CA;&#x653E;&#x540C;&#x6B65;&#x72B6;&#x6001;&#xFF0C;&#x7136;&#x540E;&#x4F1A;&#x5524;&#x9192;&#x5176;&#x540E;&#x7EE7;&#x8282;&#x70B9;&#xFF08;&#x8FDB;&#x800C;&#x4F7F;&#x540E;&#x7EE7;&#x8282;&#x70B9;&#x91CD;&#x65B0;&#x5C1D;&#x8BD5;&#x83B7;&#x53D6;&#x540C;&#x6B65;&#x72B6;&#x6001;&#xFF09;&#x3002;<code>release(int arg)</code>&#x6267;&#x884C;&#x4E4B;&#x540E;&#x4F1A;&#x5524;&#x9192;&#x540E;&#x7EE7;&#x7684;&#x8282;&#x70B9;&#x3002;</p>
+<pre><code>  public final boolean release(int arg) {
+      if (tryRelease(arg)) {
+          Node h = head;
+          if (h != null &amp;&amp; h.waitStatus != 0)
+              unparkSuccessor(h);
+          return true;
+      }
+      return false;
+  }
+  private void unparkSuccessor(Node node) {
+      int ws = node.waitStatus;
+      if (ws &lt; 0)
+          node.compareAndSetWaitStatus(ws, 0);
+      Node s = node.next;
+      if (s == null || s.waitStatus &gt; 0) {
+          s = null;
+          for (Node p = tail; p != node &amp;&amp; p != null; p = p.prev)
+              if (p.waitStatus &lt;= 0)
+                  s = p;
+      }
+      if (s != null)
+          LockSupport.unpark(s.thread);
+  }
+</code></pre></li>
+<li><p><strong>&#x5171;&#x4EAB;&#x5F0F;&#x540C;&#x6B65;&#x72B6;&#x6001;&#x83B7;&#x53D6;&#x4E0E;&#x91CA;&#x653E;</strong> 
+  <strong>&#x5171;&#x4EAB;&#x5F0F;&#x83B7;&#x53D6;</strong> &#x4E0E; <strong>&#x72EC;&#x5360;&#x5F0F;&#x83B7;&#x53D6;</strong> &#x6700;&#x4E3B;&#x8981;&#x7684;&#x533A;&#x522B;&#x5728;&#x4E8E; <strong>&#x540C;&#x4E00;&#x65F6;&#x523B;&#x80FD;&#x5426;&#x6709;&#x591A;&#x4E2A;&#x7EBF;&#x7A0B;&#x540C;&#x65F6;&#x83B7;&#x53D6;&#x5230;&#x540C;&#x6B65;&#x72B6;&#x6001;</strong>&#x3002;</p>
+<p>  &#x4EE5;&#x6587;&#x4EF6;&#x7684;&#x8BFB;&#x5199;&#x4E3A;&#x4F8B;&#xFF0C;<strong>&#x5199;&#x64CD;&#x4F5C;</strong> &#x8981;&#x6C42;&#x5BF9;&#x8D44;&#x6E90;&#x7684; <strong>&#x72EC;&#x5360;&#x5F0F;&#x8BBF;&#x95EE;</strong> &#xFF0C;&#x800C; <strong>&#x8BFB;&#x64CD;&#x4F5C;</strong> &#x53EF;&#x4EE5;&#x662F; <strong>&#x5171;&#x4EAB;&#x5F0F;&#x8BBF;&#x95EE;</strong>&#x3002;</p>
+<p>  &#x901A;&#x8FC7;&#x8C03;&#x7528;<code>acquireShared(int arg)</code>&#x53EF;&#x4EE5;&#x5171;&#x4EAB;&#x5F0F;&#x5730;&#x83B7;&#x53D6;&#x540C;&#x6B65;&#x72B6;&#x6001;&#xFF0C;&#x65B9;&#x6CD5;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>  public final void acquireShared(int arg) {
+      if (tryAcquireShared(arg) &lt; 0)
+          doAcquireShared(arg);
+  }
+  private void doAcquireShared(int arg) {
+      final Node node = addWaiter(Node.SHARED);
+      try {
+          boolean interrupted = false;
+          for (;;) {
+              final Node p = node.predecessor();
+              if (p == head) {
+                  int r = tryAcquireShared(arg);
+                  if (r &gt;= 0) {
+                      setHeadAndPropagate(node, r);
+                      p.next = null; // help GC
+                      if (interrupted)
+                          selfInterrupt();
+                      return;
+                  }
+              }
+              if (shouldParkAfterFailedAcquire(p, node) &amp;&amp;
+                  parkAndCheckInterrupt())
+                  interrupted = true;
+          }
+      } catch (Throwable t) {
+          cancelAcquire(node);
+          throw t;
+      }
+  }
+</code></pre><p>  &#x5728;&#x5171;&#x4EAB;&#x5F0F;&#x83B7;&#x53D6;&#x7684;&#x81EA;&#x65CB;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x6210;&#x529F;&#x83B7;&#x53D6;&#x5230;&#x540C;&#x6B65;&#x72B6;&#x6001;&#x5E76;&#x9000;&#x51FA;&#x81EA;&#x65CB;&#x7684;&#x6761;&#x4EF6;&#x5C31;&#x662F;<code>tryAcquireShared(int arg)</code>&#x65B9;&#x6CD5;&#x8FD4;&#x56DE;&#x503C; <code>&#x5927;&#x4E8E;&#x7B49;&#x4E8E;0</code>&#x3002;
+  &#x5728;<code>doAcquireShared(int arg)</code>&#x65B9;&#x6CD5;&#x7684;&#x81EA;&#x65CB;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x5982;&#x679C;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x7684; <strong>&#x524D;&#x9A71;&#x4E3A;&#x5934;&#x8282;&#x70B9;</strong> &#x65F6;&#xFF0C;&#x5C1D;&#x8BD5;&#x83B7;&#x53D6;&#x540C;&#x6B65;&#x72B6;&#x6001;&#xFF0C;&#x5982;&#x679C;&#x8FD4;&#x56DE;&#x503C; <code>&#x5927;&#x4E8E;&#x7B49;&#x4E8E;0</code>&#xFF0C;&#x8868;&#x793A;&#x8BE5;&#x6B21;&#x83B7;&#x53D6;&#x540C;&#x6B65;&#x72B6;&#x6001;&#x6210;&#x529F;&#x5E76;&#x4ECE;&#x81EA;&#x65CB;&#x8FC7;&#x7A0B;&#x4E2D;&#x9000;&#x51FA;&#x3002;</p>
+<p>  &#x5171;&#x4EAB;&#x5F0F;&#x83B7;&#x53D6;&#x4E5F;&#x9700;&#x8981;&#x91CA;&#x653E;&#x540C;&#x6B65;&#x72B6;&#x6001;&#xFF0C;&#x901A;&#x8FC7;&#x8C03;&#x7528;<code>releaseShared(int arg)</code>&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x91CA;&#x653E;&#x540C;&#x6B65;&#x72B6;&#x6001;&#xFF1A;</p>
+<pre><code>  public final boolean releaseShared(int arg) {
+      if (tryReleaseShared(arg)) {
+          doReleaseShared();
+          return true;
+      }
+      return false;
+  }
+  private void doReleaseShared() {
+      for (;;) {
+          Node h = head;
+          if (h != null &amp;&amp; h != tail) {
+              int ws = h.waitStatus;
+              if (ws == Node.SIGNAL) {
+                  if (!h.compareAndSetWaitStatus(Node.SIGNAL, 0))
+                      continue;            // loop to recheck cases
+                  unparkSuccessor(h);
+              }
+              else if (ws == 0 &amp;&amp;
+                       !h.compareAndSetWaitStatus(0, Node.PROPAGATE))
+                  continue;                // loop on failed CAS
+          }
+          if (h == head)                   // loop if head changed
+              break;
+      }
+  }
+</code></pre><p>  &#x8BE5;&#x65B9;&#x6CD5;&#x5728;&#x91CA;&#x653E;&#x540C;&#x6B65;&#x72B6;&#x6001;&#x4E4B;&#x540E;&#xFF0C;&#x5C06;&#x4F1A;&#x5524;&#x9192;&#x540E;&#x7EED;&#x5904;&#x4E8E;&#x7B49;&#x5F85;&#x72B6;&#x6001;&#x7684;&#x8282;&#x70B9;&#x3002;&#x5BF9;&#x4E8E;&#x80FD;&#x591F;&#x652F;&#x6301;&#x591A;&#x4E2A;&#x7EBF;&#x7A0B;&#x540C;&#x65F6;&#x8BBF;&#x95EE;&#x7684;&#x5E76;&#x53D1;&#x7EC4;&#x4EF6;&#xFF08;&#x6BD4;&#x5982;<code>Semaphore</code>&#xFF09;&#xFF0C;&#x5B83;&#x548C;&#x72EC;&#x5360;&#x5F0F;&#x4E3B;&#x8981;&#x533A;&#x522B;&#x5728;&#x4E8E;<code>tryReleaseShared(int arg)</code>&#x65B9;&#x6CD5;&#x5FC5;&#x987B;&#x786E;&#x4FDD;&#x540C;&#x6B65;&#x72B6;&#x6001;&#xFF08;&#x6216;&#x8005;&#x8D44;&#x6E90;&#x6570;&#xFF09;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x91CA;&#x653E;&#xFF0C;&#x4E00;&#x822C;&#x662F;&#x901A;&#x8FC7;&#x5FAA;&#x73AF;&#x548C;CAS&#x6765;&#x4FDD;&#x8BC1;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x91CA;&#x653E;&#x540C;&#x6B65;&#x72B6;&#x6001;&#x7684;&#x64CD;&#x4F5C;&#x4F1A;&#x540C;&#x65F6;&#x6765;&#x81EA;&#x591A;&#x4E2A;&#x7EBF;&#x7A0B;&#x3002;</p>
+</li>
+<li><p><strong>&#x8D85;&#x65F6;&#x83B7;&#x53D6;&#x540C;&#x6B65;&#x72B6;&#x6001;</strong>
+  &#x901A;&#x8FC7;&#x8C03;&#x7528;&#x540C;&#x6B65;&#x5668;&#x7684;<code>doAcquireNanos(int arg,long nanosTimeout)</code>&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x8D85;&#x65F6;&#x83B7;&#x53D6;&#x540C;&#x6B65;&#x72B6;&#x6001;&#xFF0C;&#x5373;&#x5728;&#x6307;&#x5B9A;&#x7684;&#x65F6;&#x95F4;&#x6BB5;&#x5185;&#x83B7;&#x53D6;&#x540C;&#x6B65;&#x72B6;&#x6001;&#xFF0C;&#x5982;&#x679C;&#x83B7;&#x53D6;&#x5230;&#x540C;&#x6B65;&#x72B6;&#x6001;&#x5219;&#x8FD4;&#x56DE;<code>true</code>&#xFF0C;&#x5426;&#x5219;&#xFF0C;&#x8FD4;&#x56DE;<code>false</code>&#x3002;&#x8BE5;&#x65B9;&#x6CD5;&#x63D0;&#x4F9B;&#x4E86;&#x4F20;&#x7EDF;Java&#x540C;&#x6B65;&#x64CD;&#x4F5C;&#xFF08;&#x6BD4;&#x5982;<code>synchronized</code>&#x5173;&#x952E;&#x5B57;&#xFF09;&#x6240;&#x4E0D;&#x5177;&#x5907;&#x7684;&#x7279;&#x6027;&#x3002;</p>
+<pre><code>  private boolean doAcquireNanos(int arg, long nanosTimeout)
+          throws InterruptedException {
+      if (nanosTimeout &lt;= 0L)
+          return false;
+      final long deadline = System.nanoTime() + nanosTimeout;
+      final Node node = addWaiter(Node.EXCLUSIVE);
+      try {
+          for (;;) {
+              final Node p = node.predecessor();
+              if (p == head &amp;&amp; tryAcquire(arg)) {
+                  setHead(node);
+                  p.next = null; // help GC
+                  return true;
+              }
+              nanosTimeout = deadline - System.nanoTime();
+              if (nanosTimeout &lt;= 0L) {
+                  cancelAcquire(node);
+                  return false;
+              }
+              if (shouldParkAfterFailedAcquire(p, node) &amp;&amp;
+                  nanosTimeout &gt; SPIN_FOR_TIMEOUT_THRESHOLD)
+                  LockSupport.parkNanos(this, nanosTimeout);
+              if (Thread.interrupted())
+                  throw new InterruptedException();
+          }
+      } catch (Throwable t) {
+          cancelAcquire(node);
+          throw t;
+      }
+  }
+</code></pre><p>  &#x8BE5;&#x65B9;&#x6CD5;&#x5728;&#x81EA;&#x65CB;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x5F53;&#x8282;&#x70B9;&#x7684;&#x524D;&#x9A71;&#x8282;&#x70B9;&#x4E3A;&#x5934;&#x8282;&#x70B9;&#x65F6;&#x5C1D;&#x8BD5;&#x83B7;&#x53D6;&#x540C;&#x6B65;&#x72B6;&#x6001;&#xFF0C;&#x5982;&#x679C;&#x83B7;&#x53D6;&#x6210;&#x529F;&#x5219;&#x4ECE;&#x8BE5;&#x65B9;&#x6CD5;&#x8FD4;&#x56DE;&#xFF0C;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x548C;&#x72EC;&#x5360;&#x5F0F;&#x540C;&#x6B65;&#x83B7;&#x53D6;&#x7684;&#x8FC7;&#x7A0B;&#x7C7B;&#x4F3C;&#x3002;&#x83B7;&#x53D6;&#x5931;&#x8D25;&#x5219;&#x4F1A;&#x91CD;&#x65B0;&#x8BA1;&#x7B97;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#x3002;</p>
+<p>  &#x5982;&#x679C;<code>nanosTimeout</code>&#x5C0F;&#x4E8E;&#x7B49;&#x4E8E;<code>spinForTimeoutThreshold</code>&#xFF08;<code>1000&#x7EB3;&#x79D2;</code>&#xFF09;&#x65F6;&#xFF0C;&#x5C06;&#x4E0D;&#x4F1A;&#x4F7F;&#x8BE5;&#x7EBF;&#x7A0B;&#x8FDB;&#x884C;&#x8D85;&#x65F6;&#x7B49;&#x5F85;&#xFF0C;&#x800C;&#x662F;&#x8FDB;&#x5165;&#x5FEB;&#x901F;&#x7684;&#x81EA;&#x65CB;&#x8FC7;&#x7A0B;&#x3002;&#x539F;&#x56E0;&#x5728;&#x4E8E;&#xFF0C;<strong>&#x975E;&#x5E38;&#x77ED;&#x7684;&#x8D85;&#x65F6;&#x7B49;&#x5F85;&#x65E0;&#x6CD5;&#x505A;&#x5230;&#x5341;&#x5206;&#x7CBE;&#x786E;</strong>&#x3002;</p>
+<p>  <strong>&#x72EC;&#x5360;&#x5F0F;&#x8D85;&#x65F6;&#x83B7;&#x53D6;&#x540C;&#x6B65;&#x6001;</strong> &#x7684;&#x6D41;&#x7A0B;&#x4E0B;&#xFF1A;
+  <img src="https://upload-images.jianshu.io/upload_images/1709375-fe15d4e980a19368.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="&#x72EC;&#x5360;&#x5F0F;&#x8D85;&#x65F6;&#x83B7;&#x53D6;&#x540C;&#x6B65;&#x72B6;&#x6001;&#x7684;&#x6D41;&#x7A0B;"></p>
+</li>
+<li><p><strong>&#x81EA;&#x5B9A;&#x4E49;&#x540C;&#x6B65;&#x7EC4;&#x4EF6;</strong>
+  &#x8BBE;&#x8BA1;&#x4E00;&#x4E2A;&#x540C;&#x6B65;&#x5DE5;&#x5177;&#xFF1A;</p>
+<ul>
+<li><code>&#x5728;&#x540C;&#x4E00;&#x65F6;&#x523B;&#xFF0C;&#x53EA;&#x5141;&#x8BB8;&#x81F3;&#x591A;&#x4E24;&#x4E2A;&#x7EBF;&#x7A0B;&#x540C;&#x65F6;&#x8BBF;&#x95EE;&#xFF0C;&#x8D85;&#x8FC7;&#x4E24;&#x4E2A;&#x7EBF;&#x7A0B;&#x7684;&#x8BBF;&#x95EE;&#x5C06;&#x88AB;&#x963B;&#x585E;&#x3002;</code></li>
+<li><p><code>&#x80FD;&#x591F;&#x5728;&#x540C;&#x4E00;&#x65F6;&#x523B;&#x652F;&#x6301;&#x591A;&#x4E2A;&#x7EBF;&#x7A0B;&#x7684;&#x8BBF;&#x95EE;(&#x5171;&#x4EAB;&#x5F0F;&#x8BBF;&#x95EE;)&#x3002;</code></p>
+<p>&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;<code>&#x7701;&#x7565;&#x4E86;&#x65E0;&#x5173;&#x7684;&#x91CD;&#x5199;&#x65B9;&#x6CD5;</code></p>
+<pre><code>/**
+* @author xiaoke.luo@tcl.com 2019/6/14 11:15
+* &#x81EA;&#x5B9A;&#x4E49;&#x540C;&#x6B65;&#x7EC4;&#x4EF6;
+* &lt;p&gt;
+* &#x5B9E;&#x73B0;&#x4EE5;&#x4E0B;&#x529F;&#x80FD;
+* 1.&#x5728;&#x540C;&#x4E00;&#x65F6;&#x523B;&#xFF0C;&#x53EA;&#x5141;&#x8BB8;&#x81F3;&#x591A;&#x4E24;&#x4E2A;&#x7EBF;&#x7A0B;&#x540C;&#x65F6;&#x8BBF;&#x95EE;&#xFF0C;&#x8D85;&#x8FC7;&#x4E24;&#x4E2A;&#x7EBF;&#x7A0B;&#x7684;&#x8BBF;&#x95EE;&#x5C06;&#x88AB;&#x963B;&#x585E;&#x3002;
+* 2.&#x80FD;&#x591F;&#x5728;&#x540C;&#x4E00;&#x65F6;&#x523B;&#x652F;&#x6301;&#x591A;&#x4E2A;&#x7EBF;&#x7A0B;&#x7684;&#x8BBF;&#x95EE;(&#x5171;&#x4EAB;&#x5F0F;&#x8BBF;&#x95EE;)&#x3002;
+*/
+public class CustomLock implements Lock {
+  private CustomSyncQueue customSyncQueue = new CustomSyncQueue(2);
+  public static void main(String[] args) {
+      final Lock lock = new CustomLock();
+      class Worker extends Thread {
+          @Override
+          public void run() {
+              while (true) {
+                  lock.lock();
+                  try {
+                      SleepUtils.second(1);
+                      System.out.println(Thread.currentThread().getName());
+                      SleepUtils.second(1);
+                  } finally {
+                      lock.unlock();
+                  }
+              }
+          }
+      }
+      // &#x542F;&#x52A8;10&#x4E2A;&#x7EBF;&#x7A0B;
+      for (int i = 0; i &lt; 10; i++) {
+          Worker w = new Worker();
+          w.setDaemon(true);
+          w.start();
+      }
+      // &#x6BCF;&#x9694;1&#x79D2;&#x6362;&#x884C;
+      for (int i = 0; i &lt; 10; i++) {
+          SleepUtils.second(1);
+          System.out.println();
+      }
+  }
+  @Override
+  public void lock() {
+      customSyncQueue.tryAcquireShared(1);
+  }
+  @Override
+  public void unlock() {
+      customSyncQueue.tryReleaseShared(1);
+  }
+  public static class CustomSyncQueue extends AbstractQueuedSynchronizer {
+      public CustomSyncQueue(int count) {
+          if (count &lt;= 0) {
+              throw new IllegalStateException(&quot;count must &gt;= 0&quot;);
+          }
+          setState(count);
+      }
+      @Override
+      protected int tryAcquireShared(int reduceCount) {
+          for (; ; ) {
+              int current = getState();
+              int newCount = current - reduceCount;
+              if (newCount &lt; 0 || compareAndSetState(current, newCount)) {
+                  return newCount;
+              }
+          }
+      }
+      @Override
+      protected boolean tryReleaseShared(int returnCount) {
+          for (; ; ) {
+              int current = getState();
+              int newCount = current + returnCount;
+              if (compareAndSetState(current, newCount)) {
+                  return true;
+              }
+          }
+      }
+  }
+}
+</code></pre><p>&#x4E0A;&#x8FF0;&#x4EE3;&#x7801;&#x4E3B;&#x8981;&#x8FD8;&#x662F; <code>CustomSyncQueue</code> &#x7684; <code>tryAcquireShared</code> &#x548C; <code>tryReleaseShared</code> &#x65B9;&#x6CD5;&#xFF0C;&#x5F53;<code>tryAcquireShared(int reduceCount)</code>&#x65B9;&#x6CD5;&#x8FD4;&#x56DE;&#x503C;<code>&gt;=0</code>&#x65F6;&#xFF0C;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x624D;&#x83B7;&#x53D6;&#x540C;&#x6B65;&#x72B6;&#x6001;&#x3002;</p>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="&#x91CD;&#x5165;&#x9501;"><a name="&#x91CD;&#x5165;&#x9501;" class="anchor-navigation-ex-anchor" href="#&#x91CD;&#x5165;&#x9501;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x91CD;&#x5165;&#x9501;" class="plugin-anchor" href="#&#x91CD;&#x5165;&#x9501;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x91CD;&#x5165;&#x9501;</h3>
+<p>&#x91CD;&#x5165;&#x9501;<code>ReentrantLock</code>&#xFF0C;&#x5C31;&#x662F;&#x652F;&#x6301;&#x91CD;&#x8FDB;&#x5165;&#x7684;&#x9501;&#xFF0C;&#x5B83;&#x8868;&#x793A;&#x8BE5;&#x9501;&#x80FD;&#x591F;&#x652F;&#x6301; <strong>&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x5BF9;&#x8D44;&#x6E90;&#x7684;&#x91CD;&#x590D;&#x52A0;&#x9501;</strong>&#x3002;
+&#x9664;&#x6B64;&#x4E4B;&#x5916;&#xFF0C;&#x8BE5;&#x9501;&#x7684;&#x8FD8;&#x652F;&#x6301;&#x83B7;&#x53D6;&#x9501;&#x65F6;&#x7684;&#x516C;&#x5E73;&#x548C;&#x975E;&#x516C;&#x5E73;&#x6027;&#x9009;&#x62E9;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x56DE;&#x987E;&#x4E0B;<code>TestLock</code>&#x7684;<code>lock</code>&#x65B9;&#x6CD5;&#xFF0C;&#x5728; <code>tryAcquire(int acquires)</code>&#x65B9;&#x6CD5;&#x65F6;&#x6CA1;&#x6709;&#x8003;&#x8651;&#x5360;&#x6709;&#x9501;&#x7684;&#x7EBF;&#x7A0B;&#x518D;&#x6B21;&#x83B7;&#x53D6;&#x9501;&#x7684;&#x573A;&#x666F;&#xFF0C;&#x800C;&#x5728;&#x8C03;&#x7528;<code>tryAcquire(int acquires)</code>&#x65B9;&#x6CD5;&#x65F6;&#x8FD4;&#x56DE;&#x4E86;<code>false</code>&#xFF0C;&#x5BFC;&#x81F4;&#x8BE5;&#x7EBF;&#x7A0B;&#x88AB;&#x963B;&#x585E;&#x3002;</p>
+<p><strong>&#x5728;&#x7EDD;&#x5BF9;&#x65F6;&#x95F4;&#x4E0A;&#xFF0C;&#x5148;&#x5BF9;&#x9501;&#x8FDB;&#x884C;&#x83B7;&#x53D6;&#x7684;&#x8BF7;&#x6C42;&#x4E00;&#x5B9A;&#x5148;&#x88AB;&#x6EE1;&#x8DB3;&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x4E2A;&#x9501;&#x662F;&#x516C;&#x5E73;&#x7684;&#xFF0C;&#x53CD;&#x4E4B;&#xFF0C;&#x662F;&#x4E0D;&#x516C;&#x5E73;&#x7684;&#x3002;</strong> 
+&#x4E8B;&#x5B9E;&#x4E0A;&#xFF0C;<strong>&#x516C;&#x5E73;&#x7684;&#x9501;&#x673A;&#x5236;&#x5F80;&#x5F80;&#x6CA1;&#x6709;&#x975E;&#x516C;&#x5E73;&#x7684;&#x6548;&#x7387;&#x9AD8;</strong>&#xFF0C;&#x4F46;&#x662F;&#xFF0C;&#x5E76;&#x4E0D;&#x662F;&#x4EFB;&#x4F55;&#x573A;&#x666F;&#x90FD;&#x662F;&#x4EE5;TPS&#x4F5C;&#x4E3A;&#x552F;&#x4E00;&#x7684;&#x6307;&#x6807;&#xFF0C;&#x516C;&#x5E73;&#x9501;&#x80FD;&#x591F;&#x51CF;&#x5C11;&#x201C;&#x9965;&#x997F;&#x201D;&#x53D1;&#x751F;&#x7684;&#x6982;&#x7387;&#xFF0C;&#x7B49;&#x5F85;&#x8D8A;&#x4E45;&#x7684;&#x8BF7;&#x6C42;&#x8D8A;&#x662F;&#x80FD;&#x591F;&#x5F97;&#x5230;&#x4F18;&#x5148;&#x6EE1;&#x8DB3;&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x6765;&#x5206;&#x6790;&#x4E0B;<code>ReentrantLock</code> &#x7684;&#x5B9E;&#x73B0;&#xFF1A;</p>
+<ul>
+<li><p><strong>&#x5B9E;&#x73B0;&#x91CD;&#x8FDB;&#x5165;</strong>
+&#x91CD;&#x8FDB;&#x5165;&#x662F;&#x6307;&#x4EFB;&#x610F;&#x7EBF;&#x7A0B;&#x5728;&#x83B7;&#x53D6;&#x5230;&#x9501;&#x4E4B;&#x540E;&#x80FD;&#x591F;&#x518D;&#x6B21;&#x83B7;&#x53D6;&#x8BE5;&#x9501;&#x800C;&#x4E0D;&#x4F1A;&#x88AB;&#x9501;&#x6240;&#x963B;&#x585E;&#xFF0C;&#x8BE5;&#x7279;&#x6027;&#x7684;&#x5B9E;&#x73B0;&#x9700;&#x8981;&#x89E3;&#x51B3;&#x4EE5;&#x4E0B;&#x4E24;&#x4E2A;&#x95EE;&#x9898;&#xFF1A;</p>
+<ul>
+<li><strong>&#x7EBF;&#x7A0B;&#x518D;&#x6B21;&#x83B7;&#x53D6;&#x9501;</strong></li>
+<li><strong>&#x9501;&#x7684;&#x6700;&#x7EC8;&#x91CA;&#x653E;</strong></li>
+</ul>
+<p>&#x4E0B;&#x9762;&#x662F;<code>ReentrantLock</code>&#x901A;&#x8FC7;&#x7EC4;&#x5408;&#x81EA;&#x5B9A;&#x4E49;&#x540C;&#x6B65;&#x5668;&#x6765;&#x5B9E;&#x73B0;&#x9501;&#x7684;&#x83B7;&#x53D6;&#x4E0E;&#x91CA;&#x653E;&#xFF0C;&#x4EE5;&#x975E;&#x516C;&#x5E73;&#x6027;&#xFF08;&#x9ED8;&#x8BA4;&#x7684;&#xFF09;&#x5B9E;&#x73B0;&#xFF1A;</p>
+<pre><code>  final boolean nonfairTryAcquire(int acquires) {
+      final Thread current = Thread.currentThread();
+      int c = getState();
+      if (c == 0) {
+          if (compareAndSetState(0, acquires)) {
+              setExclusiveOwnerThread(current);
+              return true;
+          }
+      }
+      else if (current == getExclusiveOwnerThread()) {
+          int nextc = c + acquires;
+          if (nextc &lt; 0) // overflow
+              throw new Error(&quot;Maximum lock count exceeded&quot;);
+          setState(nextc);
+          return true;
+      }
+      return false;
+  }
+</code></pre><p>  &#x6B64;&#x65B9;&#x6CD5;&#x901A;&#x8FC7;&#x5224;&#x65AD; <strong>&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x662F;&#x5426;&#x4E3A;&#x83B7;&#x53D6;&#x9501;&#x7684;&#x7EBF;&#x7A0B;</strong> &#x6765;&#x51B3;&#x5B9A;&#x83B7;&#x53D6;&#x64CD;&#x4F5C;&#x662F;&#x5426;&#x6210;&#x529F;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x83B7;&#x53D6;&#x9501;&#x7684;&#x7EBF;&#x7A0B;&#x518D;&#x6B21;&#x8BF7;&#x6C42;&#xFF0C;&#x5219;&#x5C06;&#x540C;&#x6B65;&#x72B6;&#x6001;&#x503C;&#x8FDB;&#x884C;&#x589E;&#x52A0;&#x5E76;&#x8FD4;&#x56DE;<code>true</code>&#xFF0C;&#x8868;&#x793A;&#x83B7;&#x53D6;&#x540C;&#x6B65;&#x72B6;&#x6001;&#x6210;&#x529F;&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x770B;&#x91CA;&#x653E;&#x9501;&#x7684;&#x65B9;&#x6CD5;<code>tryRelease(int releases)</code>&#xFF1A;</p>
+<pre><code>  protected final boolean tryRelease(int releases) {
+      int c = getState() - releases;
+      if (Thread.currentThread() != getExclusiveOwnerThread())
+          throw new IllegalMonitorStateException();
+      boolean free = false;
+      if (c == 0) {
+          free = true;
+          setExclusiveOwnerThread(null);
+      }
+      setState(c);
+      return free;
+  }
+</code></pre><p>  &#x901A;&#x8FC7;&#x68C0;&#x67E5; <code>state == 0</code> &#x6765;&#x5224;&#x65AD;&#x662F;&#x5426;&#x9700;&#x8981;&#x7EE7;&#x7EED;&#x91CA;&#x653E;&#x9501;&#x3002;</p>
+</li>
+<li><p><strong>&#x516C;&#x5E73;&#x4E0E;&#x975E;&#x516C;&#x5E73;&#x83B7;&#x53D6;&#x9501;&#x7684;&#x533A;&#x522B;</strong>
+&#x516C;&#x5E73;&#x6027;&#x4E0E;&#x5426;&#x662F;&#x9488;&#x5BF9;&#x83B7;&#x53D6;&#x9501;&#x800C;&#x8A00;&#x7684;&#xFF0C;&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x9501;&#x662F;&#x516C;&#x5E73;&#x7684;&#xFF0C;&#x90A3;&#x4E48;&#x9501;&#x7684;&#x83B7;&#x53D6;&#x987A;&#x5E8F;&#x5C31;&#x5E94;&#x8BE5;&#x7B26;&#x5408;&#x8BF7;&#x6C42;&#x7684;&#x7EDD;&#x5BF9;&#x65F6;&#x95F4;&#x987A;&#x5E8F;&#xFF0C;&#x4E5F;&#x5C31;&#x662F; <strong>FIFO</strong>&#x3002;
+&#x5BF9;&#x4E8E;&#x4E0A;&#x9762;&#x4ECB;&#x7ECD;&#x7684;&#x975E;&#x516C;&#x5E73;&#x9501;&#x5B9E;&#x73B0;&#x7684;<code>nonfairTryAcquire(int acquires)</code>&#xFF0C;&#x53EA;&#x8981; <strong>CAS</strong> &#x8BBE;&#x7F6E;&#x540C;&#x6B65;&#x72B6;&#x6001;&#x6210;&#x529F;&#xFF0C;&#x5373;&#x83B7;&#x53D6;&#x5230;&#x9501;&#xFF0C;&#x800C;&#x516C;&#x5E73;&#x9501;&#x5219;&#x4E0D;&#x540C;&#xFF0C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>  protected final boolean tryAcquire(int acquires) {
+      final Thread current = Thread.currentThread();
+      int c = getState();
+      if (c == 0) {
+          if (!hasQueuedPredecessors() &amp;&amp;
+                  compareAndSetState(0, acquires)) {
+              setExclusiveOwnerThread(current);
+              return true;
+          }
+      }
+      else if (current == getExclusiveOwnerThread()) {
+          int nextc = c + acquires;
+          if (nextc &lt; 0)
+              throw new Error(&quot;Maximum lock count exceeded&quot;);
+          setState(nextc);
+          return true;
+      }
+      return false;
+  }
+</code></pre><p>  &#x76F8;&#x6BD4;&#x975E;&#x516C;&#x5E73;&#x9501;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x516C;&#x5E73;&#x9501;&#x7684;&#x5B9E;&#x73B0;&#x5728;&#x83B7;&#x53D6;&#x9501;&#x7684;&#x65F6;&#x5019;&#x591A;&#x4E86;&#x4E00;&#x4E2A;<code>!hasQueuedPredecessors()</code>&#x5224;&#x65AD;&#xFF1A;</p>
+<pre><code>  public final boolean hasQueuedPredecessors() {
+      Node t = tail; // Read fields in reverse initialization order
+      Node h = head;
+      Node s;
+      return h != t &amp;&amp;
+          ((s = h.next) == null || s.thread != Thread.currentThread());
+  }
+</code></pre><p>  &#x5373;&#x52A0;&#x5165;&#x4E86; <strong>&#x540C;&#x6B65;&#x961F;&#x5217;&#x4E2D;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x662F;&#x5426;&#x6709;&#x524D;&#x9A71;&#x8282;&#x70B9;&#x7684;&#x5224;&#x65AD;</strong> &#xFF0C;&#x5982;&#x679C;&#x8BE5;&#x65B9;&#x6CD5;&#x8FD4;&#x56DE; <code>true</code>&#xFF0C;&#x5219;&#x8868;&#x793A;&#x6709;&#x7EBF;&#x7A0B;&#x6BD4;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x66F4;&#x65E9;&#x5730;&#x8BF7;&#x6C42;&#x83B7;&#x53D6;&#x9501;&#xFF0C;&#x56E0;&#x6B64; <strong>&#x9700;&#x8981;&#x7B49;&#x5F85;&#x524D;&#x9A71;&#x7EBF;&#x7A0B;&#x83B7;&#x53D6;&#x5E76;&#x91CA;&#x653E;&#x9501;&#x4E4B;&#x540E;&#x624D;&#x80FD;&#x7EE7;&#x7EED;&#x83B7;&#x53D6;&#x9501;</strong>&#x3002;</p>
+</li>
+</ul>
+<hr>
+<h3 id="&#x8BFB;&#x5199;&#x9501;"><a name="&#x8BFB;&#x5199;&#x9501;" class="anchor-navigation-ex-anchor" href="#&#x8BFB;&#x5199;&#x9501;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x8BFB;&#x5199;&#x9501;" class="plugin-anchor" href="#&#x8BFB;&#x5199;&#x9501;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x8BFB;&#x5199;&#x9501;</h3>
+<p>&#x4E4B;&#x524D;&#x63D0;&#x5230;&#x9501;&#xFF08;&#x5982;<code>TestLock</code>&#x548C;<code>ReentrantLock</code>&#xFF09;&#x57FA;&#x672C;&#x90FD;&#x662F;&#x6392;&#x4ED6;&#x9501;&#xFF0C;&#x8FD9;&#x4E9B;&#x9501;&#x5728;&#x540C;&#x4E00;&#x65F6;&#x523B;&#x53EA;&#x5141;&#x8BB8;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x8FDB;&#x884C;&#x8BBF;&#x95EE;&#xFF0C;&#x800C;&#x8BFB;&#x5199;&#x9501;&#x5728;&#x540C;&#x4E00;&#x65F6;&#x523B;&#x53EF;&#x4EE5;&#x5141;&#x8BB8;&#x591A;&#x4E2A;&#x8BFB;&#x7EBF;&#x7A0B;&#x8BBF;&#x95EE;&#xFF0C;&#x4F46;&#x662F;&#x5728;&#x5199;&#x7EBF;&#x7A0B;&#x8BBF;&#x95EE;&#x65F6;&#xFF0C;&#x6240;&#x6709;&#x7684;&#x8BFB;&#x7EBF;&#x7A0B;&#x548C;&#x5176;&#x4ED6;&#x5199;&#x7EBF;&#x7A0B;&#x5747;&#x88AB;&#x963B;&#x585E;&#x3002;
+&#x8BFB;&#x5199;&#x9501;&#x7EF4;&#x62A4;&#x4E86;&#x4E00;&#x5BF9;&#x9501;&#xFF0C;&#x4E00;&#x4E2A; <strong>&#x8BFB;&#x9501;</strong> &#x548C;&#x4E00;&#x4E2A; <strong>&#x5199;&#x9501;</strong>&#xFF0C;&#x901A;&#x8FC7;&#x5206;&#x79BB;&#x8BFB;&#x9501;&#x548C;&#x5199;&#x9501;&#xFF0C;&#x4F7F;&#x5F97;&#x5E76;&#x53D1;&#x6027;&#x76F8;&#x6BD4;&#x4E00;&#x822C;&#x7684;&#x6392;&#x4ED6;&#x9501;&#x6709;&#x4E86;&#x5F88;&#x5927;&#x63D0;&#x5347;&#x3002;</p>
+<p>&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;<strong>&#x8BFB;&#x5199;&#x9501;</strong> &#x7684;&#x6027;&#x80FD;&#x90FD;&#x4F1A;&#x6BD4; <strong>&#x6392;&#x5B83;&#x9501;</strong> &#x597D;&#xFF0C;&#x56E0;&#x4E3A;&#x5927;&#x591A;&#x6570;&#x573A;&#x666F; <strong>&#x8BFB;&#x662F;&#x591A;&#x4E8E;&#x5199;</strong> &#x7684;&#x3002;&#x5728;&#x8BFB;&#x591A;&#x4E8E;&#x5199;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;<strong>&#x8BFB;&#x5199;&#x9501;</strong> &#x80FD;&#x591F;&#x63D0;&#x4F9B;&#x6BD4; <strong>&#x6392;&#x5B83;&#x9501;</strong> &#x66F4;&#x597D;&#x7684; <strong>&#x5E76;&#x53D1;&#x6027;</strong> &#x548C; <strong>&#x541E;&#x5410;&#x91CF;</strong>&#x3002;Java&#x5E76;&#x53D1;&#x5305;&#x63D0;&#x4F9B;&#x8BFB;&#x5199;&#x9501;&#x7684;&#x5B9E;&#x73B0;&#x662F;<code>ReentrantReadWriteLock</code> &#xFF0C;&#x7279;&#x6027;&#x5982;&#x4E0B;&#xFF1A;</p>
+<ul>
+<li><strong>&#x516C;&#x5E73;&#x6027;&#x9009;&#x62E9;</strong> &#xFF1A;&#x652F;&#x6301;&#x516C;&#x5E73;&#x548C;&#x975E;&#x516C;&#x5E73;&#x7684;&#x65B9;&#x5F0F;&#x83B7;&#x53D6;&#x9501;&#xFF0C;&#x541E;&#x5410;&#x91CF;&#x975E;&#x516C;&#x5E73;&#x4F18;&#x4E8E;&#x516C;&#x5E73;&#x3002;</li>
+<li><strong>&#x91CD;&#x8FDB;&#x5165;</strong> &#xFF1A; &#x8BFB;&#x9501;&#x5728;&#x83B7;&#x53D6;&#x9501;&#x4E4B;&#x540E;&#x518D;&#x83B7;&#x53D6;&#x8BFB;&#x9501;&#xFF0C;&#x5199;&#x9501;&#x5728;&#x83B7;&#x53D6;&#x9501;&#x4E4B;&#x540E;&#x518D;&#x83B7;&#x53D6;&#x8BFB;&#x9501;&#x548C;&#x5199;&#x9501;&#x3002;</li>
+<li><strong>&#x9501;&#x964D;&#x7EA7;</strong> &#xFF1A;&#x9075;&#x5FAA;&#x83B7;&#x53D6;&#x5199;&#x9501;&#x3001;&#x83B7;&#x53D6;&#x8BFB;&#x9501;&#x5728;&#x91CA;&#x653E;&#x5199;&#x9501;&#x7684;&#x6B21;&#x5E8F;&#xFF0C;&#x5199;&#x9501;&#x80FD;&#x591F;&#x964D;&#x7EA7;&#x4E3A;&#x8BFB;&#x9501;&#x3002;</li>
+</ul>
+<h5 id="&#x8BFB;&#x5199;&#x9501;&#x7684;&#x63A5;&#x53E3;&#x4E0E;&#x793A;&#x4F8B;"><a name="&#x8BFB;&#x5199;&#x9501;&#x7684;&#x63A5;&#x53E3;&#x4E0E;&#x793A;&#x4F8B;" class="anchor-navigation-ex-anchor" href="#&#x8BFB;&#x5199;&#x9501;&#x7684;&#x63A5;&#x53E3;&#x4E0E;&#x793A;&#x4F8B;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x8BFB;&#x5199;&#x9501;&#x7684;&#x63A5;&#x53E3;&#x4E0E;&#x793A;&#x4F8B;" class="plugin-anchor" href="#&#x8BFB;&#x5199;&#x9501;&#x7684;&#x63A5;&#x53E3;&#x4E0E;&#x793A;&#x4F8B;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x8BFB;&#x5199;&#x9501;&#x7684;&#x63A5;&#x53E3;&#x4E0E;&#x793A;&#x4F8B;</h5>
+<p><code>ReadWriteLock</code>&#x4EC5;&#x5B9A;&#x4E49;&#x4E86;&#x83B7;&#x53D6;&#x8BFB;&#x9501;&#x548C;&#x5199;&#x9501;&#x7684;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x5373;<code>readLock()</code>&#x65B9;&#x6CD5;&#x548C;<code>writeLock()</code>&#x65B9;&#x6CD5;&#xFF0C;&#x800C;&#x5176;&#x5B9E;&#x73B0;&#x7C7B;<code>ReentrantReadWriteLock</code>&#xFF0C;&#x9664;&#x4E86;&#x63A5;&#x53E3;&#x65B9;&#x6CD5;&#x4E4B;&#x5916;&#xFF0C;&#x8FD8;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E9B;&#x4FBF;&#x4E8E;&#x5916;&#x754C;&#x76D1;&#x63A7;&#x5176;&#x5185;&#x90E8;&#x5DE5;&#x4F5C;&#x72B6;&#x6001;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x8FD9;&#x4E9B;&#x65B9;&#x6CD5;&#x5982;&#x4E0B;&#xFF1A;</p>
+<ul>
+<li><code>getReadLockCount()</code>&#xFF1A;&#x8FD4;&#x56DE;&#x5F53;&#x524D;&#x8BFB;&#x9501;&#x83B7;&#x53D6;&#x7684;&#x6B21;&#x6570;</li>
+<li><code>getReadHoldCount()</code>&#xFF1A;&#x8FD4;&#x56DE;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x83B7;&#x53D6;&#x8BFB;&#x9501;&#x7684;&#x6B21;&#x6570;</li>
+<li><code>isWriteLocked()</code>&#xFF1A;&#x5224;&#x65AD;&#x5199;&#x9501;&#x662F;&#x5426;&#x88AB;&#x83B7;&#x53D6;</li>
+<li><code>getWriteHoldCount()</code>&#xFF1A;&#x8FD4;&#x56DE;&#x5F53;&#x524D;&#x5199;&#x9501;&#x88AB;&#x83B7;&#x53D6;&#x7684;&#x6B21;&#x6570;</li>
+</ul>
+<p>&#x4EE5;&#x4E0B;&#x662F;&#x8BFB;&#x5199;&#x9501;&#x7684;&#x4F7F;&#x7528;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#xFF1A;
+&#x901A;&#x8FC7;&#x8BFB;&#x5199;&#x9501;&#x4FDD;&#x8BC1; &#x975E;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x7684;<code>HashMap</code>&#x7684;&#x8BFB;&#x5199;&#x662F;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x7684;&#x3002;</p>
+<pre><code>static Map&lt;String, Object&gt; map = new HashMap&lt;&gt;();
+static ReentrantReadWriteLock rwl = new ReentrantReadWriteLock();
+static Lock r = rwl.readLock();
+static Lock w = rwl.writeLock();
+/**
+ * &#x83B7;&#x53D6;&#x4E00;&#x4E2A;key&#x5BF9;&#x5E94;&#x7684;value
+ */
+public static final Object get(String key) {
+    r.lock();
+    try {
+        return map.get(key);
+    } finally {
+        r.unlock();
+    }
+}
+/**
+ * &#x8BBE;&#x7F6E;key&#x5BF9;&#x5E94;&#x7684;value&#xFF0C;&#x5E76;&#x8FD4;&#x56DE;&#x65E7;&#x7684;value
+ */
+public static final Object put(String key, Object value) {
+    w.lock();
+    try {
+        return map.put(key, value);
+    } finally {
+        w.unlock();
+    }
+}
+/**
+ * &#x6E05;&#x7A7A;&#x6240;&#x6709;&#x7684;&#x5185;&#x5BB9;
+ */
+public static final void clear() {
+    w.lock();
+    try {
+        map.clear();
+    } finally {
+        w.unlock();
+    }
+}
+</code></pre><h5 id="&#x8BFB;&#x5199;&#x9501;&#x7684;&#x5B9E;&#x73B0;&#x5206;&#x6790;"><a name="&#x8BFB;&#x5199;&#x9501;&#x7684;&#x5B9E;&#x73B0;&#x5206;&#x6790;" class="anchor-navigation-ex-anchor" href="#&#x8BFB;&#x5199;&#x9501;&#x7684;&#x5B9E;&#x73B0;&#x5206;&#x6790;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x8BFB;&#x5199;&#x9501;&#x7684;&#x5B9E;&#x73B0;&#x5206;&#x6790;" class="plugin-anchor" href="#&#x8BFB;&#x5199;&#x9501;&#x7684;&#x5B9E;&#x73B0;&#x5206;&#x6790;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x8BFB;&#x5199;&#x9501;&#x7684;&#x5B9E;&#x73B0;&#x5206;&#x6790;</h5>
+<p>&#x4E3B;&#x8981;&#x5305;&#x62EC;&#xFF1A;&#x8BFB;&#x5199;&#x72B6;&#x6001;&#x7684;&#x8BBE;&#x8BA1;&#x3001;&#x5199;&#x9501;&#x7684;&#x83B7;&#x53D6;&#x4E0E;&#x91CA;&#x653E;&#x3001;&#x8BFB;&#x9501;&#x7684;&#x83B7;&#x53D6;&#x4E0E;&#x91CA;&#x653E;&#x4EE5;&#x53CA;&#x9501;&#x964D;&#x7EA7;&#x3002;</p>
+<ul>
+<li><p><strong>&#x8BFB;&#x5199;&#x72B6;&#x6001;&#x7684;&#x8BBE;&#x8BA1;</strong>
+&#x8BFB;&#x5199;&#x9501;&#x5C06;&#x53D8;&#x91CF;&#x5207;&#x5206;&#x6210;&#x4E86;&#x4E24;&#x4E2A;&#x90E8;&#x5206;&#xFF0C;&#x9AD8;16&#x4F4D;&#x8868;&#x793A;&#x8BFB;&#xFF0C;&#x4F4E;16&#x4F4D;&#x8868;&#x793A;&#x5199;&#xFF0C;&#x5982;&#x4E0B;&#x56FE;&#xFF1A;
+<img src="https://upload-images.jianshu.io/upload_images/1709375-007270a4c8302a36.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="&#x8BFB;&#x5199;&#x9501;&#x72B6;&#x6001;&#x7684;&#x5212;&#x5206;&#x65B9;&#x5F0F;">
+&#x5F53;&#x524D;&#x540C;&#x6B65;&#x72B6;&#x6001;&#x8868;&#x793A;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x5DF2;&#x7ECF;&#x83B7;&#x53D6;&#x4E86;&#x5199;&#x9501;&#xFF0C;&#x4E14;&#x91CD;&#x8FDB;&#x5165;&#x4E86;&#x4E24;&#x6B21;&#xFF0C;&#x540C;&#x65F6;&#x4E5F;&#x8FDE;&#x7EED;&#x83B7;&#x53D6;&#x4E86;&#x4E24;&#x6B21;&#x8BFB;&#x9501;&#x3002;
+&#x8BFB;&#x5199;&#x9501;&#x662F;&#x5982;&#x4F55;&#x8FC5;&#x901F;&#x786E;&#x5B9A;&#x8BFB;&#x548C;&#x5199;&#x5404;&#x81EA;&#x7684;&#x72B6;&#x6001;&#x5462;&#xFF1F;&#x7B54;&#x6848;&#x662F;&#x901A;&#x8FC7;&#x4F4D;&#x8FD0;&#x7B97;&#x3002;
+&#x5047;&#x8BBE;&#x5F53;&#x524D;&#x540C;&#x6B65;&#x72B6;&#x6001;&#x503C;&#x4E3A;<code>S</code>&#xFF0C;&#x5199;&#x72B6;&#x6001;&#x7B49;&#x4E8E;<code>S&amp;0x0000FFFF</code>&#xFF08;&#x5C06;&#x9AD8;16&#x4F4D;&#x5168;&#x90E8;&#x62B9;&#x53BB;&#xFF09;&#xFF0C;&#x8BFB;&#x72B6;&#x6001;&#x7B49;&#x4E8E;<code>S&gt;&gt;16</code>&#xFF08;&#x65E0;&#x7B26;&#x53F7;&#x8865;0&#x53F3;&#x79FB;16&#x4F4D;&#xFF09;&#x3002;
+&#x5F53;&#x5199;&#x72B6;&#x6001;&#x589E;&#x52A0;<code>1</code>&#x65F6;&#xFF0C;&#x7B49;&#x4E8E;<code>S+1</code>&#xFF0C;&#x5F53;&#x8BFB;&#x72B6;&#x6001;&#x589E;&#x52A0;<code>1</code>&#x65F6;&#xFF0C;&#x7B49;&#x4E8E;<code>S+(1&lt;&lt;16)</code>&#xFF0C;&#x4E5F;&#x5C31;&#x662F;<code>S+0x00010000</code>&#x3002;
+&#x6839;&#x636E;&#x72B6;&#x6001;&#x7684;&#x5212;&#x5206;&#x80FD;&#x5F97;&#x51FA;&#x4E00;&#x4E2A;&#x63A8;&#x8BBA;&#xFF1A;<code>S != 0</code>&#x65F6;&#xFF0C;&#x5F53;&#x5199;&#x72B6;&#x6001;<code>S&amp;0x0000FFFF  = 0</code>&#x65F6;&#xFF0C;&#x5219;&#x8BFB;&#x72B6;&#x6001;<code>S&gt;&gt;16 &gt; 0</code>&#xFF0C;&#x5373;&#x8BFB;&#x9501;&#x5DF2;&#x88AB;&#x83B7;&#x53D6;&#x3002;</p>
+</li>
+<li><p><strong>&#x5199;&#x9501;&#x7684;&#x83B7;&#x53D6;&#x4E0E;&#x91CA;&#x653E;</strong>
+&#x5199;&#x9501;&#x662F;&#x4E00;&#x4E2A;&#x652F;&#x6301;&#x91CD;&#x8FDB;&#x5165;&#x7684;&#x6392;&#x5B83;&#x9501;&#x3002;&#x5982;&#x679C;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x5DF2;&#x7ECF;&#x83B7;&#x53D6;&#x4E86;&#x5199;&#x9501;&#xFF0C;&#x5219;&#x589E;&#x52A0;&#x5199;&#x72B6;&#x6001;&#x3002;&#x5982;&#x679C;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x5728;&#x83B7;&#x53D6;&#x5199;&#x9501;&#x65F6;&#xFF0C;&#x8BFB;&#x9501;&#x5DF2;&#x7ECF;&#x88AB;&#x83B7;&#x53D6;&#xFF08;&#x8BFB;&#x72B6;&#x6001;&#x4E0D;&#x4E3A;0&#xFF09;&#x6216;&#x8005;&#x8BE5;&#x7EBF;&#x7A0B;&#x4E0D;&#x662F;&#x5DF2;&#x7ECF;&#x83B7;&#x53D6;&#x5199;&#x9501;&#x7684;&#x7EBF;&#x7A0B;&#xFF0C;&#x5219;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x8FDB;&#x5165;&#x7B49;&#x5F85;&#x72B6;&#x6001;&#x3002;
+<code>ReentrantReadWriteLoc</code>&#x7684;<code>tryAcquire</code>&#x65B9;&#x6CD5;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>  protected final boolean tryAcquire(int acquires) {
+      Thread current = Thread.currentThread();
+      int c = getState();
+      int w = exclusiveCount(c);
+      if (c != 0) {
+          // (Note: if c != 0 and w == 0 then shared count != 0)
+          // &#x5B58;&#x5728;&#x8BFB;&#x9501;&#x6216;&#x8005;&#x5F53;&#x524D;&#x83B7;&#x53D6;&#x7EBF;&#x7A0B;&#x4E0D;&#x662F;&#x5DF2;&#x7ECF;&#x83B7;&#x53D6;&#x5199;&#x9501;&#x7684;&#x7EBF;&#x7A0B;
+          if (w == 0 || current != getExclusiveOwnerThread())
+              return false;
+          if (w + exclusiveCount(acquires) &gt; MAX_COUNT)
+              throw new Error(&quot;Maximum lock count exceeded&quot;);
+          // Reentrant acquire
+          setState(c + acquires);
+          return true;
+      }
+      if (writerShouldBlock() ||
+              !compareAndSetState(c, c + acquires))
+          return false;
+      setExclusiveOwnerThread(current);
+      return true;
+  }
+</code></pre><p>  &#x8BE5;&#x65B9;&#x6CD5;&#x9664;&#x4E86;&#x91CD;&#x5165;&#x6761;&#x4EF6;&#xFF08;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x4E3A;&#x83B7;&#x53D6;&#x4E86;&#x5199;&#x9501;&#x7684;&#x7EBF;&#x7A0B;&#xFF09;&#x4E4B;&#x5916;&#xFF0C;&#x589E;&#x52A0;&#x4E86;&#x4E00;&#x4E2A; <strong>&#x8BFB;&#x9501;&#x662F;&#x5426;&#x5B58;&#x5728;</strong> &#x7684;&#x5224;&#x65AD;&#x3002;<strong>&#x5982;&#x679C;&#x5B58;&#x5728;&#x8BFB;&#x9501;&#xFF0C;&#x5219;&#x5199;&#x9501;&#x4E0D;&#x80FD;&#x88AB;&#x83B7;&#x53D6;&#x3002;</strong></p>
+<p>  &#x5199;&#x9501;&#x7684;&#x91CA;&#x653E;&#x4E0E;<code>ReentrantLock</code>&#x7684;&#x91CA;&#x653E;&#x8FC7;&#x7A0B;&#x57FA;&#x672C;&#x7C7B;&#x4F3C;&#xFF0C;&#x6BCF;&#x6B21;&#x91CA;&#x653E;&#x5747;&#x51CF;&#x5C11;&#x5199;&#x72B6;&#x6001;&#xFF0C;&#x5F53;&#x5199;&#x72B6;&#x6001;&#x4E3A;<code>0</code>&#x65F6;&#x8868;&#x793A;&#x5199;&#x9501;&#x5DF2;&#x88AB;&#x91CA;&#x653E;&#xFF0C;&#x4ECE;&#x800C;&#x7B49;&#x5F85;&#x7684;&#x8BFB;&#x5199;&#x7EBF;&#x7A0B;&#x80FD;&#x591F;&#x7EE7;&#x7EED;&#x8BBF;&#x95EE;&#x8BFB;&#x5199;&#x9501;&#xFF0C;&#x540C;&#x65F6;&#x524D;&#x6B21;&#x5199;&#x7EBF;&#x7A0B;&#x7684;&#x4FEE;&#x6539;&#x5BF9;&#x540E;&#x7EED;&#x8BFB;&#x5199;&#x7EBF;&#x7A0B;&#x53EF;&#x89C1;&#x3002;</p>
+</li>
+<li><p><strong>&#x8BFB;&#x9501;&#x7684;&#x83B7;&#x53D6;&#x4E0E;&#x91CA;&#x653E;</strong>
+&#x8BFB;&#x9501;&#x662F;&#x4E00;&#x4E2A;&#x652F;&#x6301;&#x91CD;&#x8FDB;&#x5165;&#x7684; <strong>&#x5171;&#x4EAB;&#x9501;</strong>&#xFF0C;&#x5B83;&#x80FD;&#x591F;&#x88AB;&#x591A;&#x4E2A;&#x7EBF;&#x7A0B;&#x540C;&#x65F6;&#x83B7;&#x53D6;&#xFF0C;&#x5728;&#x6CA1;&#x6709;&#x5176;&#x4ED6;&#x5199;&#x7EBF;&#x7A0B;&#x8BBF;&#x95EE;&#xFF08;&#x6216;&#x8005;&#x5199;&#x72B6;&#x6001;&#x4E3A;<code>0</code>&#xFF09;&#x65F6;&#xFF0C;&#x8BFB;&#x9501;&#x603B;&#x4F1A;&#x88AB;&#x6210;&#x529F;&#x5730;&#x83B7;&#x53D6;&#xFF0C;&#x800C;&#x6240;&#x505A;&#x7684;&#x4E5F;&#x53EA;&#x662F;&#xFF08;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x7684;&#xFF09;&#x589E;&#x52A0;&#x8BFB;&#x72B6;&#x6001;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x5DF2;&#x7ECF;&#x83B7;&#x53D6;&#x4E86;&#x8BFB;&#x9501;&#xFF0C;&#x5219;&#x589E;&#x52A0;&#x8BFB;&#x72B6;&#x6001;&#x3002;&#x5982;&#x679C;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x5728;&#x83B7;&#x53D6;&#x8BFB;&#x9501;&#x65F6;&#xFF0C;&#x5199;&#x9501;&#x5DF2;&#x88AB;&#x5176;&#x4ED6;&#x7EBF;&#x7A0B;&#x83B7;&#x53D6;&#xFF0C;&#x5219;&#x8FDB;&#x5165;&#x7B49;&#x5F85;&#x72B6;&#x6001;&#x3002;</p>
+<p> <code>ReentrantReadWriteLock</code>&#x7684;<code>tryAcquireShared</code>&#x65B9;&#x6CD5;:</p>
+<pre><code>  protected final int tryAcquireShared(int unused) {
+      Thread current = Thread.currentThread();
+      int c = getState();
+      if (exclusiveCount(c) != 0 &amp;&amp;
+              getExclusiveOwnerThread() != current)
+          return -1;
+      int r = sharedCount(c);
+      if (!readerShouldBlock() &amp;&amp;
+              r &lt; MAX_COUNT &amp;&amp;
+              compareAndSetState(c, c + SHARED_UNIT)) {
+          ...
+          return 1;
+      }
+      return fullTryAcquireShared(current);
+  }
+  final int fullTryAcquireShared(Thread current) {
+      HoldCounter rh = null;
+      for (;;) {
+          int c = getState();
+          if (exclusiveCount(c) != 0) {
+              if (getExclusiveOwnerThread() != current)
+                  return -1;
+              // else we hold the exclusive lock; blocking here
+              // would cause deadlock.
+          } else if (readerShouldBlock()) {
+              // Make sure we&apos;re not acquiring read lock reentrantly
+              if (firstReader == current) {
+                  // assert firstReaderHoldCount &gt; 0;
+              } else {
+                  if (rh == null) {
+                      rh = cachedHoldCounter;
+                      if (rh == null || rh.tid != getThreadId(current)) {
+                          rh = readHolds.get();
+                          if (rh.count == 0)
+                              readHolds.remove();
+                      }
+                  }
+                  if (rh.count == 0)
+                      return -1;
+              }
+          }
+          if (sharedCount(c) == MAX_COUNT)
+              throw new Error(&quot;Maximum lock count exceeded&quot;);
+          if (compareAndSetState(c, c + SHARED_UNIT)) {
+              if (sharedCount(c) == 0) {
+                  firstReader = current;
+                  firstReaderHoldCount = 1;
+              } else if (firstReader == current) {
+                  firstReaderHoldCount++;
+              } else {
+                  if (rh == null)
+                      rh = cachedHoldCounter;
+                  if (rh == null || rh.tid != getThreadId(current))
+                      rh = readHolds.get();
+                  else if (rh.count == 0)
+                      readHolds.set(rh);
+                  rh.count++;
+                  cachedHoldCounter = rh; // cache for release
+              }
+              return 1;
+          }
+      }
+  }
+</code></pre><p>  &#x5982;&#x679C;&#x5176;&#x4ED6;&#x7EBF;&#x7A0B;&#x5DF2;&#x7ECF;&#x83B7;&#x53D6;&#x4E86;&#x5199;&#x9501;&#xFF0C;&#x5219;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x83B7;&#x53D6;&#x8BFB;&#x9501;&#x5931;&#x8D25;&#xFF0C;&#x8FDB;&#x5165;&#x7B49;&#x5F85;&#x72B6;&#x6001;&#x3002;
+  &#x5982;&#x679C;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x83B7;&#x53D6;&#x4E86;&#x5199;&#x9501;&#x6216;&#x8005;&#x5199;&#x9501;&#x672A;&#x88AB;&#x83B7;&#x53D6;&#xFF0C;&#x5219;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x589E;&#x52A0;&#x8BFB;&#x72B6;&#x6001;&#xFF0C;&#x6210;&#x529F;&#x83B7;&#x53D6;&#x8BFB;&#x9501;&#x3002;</p>
+<p>  &#x8BFB;&#x9501;&#x7684;&#x6BCF;&#x6B21;&#x91CA;&#x653E;&#x5747;&#x51CF;&#x5C11;&#x8BFB;&#x72B6;&#x6001;&#xFF0C;&#x51CF;&#x5C11;&#x7684;&#x503C;&#x662F;<code>1&lt;&lt;16</code>&#x3002;</p>
+</li>
+<li><p><strong>&#x9501;&#x964D;&#x7EA7;</strong> 
+  &#x9501;&#x964D;&#x7EA7;&#x6307;&#x7684;&#x662F; <strong>&#x5199;&#x9501;&#x964D;&#x7EA7;&#x6210;&#x4E3A;&#x8BFB;&#x9501;</strong>&#x3002;
+  &#x5982;&#x679C;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x62E5;&#x6709;&#x5199;&#x9501;&#xFF0C;&#x7136;&#x540E;&#x5C06;&#x5176;&#x91CA;&#x653E;&#xFF0C;&#x6700;&#x540E;&#x518D;&#x83B7;&#x53D6;&#x8BFB;&#x9501;&#xFF0C;&#x8FD9;&#x79CD;&#x5206;&#x6BB5;&#x5B8C;&#x6210;&#x7684;&#x8FC7;&#x7A0B;&#x4E0D;&#x80FD;&#x79F0;&#x4E4B;&#x4E3A;&#x9501;&#x964D;&#x7EA7;&#x3002;&#x9501;&#x964D;&#x7EA7;&#x662F;&#x6307;&#x628A;&#x6301;&#x4F4F;&#xFF08;&#x5F53;&#x524D;&#x62E5;&#x6709;&#x7684;&#xFF09;&#x5199;&#x9501;&#xFF0C;&#x518D;&#x83B7;&#x53D6;&#x5230;&#x8BFB;&#x9501;&#xFF0C;&#x968F;&#x540E;&#x91CA;&#x653E;&#xFF08;&#x5148;&#x524D;&#x62E5;&#x6709;&#x7684;&#xFF09;&#x5199;&#x9501;&#x7684;&#x8FC7;&#x7A0B;&#x3002;
+  &#x4EE5;&#x4E0B;&#x662F;&#x662F;&#x9501;&#x964D;&#x7EA7;&#x7684;&#x793A;&#x4F8B;&#xFF1A;</p>
+<pre><code>  //&#x5F53;&#x6570;&#x636E;&#x53D1;&#x751F;&#x53D8;&#x66F4;&#x540E;&#xFF0C;update&#x53D8;&#x91CF;&#xFF08;&#x5E03;&#x5C14;&#x7C7B;&#x578B;&#x4E14;volatile&#x4FEE;&#x9970;&#xFF09;&#x88AB;&#x8BBE;&#x7F6E;&#x4E3A;false
+  public void processData() {
+      readLock.lock();
+      if (!update) {
+          // &#x5FC5;&#x987B;&#x5148;&#x91CA;&#x653E;&#x8BFB;&#x9501;
+          readLock.unlock();
+          // &#x9501;&#x964D;&#x7EA7;&#x4ECE;&#x5199;&#x9501;&#x83B7;&#x53D6;&#x5230;&#x5F00;&#x59CB;
+          writeLock.lock();
+          try {
+              if (!update) {
+                  // &#x51C6;&#x5907;&#x6570;&#x636E;&#x7684;&#x6D41;&#x7A0B;&#xFF08;&#x7565;&#xFF09;
+                  update = true;
+              }
+              readLock.lock();
+          } finally {
+              writeLock.unlock();
+          }
+          // &#x9501;&#x964D;&#x7EA7;&#x5B8C;&#x6210;&#xFF0C;&#x5199;&#x9501;&#x964D;&#x7EA7;&#x4E3A;&#x8BFB;&#x9501;
+      }
+      try {
+          // &#x4F7F;&#x7528;&#x6570;&#x636E;&#x7684;&#x6D41;&#x7A0B;&#xFF08;&#x7565;&#xFF09;
+      } finally {
+          readLock.unlock();
+      }
+  }
+</code></pre><p>  &#x4E0A;&#x8FF0;&#x793A;&#x4F8B;&#x4E2D;&#xFF0C;&#x5F53;&#x6570;&#x636E;&#x53D1;&#x751F;&#x53D8;&#x66F4;&#x540E;&#xFF0C;<code>&#x5E03;&#x5C14;</code>&#x7C7B;&#x578B;&#x4E14;<code>volatile</code>&#x4FEE;&#x9970;<code>update</code>&#x53D8;&#x91CF;&#x88AB;&#x8BBE;&#x7F6E;&#x4E3A;<code>false</code>&#xFF0C;&#x6B64;&#x65F6;&#x6240;&#x6709;&#x8BBF;&#x95EE;<code>processData()</code>&#x65B9;&#x6CD5;&#x7684;&#x7EBF;&#x7A0B;&#x90FD;&#x80FD;&#x591F;&#x611F;&#x77E5;&#x5230;&#x53D8;&#x5316;&#xFF0C;&#x4F46;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x80FD;&#x591F;&#x83B7;&#x53D6;&#x5230;&#x5199;&#x9501;&#xFF0C;&#x5176;&#x4ED6;&#x7EBF;&#x7A0B;&#x4F1A;&#x88AB;&#x963B;&#x585E;&#x5728;&#x8BFB;&#x9501;&#x548C;&#x5199;&#x9501;&#x7684;<code>lock()</code>&#x65B9;&#x6CD5;&#x4E0A;&#x3002;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x83B7;&#x53D6;&#x5199;&#x9501;&#x5B8C;&#x6210;&#x6570;&#x636E;&#x51C6;&#x5907;&#x4E4B;&#x540E;&#xFF0C;&#x518D;&#x83B7;&#x53D6;&#x8BFB;&#x9501;&#xFF0C;&#x968F;&#x540E;&#x91CA;&#x653E;&#x5199;&#x9501;&#xFF0C;&#x5B8C;&#x6210;&#x9501;&#x964D;&#x7EA7;&#x3002;</p>
+<p>  <strong>&#x9501;&#x964D;&#x7EA7;&#x4E2D;&#x8BFB;&#x9501;&#x7684;&#x83B7;&#x53D6;&#x662F;&#x5426;&#x5FC5;&#x8981;&#x5462;&#xFF1F;</strong>
+  &#x7B54;&#x6848;&#x662F;&#x5FC5;&#x8981;&#x7684;&#x3002;&#x4E3B;&#x8981;&#x662F;&#x4E3A;&#x4E86; <strong>&#x4FDD;&#x8BC1;&#x6570;&#x636E;&#x7684;&#x53EF;&#x89C1;&#x6027;</strong>&#x3002;
+  &#x5982;&#x679C;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x4E0D;&#x83B7;&#x53D6;&#x8BFB;&#x9501;&#x800C;&#x662F;&#x76F4;&#x63A5;&#x91CA;&#x653E;&#x5199;&#x9501;&#xFF0C;&#x5047;&#x8BBE;&#x6B64;&#x523B;&#x53E6;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#xFF08;&#x8BB0;&#x4F5C;<code>&#x7EBF;&#x7A0B;T</code>&#xFF09;&#x83B7;&#x53D6;&#x4E86;&#x5199;&#x9501;&#x5E76;&#x4FEE;&#x6539;&#x4E86;&#x6570;&#x636E;&#xFF0C;&#x90A3;&#x4E48; <strong>&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x65E0;&#x6CD5;&#x611F;&#x77E5;<code>&#x7EBF;&#x7A0B;T</code>&#x7684;&#x6570;&#x636E;&#x66F4;&#x65B0;</strong>&#x3002;
+  &#x5982;&#x679C;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x83B7;&#x53D6;&#x8BFB;&#x9501;&#xFF0C;&#x5373;&#x9075;&#x5FAA;&#x9501;&#x964D;&#x7EA7;&#x7684;&#x6B65;&#x9AA4;&#xFF0C;&#x5219;<code>&#x7EBF;&#x7A0B;T</code>&#x5C06;&#x4F1A;&#x88AB;&#x963B;&#x585E;&#xFF0C;&#x76F4;&#x5230;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x4F7F;&#x7528;&#x6570;&#x636E;&#x5E76;&#x91CA;&#x653E;&#x8BFB;&#x9501;&#x4E4B;&#x540E;&#xFF0C;&#x7EBF;&#x7A0B;T&#x624D;&#x80FD;&#x83B7;&#x53D6;&#x5199;&#x9501;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x66F4;&#x65B0;&#x3002;</p>
+<p>  <code>RentrantReadWriteLock</code>&#x4E0D;&#x652F;&#x6301;&#x9501;&#x5347;&#x7EA7;&#x3002;&#x76EE;&#x7684;&#x4E5F;&#x662F;&#x4FDD;&#x8BC1;&#x6570;&#x636E;&#x53EF;&#x89C1;&#x6027;&#xFF0C;&#x5982;&#x679C;&#x8BFB;&#x9501;&#x5DF2;&#x88AB;&#x591A;&#x4E2A;&#x7EBF;&#x7A0B;&#x83B7;&#x53D6;&#xFF0C;&#x5176;&#x4E2D;&#x4EFB;&#x610F;&#x7EBF;&#x7A0B;&#x6210;&#x529F;&#x83B7;&#x53D6;&#x4E86;&#x5199;&#x9501;&#x5E76;&#x66F4;&#x65B0;&#x4E86;&#x6570;&#x636E;&#xFF0C;&#x5219;&#x5176;&#x66F4;&#x65B0;&#x5BF9;&#x5176;&#x4ED6;&#x83B7;&#x53D6;&#x5230;&#x8BFB;&#x9501;&#x7684;&#x7EBF;&#x7A0B;&#x662F;&#x4E0D;&#x53EF;&#x89C1;&#x7684;&#x3002;</p>
+</li>
+</ul>
+<hr>
+<h3 id="locksupport&#x5DE5;&#x5177;"><a name="locksupport&#x5DE5;&#x5177;" class="anchor-navigation-ex-anchor" href="#locksupport&#x5DE5;&#x5177;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="locksupport&#x5DE5;&#x5177;" class="plugin-anchor" href="#locksupport&#x5DE5;&#x5177;"><i class="fa fa-link" aria-hidden="true"></i></a>LockSupport&#x5DE5;&#x5177;</h3>
+<p>&#x5F53;&#x9700;&#x8981;&#x963B;&#x585E;&#x6216;&#x5524;&#x9192;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x90FD;&#x4F1A;&#x4F7F;&#x7528;<code>LockSupport</code>&#x5DE5;&#x5177;&#x7C7B;&#x6765;&#x5B8C;&#x6210;&#x76F8;&#x5E94;&#x5DE5;&#x4F5C;&#x3002;
+<code>LockSupport</code>&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x7EC4;&#x7684;&#x516C;&#x5171;&#x9759;&#x6001;&#x65B9;&#x6CD5;&#xFF0C;&#x8FD9;&#x4E9B;&#x65B9;&#x6CD5;&#x63D0;&#x4F9B;&#x4E86;&#x6700;&#x57FA;&#x672C;&#x7684; <strong>&#x7EBF;&#x7A0B;&#x963B;&#x585E;&#x548C;&#x5524;&#x9192;&#x529F;&#x80FD;</strong>&#xFF0C;&#x800C;<code>LockSupport</code>&#x4E5F;&#x6210;&#x4E3A;&#x6784;&#x5EFA;&#x540C;&#x6B65;&#x7EC4;&#x4EF6;&#x7684;&#x57FA;&#x7840;&#x5DE5;&#x5177;&#x3002;</p>
+<p><code>LockSupport</code>&#x63D0;&#x4F9B;&#x7684; &#x963B;&#x585E;&#x548C;&#x5524;&#x9192;&#x7684;&#x65B9;&#x6CD5; &#x5982;&#x4E0B;&#xFF1A;</p>
+<ul>
+<li><code>park()</code>&#xFF1A;&#x963B;&#x585E;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#xFF0C;&#x53EA;&#x6709;&#x8C03;&#x7528; <code>unpark(Thread thread)</code>&#x6216;&#x8005;&#x88AB;&#x4E2D;&#x65AD;&#x4E4B;&#x540E;&#x624D;&#x80FD;&#x4ECE;<code>park()</code>&#x8FD4;&#x56DE;&#x3002;</li>
+<li><code>parkNanos(long nanos)</code>&#xFF1A;&#x518D;<code>park()</code>&#x7684;&#x57FA;&#x7840;&#x4E0A;&#x589E;&#x52A0;&#x4E86;&#x8D85;&#x65F6;&#x8FD4;&#x56DE;&#x3002;</li>
+<li><code>parkUntil(long deadline)</code>&#xFF1A;&#x963B;&#x585E;&#x7EBF;&#x7A0B;&#x77E5;&#x9053; <code>deadline</code> &#x5BF9;&#x5E94;&#x7684;&#x65F6;&#x95F4;&#x70B9;&#x3002;</li>
+<li><code>park(Object blocker)</code>&#xFF1A;<code>Java 6</code>&#x65F6;&#x589E;&#x52A0;&#xFF0C;<code>blocker</code>&#x4E3A;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x5728;&#x7B49;&#x5F85;&#x7684;&#x5BF9;&#x8C61;&#x3002;</li>
+<li><code>parkNanos(Object blocker, long nanos)</code>&#xFF1A;<code>Java 6</code>&#x65F6;&#x589E;&#x52A0;&#xFF0C;<code>blocker</code>&#x4E3A;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x5728;&#x7B49;&#x5F85;&#x7684;&#x5BF9;&#x8C61;&#x3002;</li>
+<li><code>parkUntil(Object blocker, long deadline)</code>&#xFF1A;<code>Java 6</code>&#x65F6;&#x589E;&#x52A0;&#xFF0C;<code>blocker</code>&#x4E3A;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x5728;&#x7B49;&#x5F85;&#x7684;&#x5BF9;&#x8C61;&#x3002;</li>
+<li><code>unpark(Thread thread)</code>&#xFF1A;&#x5524;&#x9192;&#x5904;&#x4E8E;&#x963B;&#x585E;&#x72B6;&#x6001;&#x7684;&#x7EBF;&#x7A0B; <code>thread</code>&#x3002;</li>
+</ul>
+<p>&#x6709;&#x5BF9;&#x8C61;&#x53C2;&#x6570;&#x7684;&#x963B;&#x585E;&#x65B9;&#x6CD5;&#x5728;&#x7EBF;&#x7A0B;<code>dump</code>&#x65F6;&#xFF0C;&#x4F1A;&#x6709;&#x66F4;&#x591A;&#x7684;&#x73B0;&#x573A;&#x4FE1;&#x606F;&#x3002;</p>
+<hr>
+<h3 id="condition&#x63A5;&#x53E3;"><a name="condition&#x63A5;&#x53E3;" class="anchor-navigation-ex-anchor" href="#condition&#x63A5;&#x53E3;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="condition&#x63A5;&#x53E3;" class="plugin-anchor" href="#condition&#x63A5;&#x53E3;"><i class="fa fa-link" aria-hidden="true"></i></a>Condition&#x63A5;&#x53E3;</h3>
+<p>&#x4EFB;&#x610F;&#x4E00;&#x4E2A;Java&#x5BF9;&#x8C61;&#xFF0C;&#x90FD;&#x62E5;&#x6709;&#x4E00;&#x7EC4;&#x76D1;&#x89C6;&#x5668;&#x65B9;&#x6CD5;&#xFF0C;&#x5B9A;&#x4E49;&#x5728;<code>java.lang.Object</code>&#xFF09;&#xFF0C;&#x4E3B;&#x8981;&#x5305;&#x62EC;<code>wait()</code>&#x3001;<code>wait(long timeout)</code>&#x3001;<code>notify()</code>&#x4EE5;&#x53CA;<code>notifyAll()</code>&#x65B9;&#x6CD5;&#xFF0C;&#x8FD9;&#x4E9B;&#x65B9;&#x6CD5;&#x4E0E;<code>synchronized</code>&#x540C;&#x6B65;&#x5173;&#x952E;&#x5B57;&#x914D;&#x5408;&#xFF0C;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x7B49;&#x5F85;/&#x901A;&#x77E5;&#x6A21;&#x5F0F;&#x3002;</p>
+<p><code>Condition</code>&#x63A5;&#x53E3;&#x4E5F;&#x63D0;&#x4F9B;&#x4E86;&#x7C7B;&#x4F3C;<code>Object</code>&#x7684;&#x76D1;&#x89C6;&#x5668;&#x65B9;&#x6CD5;&#xFF0C;&#x4E0E;<code>Lock</code>&#x914D;&#x5408;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0; <strong>&#x7B49;&#x5F85;/&#x901A;&#x77E5;</strong> &#x6A21;&#x5F0F;&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x4E24;&#x8005;&#x5728;&#x4F7F;&#x7528;&#x65B9;&#x5F0F;&#x4EE5;&#x53CA;&#x529F;&#x80FD;&#x7279;&#x6027;&#x4E0A;&#x8FD8;&#x662F;&#x6709;&#x5DEE;&#x522B;&#x7684;&#x3002;</p>
+<p>&#x4EE5;&#x4E0B;&#x662F;Object&#x7684;&#x76D1;&#x89C6;&#x5668;&#x65B9;&#x6CD5;&#x4E0E;Condition&#x63A5;&#x53E3;&#x7684;&#x5BF9;&#x6BD4;&#xFF1A;
+|&#x5BF9;&#x6BD4;&#x9879;|Object|Condition|
+|:-:|:-:|:-:|
+|&#x524D;&#x7F6E;&#x6761;&#x4EF6;|&#x83B7;&#x53D6;&#x5BF9;&#x8C61;&#x7684;&#x9501;|&#x8C03;&#x7528;<code>Lock.lock()</code>&#x83B7;&#x53D6;&#x9501;&#xFF1B;&#x8C03;&#x7528;<code>Lock.newCondition()</code>&#x83B7;&#x53D6;condition&#x5BF9;&#x8C61;|
+|&#x8C03;&#x7528;&#x65B9;&#x5F0F;|<code>object.wait()</code>|<code>condition.wait()</code>|
+|&#x7B49;&#x5F85;&#x961F;&#x5217;&#x4E2A;&#x6570;|&#x4E00;&#x4E2A;|&#x591A;&#x4E2A;|
+|&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x91CA;&#x653E;&#x9501;&#x5E76;&#x8FDB;&#x5165;&#x7B49;&#x5F85;&#x72B6;&#x6001;|&#x652F;&#x6301;|&#x652F;&#x6301;|
+|&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x91CA;&#x653E;&#x9501;&#x5E76;&#x8FDB;&#x5165;&#x7B49;&#x5F85;&#x72B6;&#x6001;&#xFF0C;&#x5728;&#x7B49;&#x5F85;&#x72B6;&#x6001;&#x4E2D;&#x4E0D;&#x54CD;&#x5E94;&#x4E2D;&#x65AD;|&#x4E0D;&#x652F;&#x6301;|&#x652F;&#x6301;|
+|&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x91CA;&#x653E;&#x9501;&#x5E76;&#x8FDB;&#x5165;&#x8D85;&#x65F6;&#x7B49;&#x5F85;&#x72B6;&#x6001;|&#x652F;&#x6301;|&#x652F;&#x6301;|
+|&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x91CA;&#x653E;&#x9501;&#x5E76;&#x8FDB;&#x5165;&#x7B49;&#x5F85;&#x72B6;&#x6001;&#x5230;&#x5C06;&#x6765;&#x67D0;&#x65F6;&#x95F4;|&#x4E0D;&#x652F;&#x6301;|&#x652F;&#x6301;|
+|&#x5524;&#x9192;&#x7B49;&#x5F85;&#x961F;&#x5217;&#x7684;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;|&#x652F;&#x6301;|&#x652F;&#x6301;|
+|&#x5524;&#x9192;&#x7B49;&#x5F85;&#x961F;&#x5217;&#x7684;&#x5168;&#x90E8;&#x7EBF;&#x7A0B;|&#x652F;&#x6301;|&#x652F;&#x6301;|</p>
+<h5 id="condition&#x63A5;&#x53E3;&#x4E0E;&#x793A;&#x4F8B;"><a name="condition&#x63A5;&#x53E3;&#x4E0E;&#x793A;&#x4F8B;" class="anchor-navigation-ex-anchor" href="#condition&#x63A5;&#x53E3;&#x4E0E;&#x793A;&#x4F8B;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="condition&#x63A5;&#x53E3;&#x4E0E;&#x793A;&#x4F8B;" class="plugin-anchor" href="#condition&#x63A5;&#x53E3;&#x4E0E;&#x793A;&#x4F8B;"><i class="fa fa-link" aria-hidden="true"></i></a>Condition&#x63A5;&#x53E3;&#x4E0E;&#x793A;&#x4F8B;</h5>
+<p><code>Condition</code>&#x5B9A;&#x4E49;&#x4E86;&#x7B49;&#x5F85;/&#x901A;&#x77E5;&#x4E24;&#x79CD;&#x7C7B;&#x578B;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x8C03;&#x7528;&#x8FD9;&#x4E9B;&#x65B9;&#x6CD5;&#x65F6;&#xFF0C;&#x9700;&#x8981;&#x63D0;&#x524D;&#x83B7;&#x53D6;&#x5230;<code>Condition</code>&#x5BF9;&#x8C61;&#x5173;&#x8054;&#x7684;&#x9501;&#x3002;
+<code>Condition</code>&#x5BF9;&#x8C61;&#x662F;&#x7531;&#x8C03;&#x7528;<code>Lock</code>&#x5BF9;&#x8C61;&#x7684;<code>newCondition()</code>&#x65B9;&#x6CD5;&#x521B;&#x5EFA;&#x51FA;&#x6765;&#x7684;&#xFF0C;&#x6362;&#x53E5;&#x8BDD;&#x8BF4;&#xFF0C;<code>Condition</code>&#x662F;&#x4F9D;&#x8D56;<code>Lock</code>&#x5BF9;&#x8C61;&#x7684;&#x3002;</p>
+<p><code>Condition</code>&#x7684;&#x4F7F;&#x7528;&#x65B9;&#x5F0F;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#xFF0C;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x5728;&#x8C03;&#x7528;&#x65B9;&#x6CD5;&#x524D;&#x83B7;&#x53D6;&#x9501;&#xFF0C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>Lock lock = new ReentrantLock();
+Condition condition = lock.newCondition();
+public void conditionWait() throws InterruptedException {
+    lock.lock();
+    try {
+        condition.await();
+    } finally {
+        lock.unlock();
+    }
+}
+public void conditionSignal() throws InterruptedException {
+    lock.lock();
+    try {
+        condition.signal();
+    } finally {
+        lock.unlock();
+    }
+}
+</code></pre><p><code>Condition</code> &#x63A5;&#x53E3;&#x65B9;&#x6CD5;&#x4ECB;&#x7ECD;&#xFF1A;</p>
+<ul>
+<li><code>void await() throws InterruptedException</code> &#xFF1A; &#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x8FDB;&#x5165;&#x7B49;&#x5F85;&#x72B6;&#x6001;&#x76F4;&#x5230;&#x88AB;&#x901A;&#x77E5;&#x6216;&#x4E2D;&#x65AD;</li>
+<li><code>void awaitUninterruptibly()</code> &#xFF1A;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x8FDB;&#x5165;&#x7B49;&#x5F85;&#x72B6;&#x6001;&#x76F4;&#x5230;&#x88AB;&#x901A;&#x77E5;&#xFF0C;&#x5BF9;&#x4E2D;&#x65AD;&#x4E0D;&#x654F;&#x611F;</li>
+<li><code>long awaitNanos(long var1) throws InterruptedException</code> &#xFF1A;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x8FDB;&#x5165;&#x7B49;&#x5F85;&#x72B6;&#x6001;&#x76F4;&#x5230;&#x88AB;&#x901A;&#x77E5;&#x3001;&#x4E2D;&#x65AD;&#x6216;&#x8D85;&#x65F6;</li>
+<li><code>boolean await(long var1, TimeUnit var3) throws InterruptedException</code> &#xFF1A;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x8FDB;&#x5165;&#x7B49;&#x5F85;&#x72B6;&#x6001;&#x76F4;&#x5230;&#x88AB;&#x901A;&#x77E5;&#x3001;&#x4E2D;&#x65AD;&#x6216;&#x8D85;&#x65F6;</li>
+<li><code>boolean awaitUntil(Date var1) throws InterruptedException</code> &#xFF1A;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x8FDB;&#x5165;&#x7B49;&#x5F85;&#x72B6;&#x6001;&#x76F4;&#x5230;&#x88AB;&#x901A;&#x77E5;&#x3001;&#x4E2D;&#x65AD;&#x6216;&#x5230;&#x67D0;&#x4E00;&#x65F6;&#x95F4;</li>
+<li><code>void signal()</code> &#xFF1A;&#x5524;&#x9192;<code>Condition</code>&#x4E0A;&#x4E00;&#x4E2A;&#x5728;&#x7B49;&#x5F85;&#x7684;&#x7EBF;&#x7A0B;</li>
+<li><code>void signalAll()</code> &#xFF1A;&#x5524;&#x9192;<code>Condition</code>&#x4E0A;&#x5168;&#x90E8;&#x5728;&#x7B49;&#x5F85;&#x7684;&#x7EBF;&#x7A0B;</li>
+</ul>
+<p><strong>&#x83B7;&#x53D6;&#x4E00;&#x4E2A;Condition&#x5FC5;&#x987B;&#x901A;&#x8FC7;Lock&#x7684;newCondition()&#x65B9;&#x6CD5;&#x3002;</strong></p>
+<p>&#x901A;&#x8FC7;&#x4E0B;&#x9762;&#x8FD9;&#x4E2A;&#x6709;&#x754C;&#x961F;&#x5217;&#x7684;&#x793A;&#x4F8B;&#x6211;&#x4EEC;&#x6765;&#x6DF1;&#x5165;&#x4E86;&#x89E3;&#x4E0B; <code>Condition</code> &#x7684;&#x4F7F;&#x7528;&#x65B9;&#x5F0F;:</p>
+<pre><code>public class BoundedQueue&lt;T&gt; {
+    private Object[] items;
+    // &#x6DFB;&#x52A0;&#x7684;&#x4E0B;&#x6807;&#xFF0C;&#x5220;&#x9664;&#x7684;&#x4E0B;&#x6807;&#x548C;&#x6570;&#x7EC4;&#x5F53;&#x524D;&#x6570;&#x91CF;
+    private int addIndex, removeIndex, count;
+    private Lock lock = new ReentrantLock();
+    private Condition notEmpty = lock.newCondition();
+    private Condition notFull = lock.newCondition();
+
+    public BoundedQueue(int size) {
+        items = new Object[size];
+    }
+
+    // &#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#xFF0C;&#x5982;&#x679C;&#x6570;&#x7EC4;&#x6EE1;&#xFF0C;&#x5219;&#x6DFB;&#x52A0;&#x7EBF;&#x7A0B;&#x8FDB;&#x5165;&#x7B49;&#x5F85;&#x72B6;&#x6001;&#xFF0C;&#x76F4;&#x5230;&#x6709;&quot;&#x7A7A;&#x4F4D;&quot;
+    public void add(T t) throws InterruptedException {
+        lock.lock();
+        try {
+            while (count == items.length){
+                notFull.await();
+            }
+            items[addIndex] = t;
+            if (++addIndex == items.length)
+                addIndex = 0;
+            ++count;
+            notEmpty.signal();
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    // &#x7531;&#x5934;&#x90E8;&#x5220;&#x9664;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#xFF0C;&#x5982;&#x679C;&#x6570;&#x7EC4;&#x7A7A;&#xFF0C;&#x5219;&#x5220;&#x9664;&#x7EBF;&#x7A0B;&#x8FDB;&#x5165;&#x7B49;&#x5F85;&#x72B6;&#x6001;&#xFF0C;&#x76F4;&#x5230;&#x6709;&#x65B0;&#x6DFB;&#x52A0;&#x5143;&#x7D20;
+    @SuppressWarnings(&quot;unchecked&quot;)
+    public T remove() throws InterruptedException {
+        lock.lock();
+        try {
+            while (count == 0)
+                notEmpty.await();
+            Object x = items[removeIndex];
+            if (++removeIndex == items.length)
+                removeIndex = 0;
+            --count;
+            notFull.signal();
+            return (T) x;
+        } finally {
+            lock.unlock();
+        }
+    }
+}
+</code></pre><p>&#x4E0A;&#x8FF0;&#x4EE3;&#x7801;<code>add</code> &#x548C; <code>remove</code> &#x65B9;&#x6CD5; &#x90FD;&#x9700;&#x8981;&#x5148;&#x83B7;&#x53D6;&#x9501;&#x4FDD;&#x8BC1;&#x6570;&#x636E;&#x7684;&#x53EF;&#x89C1;&#x6027;&#x548C;&#x6392;&#x5B83;&#x6027;&#x3002;
+&#x5F53;&#x50A8;&#x5B58;&#x6570;&#x7EC4;&#x6EE1;&#x4E86;&#x7684;&#x65F6;&#x5019;&#x65F6;&#x5019;&#x8C03;&#x7528;<code>notFull.await()</code>&#xFF0C;&#x7EBF;&#x7A0B;&#x5373;&#x91CA;&#x653E;&#x9501;&#x5E76;&#x8FDB;&#x5165;&#x7B49;&#x5F85;&#x961F;&#x5217;&#x3002;
+&#x5F53;&#x50A8;&#x5B58;&#x6570;&#x7EC4;&#x672A;&#x6EE1;&#x65F6;&#xFF0C;&#x5219;&#x6DFB;&#x52A0;&#x5230;&#x6570;&#x7EC4;&#xFF0C;&#x5E76;&#x901A;&#x77E5; <code>notEmpty</code> &#x4E2D;&#x7B49;&#x5F85;&#x7684;&#x7EBF;&#x7A0B;&#x3002;
+&#x65B9;&#x6CD5;&#x4E2D;&#x4F7F;&#x7528;<code>while</code>&#x5FAA;&#x73AF;&#x662F;&#x4E3A;&#x4E86;&#x9632;&#x6B62;&#x8FC7;&#x65E9;&#x6216;&#x8005;&#x610F;&#x5916;&#x7684;&#x901A;&#x77E5;&#x3002;</p>
+<h5 id="condition&#x7684;&#x5B9E;&#x73B0;&#x5206;&#x6790;"><a name="condition&#x7684;&#x5B9E;&#x73B0;&#x5206;&#x6790;" class="anchor-navigation-ex-anchor" href="#condition&#x7684;&#x5B9E;&#x73B0;&#x5206;&#x6790;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="condition&#x7684;&#x5B9E;&#x73B0;&#x5206;&#x6790;" class="plugin-anchor" href="#condition&#x7684;&#x5B9E;&#x73B0;&#x5206;&#x6790;"><i class="fa fa-link" aria-hidden="true"></i></a>Condition&#x7684;&#x5B9E;&#x73B0;&#x5206;&#x6790;</h5>
+<p>&#x4E3B;&#x8981;&#x5305;&#x62EC; &#x7B49;&#x5F85;&#x961F;&#x5217;&#x3001;&#x7B49;&#x5F85;&#x548C;&#x901A;&#x77E5;&#x3002;</p>
+<ul>
+<li><p><strong>&#x7B49;&#x5F85;&#x961F;&#x5217;</strong>
+  &#x7B49;&#x5F85;&#x961F;&#x5217;&#x662F;&#x4E00;&#x4E2A;<code>FIFO</code>&#x7684;&#x961F;&#x5217;&#xFF0C;&#x5728;&#x961F;&#x5217;&#x4E2D;&#x7684;&#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#x90FD;&#x5305;&#x542B;&#x4E86;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x5F15;&#x7528;&#xFF0C;&#x8BE5;&#x7EBF;&#x7A0B;&#x5C31;&#x662F;&#x5728;<code>Condition</code>&#x5BF9;&#x8C61;&#x4E0A;&#x7B49;&#x5F85;&#x7684;&#x7EBF;&#x7A0B;&#xFF0C;&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x8C03;&#x7528;&#x4E86;<code>Condition.await()</code>&#x65B9;&#x6CD5;&#xFF0C;&#x90A3;&#x4E48;&#x8BE5;&#x7EBF;&#x7A0B;&#x5C06;&#x4F1A;&#x91CA;&#x653E;&#x9501;&#x3001;&#x6784;&#x9020;&#x6210;&#x8282;&#x70B9;&#x52A0;&#x5165;&#x7B49;&#x5F85;&#x961F;&#x5217;&#x5E76;&#x8FDB;&#x5165;&#x7B49;&#x5F85;&#x72B6;&#x6001;&#x3002;&#x540C;&#x6B65;&#x961F;&#x5217;&#x548C;&#x7B49;&#x5F85;&#x961F;&#x5217;&#x4E2D;&#x8282;&#x70B9;&#x7C7B;&#x578B;&#x90FD;&#x662F;&#x540C;&#x6B65;&#x5668;&#x7684;&#x9759;&#x6001;&#x5185;&#x90E8;&#x7C7B;<code>AbstractQueuedSynchronizer.Node</code>&#x3002;</p>
+<p>  &#x7EBF;&#x7A0B;&#x8C03;&#x7528;<code>Condition.await()</code>&#xFF0C;&#x5373;&#x4EE5;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x6784;&#x9020;&#x8282;&#x70B9;&#xFF0C;&#x5E76;&#x52A0;&#x5165;&#x7B49;&#x5F85;&#x961F;&#x5217;&#x7684;&#x5C3E;&#x90E8;&#x3002;
+  <img src="https://upload-images.jianshu.io/upload_images/1709375-fdd3ea44b0246d87.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="&#x7B49;&#x5F85;&#x961F;&#x5217;&#x7684;&#x57FA;&#x672C;&#x7ED3;&#x6784;"></p>
+<p>  &#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#xFF0C;<code>Condition</code>&#x7684;&#x5B9E;&#x73B0;&#x662F;&#x540C;&#x6B65;&#x5668;&#x7684;&#x5185;&#x90E8;&#x7C7B;&#xFF0C;&#x56E0;&#x6B64;&#x6BCF;&#x4E2A;<code>Condition</code>&#x5B9E;&#x4F8B;&#x90FD;&#x80FD;&#x591F;&#x8BBF;&#x95EE;&#x540C;&#x6B65;&#x5668;&#x63D0;&#x4F9B;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x76F8;&#x5F53;&#x4E8E;&#x6BCF;&#x4E2A;<code>Condition</code>&#x90FD;&#x62E5;&#x6709;&#x6240;&#x5C5E;&#x540C;&#x6B65;&#x5668;&#x7684;&#x5F15;&#x7528;&#x3002;<br>  <img src="https://upload-images.jianshu.io/upload_images/1709375-c7fffb9ed8bdd131.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="&#x540C;&#x6B65;&#x961F;&#x5217;&#x4E0E;&#x7B49;&#x5F85;&#x961F;&#x5217;"></p>
+</li>
+</ul>
+<ul>
+<li><p><strong>&#x7B49;&#x5F85;</strong>
+  &#x8C03;&#x7528;<code>Condition</code>&#x7684;<code>await()</code>&#x7B49;&#x65B9;&#x6CD5;&#xFF0C;&#x4F1A;&#x4F7F;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x8FDB;&#x5165;&#x7B49;&#x5F85;&#x961F;&#x5217;&#x5E76;&#x91CA;&#x653E;&#x9501;&#xFF0C;&#x540C;&#x65F6;&#x7EBF;&#x7A0B;&#x72B6;&#x6001;&#x53D8;&#x4E3A;&#x7B49;&#x5F85;&#x72B6;&#x6001;&#x3002;&#x5F53;&#x4ECE;<code>await()</code>&#x65B9;&#x6CD5;&#x8FD4;&#x56DE;&#x65F6;&#xFF0C;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x4E00;&#x5B9A;&#x83B7;&#x53D6;&#x4E86;<code>Condition</code>&#x76F8;&#x5173;&#x8054;&#x7684;&#x9501;&#x3002;</p>
+<p>  <code>Condition</code>&#x7684;<code>await()</code>&#x6E90;&#x7801;&#xFF1A;</p>
+<pre><code>  public final void await() throws InterruptedException {
+      if (Thread.interrupted()) {
+          throw new InterruptedException();
+      } else {
+          AbstractQueuedSynchronizer.Node node = this.addConditionWaiter();
+          int savedState = AbstractQueuedSynchronizer.this.fullyRelease(node);
+          int interruptMode = 0;
+          while(!AbstractQueuedSynchronizer.this.isOnSyncQueue(node)) {
+              LockSupport.park(this);
+              if ((interruptMode = this.checkInterruptWhileWaiting(node)) != 0) {
+                  break;
+              }
+          }
+          if (AbstractQueuedSynchronizer.this.acquireQueued(node, savedState) &amp;&amp; interruptMode != -1) {
+              interruptMode = 1;
+          }
+          if (node.nextWaiter != null) {
+              this.unlinkCancelledWaiters();
+          }
+          if (interruptMode != 0) {
+              this.reportInterruptAfterWait(interruptMode);
+          }
+      }
+  }
+</code></pre><p>  &#x8C03;&#x7528;&#x8BE5;&#x65B9;&#x6CD5;&#x7684;&#x7EBF;&#x7A0B;&#x6210;&#x529F;&#x83B7;&#x53D6;&#x4E86;&#x9501;&#x7684;&#x7EBF;&#x7A0B;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x540C;&#x6B65;&#x961F;&#x5217;&#x4E2D;&#x7684;&#x9996;&#x8282;&#x70B9;&#xFF0C;&#x8BE5;&#x65B9;&#x6CD5;&#x4F1A;&#x5C06;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x6784;&#x9020;&#x6210;&#x8282;&#x70B9;&#x5E76;&#x52A0;&#x5165;&#x7B49;&#x5F85;&#x961F;&#x5217;&#x4E2D;&#xFF0C;&#x7136;&#x540E;&#x91CA;&#x653E;&#x540C;&#x6B65;&#x72B6;&#x6001;&#xFF0C;&#x5524;&#x9192;&#x540C;&#x6B65;&#x961F;&#x5217;&#x4E2D;&#x7684;&#x540E;&#x7EE7;&#x8282;&#x70B9;&#xFF0C;&#x7136;&#x540E;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x4F1A;&#x8FDB;&#x5165;&#x7B49;&#x5F85;&#x72B6;&#x6001;&#x3002;
+  &#x5F53;&#x7B49;&#x5F85;&#x961F;&#x5217;&#x4E2D;&#x7684;&#x8282;&#x70B9;&#x88AB;&#x5524;&#x9192;&#xFF0C;&#x5219;&#x5524;&#x9192;&#x8282;&#x70B9;&#x7684;&#x7EBF;&#x7A0B;&#x5F00;&#x59CB;&#x5C1D;&#x8BD5;&#x83B7;&#x53D6;&#x540C;&#x6B65;&#x72B6;&#x6001;&#x3002;&#x5982;&#x679C;&#x4E0D;&#x662F;&#x901A;&#x8FC7;&#x5176;&#x4ED6;&#x7EBF;&#x7A0B;&#x8C03;&#x7528;<code>Condition.signal()</code>&#x65B9;&#x6CD5;&#x5524;&#x9192;&#xFF0C;&#x800C;&#x662F;&#x5BF9;&#x7B49;&#x5F85;&#x7EBF;&#x7A0B;&#x8FDB;&#x884C;&#x4E2D;&#x65AD;&#xFF0C;&#x5219;&#x4F1A;&#x629B;&#x51FA;<code>InterruptedException</code>&#x3002;
+  <img src="https://upload-images.jianshu.io/upload_images/1709375-f3a2ee6a5ac656af.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x52A0;&#x5165;&#x7B49;&#x5F85;&#x961F;&#x5217;"></p>
+</li>
+<li><p><strong>&#x901A;&#x77E5;</strong>
+  &#x8C03;&#x7528;<code>Condition</code>&#x7684;<code>signal()</code>&#x65B9;&#x6CD5;&#xFF0C;&#x5C06;&#x4F1A;&#x5524;&#x9192;&#x5728;&#x7B49;&#x5F85;&#x961F;&#x5217;&#x4E2D;&#x7B49;&#x5F85;&#x65F6;&#x95F4;&#x6700;&#x957F;&#x7684;&#x8282;&#x70B9;&#xFF08;&#x9996;&#x8282;&#x70B9;&#xFF09;&#xFF0C;&#x5728;&#x5524;&#x9192;&#x8282;&#x70B9;&#x4E4B;&#x524D;&#xFF0C;&#x4F1A;&#x5C06;&#x8282;&#x70B9;&#x79FB;&#x5230;&#x540C;&#x6B65;&#x961F;&#x5217;&#x4E2D;&#x3002;</p>
+<p>  <code>Condition</code>&#x7684;<code>signal()</code>&#x6E90;&#x7801;&#xFF1A;</p>
+<pre><code>  public final void signal() {
+      if (!AbstractQueuedSynchronizer.this.isHeldExclusively()) {
+          throw new IllegalMonitorStateException();
+      } else {
+          AbstractQueuedSynchronizer.Node first = this.firstWaiter;
+          if (first != null) {
+              this.doSignal(first);
+          }
+      }
+  }
+  private void doSignal(AbstractQueuedSynchronizer.Node first) {
+      do {
+          if ((this.firstWaiter = first.nextWaiter) == null) {
+              this.lastWaiter = null;
+          }
+          var1.nextWaiter = null;
+      } while (!AbstractQueuedSynchronizer.this.transferForSignal(first) &amp;&amp; (first = this.firstWaiter) != null);
+
+  }
+</code></pre><p>  &#x8C03;&#x7528;&#x8BE5;&#x65B9;&#x6CD5;&#x7684;&#x524D;&#x7F6E;&#x6761;&#x4EF6;&#x662F;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x5FC5;&#x987B;&#x83B7;&#x53D6;&#x4E86;&#x9501;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;<code>signal()</code>&#x65B9;&#x6CD5;&#x8FDB;&#x884C;&#x4E86;<code>isHeldExclusively()</code>&#x68C0;&#x67E5;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x5FC5;&#x987B;&#x662F;&#x83B7;&#x53D6;&#x4E86;&#x9501;&#x7684;&#x7EBF;&#x7A0B;&#x3002;
+  &#x63A5;&#x7740;&#x83B7;&#x53D6;&#x7B49;&#x5F85;&#x961F;&#x5217;&#x7684;&#x9996;&#x8282;&#x70B9;&#xFF0C;&#x5C06;&#x5176;&#x79FB;&#x52A8;&#x5230;&#x540C;&#x6B65;&#x961F;&#x5217;&#x5E76;&#x4F7F;&#x7528;<code>LockSupport</code>&#x5524;&#x9192;&#x8282;&#x70B9;&#x4E2D;&#x7684;&#x7EBF;&#x7A0B;&#x3002;
+  <img src="https://upload-images.jianshu.io/upload_images/1709375-2341f3905558d9ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="&#x8282;&#x70B9;&#x4ECE;&#x7B49;&#x5F85;&#x961F;&#x5217;&#x79FB;&#x52A8;&#x5230;&#x540C;&#x6B65;&#x961F;&#x5217;">
+  &#x901A;&#x8FC7;&#x8C03;&#x7528;&#x540C;&#x6B65;&#x5668;&#x7684;<code>enq(Node node)</code>&#x65B9;&#x6CD5;&#xFF0C;&#x7B49;&#x5F85;&#x961F;&#x5217;&#x4E2D;&#x7684;&#x5934;&#x8282;&#x70B9;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x5730;&#x79FB;&#x52A8;&#x5230;&#x540C;&#x6B65;&#x961F;&#x5217;&#x3002;
+  &#x5F53;&#x8282;&#x70B9;&#x79FB;&#x52A8;&#x5230;&#x540C;&#x6B65;&#x961F;&#x5217;&#x540E;&#xFF0C;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x518D;&#x4F7F;&#x7528;<code>LockSupport</code>&#x5524;&#x9192;&#x8BE5;&#x8282;&#x70B9;&#x7684;&#x7EBF;&#x7A0B;&#x3002;</p>
+<p>  &#x88AB;&#x5524;&#x9192;&#x540E;&#x7684;&#x7EBF;&#x7A0B;&#xFF0C;&#x5C06;&#x4ECE;<code>await()</code>&#x65B9;&#x6CD5;&#x4E2D;&#x7684;<code>while</code>&#x5FAA;&#x73AF;&#x4E2D;&#x9000;&#x51FA;<code>isOnSyncQueue(Node node)</code>&#x65B9;&#x6CD5;&#x8FD4;&#x56DE;<code>true</code>&#xFF0C;&#x8282;&#x70B9;&#x5DF2;&#x7ECF;&#x5728;&#x540C;&#x6B65;&#x961F;&#x5217;&#x4E2D;&#xFF0C;&#x8FDB;&#x800C;&#x8C03;&#x7528;&#x540C;&#x6B65;&#x5668;&#x7684;<code>acquireQueued()</code>&#x65B9;&#x6CD5;&#x52A0;&#x5165;&#x5230;&#x83B7;&#x53D6;&#x540C;&#x6B65;&#x72B6;&#x6001;&#x7684;&#x7ADE;&#x4E89;&#x4E2D;&#x3002;</p>
+<p>  &#x6210;&#x529F;&#x83B7;&#x53D6;&#x540C;&#x6B65;&#x72B6;&#x6001;&#x4E4B;&#x540E;&#xFF0C;&#x88AB;&#x5524;&#x9192;&#x7684;&#x7EBF;&#x7A0B;&#x5C06;&#x4ECE;&#x5148;&#x524D;&#x8C03;&#x7528;&#x7684;<code>await()</code>&#x65B9;&#x6CD5;&#x8FD4;&#x56DE;&#xFF0C;&#x6B64;&#x65F6;&#x8BE5;&#x7EBF;&#x7A0B;&#x5DF2;&#x7ECF;&#x6210;&#x529F;&#x5730;&#x83B7;&#x53D6;&#x4E86;&#x9501;&#x3002;</p>
+<p> <code>Condition</code>&#x7684;<code>signalAll()</code>&#x65B9;&#x6CD5;&#xFF0C;&#x76F8;&#x5F53;&#x4E8E;&#x5BF9;&#x7B49;&#x5F85;&#x961F;&#x5217;&#x4E2D;&#x7684;&#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#x5747;&#x6267;&#x884C;&#x4E00;&#x6B21;signal()&#x65B9;&#x6CD5;&#xFF0C;&#x6548;&#x679C;&#x5C31;&#x662F;&#x5C06;&#x7B49;&#x5F85;&#x961F;&#x5217;&#x4E2D;&#x6240;&#x6709;&#x8282;&#x70B9;&#x5168;&#x90E8;&#x79FB;&#x52A8;&#x5230;&#x540C;&#x6B65;&#x961F;&#x5217;&#x4E2D;&#xFF0C;&#x5E76;&#x5524;&#x9192;&#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#x7684;&#x7EBF;&#x7A0B;&#x3002;</p>
+</li>
+</ul>
+<hr>
+<h3 id="&#x5C0F;&#x7ED3;"><a name="&#x5C0F;&#x7ED3;" class="anchor-navigation-ex-anchor" href="#&#x5C0F;&#x7ED3;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x5C0F;&#x7ED3;" class="plugin-anchor" href="#&#x5C0F;&#x7ED3;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5C0F;&#x7ED3;</h3>
+<ul>
+<li><code>Lock</code>&#x63A5;&#x53E3;&#x63D0;&#x4F9B;&#x7684;&#x65B9;&#x6CD5;<code>lock()</code>&#x3001;<code>unlock()</code>&#x7B49;&#x83B7;&#x53D6;&#x548C;&#x91CA;&#x653E;&#x9501;&#x7684;&#x4ECB;&#x7ECD;</li>
+<li>&#x961F;&#x5217;&#x540C;&#x6B65;&#x5668;&#x7684;&#x4F7F;&#x7528; &#x4EE5;&#x53CA; &#x81EA;&#x5B9A;&#x4E49;&#x961F;&#x5217;&#x540C;&#x6B65;&#x5668;</li>
+<li>&#x91CD;&#x5165;&#x9501; &#x7684;&#x4F7F;&#x7528;&#x548C;&#x5B9E;&#x73B0;&#x4ECB;&#x7ECD;</li>
+<li>&#x8BFB;&#x5199;&#x9501; &#x7684; &#x8BFB;&#x9501; &#x548C; &#x5199;&#x9501;</li>
+<li><code>LockSupport</code>&#x5DE5;&#x5177;&#x5B9E;&#x73B0; &#x963B;&#x585E;&#x548C;&#x5524;&#x9192;&#x7EBF;&#x7A0B;</li>
+<li><code>Condition</code>&#x63A5;&#x53E3;&#x5B9E;&#x73B0; &#x7B49;&#x5F85;/&#x901A;&#x77E5;&#x6A21;&#x5F0F; </li>
+</ul>
+<hr>
+<p>&#x5982;&#x679C;&#x89C9;&#x5F97;&#x4E0D;&#x9519;&#x7684;&#x8BDD;&#xFF0C;&#x8BF7;&#x5E2E;&#x5FD9;&#x70B9;&#x4E2A;&#x8D5E;&#x5457;&#x3002;</p>
+<p>&#x4EE5;&#x4E0A;</p>
+<hr>
+<p>&#x626B;&#x63CF;&#x4E0B;&#x9762;&#x7684;&#x4E8C;&#x7EF4;&#x7801;&#xFF0C;&#x5173;&#x6CE8;&#x6211;&#x7684;&#x516C;&#x4F17;&#x53F7; <strong>Android1024</strong>&#xFF0C; &#x70B9;&#x5173;&#x6CE8;&#xFF0C;&#x4E0D;&#x8FF7;&#x8DEF;&#x3002;
+<img src="https://upload-images.jianshu.io/upload_images/1709375-84aaffe67e21a7e9.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Android1024"></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Java中的线程池.html" class="navigation navigation-prev " aria-label="Previous page: Java中的线程池">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="Java内存模型.html" class="navigation navigation-next " aria-label="Next page: Java内存模型">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Java中的锁的使用和实现介绍","level":"10.1.6","depth":2,"next":{"title":"Java内存模型","level":"10.1.7","depth":2,"path":"Java并发编程的艺术笔记/Java内存模型.md","ref":"Java并发编程的艺术笔记/Java内存模型.md","articles":[]},"previous":{"title":"Java中的线程池","level":"10.1.5","depth":2,"path":"Java并发编程的艺术笔记/Java中的线程池.md","ref":"Java并发编程的艺术笔记/Java中的线程池.md","articles":[]},"dir":"ltr"},"config":{"plugins":["splitter","expandable-chapters-small","anchors","anchor-navigation-ex"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"expandable-chapters-small":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","author":"103style","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"103style","language":"zh-hans","gitbook":"3.2.3","description":"103style的blog"},"file":{"path":"Java并发编程的艺术笔记/Java中的锁的使用和实现介绍.md","mtime":"2019-10-13T02:36:37.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-10-13T05:45:46.232Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
