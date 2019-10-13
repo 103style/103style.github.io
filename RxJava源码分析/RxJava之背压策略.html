@@ -1,0 +1,3102 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>RxJava之背压策略 · 103style</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="103style">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../okhttp3/" />
+    
+    
+    <link rel="prev" href="RxJava之连接操作符介绍.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">文章</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../数据结构/">
+            
+                <a href="../数据结构/">
+            
+                    
+                    数据结构
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../数据结构/数据结构源码分析汇总.html">
+            
+                <a href="../数据结构/数据结构源码分析汇总.html">
+            
+                    
+                    数据结构源码分析汇总
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../数据结构/ArrayList源码解析.html">
+            
+                <a href="../数据结构/ArrayList源码解析.html">
+            
+                    
+                    ArrayList源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../数据结构/LinkedList源码解析.html">
+            
+                <a href="../数据结构/LinkedList源码解析.html">
+            
+                    
+                    LinkedList源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../数据结构/HashMap源码解析.html">
+            
+                <a href="../数据结构/HashMap源码解析.html">
+            
+                    
+                    HashMap源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../数据结构/LinkedHashMap源码解析.html">
+            
+                <a href="../数据结构/LinkedHashMap源码解析.html">
+            
+                    
+                    LinkedHashMap源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../数据结构/ConcurrentHashMap源码解析.html">
+            
+                <a href="../数据结构/ConcurrentHashMap源码解析.html">
+            
+                    
+                    ConcurrentHashMap源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="../数据结构/WeakHashMap源码解析.html">
+            
+                <a href="../数据结构/WeakHashMap源码解析.html">
+            
+                    
+                    WeakHashMap源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="../数据结构/TreeMap源码解析.html">
+            
+                <a href="../数据结构/TreeMap源码解析.html">
+            
+                    
+                    TreeMap源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="../数据结构/HashSet源码解析.html">
+            
+                <a href="../数据结构/HashSet源码解析.html">
+            
+                    
+                    HashSet源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" data-path="../数据结构/LinkedHashSet源码解析.html">
+            
+                <a href="../数据结构/LinkedHashSet源码解析.html">
+            
+                    
+                    LinkedHashSet源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.11" data-path="../数据结构/Hashtable源码解析.html">
+            
+                <a href="../数据结构/Hashtable源码解析.html">
+            
+                    
+                    Hashtable源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.12" data-path="../数据结构/ArrayDeque源码解析.html">
+            
+                <a href="../数据结构/ArrayDeque源码解析.html">
+            
+                    
+                    ArrayDeque源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.13" data-path="../数据结构/PriorityQueue源码解析.html">
+            
+                <a href="../数据结构/PriorityQueue源码解析.html">
+            
+                    
+                    PriorityQueue源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../NDK/">
+            
+                <a href="../NDK/">
+            
+                    
+                    NDK
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="../NDK/NDK开发文章汇总.html">
+            
+                <a href="../NDK/NDK开发文章汇总.html">
+            
+                    
+                    NDK开发文章汇总
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="../NDK/NDK开发（一）NDK入门指南.html">
+            
+                <a href="../NDK/NDK开发（一）NDK入门指南.html">
+            
+                    
+                    NDK开发（一）NDK入门指南
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" data-path="../NDK/NDK开发（二）JNI的数据类型.html">
+            
+                <a href="../NDK/NDK开发（二）JNI的数据类型.html">
+            
+                    
+                    NDK开发（二）JNI的数据类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" data-path="../NDK/NDK开发（三）JNI访问Java变量和方法.html">
+            
+                <a href="../NDK/NDK开发（三）JNI访问Java变量和方法.html">
+            
+                    
+                    NDK开发（三）JNI访问Java变量和方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.5" data-path="../NDK/NDK开发（四）JNI操作Java数组.html">
+            
+                <a href="../NDK/NDK开发（四）JNI操作Java数组.html">
+            
+                    
+                    NDK开发（四）JNI操作Java数组
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.6" data-path="../NDK/NDK开发（五）JNI实现文件加解密.html">
+            
+                <a href="../NDK/NDK开发（五）JNI实现文件加解密.html">
+            
+                    
+                    NDK开发（五）JNI实现文件加解密
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.7" data-path="../NDK/NDK开发（六）JNI实现文件拆分和合并.html">
+            
+                <a href="../NDK/NDK开发（六）JNI实现文件拆分和合并.html">
+            
+                    
+                    NDK开发（六）JNI实现文件拆分和合并
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.8" data-path="../NDK/NDK开发（七）JNI实现文件夹遍历.html">
+            
+                <a href="../NDK/NDK开发（七）JNI实现文件夹遍历.html">
+            
+                    
+                    NDK开发（七）JNI实现文件夹遍历
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.9" data-path="../NDK/NDK开发（八）JNI下Bitmap的使用.html">
+            
+                <a href="../NDK/NDK开发（八）JNI下Bitmap的使用.html">
+            
+                    
+                    NDK开发（八）JNI下Bitmap的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.10" data-path="../NDK/NDK开发（九）Hello-jniCallback.html">
+            
+                <a href="../NDK/NDK开发（九）Hello-jniCallback.html">
+            
+                    
+                    NDK开发（九）Hello-jniCallback
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.11" data-path="../NDK/NDK开发（十）Hello-OpenGLES3.html">
+            
+                <a href="../NDK/NDK开发（十）Hello-OpenGLES3.html">
+            
+                    
+                    NDK开发（十）Hello-OpenGLES3
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../OpenGL ES 3.0/">
+            
+                <a href="../OpenGL ES 3.0/">
+            
+                    
+                    OpenGL ES 3.0
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="../OpenGL ES 3.0/OpenGL ES 3.0 学习记录汇总.html">
+            
+                <a href="../OpenGL ES 3.0/OpenGL ES 3.0 学习记录汇总.html">
+            
+                    
+                    OpenGL ES 3.0 学习记录汇总
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="../OpenGL ES 3.0/Windows10 搭建OpenGL ES 3.0 开发环境.html">
+            
+                <a href="../OpenGL ES 3.0/Windows10 搭建OpenGL ES 3.0 开发环境.html">
+            
+                    
+                    Windows10 搭建OpenGL ES 3.0 开发环境
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" data-path="../OpenGL ES 3.0/OpenGL ES 3.0 简介.html">
+            
+                <a href="../OpenGL ES 3.0/OpenGL ES 3.0 简介.html">
+            
+                    
+                    OpenGL ES 3.0 简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4" data-path="../OpenGL ES 3.0/OpenGL ES 3.0  Hello_Triangle.html">
+            
+                <a href="../OpenGL ES 3.0/OpenGL ES 3.0  Hello_Triangle.html">
+            
+                    
+                    OpenGL ES 3.0  Hello_Triangle
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.5" data-path="../OpenGL ES 3.0/OpenGL ES 着色语言.html">
+            
+                <a href="../OpenGL ES 3.0/OpenGL ES 着色语言.html">
+            
+                    
+                    OpenGL ES 着色语言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.6" data-path="../OpenGL ES 3.0/顶点属性、顶点数组和缓冲区对象.html">
+            
+                <a href="../OpenGL ES 3.0/顶点属性、顶点数组和缓冲区对象.html">
+            
+                    
+                    顶点属性、顶点数组和缓冲区对象
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.7" data-path="../OpenGL ES 3.0/图元装配和光栅化.html">
+            
+                <a href="../OpenGL ES 3.0/图元装配和光栅化.html">
+            
+                    
+                    图元装配和光栅化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.8" data-path="../OpenGL ES 3.0/glDrawArrays-is-called-with-VERTEX_ARRAY-client-state-disabled!.html">
+            
+                <a href="../OpenGL ES 3.0/glDrawArrays-is-called-with-VERTEX_ARRAY-client-state-disabled!.html">
+            
+                    
+                    glDrawArrays-is-called-with-VERTEX_ARRAY-client-state-disabled!
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../Android通用类/">
+            
+                <a href="../Android通用类/">
+            
+                    
+                    Android通用类
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../Android通用类/Android Foreground Service.html">
+            
+                <a href="../Android通用类/Android Foreground Service.html">
+            
+                    
+                    Android Foreground Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" data-path="../Android通用类/Android SIM卡插拔监听.html">
+            
+                <a href="../Android通用类/Android SIM卡插拔监听.html">
+            
+                    
+                    Android SIM卡插拔监听
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3" data-path="../Android通用类/Android判断是否在通话中.html">
+            
+                <a href="../Android通用类/Android判断是否在通话中.html">
+            
+                    
+                    Android判断是否在通话中
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.4" data-path="../Android通用类/Android听筒扬声器切换并且监听音量变化.html">
+            
+                <a href="../Android通用类/Android听筒扬声器切换并且监听音量变化.html">
+            
+                    
+                    Android听筒扬声器切换并且监听音量变化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.5" data-path="../Android通用类/Android检查通知权限是否开启.html">
+            
+                <a href="../Android通用类/Android检查通知权限是否开启.html">
+            
+                    
+                    Android检查通知权限是否开启
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.6" data-path="../Android通用类/Android监听来电状态.html">
+            
+                <a href="../Android通用类/Android监听来电状态.html">
+            
+                    
+                    Android监听来电状态
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../Android错误解决集锦/">
+            
+                <a href="../Android错误解决集锦/">
+            
+                    
+                    Android错误解决集锦
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1.1" data-path="../Android错误解决集锦/Android layout_marginEnd隐藏的坑 or setMargins无效.html">
+            
+                <a href="../Android错误解决集锦/Android layout_marginEnd隐藏的坑 or setMargins无效.html">
+            
+                    
+                    Android layout_marginEnd隐藏的坑 or setMargins无效
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.2" data-path="../Android错误解决集锦/Could not find class 'android.support.v4.widget.DrawerLayout$1'.html">
+            
+                <a href="../Android错误解决集锦/Could not find class 'android.support.v4.widget.DrawerLayout$1'.html">
+            
+                    
+                    Could not find class 'android.support.v4.widget.DrawerLayout$1'
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.3" data-path="../Android错误解决集锦/Duplicate id 0x7f0900af, tag null, or parent id 0xffffffff with another frag.html">
+            
+                <a href="../Android错误解决集锦/Duplicate id 0x7f0900af, tag null, or parent id 0xffffffff with another frag.html">
+            
+                    
+                    Duplicate id 0x7f0900af, tag null, or parent id 0xffffffff with another frag
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.4" data-path="../Android错误解决集锦/Error Execution failed for task 'app transformClassesWithDexForDebug'.html">
+            
+                <a href="../Android错误解决集锦/Error Execution failed for task 'app transformClassesWithDexForDebug'.html">
+            
+                    
+                    Error Execution failed for task 'app transformClassesWithDexForDebug'
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.5" data-path="../Android错误解决集锦/HwLauncher Launcher dialog dismiss failed.html">
+            
+                <a href="../Android错误解决集锦/HwLauncher Launcher dialog dismiss failed.html">
+            
+                    
+                    HwLauncher Launcher dialog dismiss failed
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.6" data-path="../Android错误解决集锦/java.lang.NullPointerException Attempt to invoke virtual method 'int android.widget.Editor.html">
+            
+                <a href="../Android错误解决集锦/java.lang.NullPointerException Attempt to invoke virtual method 'int android.widget.Editor.html">
+            
+                    
+                    java.lang.NullPointerException Attempt to invoke virtual method 'int android.widget.Editor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.7" data-path="../Android错误解决集锦/java.lang.UnsatisfiedLinkError解决方法.html">
+            
+                <a href="../Android错误解决集锦/java.lang.UnsatisfiedLinkError解决方法.html">
+            
+                    
+                    java.lang.UnsatisfiedLinkError解决方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.8" data-path="../Android错误解决集锦/RecyclerView布局异常.html">
+            
+                <a href="../Android错误解决集锦/RecyclerView布局异常.html">
+            
+                    
+                    RecyclerView布局异常
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.9" data-path="../Android错误解决集锦/the bind value at index 2 is null.html">
+            
+                <a href="../Android错误解决集锦/the bind value at index 2 is null.html">
+            
+                    
+                    the bind value at index 2 is null
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../AndroidStudio问题记录/">
+            
+                <a href="../AndroidStudio问题记录/">
+            
+                    
+                    AndroidStudio问题记录
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1.1" data-path="../AndroidStudio问题记录/AndroidStudio App出现红叉问题 解决方法记录.html">
+            
+                <a href="../AndroidStudio问题记录/AndroidStudio App出现红叉问题 解决方法记录.html">
+            
+                    
+                    AndroidStudio App出现红叉问题 解决方法记录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.2" data-path="../AndroidStudio问题记录/AndroidStudio依赖的包文件导入失败.html">
+            
+                <a href="../AndroidStudio问题记录/AndroidStudio依赖的包文件导入失败.html">
+            
+                    
+                    AndroidStudio依赖的包文件导入失败
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.3" data-path="../AndroidStudio问题记录/AndroidStudio在当前位置查看注释快捷方式.html">
+            
+                <a href="../AndroidStudio问题记录/AndroidStudio在当前位置查看注释快捷方式.html">
+            
+                    
+                    AndroidStudio在当前位置查看注释快捷方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.4" data-path="../AndroidStudio问题记录/AndroidStudio找不到Genymotion设备.html">
+            
+                <a href="../AndroidStudio问题记录/AndroidStudio找不到Genymotion设备.html">
+            
+                    
+                    AndroidStudio找不到Genymotion设备
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.5" data-path="../AndroidStudio问题记录/AndroidStudio用久了，磁盘越来越不够用？.html">
+            
+                <a href="../AndroidStudio问题记录/AndroidStudio用久了，磁盘越来越不够用？.html">
+            
+                    
+                    AndroidStudio用久了，磁盘越来越不够用？
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.6" data-path="../AndroidStudio问题记录/AndroidStudio自定义代码模块来实现代码规范.html">
+            
+                <a href="../AndroidStudio问题记录/AndroidStudio自定义代码模块来实现代码规范.html">
+            
+                    
+                    AndroidStudio自定义代码模块来实现代码规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.7" data-path="../AndroidStudio问题记录/AndroidStudio：Unable to start the daemon process.html">
+            
+                <a href="../AndroidStudio问题记录/AndroidStudio：Unable to start the daemon process.html">
+            
+                    
+                    AndroidStudio：Unable to start the daemon process
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="../Android自定义View/">
+            
+                <a href="../Android自定义View/">
+            
+                    
+                    Android自定义View
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.2.1" data-path="../Android自定义View/自定义View实战（一）汽车速度仪表盘.html">
+            
+                <a href="../Android自定义View/自定义View实战（一）汽车速度仪表盘.html">
+            
+                    
+                    自定义View实战（一）汽车速度仪表盘
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.2" data-path="../Android自定义View/自定义View实战（二）QQ健康水滴形加载.html">
+            
+                <a href="../Android自定义View/自定义View实战（二）QQ健康水滴形加载.html">
+            
+                    
+                    自定义View实战（二）QQ健康水滴形加载
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="../热修复/">
+            
+                <a href="../热修复/">
+            
+                    
+                    热修复
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1.1" data-path="../热修复/ClassLoader实现热修复的示例.html">
+            
+                <a href="../热修复/ClassLoader实现热修复的示例.html">
+            
+                    
+                    ClassLoader实现热修复的示例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.2" data-path="../热修复/利用ClassLoader实现检查项目中不符合规范的代码.html">
+            
+                <a href="../热修复/利用ClassLoader实现检查项目中不符合规范的代码.html">
+            
+                    
+                    利用ClassLoader实现检查项目中不符合规范的代码
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="8.1" data-path="../Flutter/">
+            
+                <a href="../Flutter/">
+            
+                    
+                    Flutter
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.1.1" data-path="../Flutter/Flutter学习示例.html">
+            
+                <a href="../Flutter/Flutter学习示例.html">
+            
+                    
+                    Flutter学习示例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.2" data-path="../Flutter/Flutter环境配置及运行示例程序.html">
+            
+                <a href="../Flutter/Flutter环境配置及运行示例程序.html">
+            
+                    
+                    Flutter环境配置及运行示例程序
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="9.1" data-path="../日记本/">
+            
+                <a href="../日记本/">
+            
+                    
+                    其他开发问题
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.1.1" data-path="../日记本/Android string.xml  双引号问题的记录.html">
+            
+                <a href="../日记本/Android string.xml  双引号问题的记录.html">
+            
+                    
+                    Android string.xml  双引号问题的记录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.2" data-path="../日记本/Android targetSdkVersion 从22提到25 你需要知道的一切.html">
+            
+                <a href="../日记本/Android targetSdkVersion 从22提到25 你需要知道的一切.html">
+            
+                    
+                    Android targetSdkVersion 从22提到25 你需要知道的一切
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.3" data-path="../日记本/Android-子线程切回主线程的方法记录.html">
+            
+                <a href="../日记本/Android-子线程切回主线程的方法记录.html">
+            
+                    
+                    Android-子线程切回主线程的方法记录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.4" data-path="../日记本/Android-数据库加密-android-database-sqlcipher-开源版本编译过程.html">
+            
+                <a href="../日记本/Android-数据库加密-android-database-sqlcipher-开源版本编译过程.html">
+            
+                    
+                    Android-数据库加密-android-database-sqlcipher-开源版本编译过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.5" data-path="../日记本/Android6.0的权限记录.html">
+            
+                <a href="../日记本/Android6.0的权限记录.html">
+            
+                    
+                    Android6.0的权限记录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.6" data-path="../日记本/Android命令行签名记录.html">
+            
+                <a href="../日记本/Android命令行签名记录.html">
+            
+                    
+                    Android命令行签名记录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.7" data-path="../日记本/Android清除通知栏的对应的消息.html">
+            
+                <a href="../日记本/Android清除通知栏的对应的消息.html">
+            
+                    
+                    Android清除通知栏的对应的消息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.8" data-path="../日记本/Calendar-HOUR-引发的问题.html">
+            
+                <a href="../日记本/Calendar-HOUR-引发的问题.html">
+            
+                    
+                    Calendar-HOUR-引发的问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.9" data-path="../日记本/git提交报错does not match your user account.html">
+            
+                <a href="../日记本/git提交报错does not match your user account.html">
+            
+                    
+                    git提交报错does not match your user account
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.10" data-path="../日记本/Git提交流程.html">
+            
+                <a href="../日记本/Git提交流程.html">
+            
+                    
+                    Git提交流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.11" data-path="../日记本/Java中运算符  和  以及 & 和 && 区别.html">
+            
+                <a href="../日记本/Java中运算符  和  以及 & 和 && 区别.html">
+            
+                    
+                    Java中运算符  和  以及 & 和 && 区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.12" data-path="../日记本/Mysql设置编码，插入不了中文问题.html">
+            
+                <a href="../日记本/Mysql设置编码，插入不了中文问题.html">
+            
+                    
+                    Mysql设置编码，插入不了中文问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.13" data-path="../日记本/Tomcat访问本地磁盘文件.html">
+            
+                <a href="../日记本/Tomcat访问本地磁盘文件.html">
+            
+                    
+                    Tomcat访问本地磁盘文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.14" data-path="../日记本/W10一些操作问题的记录.html">
+            
+                <a href="../日记本/W10一些操作问题的记录.html">
+            
+                    
+                    W10一些操作问题的记录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.15" data-path="../日记本/Windows10-安装VirtualBox出现2502、2503错误解决方法.html">
+            
+                <a href="../日记本/Windows10-安装VirtualBox出现2502、2503错误解决方法.html">
+            
+                    
+                    Windows10-安装VirtualBox出现2502、2503错误解决方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.16" data-path="../日记本/windows安装程序无法将windows配置为在此计算机.html">
+            
+                <a href="../日记本/windows安装程序无法将windows配置为在此计算机.html">
+            
+                    
+                    windows安装程序无法将windows配置为在此计算机
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.17" data-path="../日记本/【转】Android软键盘的全面解析.html">
+            
+                <a href="../日记本/【转】Android软键盘的全面解析.html">
+            
+                    
+                    【转】Android软键盘的全面解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.18" data-path="../日记本/下拉刷新-AppBarLayout.html">
+            
+                <a href="../日记本/下拉刷新-AppBarLayout.html">
+            
+                    
+                    下拉刷新-AppBarLayout
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.19" data-path="../日记本/以爬虫工程师身份谈谈Android端的信息安全.html">
+            
+                <a href="../日记本/以爬虫工程师身份谈谈Android端的信息安全.html">
+            
+                    
+                    以爬虫工程师身份谈谈Android端的信息安全
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.20" data-path="../日记本/关于魅族手机-安装APP提示安装失败-更新包不兼容的解决方法.html">
+            
+                <a href="../日记本/关于魅族手机-安装APP提示安装失败-更新包不兼容的解决方法.html">
+            
+                    
+                    关于魅族手机-安装APP提示安装失败-更新包不兼容的解决方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.21" data-path="../日记本/如何托管你的项目到github上详细教程.html">
+            
+                <a href="../日记本/如何托管你的项目到github上详细教程.html">
+            
+                    
+                    如何托管你的项目到github上详细教程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.22" data-path="../日记本/最近的Android面试分享.html">
+            
+                <a href="../日记本/最近的Android面试分享.html">
+            
+                    
+                    最近的Android面试分享
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.23" data-path="../日记本/集成微信登录和分享真的很简单.html">
+            
+                <a href="../日记本/集成微信登录和分享真的很简单.html">
+            
+                    
+                    集成微信登录和分享真的很简单
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.24" data-path="../日记本/魅族进入开发者模式.html">
+            
+                <a href="../日记本/魅族进入开发者模式.html">
+            
+                    
+                    魅族进入开发者模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="10.1" data-path="../Java并发编程的艺术笔记/">
+            
+                <a href="../Java并发编程的艺术笔记/">
+            
+                    
+                    Java并发编程的艺术笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.1.1" data-path="../Java并发编程的艺术笔记/Java Thread.join(">
+            
+                <span>
+            
+                    
+                    Java Thread.join()详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.2" data-path="../Java并发编程的艺术笔记/并发编程的挑战.html">
+            
+                <a href="../Java并发编程的艺术笔记/并发编程的挑战.html">
+            
+                    
+                    并发编程的挑战
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.3" data-path="../Java并发编程的艺术笔记/Java并发机制的底层实现原理.html">
+            
+                <a href="../Java并发编程的艺术笔记/Java并发机制的底层实现原理.html">
+            
+                    
+                    Java并发机制的底层实现原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.4" data-path="../Java并发编程的艺术笔记/Java内存模型.html">
+            
+                <a href="../Java并发编程的艺术笔记/Java内存模型.html">
+            
+                    
+                    Java内存模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.5" data-path="../Java并发编程的艺术笔记/Java并发编程基础.html">
+            
+                <a href="../Java并发编程的艺术笔记/Java并发编程基础.html">
+            
+                    
+                    Java并发编程基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.6" data-path="../Java并发编程的艺术笔记/Java中的锁的使用和实现介绍.html">
+            
+                <a href="../Java并发编程的艺术笔记/Java中的锁的使用和实现介绍.html">
+            
+                    
+                    Java中的锁的使用和实现介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.7" data-path="../Java并发编程的艺术笔记/Java并发容器和框架.html">
+            
+                <a href="../Java并发编程的艺术笔记/Java并发容器和框架.html">
+            
+                    
+                    Java并发容器和框架
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.8" data-path="../Java并发编程的艺术笔记/Java中的12个原子操作类介绍.html">
+            
+                <a href="../Java并发编程的艺术笔记/Java中的12个原子操作类介绍.html">
+            
+                    
+                    Java中的12个原子操作类介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.9" data-path="../Java并发编程的艺术笔记/Java中的并发工具类.html">
+            
+                <a href="../Java并发编程的艺术笔记/Java中的并发工具类.html">
+            
+                    
+                    Java中的并发工具类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.10" data-path="../Java并发编程的艺术笔记/Java中的线程池.html">
+            
+                <a href="../Java并发编程的艺术笔记/Java中的线程池.html">
+            
+                    
+                    Java中的线程池
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.11" data-path="../Java并发编程的艺术笔记/Executor框架.html">
+            
+                <a href="../Java并发编程的艺术笔记/Executor框架.html">
+            
+                    
+                    Executor框架
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="11.1" data-path="../Android艺术开发探索学习/">
+            
+                <a href="../Android艺术开发探索学习/">
+            
+                    
+                    Android艺术开发探索学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="11.1.1" data-path="../Android艺术开发探索学习/Android开发艺术探索学习之Activity的生命周期.html">
+            
+                <a href="../Android艺术开发探索学习/Android开发艺术探索学习之Activity的生命周期.html">
+            
+                    
+                    Android开发艺术探索学习之Activity的生命周期
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.1.2" data-path="../Android艺术开发探索学习/Android开发艺术探索学习之结合Activity的生命周期了解Activity的LaunchMode.html">
+            
+                <a href="../Android艺术开发探索学习/Android开发艺术探索学习之结合Activity的生命周期了解Activity的LaunchMode.html">
+            
+                    
+                    Android开发艺术探索学习之结合Activity的生命周期了解Activity的LaunchMode
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.1.3" data-path="../Android艺术开发探索学习/Android艺术开发探索学习之测量view的宽高以及动态设置View的位置.html">
+            
+                <a href="../Android艺术开发探索学习/Android艺术开发探索学习之测量view的宽高以及动态设置View的位置.html">
+            
+                    
+                    Android艺术开发探索学习之测量view的宽高以及动态设置View的位置
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="12.1" data-path="../Android软件安全权威指南笔记/">
+            
+                <a href="../Android软件安全权威指南笔记/">
+            
+                    
+                    Android软件安全权威指南笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.1.1" data-path="../Android软件安全权威指南笔记/Dalvik指令集.html">
+            
+                <a href="../Android软件安全权威指南笔记/Dalvik指令集.html">
+            
+                    
+                    Dalvik指令集
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="13.1" data-path="../深入理解Java虚拟机/">
+            
+                <a href="../深入理解Java虚拟机/">
+            
+                    
+                    深入理解Java虚拟机
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="13.1.1" data-path="../深入理解Java虚拟机/Java虚拟机运行时数据区介绍.html">
+            
+                <a href="../深入理解Java虚拟机/Java虚拟机运行时数据区介绍.html">
+            
+                    
+                    Java虚拟机运行时数据区介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="14.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    RxJava源码分析
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="14.1.1" data-path="Observable.subscribe流程介绍.html">
+            
+                <a href="Observable.subscribe流程介绍.html">
+            
+                    
+                    Observable.subscribe流程介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.2" data-path="Flowable.subscribe流程介绍.html">
+            
+                <a href="Flowable.subscribe流程介绍.html">
+            
+                    
+                    Flowable.subscribe流程介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.3" data-path="RxJava之create操作符源码解析.html">
+            
+                <a href="RxJava之create操作符源码解析.html">
+            
+                    
+                    RxJava之create操作符源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.4" data-path="RxJava subscribeOn和observeOn源码介绍.html">
+            
+                <a href="RxJava subscribeOn和observeOn源码介绍.html">
+            
+                    
+                    RxJava subscribeOn和observeOn源码介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.5" data-path="RxJava之创建操作符源码介绍.html">
+            
+                <a href="RxJava之创建操作符源码介绍.html">
+            
+                    
+                    RxJava之创建操作符源码介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.6" data-path="RxJava之from系列操作符源码解析.html">
+            
+                <a href="RxJava之from系列操作符源码解析.html">
+            
+                    
+                    RxJava之from系列操作符源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.7" data-path="RxJava之timer和interval操作符源码解析.html">
+            
+                <a href="RxJava之timer和interval操作符源码解析.html">
+            
+                    
+                    RxJava之timer和interval操作符源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.8" data-path="RxJava之Schedulers源码介绍.html">
+            
+                <a href="RxJava之Schedulers源码介绍.html">
+            
+                    
+                    RxJava之Schedulers源码介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.9" data-path="RxJava之转换操作符源码介绍.html">
+            
+                <a href="RxJava之转换操作符源码介绍.html">
+            
+                    
+                    RxJava之转换操作符源码介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.10" data-path="RxJava之concatMap系列转换操作符源码介绍.html">
+            
+                <a href="RxJava之concatMap系列转换操作符源码介绍.html">
+            
+                    
+                    RxJava之concatMap系列转换操作符源码介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.11" data-path="RxJava之flatMap系列转换操作符.html">
+            
+                <a href="RxJava之flatMap系列转换操作符.html">
+            
+                    
+                    RxJava之flatMap系列转换操作符
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.12" data-path="RxJava之过滤操作符介绍.html">
+            
+                <a href="RxJava之过滤操作符介绍.html">
+            
+                    
+                    RxJava之过滤操作符介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.13" data-path="RxJava之组合操作符介绍.html">
+            
+                <a href="RxJava之组合操作符介绍.html">
+            
+                    
+                    RxJava之组合操作符介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.14" data-path="RxJava之异常捕获操作符介绍.html">
+            
+                <a href="RxJava之异常捕获操作符介绍.html">
+            
+                    
+                    RxJava之异常捕获操作符介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.15" data-path="RxJava之连接操作符介绍.html">
+            
+                <a href="RxJava之连接操作符介绍.html">
+            
+                    
+                    RxJava之连接操作符介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="14.1.16" data-path="RxJava之背压策略.html">
+            
+                <a href="RxJava之背压策略.html">
+            
+                    
+                    RxJava之背压策略
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="15.1" data-path="../okhttp3/">
+            
+                <a href="../okhttp3/">
+            
+                    
+                    okhttp3
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="15.1.1" data-path="../okhttp3/okhttp的使用介绍.html">
+            
+                <a href="../okhttp3/okhttp的使用介绍.html">
+            
+                    
+                    okhttp的使用介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="15.1.2" data-path="../okhttp3/okhttp之OkHttpClient.html">
+            
+                <a href="../okhttp3/okhttp之OkHttpClient.html">
+            
+                    
+                    okhttp之OkHttpClient
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="15.1.3" data-path="../okhttp3/okhttp之Request.html">
+            
+                <a href="../okhttp3/okhttp之Request.html">
+            
+                    
+                    okhttp之Request
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="15.1.4" data-path="../okhttp3/okhttp之RealCall-execute(">
+            
+                <span>
+            
+                    
+                    okhttp之RealCall-execute()流程介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="15.1.5" data-path="../okhttp3/okhttp之五个拦截器的介绍.html">
+            
+                <a href="../okhttp3/okhttp之五个拦截器的介绍.html">
+            
+                    
+                    okhttp之五个拦截器的介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="15.1.6" data-path="../okhttp3/okhttp之自定义拦截器.html">
+            
+                <a href="../okhttp3/okhttp之自定义拦截器.html">
+            
+                    
+                    okhttp之自定义拦截器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="15.1.7" data-path="../okhttp3/okhttp之Dispatcher.html">
+            
+                <a href="../okhttp3/okhttp之Dispatcher.html">
+            
+                    
+                    okhttp之Dispatcher
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="15.1.8" data-path="../okhttp3/okhttp之Connection.html">
+            
+                <a href="../okhttp3/okhttp之Connection.html">
+            
+                    
+                    okhttp之Connection
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="15.1.9" data-path="../okhttp3/okhttp之ConnectionPool.html">
+            
+                <a href="../okhttp3/okhttp之ConnectionPool.html">
+            
+                    
+                    okhttp之ConnectionPool
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="15.1.10" data-path="../okhttp3/okhttp之StreamAllocation.html">
+            
+                <a href="../okhttp3/okhttp之StreamAllocation.html">
+            
+                    
+                    okhttp之StreamAllocation
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >RxJava之背压策略</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#rxjava&#x4E4B;&#x80CC;&#x538B;&#x7B56;&#x7565;"><b></b>RxJava&#x4E4B;&#x80CC;&#x538B;&#x7B56;&#x7565;</a></li><ul><ul><li><span class="title-icon "></span><a href="#&#x76EE;&#x5F55;"><b></b>&#x76EE;&#x5F55;</a></li><li><span class="title-icon "></span><a href="#rxjava&#x80CC;&#x538B;&#x7B56;&#x7565;&#x7B80;&#x4ECB;"><b></b>RxJava&#x80CC;&#x538B;&#x7B56;&#x7565;&#x7B80;&#x4ECB;</a></li><li><span class="title-icon "></span><a href="#observable&#x80CC;&#x538B;&#x5BFC;&#x81F4;&#x5D29;&#x6E83;&#x7684;&#x539F;&#x56E0;"><b></b>Observable&#x80CC;&#x538B;&#x5BFC;&#x81F4;&#x5D29;&#x6E83;&#x7684;&#x539F;&#x56E0;</a></li><li><span class="title-icon "></span><a href="#flowable&#x7684;&#x7528;&#x6CD5;"><b></b>Flowable&#x7684;&#x7528;&#x6CD5;</a></li><li><span class="title-icon "></span><a href="#&#x4E94;&#x79CD;&#x80CC;&#x538B;&#x7B56;&#x7565;&#x6E90;&#x7801;&#x5206;&#x6790;"><b></b>&#x4E94;&#x79CD;&#x80CC;&#x538B;&#x7B56;&#x7565;&#x6E90;&#x7801;&#x5206;&#x6790;</a></li><li><span class="title-icon "></span><a href="#&#x5C0F;&#x7ED3;"><b></b>&#x5C0F;&#x7ED3;</a></li><li><span class="title-icon "></span><a href="#&#x53C2;&#x8003;&#x6587;&#x7AE0;"><b></b>&#x53C2;&#x8003;&#x6587;&#x7AE0;</a></li></ul></ul></ul></div><a href="#rxjava&#x4E4B;&#x80CC;&#x538B;&#x7B56;&#x7565;" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="rxjava&#x4E4B;&#x80CC;&#x538B;&#x7B56;&#x7565;"><a name="rxjava&#x4E4B;&#x80CC;&#x538B;&#x7B56;&#x7565;" class="anchor-navigation-ex-anchor" href="#rxjava&#x4E4B;&#x80CC;&#x538B;&#x7B56;&#x7565;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="rxjava&#x4E4B;&#x80CC;&#x538B;&#x7B56;&#x7565;" class="plugin-anchor" href="#rxjava&#x4E4B;&#x80CC;&#x538B;&#x7B56;&#x7565;"><i class="fa fa-link" aria-hidden="true"></i></a>RxJava&#x4E4B;&#x80CC;&#x538B;&#x7B56;&#x7565;</h1>
+<blockquote>
+<p>&#x8F6C;&#x8F7D;&#x8BF7;&#x4EE5;&#x94FE;&#x63A5;&#x5F62;&#x5F0F;&#x6807;&#x660E;&#x51FA;&#x5904;&#xFF1A; 
+&#x672C;&#x6587;&#x51FA;&#x81EA;:<a href="http://blog.csdn.net/lxk_1993" target="_blank"><strong>103style&#x7684;&#x535A;&#x5BA2;</strong></a> </p>
+</blockquote>
+<p>&#x672C;&#x6587;&#x57FA;&#x4E8E; <code>RxJava 2.x</code> &#x7248;&#x672C;</p>
+<hr>
+<h3 id="&#x76EE;&#x5F55;"><a name="&#x76EE;&#x5F55;" class="anchor-navigation-ex-anchor" href="#&#x76EE;&#x5F55;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x76EE;&#x5F55;" class="plugin-anchor" href="#&#x76EE;&#x5F55;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x76EE;&#x5F55;</h3>
+<ul>
+<li><code>RxJava</code>&#x80CC;&#x538B;&#x7B56;&#x7565;&#x7B80;&#x4ECB;</li>
+<li><code>Observable</code>&#x80CC;&#x538B;&#x5BFC;&#x81F4;&#x5D29;&#x6E83;&#x7684;&#x539F;&#x56E0;</li>
+<li><code>Flowable</code> &#x4F7F;&#x7528;&#x4ECB;&#x7ECD;</li>
+<li><code>&#x4E94;&#x79CD;</code>&#x80CC;&#x538B;&#x7B56;&#x7565;&#x6E90;&#x7801;&#x5206;&#x6790;</li>
+<li>&#x5C0F;&#x7ED3;</li>
+</ul>
+<hr>
+<h3 id="rxjava&#x80CC;&#x538B;&#x7B56;&#x7565;&#x7B80;&#x4ECB;"><a name="rxjava&#x80CC;&#x538B;&#x7B56;&#x7565;&#x7B80;&#x4ECB;" class="anchor-navigation-ex-anchor" href="#rxjava&#x80CC;&#x538B;&#x7B56;&#x7565;&#x7B80;&#x4ECB;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="rxjava&#x80CC;&#x538B;&#x7B56;&#x7565;&#x7B80;&#x4ECB;" class="plugin-anchor" href="#rxjava&#x80CC;&#x538B;&#x7B56;&#x7565;&#x7B80;&#x4ECB;"><i class="fa fa-link" aria-hidden="true"></i></a>RxJava&#x80CC;&#x538B;&#x7B56;&#x7565;&#x7B80;&#x4ECB;</h3>
+<p><a href="https://github.com/ReactiveX/RxJava/wiki/Backpressure-(2.0" target="_blank">&#x5B98;&#x65B9;&#x4ECB;&#x7ECD;</a>)</p>
+<blockquote>
+<p><strong>Backpressure</strong> is when in an <strong>Flowable</strong> processing pipeline, some asynchronous stages can&apos;t process the values fast enough and need a way to tell the upstream producer to slow down.
+<strong>&#x80CC;&#x538B;</strong>&#x662F;&#x5728;<strong>Flowable</strong>&#x5904;&#x7406;&#x4E8B;&#x4EF6;&#x6D41;&#x4E2D;&#xFF0C;&#x67D0;&#x4E9B;&#x5F02;&#x6B65;&#x9636;&#x6BB5;&#x65E0;&#x6CD5;&#x8DB3;&#x591F;&#x5FEB;&#x5730;&#x5904;&#x7406;&#x8FD9;&#x4E9B;&#x503C;&#xFF0C;&#x5E76;&#x4E14;&#x9700;&#x8981;&#x4E00;&#x79CD;&#x65B9;&#x6CD5;&#x6765;&#x544A;&#x8BC9;&#x4E0A;&#x6E38;&#x751F;&#x4EA7;&#x5546;&#x51CF;&#x901F;&#x3002;</p>
+</blockquote>
+<p>&#x6240;&#x4EE5;<code>RxJava</code>&#x7684;&#x80CC;&#x538B;&#x7B56;&#x7565;(<code>Backpressure</code>)&#x662F;&#x6307;&#x5904;&#x7406;&#x4E0A;&#x8FF0;&#x4E0A;&#x6E38;&#x6D41;&#x901F;&#x8FC7;&#x5FEB;&#x73B0;&#x8C61;&#x7684;&#x4E00;&#x79CD;&#x7B56;&#x7565;&#x3002; &#x7C7B;&#x4F3C; <a href="https://www.jianshu.com/p/13c82f1a7ad9" target="_blank">Java&#x4E2D;&#x7684;&#x7EBF;&#x7A0B;&#x6C60;</a> &#x4E2D;&#x7684;&#x9971;&#x548C;&#x7B56;&#x7565;<code>RejectedExecutionHandler</code>&#x3002;</p>
+<hr>
+<h3 id="observable&#x80CC;&#x538B;&#x5BFC;&#x81F4;&#x5D29;&#x6E83;&#x7684;&#x539F;&#x56E0;"><a name="observable&#x80CC;&#x538B;&#x5BFC;&#x81F4;&#x5D29;&#x6E83;&#x7684;&#x539F;&#x56E0;" class="anchor-navigation-ex-anchor" href="#observable&#x80CC;&#x538B;&#x5BFC;&#x81F4;&#x5D29;&#x6E83;&#x7684;&#x539F;&#x56E0;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="observable&#x80CC;&#x538B;&#x5BFC;&#x81F4;&#x5D29;&#x6E83;&#x7684;&#x539F;&#x56E0;" class="plugin-anchor" href="#observable&#x80CC;&#x538B;&#x5BFC;&#x81F4;&#x5D29;&#x6E83;&#x7684;&#x539F;&#x56E0;"><i class="fa fa-link" aria-hidden="true"></i></a>Observable&#x80CC;&#x538B;&#x5BFC;&#x81F4;&#x5D29;&#x6E83;&#x7684;&#x539F;&#x56E0;</h3>
+<p>&#x6211;&#x4EEC;&#x5148;&#x4F7F;&#x7528; <code>Observable</code>&#x770B;&#x770B;&#x662F;&#x4EC0;&#x4E48;&#x60C5;&#x51B5;:</p>
+<pre><code>Observable
+        .create(new ObservableOnSubscribe&lt;Integer&gt;() {
+            @Override
+            public void subscribe(ObservableEmitter&lt;Integer&gt; emitter) throws Exception {
+                for (int i = 0; ; i++) {
+                    emitter.onNext(i);
+                }
+            }
+        })
+        .subscribeOn(Schedulers.computation())
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribe(new Consumer&lt;Integer&gt;() {
+            @Override
+            public void accept(Integer integer) throws Exception {
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println(integer);
+            }
+        });
+</code></pre><p><img src="https://upload-images.jianshu.io/upload_images/1709375-84bcb20abef33e77.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>&#x8F93;&#x51FA;&#xFF1A;</p>
+<pre><code>I/art: Background partial concurrent mark sweep GC freed 7(224B) AllocSpace objects, 0(0B) LOS objects, 27% free, 43MB/59MB, paused 528us total 106.928ms
+I/System.out: 0
+I/art: Background partial concurrent mark sweep GC freed 8(256B) AllocSpace objects, 0(0B) LOS objects, 20% free, 62MB/78MB, paused 1.065ms total 327.346ms
+I/System.out: 1
+I/art: Background partial concurrent mark sweep GC freed 8(256B) AllocSpace objects, 0(0B) LOS objects, 16% free, 82MB/98MB, paused 1.345ms total 299.700ms
+I/art: Background partial concurrent mark sweep GC freed 8(256B) AllocSpace objects, 0(0B) LOS objects, 13% free, 103MB/119MB, paused 1.609ms total 377.432ms
+I/System.out: 2
+I/art: Background sticky concurrent mark sweep GC freed 29(800B) AllocSpace objects, 0(0B) LOS objects, 0% free, 120MB/120MB, paused 1.280ms total 105.749ms
+I/art: Background partial concurrent mark sweep GC freed 22(640B) AllocSpace objects, 0(0B) LOS objects, 11% free, 126MB/142MB, paused 1.818ms total 679.398ms
+I/System.out: 3
+I/art: Background partial concurrent mark sweep GC freed 9(288B) AllocSpace objects, 0(0B) LOS objects, 9% free, 148MB/164MB, paused 1.946ms total 555.619ms
+I/System.out: 4
+I/art: Background sticky concurrent mark sweep GC freed 29(800B) AllocSpace objects, 0(0B) LOS objects, 0% free, 165MB/165MB, paused 1.253ms total 107.036ms
+I/art: Background partial concurrent mark sweep GC freed 8(256B) AllocSpace objects, 0(0B) LOS objects, 8% free, 172MB/188MB, paused 2.355ms total 570.029ms
+I/art: Background sticky concurrent mark sweep GC freed 28(768B) AllocSpace objects, 0(0B) LOS objects, 0% free, 188MB/188MB, paused 11.474ms total 82.399ms
+I/System.out: 5
+I/art: Background partial concurrent mark sweep GC freed 23(672B) AllocSpace objects, 0(0B) LOS objects, 7% free, 197MB/213MB, paused 2.355ms total 631.635ms
+I/art: Background partial concurrent mark sweep GC freed 22(640B) AllocSpace objects, 0(0B) LOS objects, 6% free, 226MB/242MB, paused 3.091ms total 908.581ms
+I/System.out: 6
+I/art: Background sticky concurrent mark sweep GC freed 29(800B) AllocSpace objects, 0(0B) LOS objects, 0% free, 242MB/242MB, paused 1.672ms total 102.676ms
+I/art: Waiting for a blocking GC Alloc
+I/art: Clamp target GC heap from 267MB to 256MB
+I/art: Alloc sticky concurrent mark sweep GC freed 0(0B) AllocSpace objects, 0(0B) LOS objects, 1% free, 252MB/256MB, paused 1.581ms total 10.336ms
+I/art: WaitForGcToComplete blocked for 12.447ms for cause Alloc
+I/art: Starting a blocking GC Alloc
+I/art: Starting a blocking GC Alloc
+I/System.out: 9
+I/art: Waiting for a blocking GC Alloc
+I/art: Waiting for a blocking GC Alloc
+I/art: Clamp target GC heap from 268MB to 256MB
+I/art: Alloc concurrent mark sweep GC freed 0(0B) AllocSpace objects, 0(0B) LOS objects, 1% free, 252MB/256MB, paused 1.574ms total 818.037ms
+I/art: WaitForGcToComplete blocked for 2.539s for cause Alloc
+I/art: Starting a blocking GC Alloc
+I/art: Waiting for a blocking GC Alloc
+W/art: Throwing OutOfMemoryError &quot;Failed to allocate a 12 byte allocation with 4109520 free bytes and 3MB until OOM; failed due to fragmentation (required continguous free 4096 bytes for a new buffer where largest contiguous free 0 bytes)&quot;
+</code></pre><p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4ECE;&#x4E0A;&#x56FE;&#x4E2D;&#x770B;&#x5230;&#xFF0C;&#x5185;&#x5B58;&#x5728;&#x9010;&#x6B65;&#x4E0A;&#x5347;&#xFF0C;&#x5728;&#x4E00;&#x5B9A;&#x7684;&#x65F6;&#x95F4;&#x540E;&#xFF0C;&#x5230;&#x8FBE;<code>256M</code>&#x4E4B;&#x540E;&#x4F1A;&#x89E6;&#x53D1;GC&#xFF0C;&#x6700;&#x540E;&#x629B;&#x51FA;<code>OutOfMemoryError</code>&#x3002;&#x56E0;&#x4E3A;&#x4E0A;&#x6E38;&#x7684;&#x4E8B;&#x4EF6;&#x53D1;&#x9001;&#x592A;&#x5FEB;&#x800C;&#x4E0B;&#x6E38;&#x7684;&#x6D88;&#x8D39;&#x8005;&#x6D88;&#x8017;&#x7684;&#x6BD4;&#x8F83;&#x6162;&#x3002;</p>
+<p><strong>&#x90A3;&#x5BFC;&#x81F4;&#x5185;&#x5B58;&#x66B4;&#x589E;&#x7684;&#x6E90;&#x5934;&#x662F;&#x4EC0;&#x4E48;&#x5462; &#xFF1F;</strong></p>
+<hr>
+<p>&#x6211;&#x4EEC;&#x5BF9;&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x505A;&#x4E00;&#x70B9;&#x70B9;&#x4FEE;&#x6539;&#xFF0C;&#x6CE8;&#x91CA;&#x4E86;<code>observeOn(AndroidSchedulers.mainThread())</code>&#xFF0C;&#x4F1A;&#x53D1;&#x73B0;&#x5185;&#x5B58;&#x663E;&#x793A;&#x5F88;&#x6B63;&#x5E38;&#xFF0C;&#x4E0D;&#x4F1A;&#x5B58;&#x5728;&#x4E0A;&#x8FF0;&#x95EE;&#x9898;&#x3002;</p>
+<pre><code>    Observable
+            .create(new ObservableOnSubscribe&lt;Integer&gt;() {
+                @Override
+                public void subscribe(ObservableEmitter&lt;Integer&gt; emitter) throws Exception {
+                    for (int i = 0; ; i++) {
+                        emitter.onNext(i);
+                    }
+                }
+            })
+            .subscribeOn(Schedulers.computation())
+//          .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(new Consumer&lt;Integer&gt;() {
+                @Override
+                public void accept(Integer integer) throws Exception {
+                    try {
+                        Thread.sleep(3000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    System.out.println(integer);
+                }
+            });
+</code></pre><p><img src="https://upload-images.jianshu.io/upload_images/1709375-69a5da4108921003.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="&#x6CE8;&#x91CA;&#x4E86;observeOn"></p>
+<p><strong>&#x6240;&#x4EE5;&#x5185;&#x5B58;&#x66B4;&#x589E;&#x7684;&#x6E90;&#x5934;&#x5C31;&#x5728; <code>observeOn(AndroidSchedulers.mainThread())</code>.</strong></p>
+<p>&#x6211;&#x4EEC;&#x6765;&#x770B;&#x770B; <code>observeOn</code>&#x7684;&#x6E90;&#x7801;&#xFF0C;&#x901A;&#x8FC7;  <a href="https://www.jianshu.com/p/757a28295804" target="_blank">RxJava subscribeOn&#x548C;observeOn&#x6E90;&#x7801;&#x4ECB;&#x7ECD;</a>&#xFF0C;&#x6211;&#x4EEC;&#x77E5;&#x9053;&#x5728; <code>ObservableObserveOn.ObserveOnObserver</code>&#x7684; <code>onSubscribe</code>&#x4E2D;&#x6784;&#x5EFA;&#x4E86;&#x4E00;&#x4E2A;&#x5BB9;&#x91CF;&#x9ED8;&#x8BA4;&#x4E3A;<code>128</code>&#x7684;<code>SpscLinkedArrayQueue</code>&#x3002;</p>
+<pre><code>queue = new SpscLinkedArrayQueue&lt;T&gt;(bufferSize);
+</code></pre><p>&#x4E0A;&#x6E38;&#x6BCF;&#x53D1;&#x9001;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#x90FD;&#x4F1A;&#x901A;&#x8FC7;<code>queue.offer(t)</code>&#x4FDD;&#x5B58;&#x5230;<code>SpscLinkedArrayQueue</code>&#x4E2D;&#x3002;</p>
+<pre><code>public void onNext(T t) {
+    if (done) {
+        return;
+    }
+    if (sourceMode != QueueDisposable.ASYNC) {
+        queue.offer(t);
+    }
+    schedule();
+}
+</code></pre><p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5199;&#x4E2A;&#x6D4B;&#x8BD5;&#x4EE3;&#x7801;&#x6765;&#x770B;&#x770B;&#xFF0C;&#x56E0;&#x4E3A;&#x751F;&#x4EA7;&#x6BD4;&#x6D88;&#x8D39;&#x5FEB;&#x7684;&#x591A;&#xFF0C;&#x76F8;&#x5F53;&#x4E8E;&#x4E00;&#x76F4;&#x6DFB;&#x52A0;&#x5143;&#x7D20;&#xFF0C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>private void test(){
+    SpscLinkedArrayQueue&lt;Integer&gt; queue = new SpscLinkedArrayQueue&lt;&gt;(128);
+    for (int i = 0; ; i++) {
+        queue.offer(i);
+    }
+}
+</code></pre><p>&#x8FD0;&#x884C;&#x4F1A;&#x53D1;&#x73B0;&#x5185;&#x5B58;&#x53D8;&#x5316;&#x548C;<code>Observable</code>&#x4E00;&#x6837;&#x8FC5;&#x901F;&#x66B4;&#x589E;&#x3002;
+<img src="https://upload-images.jianshu.io/upload_images/1709375-0d401b973b3cbab7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="&#x6D4B;&#x8BD5;&#x4EE3;&#x7801;&#x5185;&#x5B58;&#x53D8;&#x5316;"></p>
+<p><code>SpscLinkedArrayQueue</code>&#x7684;&#x8BE6;&#x7EC6;&#x4ECB;&#x7ECD;&#x540E;&#x9762;&#x518D;&#x8BF4;&#x3002;&#x73B0;&#x5728;&#x53EF;&#x4EE5;&#x5927;&#x81F4;&#x7406;&#x89E3;&#x4E3A; <strong>&#x4E00;&#x76F4;&#x72C2;&#x5403;&#xFF0C;&#x7136;&#x540E;&#x6700;&#x540E;&#x6491;&#x7834;&#x809A;&#x76AE;&#xFF0C;&#x7136;&#x540E;&#x88C2;&#x5F00;</strong>&#x3002;</p>
+<hr>
+<h3 id="flowable&#x7684;&#x7528;&#x6CD5;"><a name="flowable&#x7684;&#x7528;&#x6CD5;" class="anchor-navigation-ex-anchor" href="#flowable&#x7684;&#x7528;&#x6CD5;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="flowable&#x7684;&#x7528;&#x6CD5;" class="plugin-anchor" href="#flowable&#x7684;&#x7528;&#x6CD5;"><i class="fa fa-link" aria-hidden="true"></i></a>Flowable&#x7684;&#x7528;&#x6CD5;</h3>
+<p>&#x6211;&#x4EEC;&#x6765;&#x770B;&#x770B; <code>Flowable</code>&#x7684;&#x7528;&#x6CD5;&#xFF1A;</p>
+<pre><code>Flowable.create(FlowableOnSubscribe&lt;T&gt; source, BackpressureStrategy mode)
+</code></pre><p><code>BackpressureStrategy</code> &#x5305;&#x542B;&#x4E94;&#x79CD;&#x6A21;&#x5F0F;&#xFF1A;<code>MISSING</code>&#x3001;<code>ERROR</code>&#x3001;<code>BUFFER</code>&#x3001;<code>DROP</code>&#x3001;<code>LATEST</code>&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x5BF9;&#x8FD9;&#x4E94;&#x79CD;<code>BackpressureStrategy</code> &#x5206;&#x522B;&#x4ECB;&#x7ECD;&#x5176;&#x7528;&#x6CD5;&#x4EE5;&#x53CA; <code>&#x53D1;&#x9001;&#x4E8B;&#x4EF6;&#x901F;&#x5EA6; &gt; &#x63A5;&#x6536;&#x4E8B;&#x4EF6;&#x901F;&#x5EA6;</code> &#x65F6;&#x7684;&#x5904;&#x7406;&#x65B9;&#x5F0F;&#xFF1A;</p>
+<ul>
+<li><p><code>BackpressureStrategy.MISSING</code>
+  &#x5904;&#x7406;&#x65B9;&#x5F0F;&#xFF1A;&#x629B;&#x51FA;&#x5F02;&#x5E38;<code>MissingBackpressureException</code>&#xFF0C;&#x5E76;&#x63D0;&#x793A; <strong>&#x7F13;&#x5B58;&#x533A;&#x6EE1;&#x4E86;</strong>
+  &#x4EE3;&#x7801;&#x793A;&#x4F8B;&#xFF1A;</p>
+<pre><code>  Flowable
+          .create(new FlowableOnSubscribe&lt;Object&gt;() {
+              @Override
+              public void subscribe(FlowableEmitter&lt;Object&gt; emitter) throws Exception {
+                  for (int i = 0; i &lt; Flowable.bufferSize() * 2; i++) {
+                      emitter.onNext(i);
+                  }
+                  emitter.onComplete();
+              }
+          }, BackpressureStrategy.MISSING)
+          .subscribeOn(Schedulers.computation())
+          .observeOn(AndroidSchedulers.mainThread())
+          .subscribe(new Subscriber&lt;Object&gt;() {
+              @Override
+              public void onSubscribe(Subscription s) {
+                  s.request(Integer.MAX_VALUE);
+              }
+
+              @Override
+              public void onNext(Object o) {
+                  System.out.println(&quot;onNext: &quot; + o);
+                  try {
+                      Thread.sleep(100);
+                  } catch (InterruptedException e) {
+                      e.printStackTrace();
+                  }
+              }
+
+              @Override
+              public void onError(Throwable t) {
+                  t.printStackTrace();
+              }
+
+              @Override
+              public void onComplete() {
+                  System.out.println(&quot;onComplete&quot;);
+              }
+          });
+</code></pre><p>  &#x8F93;&#x51FA;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre><code>  System.out: onNext: 0
+  System.err: io.reactivex.exceptions.MissingBackpressureException: Queue is full?!
+</code></pre></li>
+<li><p><code>BackpressureStrategy.ERROR</code>
+  &#x5904;&#x7406;&#x65B9;&#x5F0F;&#xFF1A;<strong>&#x76F4;&#x63A5;&#x629B;&#x51FA;&#x5F02;&#x5E38;<code>MissingBackpressureException</code></strong>
+  &#x4FEE;&#x6539;&#x4E0A;&#x8FF0;&#x4EE3;&#x7801;&#x7684; <code>BackpressureStrategy.MISSING</code>&#x4E3A;<code>BackpressureStrategy.ERROR</code>&#xFF1A;</p>
+<pre><code>  Flowable
+          .create(new FlowableOnSubscribe&lt;Object&gt;() {
+              ...
+          }, BackpressureStrategy.ERROR)
+          ...
+</code></pre><p>  &#x8F93;&#x51FA;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre><code>  System.out: onNext: 0
+  System.err: io.reactivex.exceptions.MissingBackpressureException: create: could not emit value due to lack of requests
+</code></pre></li>
+<li><p><code>BackpressureStrategy.BUFFER</code>
+  &#x5904;&#x7406;&#x65B9;&#x5F0F;&#xFF1A;&#x7C7B;&#x4F3C;<code>Observable</code>&#x4E00;&#x6837;<strong>&#x6269;&#x5145;&#x7F13;&#x5B58;&#x533A;&#x5927;&#x5C0F;</strong>
+  &#x4FEE;&#x6539;&#x4E0A;&#x8FF0;&#x4EE3;&#x7801;&#x7684; <code>BackpressureStrategy.MISSING</code>&#x4E3A;<code>BackpressureStrategy.BUFFER</code>&#xFF1A;</p>
+<pre><code>  Flowable
+          .create(new FlowableOnSubscribe&lt;Object&gt;() {
+              ...
+          }, BackpressureStrategy.BUFFER)
+          ...
+</code></pre><p>  &#x8F93;&#x51FA;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre><code>  System.out: onNext: 0
+  System.out: onNext: 1
+  System.out: onNext: 2
+  System.out: onNext: 3
+  System.out: onNext: 4
+  System.out: onNext: 5
+  System.out: onNext: 6
+  ...
+  System.out: onNext: 247
+  System.out: onNext: 248
+  System.out: onNext: 249
+  System.out: onNext: 250
+  System.out: onNext: 251
+  System.out: onNext: 252
+  System.out: onNext: 253
+  System.out: onNext: 254
+  System.out: onNext: 255
+  System.out: onComplete
+</code></pre></li>
+<li><p><code>BackpressureStrategy.DROP</code>
+  &#x5904;&#x7406;&#x65B9;&#x5F0F;&#xFF1A;<strong>&#x4E22;&#x5F03;&#x7F13;&#x5B58;&#x533A;&#x6EE1;&#x540E;&#x5904;&#x7406;&#x7F13;&#x51B2;&#x533A;&#x6570;&#x636E;&#x671F;&#x95F4;&#x53D1;&#x9001;&#x8FC7;&#x6765;&#x7684;&#x4E8B;&#x4EF6;</strong>
+  &#x793A;&#x4F8B;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code>    Flowable
+          .create(new FlowableOnSubscribe&lt;Object&gt;() {
+              @Override
+              public void subscribe(FlowableEmitter&lt;Object&gt; emitter) throws Exception {
+                  for (int i = 0; ; i++) {
+                      emitter.onNext(i);
+                  }
+              }
+          }, BackpressureStrategy.DROP)
+          .subscribeOn(Schedulers.computation())
+          .observeOn(AndroidSchedulers.mainThread())
+          .subscribe(new Subscriber&lt;Object&gt;() {
+              @Override
+              public void onSubscribe(Subscription s) {
+                  s.request(Integer.MAX_VALUE);
+              }
+
+              @Override
+              public void onNext(Object o) {
+                  System.out.println(&quot;onNext: &quot; + o);
+                  try {
+                      Thread.sleep(10);
+                  } catch (InterruptedException e) {
+                      e.printStackTrace();
+                  }
+
+              }
+
+              @Override
+              public void onError(Throwable t) {
+                  t.printStackTrace();
+              }
+
+              @Override
+              public void onComplete() {
+                  System.out.println(&quot;onComplete&quot;);
+              }
+          });
+</code></pre><p>  &#x8F93;&#x51FA;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre><code>  System.out: onNext: 0
+  System.out: onNext: 1
+  System.out: onNext: 2
+  System.out: onNext: 3
+  ...
+  System.out: onNext: 124
+  System.out: onNext: 125
+  System.out: onNext: 126
+  System.out: onNext: 127
+  System.out: onNext: 1070801
+  System.out: onNext: 1070802
+  System.out: onNext: 1070803
+  System.out: onNext: 1070804
+  System.out: onNext: 1070805
+  ...
+</code></pre></li>
+<li><p><code>BackpressureStrategy.LATEST</code>
+  &#x5904;&#x7406;&#x65B9;&#x5F0F;&#xFF1A;<strong>&#x4E22;&#x5F03;&#x7F13;&#x5B58;&#x533A;&#x6EE1;&#x540E;&#x5904;&#x7406;&#x7F13;&#x51B2;&#x533A;&#x6570;&#x636E;&#x671F;&#x95F4;&#x53D1;&#x9001;&#x8FC7;&#x6765;&#x7684;&#x975E;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;</strong>&#x3002;&#x4E0B;&#x9762;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x8F93;&#x51FA;&#x4E86; <code>129</code> &#x4E2A;&#x4E8B;&#x4EF6;&#xFF0C;&#x4E0B;&#x9762;&#x7684;&#x6E90;&#x7801;&#x5206;&#x6790;&#x4F1A;&#x4ECB;&#x7ECD;&#x3002;
+  &#x793A;&#x4F8B;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code>  Flowable
+          .create(new FlowableOnSubscribe&lt;Object&gt;() {
+              @Override
+              public void subscribe(FlowableEmitter&lt;Object&gt; emitter) throws Exception {
+                  for (int i = 0; i &lt; Flowable.bufferSize() * 2; i++) {
+                      emitter.onNext(i);
+                  }
+                  emitter.onComplete();
+              }
+          }, BackpressureStrategy.LATEST)
+          .subscribeOn(Schedulers.computation())
+          .observeOn(AndroidSchedulers.mainThread())
+          .subscribe(new Subscriber&lt;Object&gt;() {
+              @Override
+              public void onSubscribe(Subscription s) {
+                  s.request(Integer.MAX_VALUE);
+              }
+
+              @Override
+              public void onNext(Object o) {
+                  System.out.println(&quot;onNext: &quot; + o);
+                  try {
+                      Thread.sleep(10);
+                  } catch (InterruptedException e) {
+                      e.printStackTrace();
+                  }
+
+              }
+
+              @Override
+              public void onError(Throwable t) {
+                  t.printStackTrace();
+              }
+
+              @Override
+              public void onComplete() {
+                  System.out.println(&quot;onComplete&quot;);
+              }
+          });
+</code></pre><p>  &#x8F93;&#x51FA;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre><code>  System.out: onNext: 0
+  System.out: onNext: 1
+  System.out: onNext: 2
+  System.out: onNext: 3
+  ...
+  System.out: onNext: 124
+  System.out: onNext: 125
+  System.out: onNext: 126
+  System.out: onNext: 127
+  System.out: onNext: 255
+  System.out: onComplete
+</code></pre></li>
+</ul>
+<hr>
+<h3 id="&#x4E94;&#x79CD;&#x80CC;&#x538B;&#x7B56;&#x7565;&#x6E90;&#x7801;&#x5206;&#x6790;"><a name="&#x4E94;&#x79CD;&#x80CC;&#x538B;&#x7B56;&#x7565;&#x6E90;&#x7801;&#x5206;&#x6790;" class="anchor-navigation-ex-anchor" href="#&#x4E94;&#x79CD;&#x80CC;&#x538B;&#x7B56;&#x7565;&#x6E90;&#x7801;&#x5206;&#x6790;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x4E94;&#x79CD;&#x80CC;&#x538B;&#x7B56;&#x7565;&#x6E90;&#x7801;&#x5206;&#x6790;" class="plugin-anchor" href="#&#x4E94;&#x79CD;&#x80CC;&#x538B;&#x7B56;&#x7565;&#x6E90;&#x7801;&#x5206;&#x6790;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4E94;&#x79CD;&#x80CC;&#x538B;&#x7B56;&#x7565;&#x6E90;&#x7801;&#x5206;&#x6790;</h3>
+<p>&#x901A;&#x77E5;&#x4E4B;&#x524D; <a href="https://www.jianshu.com/p/ffb85e931f11" target="_blank">RxJava&#x4E4B;create&#x64CD;&#x4F5C;&#x7B26;&#x6E90;&#x7801;&#x89E3;&#x6790;</a> &#x7684;&#x4ECB;&#x7ECD;&#x3002;&#x6211;&#x4EEC;&#x77E5;&#x9053;<code>Flowable.create(new FlowableOnSubscribe&lt;Object&gt;(){...}, BackpressureStrategy.LATEST)</code> &#x8FD4;&#x56DE;&#x7684;&#x662F;&#x4E00;&#x4E2A;<code>FlowableCreate</code>&#x5BF9;&#x8C61;&#x3002;</p>
+<p>&#x5206;&#x522B;&#x5BF9;&#x4E0D;&#x540C;&#x7684;&#x80CC;&#x538B;&#x7B56;&#x7565;&#x521B;&#x5EFA;&#x4E86;&#x4E0D;&#x540C;&#x7684;<code>Emitter</code>.</p>
+<pre><code>public final class FlowableCreate&lt;T&gt; extends Flowable&lt;T&gt; {
+    //...
+    public FlowableCreate(FlowableOnSubscribe&lt;T&gt; source, BackpressureStrategy backpressure) {
+        this.source = source;
+        this.backpressure = backpressure;
+    }
+    public void subscribeActual(Subscriber&lt;? super T&gt; t) {
+        BaseEmitter&lt;T&gt; emitter;
+        switch (backpressure) {
+            case MISSING: {
+                emitter = new MissingEmitter&lt;T&gt;(t);
+                break;
+            }
+            case ERROR: {
+                emitter = new ErrorAsyncEmitter&lt;T&gt;(t);
+                break;
+            }
+            case DROP: {
+                emitter = new DropAsyncEmitter&lt;T&gt;(t);
+                break;
+            }
+            case LATEST: {
+                emitter = new LatestAsyncEmitter&lt;T&gt;(t);
+                break;
+            }
+            default: {
+                emitter = new BufferAsyncEmitter&lt;T&gt;(t, bufferSize());
+                break;
+            }
+        }
+        t.onSubscribe(emitter);
+        try {
+            source.subscribe(emitter);
+        } catch (Throwable ex) {
+            Exceptions.throwIfFatal(ex);
+            emitter.onError(ex);
+        }
+    }
+    //...
+}
+</code></pre><ul>
+<li><p><code>MissingEmitter</code></p>
+<pre><code>  static final class MissingEmitter&lt;T&gt; extends BaseEmitter&lt;T&gt; {
+      MissingEmitter(Subscriber&lt;? super T&gt; downstream) {
+          super(downstream);
+      }
+      @Override
+      public void onNext(T t) {
+          if (isCancelled()) {
+              return;
+          }
+          if (t != null) {
+              downstream.onNext(t);
+          } else {
+              onError(new NullPointerException(&quot;onNext called with null. Null values are generally not allowed in 2.x operators and sources.&quot;));
+              return;
+          }
+          for (;;) {
+              long r = get();
+              if (r == 0L || compareAndSet(r, r - 1)) {
+                  return;
+              }
+          }
+      }
+
+  }
+</code></pre><p>  &#x901A;&#x8FC7;&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;<code>MissingEmitter</code>&#x57FA;&#x672C;&#x4E0A;&#x6CA1;&#x505A;&#x4EC0;&#x4E48;&#x64CD;&#x4F5C;&#xFF0C;&#x6240;&#x4EE5;<code>BackpressureStrategy.MISSING</code>&#x793A;&#x4F8B;&#x4E2D;&#x7684;&#x4EE3;&#x7801;&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x8C03;&#x7528;&#x4E86;<code>ObserveOn</code>&#x4E2D;&#x8FD4;&#x56DE;&#x5BF9;&#x8C61;&#x7684;<code>FlowableObserveOn.ObserveOnSubscriber</code>&#x7684; <code>onNext</code>&#xFF1A;</p>
+<pre><code>  public final void onNext(T t) {
+      if (done) {
+          return;
+      }
+      if (sourceMode == ASYNC) {
+          trySchedule();
+          return;
+      }
+      if (!queue.offer(t)) {
+          upstream.cancel();
+          error = new MissingBackpressureException(&quot;Queue is full?!&quot;);
+          done = true;
+      }
+      trySchedule();
+  }
+</code></pre><p>  &#x4E0A;&#x9762;&#x4EE3;&#x7801;&#x4E2D;&#x6211;&#x4EEC;&#x770B;&#x5230;&#x4E86;&#x80CC;&#x538B;&#x60C5;&#x51B5;&#x4E0B;&#x51FA;&#x73B0;&#x7684;&#x62A5;&#x9519;&#x4FE1;&#x606F;&#xFF0C;&#x51FA;&#x73B0;&#x7684;&#x524D;&#x63D0;&#x662F;<code>queue.offer(t)</code>&#x8FD4;&#x56DE;<code>false</code>&#x3002;&#x8FD9;&#x91CC;&#x7684;<code>queue</code>&#x662F;<code>onSubscribe</code>&#x4E2D;&#x6784;&#x9020;&#x7684;&#x5BB9;&#x91CF;&#x4E3A;<code>Flowable.bufferSize()</code>&#x7684;<code>SpscArrayQueue</code>.</p>
+<pre><code>  public void onSubscribe(Subscription s) {
+      if (SubscriptionHelper.validate(this.upstream, s)) {
+          this.upstream = s;
+          //...
+          queue = new SpscArrayQueue&lt;T&gt;(prefetch);
+          downstream.onSubscribe(this);
+          s.request(prefetch);
+      }
+  }
+</code></pre><p>  <code>SpscArrayQueue</code>&#x7684;<code>offer</code>&#x65B9;&#x6CD5;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5F53;<code>SpscArrayQueue</code>&#x6570;&#x636E; &#x201C;&#x6EE1;&#x4E86;&#x201D; &#x7684;&#x65F6;&#x5019;&#x5373;&#x8FD4;&#x56DE;<code>false</code>.</p>
+<pre><code>  public boolean offer(E e) {
+      //...
+      final int mask = this.mask;
+      final long index = producerIndex.get();
+      final int offset = calcElementOffset(index, mask);
+      if (index &gt;= producerLookAhead) {
+          int step = lookAheadStep;
+          if (null == lvElement(calcElementOffset(index + step, mask))) { // LoadLoad
+              producerLookAhead = index + step;
+          } else if (null != lvElement(offset)) {
+              return false;
+          }
+      }
+      soElement(offset, e); // StoreStore
+      soProducerIndex(index + 1); // ordered store -&gt; atomic and ordered for size()
+      return true;
+  }
+</code></pre><p>  &#x6240;&#x4EE5;<code>BackpressureStrategy.MISSING</code>&#x5728;&#x7F13;&#x51B2;&#x533A;&#x6EE1;&#x4E86;&#x4E4B;&#x540E;&#x518D;&#x53D1;&#x5C04;&#x4E8B;&#x4EF6;&#x5373;&#x4F1A;&#x629B;&#x51FA; <code>message</code> &#x4E3A; <code>&quot;Queue is full?!&quot;</code> &#x7684; <code>MissingBackpressureException</code>.</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><code>ErrorAsyncEmitter</code><pre><code>  abstract static class BaseEmitter&lt;T&gt;
+  extends AtomicLong
+  implements FlowableEmitter&lt;T&gt;, Subscription {
+      //...
+      @Override
+      public final void request(long n) {
+          if (SubscriptionHelper.validate(n)) {
+              BackpressureHelper.add(this, n);
+              onRequested();
+          }
+      }
+      //...
+  }
+  abstract static class NoOverflowBaseAsyncEmitter&lt;T&gt; extends BaseEmitter&lt;T&gt; {
+      NoOverflowBaseAsyncEmitter(Subscriber&lt;? super T&gt; downstream) {
+          super(downstream);
+      }
+      @Override
+      public final void onNext(T t) {
+          //...
+          if (get() != 0) {
+              downstream.onNext(t);
+              BackpressureHelper.produced(this, 1);
+          } else {
+              onOverflow();
+          }
+      }
+      abstract void onOverflow();
+  }
+  static final class ErrorAsyncEmitter&lt;T&gt; extends NoOverflowBaseAsyncEmitter&lt;T&gt; {
+      ErrorAsyncEmitter(Subscriber&lt;? super T&gt; downstream) {
+          super(downstream);
+      }
+      @Override
+      void onOverflow() {
+          onError(new MissingBackpressureException(&quot;create: could not emit value due to lack of requests&quot;));
+      }
+  }
+</code></pre>  &#x901A;&#x8FC7;&#x5728;<code>onSubscribe</code>&#x4E2D;&#x8C03;&#x7528;<code>request(Flowable.bufferSize())</code>&#x8BBE;&#x7F6E;&#x5F53;&#x524D;<code>AtomicLong</code>&#x7684;<code>value</code>&#x503C;&#x3002;&#x7136;&#x540E; <code>onNext</code> &#x4E2D;&#x6BCF;&#x4F20;&#x9012;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#x5C31;&#x901A;&#x8FC7;<code>BackpressureHelper.produced(this, 1)</code>&#x5C06;<code>value</code> &#x51CF; <code>1</code>. &#x5F53;&#x53D1;&#x9001;&#x4E86;<code>Flowable.bufferSize()</code>&#x4E2A;&#x4E8B;&#x4EF6;&#xFF0C;<code>get() != 0</code>&#x4E0D;&#x6210;&#x7ACB;&#xFF0C;&#x8C03;&#x7528;<code>onOverflow()</code>&#x65B9;&#x6CD5;&#x629B;&#x51FA; <code>MissingBackpressureException</code>&#x5F02;&#x5E38;&#x3002;</li>
+</ul>
+<hr>
+<ul>
+<li><p><code>DropAsyncEmitter</code></p>
+<pre><code>  static final class DropAsyncEmitter&lt;T&gt; extends NoOverflowBaseAsyncEmitter&lt;T&gt; {
+
+      private static final long serialVersionUID = 8360058422307496563L;
+
+      DropAsyncEmitter(Subscriber&lt;? super T&gt; downstream) {
+          super(downstream);
+      }
+
+      @Override
+      void onOverflow() {
+          // nothing to do
+      }
+
+  }
+</code></pre><p>  &#x548C; <code>ErrorAsyncEmitter</code> &#x7C7B;&#x4F3C;&#xFF0C;&#x53EA;&#x4E0D;&#x8FC7;&#x5F53;&#x53D1;&#x9001;&#x8D85;&#x8FC7;&#x8D85;&#x8FC7;<code>Flowable.bufferSize()</code>&#x7684;&#x4E8B;&#x4EF6;&#x65F6;&#xFF0C;&#x5565;&#x4E5F;&#x6CA1;&#x505A;&#xFF0C;&#x5373;&#x5B9E;&#x73B0;&#x4E22;&#x5F03;&#x7684;&#x529F;&#x80FD;&#x3002;</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p><code>LatestAsyncEmitter</code></p>
+<pre><code>  static final class LatestAsyncEmitter&lt;T&gt; extends BaseEmitter&lt;T&gt; {
+      final AtomicReference&lt;T&gt; queue;
+      //...
+      LatestAsyncEmitter(Subscriber&lt;? super T&gt; downstream) {
+          super(downstream);
+          this.queue = new AtomicReference&lt;T&gt;();
+          //...
+      }
+
+      @Override
+      public void onNext(T t) {
+          //...
+          queue.set(t);
+          drain();
+      }
+      //...
+  }
+</code></pre><p>  &#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x6BCF;&#x6B21;&#x8C03;&#x7528;<code>onNext</code>&#x90FD;&#x4F1A;&#x66F4;&#x65B0;&#x4F20;&#x8FC7;&#x6765;&#x7684;&#x503C;&#x5230;<code>queue</code>&#x4E2D;&#xFF0C;&#x6240;&#x4EE5;<code>queue</code>&#x4E2D;&#x4FDD;&#x5B58;&#x4E86;&#x6700;&#x65B0;&#x7684;&#x503C;&#x3002;</p>
+<ul>
+<li>&#x63A5;&#x7740;&#x6765;&#x770B;<code>drain</code>&#x65B9;&#x6CD5;&#xFF1A;
+&#x4E0A;&#x9762;&#x6211;&#x4EEC;&#x77E5;&#x9053;&#x5728;<code>onSubscribe</code>&#x4E2D;&#x8C03;&#x7528;<code>request()</code>&#x8BBE;&#x7F6E;&#x5F53;&#x524D;<code>AtomicLong</code>&#x7684;<code>value</code>&#x503C;&#x3002;<pre><code>  void drain() {
+      //...
+      for (;;) {
+          long r = get();
+          long e = 0L;
+          while (e != r) {
+              //...
+              boolean d = done;
+              T o = q.getAndSet(null);
+              boolean empty = o == null;
+              if (d &amp;&amp; empty) {
+                  //...
+                  return;
+              }
+              if (empty) {
+                  break;
+              }
+              a.onNext(o);
+              e++;
+          }
+          if (e == r) {
+              //...
+              boolean d = done;
+              boolean empty = q.get() == null;
+              if (d &amp;&amp; empty) {
+                  //...
+                  return;
+              }
+          }
+          if (e != 0) {
+              BackpressureHelper.produced(this, e);
+          }
+          //...
+      }
+  }
+</code></pre><ul>
+<li>&#x5728;<code>for (;;)</code>&#x91CC;&#x9762;&#x901A;&#x8FC7;<code>get()</code>&#x83B7;&#x53D6;&#x5F53;&#x524D;<code>AtomicLong</code>&#x7684;&#x503C;&#x3002;&#x7136;&#x540E;&#x901A;&#x8FC7;<code>a.onNext(o);</code>&#x4F20;&#x9012;&#x7ED9;&#x4E0B;&#x6E38;&#xFF0C;&#x7136;&#x540E;<code>e++</code>&#xFF0C;&#x5728;&#x901A;&#x8FC7;<code>BackpressureHelper.produced(this, e);</code>&#x51CF;&#x6389;<code>AtomicLong</code>&#x7684;&#x503C;&#x3002;</li>
+<li>&#x5F53;&#x8C03;&#x7528;<code>Flowable.bufferSize()</code>&#x6B21; <code>onNext</code>&#x4E4B;&#x540E;&#xFF0C;<code>get()</code>&#x8FD4;&#x56DE;&#x7684;&#x503C;&#x4E3A;<code>0</code>&#xFF0C;&#x6240;&#x4EE5;<code>e != r</code>&#x4E0D;&#x6210;&#x7ACB;&#xFF0C;&#x5728;<code>e == r</code>&#x7684;&#x5224;&#x65AD;&#x4E2D;&#xFF0C;&#x5728;&#x4ECE;<code>onNext</code>&#x8FC7;&#x6765;&#x65F6;<code>empty</code>&#x4E3A;<code>false</code>&#xFF0C;&#x6240;&#x4EE5;&#x76F4;&#x63A5;&#x8DF3;&#x51FA; <code>for</code>&#x5FAA;&#x73AF;&#x3002;</li>
+<li>&#x901A;&#x8FC7;&#x4E0A;&#x9762;&#x6211;&#x4EEC;&#x77E5;&#x9053;&#x5F53;&#x4F20;&#x9012;&#x8D85;&#x8FC7;<code>Flowable.bufferSize()</code>&#x7684;&#x4E8B;&#x4EF6;&#x8FC7;&#x6765;&#xFF0C;&#x53EA;&#x4F1A;&#x66F4;&#x65B0;<code>queue</code>&#x4E2D;&#x7684;&#x503C;&#x4E3A;&#x6700;&#x65B0;&#x7684;&#x4E8B;&#x4EF6;&#xFF0C;&#x5176;&#x4ED6;&#x5565;&#x4E5F;&#x6CA1;&#x505A;&#x3002;<strong>&#x90A3;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#x65F6;&#x600E;&#x4E48;&#x53D1;&#x51FA;&#x7684;&#x5462;&#xFF1F;</strong>&#xFF0C;&#x7EE7;&#x7EED;&#x5F80;&#x4E0B;&#x770B;&#x3002;</li>
+</ul>
+</li>
+<li><strong>&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#x65F6;&#x600E;&#x4E48;&#x53D1;&#x51FA;&#x7684;&#xFF1F;</strong>
+ &#x6211;&#x4EEC;&#x5728;&#x4E0A;&#x9762;&#x7684;<code>drain()</code>&#x4E2D;&#x8C03;&#x7528;<code>a.onNext(o)</code>&#x6700;&#x7EC8;&#x662F;&#x8C03;&#x7528;<code>observeOn</code>&#x6784;&#x5EFA;&#x5BF9;&#x8C61;&#x4E2D;&#x7684;<code>ObserveOnSubscriber</code>&#x7684;<code>onNext</code>&#xFF0C;&#x5373;&#x8C03;&#x7528;<code>runAsync();</code>&#x3002;<pre><code>  public final void onNext(T t) {
+      //...
+      trySchedule();
+  }
+  final void trySchedule() {
+      //...
+      worker.schedule(this);
+  }
+  @Override
+  public final void run() {
+      if (outputFused) {
+          runBackfused();
+      } else if (sourceMode == SYNC) {
+          runSync();
+      } else {
+          runAsync();
+      }
+  }
+</code></pre></li>
+<li><p><strong><code>runAsync()</code></strong>&#xFF1A;</p>
+<pre><code>  void runAsync() {
+      //...
+      for (;;) {
+          long r = requested.get();
+          while (e != r) {
+              boolean d = done;
+              T v;
+              try {
+                  v = q.poll();
+              } catch (Throwable ex) {
+                  //...
+                  return;
+              }
+              //...
+              a.onNext(v);
+              e++;
+              if (e == limit) {
+                  if (r != Long.MAX_VALUE) {
+                      r = requested.addAndGet(-e);
+                  }
+                  upstream.request(e);
+                  e = 0L;
+              }
+          }
+          //...
+      }
+  }
+</code></pre><ul>
+<li>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5728;<code>for</code>&#x5FAA;&#x73AF;&#x4E2D;&#x901A;&#x8FC7;<code>q.poll()</code>&#x53BB;&#x83B7;&#x53D6;&#x7F13;&#x5B58;&#x961F;&#x5217;<code>SpscArrayQueue</code>&#x4E2D;&#x7684;&#x4E8B;&#x4EF6;&#x3002;&#x7136;&#x540E;&#x901A;&#x8FC7;<code>a.onNext(v);</code>&#x53BB;&#x6267;&#x884C;&#x6211;&#x4EEC;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x4E2D;&#x7684;&#x8017;&#x65F6;&#x64CD;&#x4F5C;&#x3002;</li>
+<li>&#x7136;&#x540E;&#x5F53;<code>e == limit</code>&#x662F;&#xFF0C;&#x56DE;&#x53BB;&#x8C03;&#x7528;<code>LatestAsyncEmitter</code>&#x7684;<code>request(e)</code>&#xFF0C;&#x800C;<code>limit</code>&#x662F;&#x5728;&#x6784;&#x9020;&#x51FD;&#x6570;&#x4E2D;&#x521D;&#x59CB;&#x5316;&#x7684;&#xFF0C;&#x503C;&#x4E3A;&#x7F13;&#x5B58;&#x961F;&#x5217;&#x5BB9;&#x91CF;<code>Flowable.bufferSize()</code>&#x7684; <code>3/4</code>&#x3002;<strong>&#x6240;&#x4EE5;&#x5F53;&#x961F;&#x5217;&#x4E2D;&#x7684;&#x4E8B;&#x4EF6;&#x6D88;&#x8017;&#x4E86;&#x5BB9;&#x91CF;&#x7684;<code>3/4</code>&#x4E4B;&#x540E;&#xFF0C;&#x4F1A;&#x518D;&#x53BB;&#x8BF7;&#x6C42;&#x4E0A;&#x6E38;&#x53D1;&#x9001;&#x4E8B;&#x4EF6;&#x3002;</strong><pre><code>BaseObserveOnSubscriber(
+        Worker worker,
+        boolean delayError,
+        int prefetch) {
+    //...
+    this.limit = prefetch - (prefetch &gt;&gt; 2);
+}
+</code></pre></li>
+</ul>
+</li>
+<li><p><code>request</code>&#x65B9;&#x6CD5;&#xFF1A;</p>
+<pre><code>  @Override
+  public final void request(long n) {
+      if (SubscriptionHelper.validate(n)) {
+          System.out.println(&quot;n = &quot; + n);
+          BackpressureHelper.add(this, n);
+          onRequested();
+      }
+  }
+  @Override
+  void onRequested() {
+      drain();
+  }
+</code></pre><p>  &#x5373;&#x7EE7;&#x7EED;&#x6267;&#x884C;<code>drain()</code>&#x65B9;&#x6CD5;&#xFF0C;&#x56E0;&#x4E3A;<code>queue</code>&#x4E2D;&#x8FD8;&#x4FDD;&#x5B58;&#x6700;&#x65B0;&#x7684;&#x503C;&#x4E8B;&#x4EF6;&#x3002;&#x6240;&#x4EE5;&#x4F1A;&#x901A;&#x8FC7;<code>a.onNext(o)</code>&#x53D1;&#x9001;&#x8FD9;&#x4E2A;&#x6700;&#x65B0;&#x7684;&#x4E8B;&#x4EF6;&#x3002;</p>
+</li>
+</ul>
+</li>
+<li><p><strong>&#x5982;&#x679C;&#x5728;&#x6267;&#x884C;&#x5B8C;&#x7B49;&#x5F85;&#x961F;&#x5217;<code>3/4</code>&#x7684;&#x4E8B;&#x4EF6;&#x4E4B;&#x540E;&#xFF0C;&#x4E0A;&#x6E38;&#x7684;&#x4E8B;&#x4EF6;&#x8FD8;&#x6CA1;&#x53D1;&#x9001;&#x7ED3;&#x675F;&#xFF0C;&#x4E0B;&#x6E38;&#x5373;&#x4F1A;&#x518D;&#x6B21;&#x7F13;&#x5B58;&#x4E0A;&#x6E38;&#x53D1;&#x9001;&#x8FC7;&#x6765;&#x7684;&#x5BB9;&#x91CF;&#x7684;<code>3/4</code>&#x4E2A;&#x4E8B;&#x4EF6;&#x3002;</strong>
+  &#x793A;&#x4F8B;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code>  Flowable.create(new FlowableOnSubscribe&lt;Object&gt;() {
+      @Override
+      public void subscribe(FlowableEmitter&lt;Object&gt; emitter) throws Exception {
+          for (int i = 0; i &lt; Flowable.bufferSize() * 2; i++) {
+              emitter.onNext(i);
+          }
+          Thread.sleep(10 * Flowable.bufferSize());
+          for (int i = 0; i &lt; Flowable.bufferSize() * 2; i++) {
+              emitter.onNext(Flowable.bufferSize() * 2 + i);
+          }
+          emitter.onComplete();
+      }
+  }, BackpressureStrategy.LATEST)
+          .subscribeOn(Schedulers.computation())
+          .observeOn(AndroidSchedulers.mainThread())
+          .subscribe(new Subscriber&lt;Object&gt;() {
+              @Override
+              public void onSubscribe(Subscription s) {
+                  s.request(Integer.MAX_VALUE);
+              }
+              @Override
+              public void onNext(Object o) {
+                  System.out.println(&quot;onNext: &quot; + o);
+                  try {
+                      Thread.sleep(10);
+                  } catch (InterruptedException e) {
+                      e.printStackTrace();
+                  }
+              }
+              @Override
+              public void onError(Throwable t) {
+                  t.printStackTrace();
+              }
+              @Override
+              public void onComplete() {
+                  System.out.println(&quot;onComplete&quot;);
+              }
+          });
+</code></pre><p>  &#x8F93;&#x51FA;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre><code>  System.out: onNext: 0
+  System.out: onNext: 1
+  System.out: onNext: 2
+  System.out: onNext: 3
+  //....
+  System.out: onNext: 125
+  System.out: onNext: 126
+  System.out: onNext: 127
+  System.out: onNext: 255
+  System.out: onNext: 256
+  System.out: onNext: 257
+  //...
+  System.out: onNext: 349
+  System.out: onNext: 350
+  System.out: onNext: 511
+  System.out: onComplete
+</code></pre><p>  <strong>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#x4E2D;<code>255-350</code>&#x5373;&#x4E3A;&#x5BB9;&#x91CF;<code>128</code> &#x7684; <code>3/4</code>&#x4E2A;&#x5143;&#x7D20;&#x3002;</strong></p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p><code>BufferAsyncEmitter</code></p>
+<ul>
+<li><p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5185;&#x90E8;&#x6709;&#x4E00;&#x4E2A;<code>SpscLinkedArrayQueue</code>&#x7684;&#x7F13;&#x5B58;&#x961F;&#x5217;&#xFF0C;&#x6BCF;&#x6B21;&#x8C03;&#x7528;<code>onNext</code>&#x90FD;&#x4F1A;&#x5148;&#x4FDD;&#x5B58;&#x5230;&#x7F13;&#x5B58;&#x961F;&#x5217;&#xFF0C;&#x7136;&#x540E;&#x901A;&#x8FC7;<code>drain()</code>&#x65B9;&#x6CD5;&#x4E00;&#x76F4;&#x53BB;&#x904D;&#x5386;&#x5F53;&#x524D;&#x7684;&#x7F13;&#x5B58;&#x961F;&#x5217;&#x3002;&#x7136;&#x540E;&#x548C;<code>LatestAsyncEmitter</code>&#x4E00;&#x6837;&#xFF0C;&#x5F53;&#x4E0B;&#x6E38;&#x7684;&#x7F13;&#x5B58;&#x961F;&#x5217;&#x6EE1;&#x4E86;&#x4E4B;&#x540E;&#xFF0C;&#x5373;&#x4E0D;&#x518D;&#x653E;&#x4E0B;&#x6E38;&#x53D1;&#x9001;&#x4E8B;&#x4EF6;&#xFF0C;&#x53EA;&#x662F;&#x628A;&#x4E0A;&#x6E38;&#x7684;&#x4E8B;&#x4EF6;&#x4FDD;&#x5B58;&#x5728;<code>SpscLinkedArrayQueue</code>&#x4E2D;&#xFF0C;&#x7B49;&#x5F85;&#x4E0B;&#x6E38;&#x5904;&#x7406;&#x4E86;&#x5BB9;&#x91CF;&#x7684;<code>3/4</code>&#x7684;&#x4E8B;&#x4EF6;&#x4E4B;&#x540E;&#xFF0C;&#x4E0A;&#x6E38;&#x5728;&#x53D1;&#x9001;&#x5BB9;&#x91CF;&#x7684;<code>3/4</code>&#x7684;&#x4E8B;&#x4EF6;&#x8FC7;&#x53BB;&#x3002;&#x77E5;&#x9053;&#x4E0A;&#x6E38;&#x7684;&#x4E8B;&#x4EF6;&#x6D88;&#x8017;&#x5B8C;&#xFF0C;&#x6216;&#x8005;&#x5F02;&#x5E38;&#x9000;&#x51FA;&#x3002;&#x5373;&#x548C;<code>Observable</code>&#x7684;&#x6548;&#x679C;&#x7C7B;&#x4F3C;&#xFF0C;&#x53EA;&#x4E0D;&#x8FC7;&#x7F13;&#x5B58;&#x961F;&#x5217;&#x4E00;&#x4E2A;&#x5728;&#x4E0A;&#x6E38;&#x4E00;&#x4E2A;&#x5728;&#x4E0B;&#x6E38;&#x3002;</p>
+<pre><code>static final class BufferAsyncEmitter&lt;T&gt; extends BaseEmitter&lt;T&gt; {
+  final SpscLinkedArrayQueue&lt;T&gt; queue;
+  //...
+
+  BufferAsyncEmitter(Subscriber&lt;? super T&gt; actual, int capacityHint) {
+      super(actual);
+      this.queue = new SpscLinkedArrayQueue&lt;T&gt;(capacityHint);
+      this.wip = new AtomicInteger();
+  }
+  @Override
+  public void onNext(T t) {
+      //...
+      queue.offer(t);
+      drain();
+  }
+  void drain() {
+      //...
+      final SpscLinkedArrayQueue&lt;T&gt; q = queue;
+      for (;;) {
+          long r = get();
+          long e = 0L;
+          while (e != r) {
+              //...
+              boolean d = done;
+              T o = q.poll();
+              boolean empty = o == null;
+              if (d &amp;&amp; empty) {
+                  //...
+                  return;
+              }
+              if (empty) {
+                  break;
+              }
+              a.onNext(o);
+              e++;
+          }
+          if (e == r) {
+              //...
+              boolean d = done;
+              boolean empty = q.isEmpty();
+              if (d &amp;&amp; empty) {
+                  //...
+                  return;
+              }
+          }
+          if (e != 0) {
+              BackpressureHelper.produced(this, e);
+          }
+          missed = wip.addAndGet(-missed);
+          if (missed == 0) {
+              break;
+          }
+      }
+  }
+}
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="&#x5C0F;&#x7ED3;"><a name="&#x5C0F;&#x7ED3;" class="anchor-navigation-ex-anchor" href="#&#x5C0F;&#x7ED3;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x5C0F;&#x7ED3;" class="plugin-anchor" href="#&#x5C0F;&#x7ED3;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5C0F;&#x7ED3;</h3>
+<ul>
+<li>&#x6211;&#x4EEC;&#x77E5;&#x9053;&#x4E86;<code>Observable</code>&#x51FA;&#x73B0;&#x80CC;&#x538B;&#x7684;&#x539F;&#x56E0;&#x662F;&#x4E0A;&#x6E38;&#x53D1;&#x9001;&#x7684;&#x8D85;&#x591A;&#x4E8B;&#x4EF6;&#x7F13;&#x5B58;&#x5728;<code>observeOn</code>&#x8FD4;&#x56DE;&#x5BF9;&#x8C61;&#x7684;&#x7F13;&#x5B58;&#x961F;&#x5217;&#x4E2D;&#xFF0C;&#x4E8B;&#x4EF6;&#x7684;&#x589E;&#x52A0;&#x5BFC;&#x81F4;&#x4E86;&#x5185;&#x5B58;&#x7684;&#x589E;&#x52A0;&#x3002;</li>
+<li>&#x6211;&#x4EEC;&#x4ECB;&#x7ECD;&#x4E86;<code>Flowable</code>&#x7684;&#x4F7F;&#x7528;&#x548C;&#x4E94;&#x79CD;&#x80CC;&#x538B;&#x7B56;&#x7565;&#x7684;&#x5177;&#x4F53;&#x5B9E;&#x73B0;&#x3002;<ul>
+<li><strong>MISSING</strong>&#xFF1A;&#x8D85;&#x8FC7;<code>observeOn</code>&#x914D;&#x7F6E;&#x7684;<code>bufferSize</code>&#x5219;&#x629B;&#x51FA;&#x5F02;&#x5E38;<code>MissingBackpressureException</code>&#x5E76;&#x63D0;&#x793A;<code>Queue is full?!</code>&#x3002;</li>
+<li><strong>ERROR</strong>&#xFF1A;&#x8D85;&#x8FC7;<code>observeOn</code>&#x914D;&#x7F6E;&#x7684;<code>bufferSize</code>&#x5219;&#x76F4;&#x63A5;&#x629B;&#x51FA;&#x5F02;&#x5E38;<code>MissingBackpressureException</code>&#x3002;</li>
+<li><strong>BUFFER</strong>&#xFF1A;&#x8D85;&#x8FC7;<code>observeOn</code>&#x914D;&#x7F6E;&#x7684;<code>bufferSize</code>&#x5219;&#x7F13;&#x5B58;&#x5230;&#x4E0A;&#x6E38;&#x7684;&#x7F13;&#x51B2;&#x961F;&#x5217;&#xFF0C;&#x7B49;&#x5F85;&#x4E0B;&#x6E38;&#x6D88;&#x8017;&#x4E86;&#x5BB9;&#x91CF;&#x7684;<code>3/4</code>&#x7684;&#x4E8B;&#x4EF6;&#x4E4B;&#x540E;&#xFF0C;&#x5728;&#x7EE7;&#x7EED;&#x53D1;&#x9001;&#x4E0A;&#x6E38;&#x7F13;&#x5B58;&#x7684;&#x4E8B;&#x4EF6;&#x7ED9;&#x4E0B;&#x6E38;&#x3002;</li>
+<li><strong>DROP</strong>&#xFF1A;&#x8D85;&#x8FC7;<code>observeOn</code>&#x914D;&#x7F6E;&#x7684;<code>bufferSize</code>&#x5219;&#x4E22;&#x5F03;&#x3002;</li>
+<li><strong>LATEST</strong>&#xFF1A;&#x8D85;&#x8FC7;<code>observeOn</code>&#x914D;&#x7F6E;&#x7684;<code>bufferSize</code>&#x5219;&#x4E22;&#x5F03;&#x5E76;&#x4FDD;&#x5B58;&#x6700;&#x65B0;&#x7684;&#x503C;&#x5230;<code>queue</code>&#xFF0C;&#x5982;&#x679C;&#x5728;&#x4E0B;&#x6E38;&#x6D88;&#x8017;&#x4E86;&#x5BB9;&#x91CF;&#x7684;<code>3/4</code>&#x7684;&#x4E8B;&#x4EF6;&#x4E4B;&#x540E;&#xFF0C;&#x4E0A;&#x6E38;&#x8FD8;&#x6709;&#x4E8B;&#x4EF6;&#x5728;&#x53D1;&#x9001;&#xFF0C;&#x5219;&#x7EE7;&#x7EED;&#x5F80;&#x4E0B;&#x6E38;&#x53D1;&#x9001;&#x4E8B;&#x4EF6;&#xFF0C;&#x5F53;&#x6CA1;&#x6709;&#x4E8B;&#x4EF6;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x518D;&#x53D1;&#x9001;<code>queue</code>&#x4E2D;&#x4FDD;&#x5B58;&#x7684;&#x6700;&#x65B0;&#x7684;&#x90A3;&#x4E2A;&#x4E8B;&#x4EF6;&#x3002;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="&#x53C2;&#x8003;&#x6587;&#x7AE0;"><a name="&#x53C2;&#x8003;&#x6587;&#x7AE0;" class="anchor-navigation-ex-anchor" href="#&#x53C2;&#x8003;&#x6587;&#x7AE0;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x53C2;&#x8003;&#x6587;&#x7AE0;" class="plugin-anchor" href="#&#x53C2;&#x8003;&#x6587;&#x7AE0;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x53C2;&#x8003;&#x6587;&#x7AE0;</h3>
+<ul>
+<li><a href="https://github.com/ReactiveX/RxJava/wiki/Backpressure-(2.0" target="_blank">Backpressure-(2.0)</a>)</li>
+<li><a href="https://juejin.im/entry/58e704cbac502e4957b230eb" target="_blank">&#x5173;&#x4E8E; RxJava &#x80CC;&#x538B;</a></li>
+<li><a href="https://www.jianshu.com/p/ceb48ed8719d" target="_blank">Android RxJava &#xFF1A;&#x56FE;&#x6587;&#x8BE6;&#x89E3; &#x80CC;&#x538B;&#x7B56;&#x7565;</a></li>
+</ul>
+<hr>
+<p>&#x4EE5;&#x4E0A;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="RxJava之连接操作符介绍.html" class="navigation navigation-prev " aria-label="Previous page: RxJava之连接操作符介绍">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../okhttp3/" class="navigation navigation-next " aria-label="Next page: okhttp3">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"RxJava之背压策略","level":"14.1.16","depth":2,"next":{"title":"okhttp3","level":"15.1","depth":1,"path":"okhttp3/README.md","ref":"okhttp3/README.md","articles":[{"title":"okhttp的使用介绍","level":"15.1.1","depth":2,"path":"okhttp3/okhttp的使用介绍.md","ref":"okhttp3/okhttp的使用介绍.md","articles":[]},{"title":"okhttp之OkHttpClient","level":"15.1.2","depth":2,"path":"okhttp3/okhttp之OkHttpClient.md","ref":"okhttp3/okhttp之OkHttpClient.md","articles":[]},{"title":"okhttp之Request","level":"15.1.3","depth":2,"path":"okhttp3/okhttp之Request.md","ref":"okhttp3/okhttp之Request.md","articles":[]},{"title":"okhttp之RealCall-execute()流程介绍","level":"15.1.4","depth":2,"path":"okhttp3/okhttp之RealCall-execute(","ref":"okhttp3/okhttp之RealCall-execute(","articles":[]},{"title":"okhttp之五个拦截器的介绍","level":"15.1.5","depth":2,"path":"okhttp3/okhttp之五个拦截器的介绍.md","ref":"okhttp3/okhttp之五个拦截器的介绍.md","articles":[]},{"title":"okhttp之自定义拦截器","level":"15.1.6","depth":2,"path":"okhttp3/okhttp之自定义拦截器.md","ref":"okhttp3/okhttp之自定义拦截器.md","articles":[]},{"title":"okhttp之Dispatcher","level":"15.1.7","depth":2,"path":"okhttp3/okhttp之Dispatcher.md","ref":"okhttp3/okhttp之Dispatcher.md","articles":[]},{"title":"okhttp之Connection","level":"15.1.8","depth":2,"path":"okhttp3/okhttp之Connection.md","ref":"okhttp3/okhttp之Connection.md","articles":[]},{"title":"okhttp之ConnectionPool","level":"15.1.9","depth":2,"path":"okhttp3/okhttp之ConnectionPool.md","ref":"okhttp3/okhttp之ConnectionPool.md","articles":[]},{"title":"okhttp之StreamAllocation","level":"15.1.10","depth":2,"path":"okhttp3/okhttp之StreamAllocation.md","ref":"okhttp3/okhttp之StreamAllocation.md","articles":[]}]},"previous":{"title":"RxJava之连接操作符介绍","level":"14.1.15","depth":2,"path":"RxJava源码分析/RxJava之连接操作符介绍.md","ref":"RxJava源码分析/RxJava之连接操作符介绍.md","articles":[]},"dir":"ltr"},"config":{"plugins":["splitter","expandable-chapters-small","anchors","anchor-navigation-ex"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"expandable-chapters-small":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","author":"103style","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"103style","language":"zh-hans","gitbook":"3.2.3","description":"103style的blog"},"file":{"path":"RxJava源码分析/RxJava之背压策略.md","mtime":"2019-10-13T08:31:21.777Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-10-13T08:32:01.630Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
