@@ -1,0 +1,2603 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>LinkedList源码解析 · 103style</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="103style">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="PriorityQueue源码解析.html" />
+    
+    
+    <link rel="prev" href="LinkedHashSet源码解析.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">文章</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    数据结构
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="ArrayDeque源码解析.html">
+            
+                <a href="ArrayDeque源码解析.html">
+            
+                    
+                    ArrayDeque源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="ArrayList源码解析.html">
+            
+                <a href="ArrayList源码解析.html">
+            
+                    
+                    ArrayList源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="ConcurrentHashMap源码解析.html">
+            
+                <a href="ConcurrentHashMap源码解析.html">
+            
+                    
+                    ConcurrentHashMap源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="HashMap源码解析.html">
+            
+                <a href="HashMap源码解析.html">
+            
+                    
+                    HashMap源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="HashSet源码解析.html">
+            
+                <a href="HashSet源码解析.html">
+            
+                    
+                    HashSet源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="Hashtable源码解析.html">
+            
+                <a href="Hashtable源码解析.html">
+            
+                    
+                    Hashtable源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="LinkedHashMap源码解析.html">
+            
+                <a href="LinkedHashMap源码解析.html">
+            
+                    
+                    LinkedHashMap源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="LinkedHashSet源码解析.html">
+            
+                <a href="LinkedHashSet源码解析.html">
+            
+                    
+                    LinkedHashSet源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.9" data-path="LinkedList源码解析.html">
+            
+                <a href="LinkedList源码解析.html">
+            
+                    
+                    LinkedList源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" data-path="PriorityQueue源码解析.html">
+            
+                <a href="PriorityQueue源码解析.html">
+            
+                    
+                    PriorityQueue源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.11" data-path="TreeMap源码解析.html">
+            
+                <a href="TreeMap源码解析.html">
+            
+                    
+                    TreeMap源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.12" data-path="WeakHashMap源码解析.html">
+            
+                <a href="WeakHashMap源码解析.html">
+            
+                    
+                    WeakHashMap源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.13" data-path="数据结构源码分析汇总.html">
+            
+                <a href="数据结构源码分析汇总.html">
+            
+                    
+                    数据结构源码分析汇总
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../NDK/">
+            
+                <a href="../NDK/">
+            
+                    
+                    NDK
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="../NDK/NDK开发文章汇总.html">
+            
+                <a href="../NDK/NDK开发文章汇总.html">
+            
+                    
+                    NDK开发文章汇总
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="../NDK/NDK开发（一）NDK入门指南.html">
+            
+                <a href="../NDK/NDK开发（一）NDK入门指南.html">
+            
+                    
+                    NDK开发（一）NDK入门指南
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" data-path="../NDK/NDK开发（七）JNI实现文件夹遍历.html">
+            
+                <a href="../NDK/NDK开发（七）JNI实现文件夹遍历.html">
+            
+                    
+                    NDK开发（七）JNI实现文件夹遍历
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" data-path="../NDK/NDK开发（三）JNI访问Java变量和方法.html">
+            
+                <a href="../NDK/NDK开发（三）JNI访问Java变量和方法.html">
+            
+                    
+                    NDK开发（三）JNI访问Java变量和方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.5" data-path="../NDK/NDK开发（九）Hello-jniCallback.html">
+            
+                <a href="../NDK/NDK开发（九）Hello-jniCallback.html">
+            
+                    
+                    NDK开发（九）Hello-jniCallback
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.6" data-path="../NDK/NDK开发（二）JNI的数据类型.html">
+            
+                <a href="../NDK/NDK开发（二）JNI的数据类型.html">
+            
+                    
+                    NDK开发（二）JNI的数据类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.7" data-path="../NDK/NDK开发（五）JNI实现文件加解密.html">
+            
+                <a href="../NDK/NDK开发（五）JNI实现文件加解密.html">
+            
+                    
+                    NDK开发（五）JNI实现文件加解密
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.8" data-path="../NDK/NDK开发（八）JNI下Bitmap的使用.html">
+            
+                <a href="../NDK/NDK开发（八）JNI下Bitmap的使用.html">
+            
+                    
+                    NDK开发（八）JNI下Bitmap的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.9" data-path="../NDK/NDK开发（六）JNI实现文件拆分和合并.html">
+            
+                <a href="../NDK/NDK开发（六）JNI实现文件拆分和合并.html">
+            
+                    
+                    NDK开发（六）JNI实现文件拆分和合并
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.10" data-path="../NDK/NDK开发（十）Hello-OpenGLES3.html">
+            
+                <a href="../NDK/NDK开发（十）Hello-OpenGLES3.html">
+            
+                    
+                    NDK开发（十）Hello-OpenGLES3
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.11" data-path="../NDK/NDK开发（四）JNI操作Java数组.html">
+            
+                <a href="../NDK/NDK开发（四）JNI操作Java数组.html">
+            
+                    
+                    NDK开发（四）JNI操作Java数组
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../OpenGL ES 3.0/">
+            
+                <a href="../OpenGL ES 3.0/">
+            
+                    
+                    OpenGL ES 3.0
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="../OpenGL ES 3.0/glDrawArrays-is-called-with-VERTEX_ARRAY-client-state-disabled!.html">
+            
+                <a href="../OpenGL ES 3.0/glDrawArrays-is-called-with-VERTEX_ARRAY-client-state-disabled!.html">
+            
+                    
+                    glDrawArrays-is-called-with-VERTEX_ARRAY-client-state-disabled!
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="../OpenGL ES 3.0/OpenGL ES 3.0  Hello_Triangle.html">
+            
+                <a href="../OpenGL ES 3.0/OpenGL ES 3.0  Hello_Triangle.html">
+            
+                    
+                    OpenGL ES 3.0  Hello_Triangle
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" data-path="../OpenGL ES 3.0/OpenGL ES 3.0 学习记录汇总.html">
+            
+                <a href="../OpenGL ES 3.0/OpenGL ES 3.0 学习记录汇总.html">
+            
+                    
+                    OpenGL ES 3.0 学习记录汇总
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4" data-path="../OpenGL ES 3.0/OpenGL ES 3.0 简介.html">
+            
+                <a href="../OpenGL ES 3.0/OpenGL ES 3.0 简介.html">
+            
+                    
+                    OpenGL ES 3.0 简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.5" data-path="../OpenGL ES 3.0/OpenGL ES 着色语言.html">
+            
+                <a href="../OpenGL ES 3.0/OpenGL ES 着色语言.html">
+            
+                    
+                    OpenGL ES 着色语言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.6" data-path="../OpenGL ES 3.0/OpenGL-ES-3-0-高级编程.html">
+            
+                <a href="../OpenGL ES 3.0/OpenGL-ES-3-0-高级编程.html">
+            
+                    
+                    OpenGL-ES-3-0-高级编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.7" data-path="../OpenGL ES 3.0/Windows10 搭建OpenGL ES 3.0 开发环境.html">
+            
+                <a href="../OpenGL ES 3.0/Windows10 搭建OpenGL ES 3.0 开发环境.html">
+            
+                    
+                    Windows10 搭建OpenGL ES 3.0 开发环境
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.8" data-path="../OpenGL ES 3.0/图元装配和光栅化.html">
+            
+                <a href="../OpenGL ES 3.0/图元装配和光栅化.html">
+            
+                    
+                    图元装配和光栅化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.9" data-path="../OpenGL ES 3.0/顶点属性、顶点数组和缓冲区对象.html">
+            
+                <a href="../OpenGL ES 3.0/顶点属性、顶点数组和缓冲区对象.html">
+            
+                    
+                    顶点属性、顶点数组和缓冲区对象
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../Android通用类/">
+            
+                <a href="../Android通用类/">
+            
+                    
+                    Android通用类
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../Android通用类/Android Foreground Service.html">
+            
+                <a href="../Android通用类/Android Foreground Service.html">
+            
+                    
+                    Android Foreground Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" data-path="../Android通用类/Android SIM卡插拔监听.html">
+            
+                <a href="../Android通用类/Android SIM卡插拔监听.html">
+            
+                    
+                    Android SIM卡插拔监听
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3" data-path="../Android通用类/Android判断是否在通话中.html">
+            
+                <a href="../Android通用类/Android判断是否在通话中.html">
+            
+                    
+                    Android判断是否在通话中
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.4" data-path="../Android通用类/Android听筒扬声器切换并且监听音量变化.html">
+            
+                <a href="../Android通用类/Android听筒扬声器切换并且监听音量变化.html">
+            
+                    
+                    Android听筒扬声器切换并且监听音量变化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.5" data-path="../Android通用类/Android检查通知权限是否开启.html">
+            
+                <a href="../Android通用类/Android检查通知权限是否开启.html">
+            
+                    
+                    Android检查通知权限是否开启
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.6" data-path="../Android通用类/Android监听来电状态.html">
+            
+                <a href="../Android通用类/Android监听来电状态.html">
+            
+                    
+                    Android监听来电状态
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../Android错误解决集锦/">
+            
+                <a href="../Android错误解决集锦/">
+            
+                    
+                    Android错误解决集锦
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1.1" data-path="../Android错误解决集锦/Android layout_marginEnd隐藏的坑 or setMargins无效.html">
+            
+                <a href="../Android错误解决集锦/Android layout_marginEnd隐藏的坑 or setMargins无效.html">
+            
+                    
+                    Android layout_marginEnd隐藏的坑 or setMargins无效
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.2" data-path="../Android错误解决集锦/Could not find class 'android.support.v4.widget.DrawerLayout$1'.html">
+            
+                <a href="../Android错误解决集锦/Could not find class 'android.support.v4.widget.DrawerLayout$1'.html">
+            
+                    
+                    Could not find class 'android.support.v4.widget.DrawerLayout$1'
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.3" data-path="../Android错误解决集锦/Duplicate id 0x7f0900af, tag null, or parent id 0xffffffff with another frag.html">
+            
+                <a href="../Android错误解决集锦/Duplicate id 0x7f0900af, tag null, or parent id 0xffffffff with another frag.html">
+            
+                    
+                    Duplicate id 0x7f0900af, tag null, or parent id 0xffffffff with another frag
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.4" data-path="../Android错误解决集锦/Error Execution failed for task 'app transformClassesWithDexForDebug'.html">
+            
+                <a href="../Android错误解决集锦/Error Execution failed for task 'app transformClassesWithDexForDebug'.html">
+            
+                    
+                    Error Execution failed for task 'app transformClassesWithDexForDebug'
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.5" data-path="../Android错误解决集锦/HwLauncher Launcher dialog dismiss failed.html">
+            
+                <a href="../Android错误解决集锦/HwLauncher Launcher dialog dismiss failed.html">
+            
+                    
+                    HwLauncher Launcher dialog dismiss failed
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.6" data-path="../Android错误解决集锦/java.lang.NullPointerException Attempt to invoke virtual method 'int android.widget.Editor.html">
+            
+                <a href="../Android错误解决集锦/java.lang.NullPointerException Attempt to invoke virtual method 'int android.widget.Editor.html">
+            
+                    
+                    java.lang.NullPointerException Attempt to invoke virtual method 'int android.widget.Editor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.7" data-path="../Android错误解决集锦/java.lang.UnsatisfiedLinkError解决方法.html">
+            
+                <a href="../Android错误解决集锦/java.lang.UnsatisfiedLinkError解决方法.html">
+            
+                    
+                    java.lang.UnsatisfiedLinkError解决方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.8" data-path="../Android错误解决集锦/RecyclerView布局异常.html">
+            
+                <a href="../Android错误解决集锦/RecyclerView布局异常.html">
+            
+                    
+                    RecyclerView布局异常
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.9" data-path="../Android错误解决集锦/the bind value at index 2 is null.html">
+            
+                <a href="../Android错误解决集锦/the bind value at index 2 is null.html">
+            
+                    
+                    the bind value at index 2 is null
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../AndroidStudio问题记录/">
+            
+                <a href="../AndroidStudio问题记录/">
+            
+                    
+                    AndroidStudio问题记录
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1.1" data-path="../AndroidStudio问题记录/AndroidStudio App出现红叉问题 解决方法记录.html">
+            
+                <a href="../AndroidStudio问题记录/AndroidStudio App出现红叉问题 解决方法记录.html">
+            
+                    
+                    AndroidStudio App出现红叉问题 解决方法记录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.2" data-path="../AndroidStudio问题记录/AndroidStudio依赖的包文件导入失败.html">
+            
+                <a href="../AndroidStudio问题记录/AndroidStudio依赖的包文件导入失败.html">
+            
+                    
+                    AndroidStudio依赖的包文件导入失败
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.3" data-path="../AndroidStudio问题记录/AndroidStudio在当前位置查看注释快捷方式.html">
+            
+                <a href="../AndroidStudio问题记录/AndroidStudio在当前位置查看注释快捷方式.html">
+            
+                    
+                    AndroidStudio在当前位置查看注释快捷方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.4" data-path="../AndroidStudio问题记录/AndroidStudio找不到Genymotion设备.html">
+            
+                <a href="../AndroidStudio问题记录/AndroidStudio找不到Genymotion设备.html">
+            
+                    
+                    AndroidStudio找不到Genymotion设备
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.5" data-path="../AndroidStudio问题记录/AndroidStudio用久了，磁盘越来越不够用？.html">
+            
+                <a href="../AndroidStudio问题记录/AndroidStudio用久了，磁盘越来越不够用？.html">
+            
+                    
+                    AndroidStudio用久了，磁盘越来越不够用？
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.6" data-path="../AndroidStudio问题记录/AndroidStudio自定义代码模块来实现代码规范.html">
+            
+                <a href="../AndroidStudio问题记录/AndroidStudio自定义代码模块来实现代码规范.html">
+            
+                    
+                    AndroidStudio自定义代码模块来实现代码规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.7" data-path="../AndroidStudio问题记录/AndroidStudio：Unable to start the daemon process.html">
+            
+                <a href="../AndroidStudio问题记录/AndroidStudio：Unable to start the daemon process.html">
+            
+                    
+                    AndroidStudio：Unable to start the daemon process
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="../Android自定义View/">
+            
+                <a href="../Android自定义View/">
+            
+                    
+                    Android自定义View
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.2.1" data-path="../Android自定义View/自定义View实战（一）汽车速度仪表盘.html">
+            
+                <a href="../Android自定义View/自定义View实战（一）汽车速度仪表盘.html">
+            
+                    
+                    自定义View实战（一）汽车速度仪表盘
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.2" data-path="../Android自定义View/自定义View实战（二）QQ健康水滴形加载.html">
+            
+                <a href="../Android自定义View/自定义View实战（二）QQ健康水滴形加载.html">
+            
+                    
+                    自定义View实战（二）QQ健康水滴形加载
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="../热修复/">
+            
+                <a href="../热修复/">
+            
+                    
+                    热修复
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1.1" data-path="../热修复/ClassLoader实现热修复的示例.html">
+            
+                <a href="../热修复/ClassLoader实现热修复的示例.html">
+            
+                    
+                    ClassLoader实现热修复的示例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.2" data-path="../热修复/利用ClassLoader实现检查项目中不符合规范的代码.html">
+            
+                <a href="../热修复/利用ClassLoader实现检查项目中不符合规范的代码.html">
+            
+                    
+                    利用ClassLoader实现检查项目中不符合规范的代码
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="8.1" data-path="../Flutter/">
+            
+                <a href="../Flutter/">
+            
+                    
+                    Flutter
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.1.1" data-path="../Flutter/Flutter学习示例.html">
+            
+                <a href="../Flutter/Flutter学习示例.html">
+            
+                    
+                    Flutter学习示例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.2" data-path="../Flutter/Flutter环境配置及运行示例程序.html">
+            
+                <a href="../Flutter/Flutter环境配置及运行示例程序.html">
+            
+                    
+                    Flutter环境配置及运行示例程序
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="9.1" data-path="../日记本/">
+            
+                <a href="../日记本/">
+            
+                    
+                    其他开发问题
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.1.1" data-path="../日记本/Android string.xml  双引号问题的记录.html">
+            
+                <a href="../日记本/Android string.xml  双引号问题的记录.html">
+            
+                    
+                    Android string.xml  双引号问题的记录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.2" data-path="../日记本/Android targetSdkVersion 从22提到25 你需要知道的一切.html">
+            
+                <a href="../日记本/Android targetSdkVersion 从22提到25 你需要知道的一切.html">
+            
+                    
+                    Android targetSdkVersion 从22提到25 你需要知道的一切
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.3" data-path="../日记本/Android-子线程切回主线程的方法记录.html">
+            
+                <a href="../日记本/Android-子线程切回主线程的方法记录.html">
+            
+                    
+                    Android-子线程切回主线程的方法记录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.4" data-path="../日记本/Android-数据库加密-android-database-sqlcipher-开源版本编译过程.html">
+            
+                <a href="../日记本/Android-数据库加密-android-database-sqlcipher-开源版本编译过程.html">
+            
+                    
+                    Android-数据库加密-android-database-sqlcipher-开源版本编译过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.5" data-path="../日记本/Android6.0的权限记录.html">
+            
+                <a href="../日记本/Android6.0的权限记录.html">
+            
+                    
+                    Android6.0的权限记录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.6" data-path="../日记本/Android命令行签名记录.html">
+            
+                <a href="../日记本/Android命令行签名记录.html">
+            
+                    
+                    Android命令行签名记录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.7" data-path="../日记本/Android清除通知栏的对应的消息.html">
+            
+                <a href="../日记本/Android清除通知栏的对应的消息.html">
+            
+                    
+                    Android清除通知栏的对应的消息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.8" data-path="../日记本/Calendar-HOUR-引发的问题.html">
+            
+                <a href="../日记本/Calendar-HOUR-引发的问题.html">
+            
+                    
+                    Calendar-HOUR-引发的问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.9" data-path="../日记本/git提交报错does not match your user account.html">
+            
+                <a href="../日记本/git提交报错does not match your user account.html">
+            
+                    
+                    git提交报错does not match your user account
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.10" data-path="../日记本/Git提交流程.html">
+            
+                <a href="../日记本/Git提交流程.html">
+            
+                    
+                    Git提交流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.11" data-path="../日记本/Java中运算符  和  以及 & 和 && 区别.html">
+            
+                <a href="../日记本/Java中运算符  和  以及 & 和 && 区别.html">
+            
+                    
+                    Java中运算符  和  以及 & 和 && 区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.12" data-path="../日记本/Mysql设置编码，插入不了中文问题.html">
+            
+                <a href="../日记本/Mysql设置编码，插入不了中文问题.html">
+            
+                    
+                    Mysql设置编码，插入不了中文问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.13" data-path="../日记本/Tomcat访问本地磁盘文件.html">
+            
+                <a href="../日记本/Tomcat访问本地磁盘文件.html">
+            
+                    
+                    Tomcat访问本地磁盘文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.14" data-path="../日记本/W10一些操作问题的记录.html">
+            
+                <a href="../日记本/W10一些操作问题的记录.html">
+            
+                    
+                    W10一些操作问题的记录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.15" data-path="../日记本/Windows10-安装VirtualBox出现2502、2503错误解决方法.html">
+            
+                <a href="../日记本/Windows10-安装VirtualBox出现2502、2503错误解决方法.html">
+            
+                    
+                    Windows10-安装VirtualBox出现2502、2503错误解决方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.16" data-path="../日记本/windows安装程序无法将windows配置为在此计算机.html">
+            
+                <a href="../日记本/windows安装程序无法将windows配置为在此计算机.html">
+            
+                    
+                    windows安装程序无法将windows配置为在此计算机
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.17" data-path="../日记本/【转】Android软键盘的全面解析.html">
+            
+                <a href="../日记本/【转】Android软键盘的全面解析.html">
+            
+                    
+                    【转】Android软键盘的全面解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.18" data-path="../日记本/下拉刷新-AppBarLayout.html">
+            
+                <a href="../日记本/下拉刷新-AppBarLayout.html">
+            
+                    
+                    下拉刷新-AppBarLayout
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.19" data-path="../日记本/以爬虫工程师身份谈谈Android端的信息安全.html">
+            
+                <a href="../日记本/以爬虫工程师身份谈谈Android端的信息安全.html">
+            
+                    
+                    以爬虫工程师身份谈谈Android端的信息安全
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.20" data-path="../日记本/关于魅族手机-安装APP提示安装失败-更新包不兼容的解决方法.html">
+            
+                <a href="../日记本/关于魅族手机-安装APP提示安装失败-更新包不兼容的解决方法.html">
+            
+                    
+                    关于魅族手机-安装APP提示安装失败-更新包不兼容的解决方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.21" data-path="../日记本/如何托管你的项目到github上详细教程.html">
+            
+                <a href="../日记本/如何托管你的项目到github上详细教程.html">
+            
+                    
+                    如何托管你的项目到github上详细教程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.22" data-path="../日记本/最近的Android面试分享.html">
+            
+                <a href="../日记本/最近的Android面试分享.html">
+            
+                    
+                    最近的Android面试分享
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.23" data-path="../日记本/集成微信登录和分享真的很简单.html">
+            
+                <a href="../日记本/集成微信登录和分享真的很简单.html">
+            
+                    
+                    集成微信登录和分享真的很简单
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.24" data-path="../日记本/魅族进入开发者模式.html">
+            
+                <a href="../日记本/魅族进入开发者模式.html">
+            
+                    
+                    魅族进入开发者模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="10.1" data-path="../Java并发编程的艺术笔记/">
+            
+                <a href="../Java并发编程的艺术笔记/">
+            
+                    
+                    Java并发编程的艺术笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.1.1" data-path="../Java并发编程的艺术笔记/Executor框架.html">
+            
+                <a href="../Java并发编程的艺术笔记/Executor框架.html">
+            
+                    
+                    Executor框架
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.2" data-path="../Java并发编程的艺术笔记/Java Thread.join(">
+            
+                <span>
+            
+                    
+                    Java Thread.join()详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.3" data-path="../Java并发编程的艺术笔记/Java中的12个原子操作类介绍.html">
+            
+                <a href="../Java并发编程的艺术笔记/Java中的12个原子操作类介绍.html">
+            
+                    
+                    Java中的12个原子操作类介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.4" data-path="../Java并发编程的艺术笔记/Java中的并发工具类.html">
+            
+                <a href="../Java并发编程的艺术笔记/Java中的并发工具类.html">
+            
+                    
+                    Java中的并发工具类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.5" data-path="../Java并发编程的艺术笔记/Java中的线程池.html">
+            
+                <a href="../Java并发编程的艺术笔记/Java中的线程池.html">
+            
+                    
+                    Java中的线程池
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.6" data-path="../Java并发编程的艺术笔记/Java中的锁的使用和实现介绍.html">
+            
+                <a href="../Java并发编程的艺术笔记/Java中的锁的使用和实现介绍.html">
+            
+                    
+                    Java中的锁的使用和实现介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.7" data-path="../Java并发编程的艺术笔记/Java内存模型.html">
+            
+                <a href="../Java并发编程的艺术笔记/Java内存模型.html">
+            
+                    
+                    Java内存模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.8" data-path="../Java并发编程的艺术笔记/Java并发容器和框架.html">
+            
+                <a href="../Java并发编程的艺术笔记/Java并发容器和框架.html">
+            
+                    
+                    Java并发容器和框架
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.9" data-path="../Java并发编程的艺术笔记/Java并发机制的底层实现原理.html">
+            
+                <a href="../Java并发编程的艺术笔记/Java并发机制的底层实现原理.html">
+            
+                    
+                    Java并发机制的底层实现原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.10" data-path="../Java并发编程的艺术笔记/Java并发编程基础.html">
+            
+                <a href="../Java并发编程的艺术笔记/Java并发编程基础.html">
+            
+                    
+                    Java并发编程基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.11" data-path="../Java并发编程的艺术笔记/并发编程的挑战.html">
+            
+                <a href="../Java并发编程的艺术笔记/并发编程的挑战.html">
+            
+                    
+                    并发编程的挑战
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="11.1" data-path="../Android艺术开发探索学习/">
+            
+                <a href="../Android艺术开发探索学习/">
+            
+                    
+                    Android艺术开发探索学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="11.1.1" data-path="../Android艺术开发探索学习/Android开发艺术探索学习之Activity的生命周期.html">
+            
+                <a href="../Android艺术开发探索学习/Android开发艺术探索学习之Activity的生命周期.html">
+            
+                    
+                    Android开发艺术探索学习之Activity的生命周期
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.1.2" data-path="../Android艺术开发探索学习/Android开发艺术探索学习之结合Activity的生命周期了解Activity的LaunchMode.html">
+            
+                <a href="../Android艺术开发探索学习/Android开发艺术探索学习之结合Activity的生命周期了解Activity的LaunchMode.html">
+            
+                    
+                    Android开发艺术探索学习之结合Activity的生命周期了解Activity的LaunchMode
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.1.3" data-path="../Android艺术开发探索学习/Android艺术开发探索学习之测量view的宽高以及动态设置View的位置.html">
+            
+                <a href="../Android艺术开发探索学习/Android艺术开发探索学习之测量view的宽高以及动态设置View的位置.html">
+            
+                    
+                    Android艺术开发探索学习之测量view的宽高以及动态设置View的位置
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="12.1" data-path="../Android软件安全权威指南笔记/">
+            
+                <a href="../Android软件安全权威指南笔记/">
+            
+                    
+                    Android软件安全权威指南笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.1.1" data-path="../Android软件安全权威指南笔记/Dalvik指令集.html">
+            
+                <a href="../Android软件安全权威指南笔记/Dalvik指令集.html">
+            
+                    
+                    Dalvik指令集
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="13.1" data-path="../深入理解Java虚拟机/">
+            
+                <a href="../深入理解Java虚拟机/">
+            
+                    
+                    深入理解Java虚拟机
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="13.1.1" data-path="../深入理解Java虚拟机/Java虚拟机运行时数据区介绍.html">
+            
+                <a href="../深入理解Java虚拟机/Java虚拟机运行时数据区介绍.html">
+            
+                    
+                    Java虚拟机运行时数据区介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="14.1" data-path="../RXJava源码分析/">
+            
+                <a href="../RXJava源码分析/">
+            
+                    
+                    RXJava源码分析
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="14.1.1" data-path="../RXJava源码分析/Flowable.subscribe流程介绍.html">
+            
+                <a href="../RXJava源码分析/Flowable.subscribe流程介绍.html">
+            
+                    
+                    Flowable.subscribe流程介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.2" data-path="../RXJava源码分析/Observable.subscribe流程介绍.html">
+            
+                <a href="../RXJava源码分析/Observable.subscribe流程介绍.html">
+            
+                    
+                    Observable.subscribe流程介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.3" data-path="../RXJava源码分析/RxJava subscribeOn和observeOn源码介绍.html">
+            
+                <a href="../RXJava源码分析/RxJava subscribeOn和observeOn源码介绍.html">
+            
+                    
+                    RxJava subscribeOn和observeOn源码介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.4" data-path="../RXJava源码分析/RxJava之concatMap系列转换操作符源码介绍.html">
+            
+                <a href="../RXJava源码分析/RxJava之concatMap系列转换操作符源码介绍.html">
+            
+                    
+                    RxJava之concatMap系列转换操作符源码介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.5" data-path="../RXJava源码分析/RxJava之create操作符源码解析.html">
+            
+                <a href="../RXJava源码分析/RxJava之create操作符源码解析.html">
+            
+                    
+                    RxJava之create操作符源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.6" data-path="../RXJava源码分析/RxJava之flatMap系列转换操作符.html">
+            
+                <a href="../RXJava源码分析/RxJava之flatMap系列转换操作符.html">
+            
+                    
+                    RxJava之flatMap系列转换操作符
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.7" data-path="../RXJava源码分析/RxJava之from系列操作符源码解析.html">
+            
+                <a href="../RXJava源码分析/RxJava之from系列操作符源码解析.html">
+            
+                    
+                    RxJava之from系列操作符源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.8" data-path="../RXJava源码分析/RxJava之Schedulers源码介绍.html">
+            
+                <a href="../RXJava源码分析/RxJava之Schedulers源码介绍.html">
+            
+                    
+                    RxJava之Schedulers源码介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.9" data-path="../RXJava源码分析/RxJava之timer和interval操作符源码解析.html">
+            
+                <a href="../RXJava源码分析/RxJava之timer和interval操作符源码解析.html">
+            
+                    
+                    RxJava之timer和interval操作符源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.10" data-path="../RXJava源码分析/RxJava之创建操作符源码介绍.html">
+            
+                <a href="../RXJava源码分析/RxJava之创建操作符源码介绍.html">
+            
+                    
+                    RxJava之创建操作符源码介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.11" data-path="../RXJava源码分析/RxJava之异常捕获操作符介绍.html">
+            
+                <a href="../RXJava源码分析/RxJava之异常捕获操作符介绍.html">
+            
+                    
+                    RxJava之异常捕获操作符介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.12" data-path="../RXJava源码分析/RxJava之组合操作符介绍.html">
+            
+                <a href="../RXJava源码分析/RxJava之组合操作符介绍.html">
+            
+                    
+                    RxJava之组合操作符介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.13" data-path="../RXJava源码分析/RxJava之背压策略.html">
+            
+                <a href="../RXJava源码分析/RxJava之背压策略.html">
+            
+                    
+                    RxJava之背压策略
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.14" data-path="../RXJava源码分析/RxJava之转换操作符源码介绍.html">
+            
+                <a href="../RXJava源码分析/RxJava之转换操作符源码介绍.html">
+            
+                    
+                    RxJava之转换操作符源码介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.15" data-path="../RXJava源码分析/RxJava之过滤操作符介绍.html">
+            
+                <a href="../RXJava源码分析/RxJava之过滤操作符介绍.html">
+            
+                    
+                    RxJava之过滤操作符介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.16" data-path="../RXJava源码分析/RxJava之连接操作符介绍.html">
+            
+                <a href="../RXJava源码分析/RxJava之连接操作符介绍.html">
+            
+                    
+                    RxJava之连接操作符介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="15.1" data-path="../okhttp3/">
+            
+                <a href="../okhttp3/">
+            
+                    
+                    okhttp3
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="15.1.1" data-path="../okhttp3/okhttp之Connection.html">
+            
+                <a href="../okhttp3/okhttp之Connection.html">
+            
+                    
+                    okhttp之Connection
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="15.1.2" data-path="../okhttp3/okhttp之ConnectionPool.html">
+            
+                <a href="../okhttp3/okhttp之ConnectionPool.html">
+            
+                    
+                    okhttp之ConnectionPool
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="15.1.3" data-path="../okhttp3/okhttp之Dispatcher.html">
+            
+                <a href="../okhttp3/okhttp之Dispatcher.html">
+            
+                    
+                    okhttp之Dispatcher
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="15.1.4" data-path="../okhttp3/okhttp之OkHttpClient.html">
+            
+                <a href="../okhttp3/okhttp之OkHttpClient.html">
+            
+                    
+                    okhttp之OkHttpClient
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="15.1.5" data-path="../okhttp3/okhttp之RealCall-execute(">
+            
+                <span>
+            
+                    
+                    okhttp之RealCall-execute()流程介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="15.1.6" data-path="../okhttp3/okhttp之Request.html">
+            
+                <a href="../okhttp3/okhttp之Request.html">
+            
+                    
+                    okhttp之Request
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="15.1.7" data-path="../okhttp3/okhttp之StreamAllocation.html">
+            
+                <a href="../okhttp3/okhttp之StreamAllocation.html">
+            
+                    
+                    okhttp之StreamAllocation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="15.1.8" data-path="../okhttp3/okhttp之五个拦截器的介绍.html">
+            
+                <a href="../okhttp3/okhttp之五个拦截器的介绍.html">
+            
+                    
+                    okhttp之五个拦截器的介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="15.1.9" data-path="../okhttp3/okhttp之自定义拦截器.html">
+            
+                <a href="../okhttp3/okhttp之自定义拦截器.html">
+            
+                    
+                    okhttp之自定义拦截器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="15.1.10" data-path="../okhttp3/okhttp的使用介绍.html">
+            
+                <a href="../okhttp3/okhttp的使用介绍.html">
+            
+                    
+                    okhttp的使用介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >LinkedList源码解析</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><ul><ul><li><span class="title-icon "></span><a href="#&#x76EE;&#x5F55;"><b></b>&#x76EE;&#x5F55;</a></li><li><span class="title-icon "></span><a href="#&#x7B80;&#x4ECB;"><b></b>&#x7B80;&#x4ECB;</a></li><li><span class="title-icon "></span><a href="#linkedlist&#x7684;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x4ECB;&#x7ECD;"><b></b>LinkedList&#x7684;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x4ECB;&#x7ECD;</a></li><li><span class="title-icon "></span><a href="#linkedlist&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;"><b></b>LinkedList&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;</a></li><li><span class="title-icon "></span><a href="#linkedlist&#x7684;&#x6570;&#x636E;&#x64CD;&#x4F5C;&#x51FD;&#x6570;"><b></b>LinkedList&#x7684;&#x6570;&#x636E;&#x64CD;&#x4F5C;&#x51FD;&#x6570;</a></li><li><span class="title-icon "></span><a href="#&#x5C0F;&#x7ED3;"><b></b>&#x5C0F;&#x7ED3;</a></li><li><span class="title-icon "></span><a href="#&#x53C2;&#x8003;&#x6587;&#x7AE0;"><b></b>&#x53C2;&#x8003;&#x6587;&#x7AE0;</a></li></ul></ul></ul></div><a href="#" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><blockquote>
+<p>&#x8F6C;&#x8F7D;&#x8BF7;&#x4EE5;&#x94FE;&#x63A5;&#x5F62;&#x5F0F;&#x6807;&#x660E;&#x51FA;&#x5904;&#xFF1A; 
+&#x672C;&#x6587;&#x51FA;&#x81EA;:<a href="http://blog.csdn.net/lxk_1993" target="_blank"><strong>103style&#x7684;&#x535A;&#x5BA2;</strong></a> </p>
+</blockquote>
+<p><code>base on jdk_1.8.0_77</code></p>
+<p><a href="https://www.jianshu.com/p/126a0fe5ace3" target="_blank">&#x6570;&#x636E;&#x7ED3;&#x6784;&#x6E90;&#x7801;&#x5206;&#x6790;&#x6C47;&#x603B;</a></p>
+<h3 id="&#x76EE;&#x5F55;"><a name="&#x76EE;&#x5F55;" class="anchor-navigation-ex-anchor" href="#&#x76EE;&#x5F55;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x76EE;&#x5F55;" class="plugin-anchor" href="#&#x76EE;&#x5F55;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x76EE;&#x5F55;</h3>
+<ul>
+<li>&#x7B80;&#x4ECB;</li>
+<li><code>LinkedList</code>&#x7684;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x4ECB;&#x7ECD;</li>
+<li><code>LinkedList</code>&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;</li>
+<li><code>LinkedList</code>&#x7684;&#x6570;&#x636E;&#x64CD;&#x4F5C;&#x51FD;&#x6570;</li>
+<li>&#x5C0F;&#x7ED3;</li>
+<li>&#x53C2;&#x8003;&#x6587;&#x7AE0;</li>
+</ul>
+<hr>
+<h3 id="&#x7B80;&#x4ECB;"><a name="&#x7B80;&#x4ECB;" class="anchor-navigation-ex-anchor" href="#&#x7B80;&#x4ECB;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x7B80;&#x4ECB;" class="plugin-anchor" href="#&#x7B80;&#x4ECB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x7B80;&#x4ECB;</h3>
+<blockquote>
+<p><code>LinkedList</code> &#x548C; <code>ArrayList</code> &#x4E00;&#x6837;&#xFF0C;&#x90FD;&#x5B9E;&#x73B0;&#x4E86; <code>List</code> &#x63A5;&#x53E3;&#xFF0C;&#x4F46;&#x5176;&#x5185;&#x90E8;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x6709;&#x672C;&#x8D28;&#x7684;&#x4E0D;&#x540C;&#x3002;<code>LinkedList</code> &#x662F;&#x57FA;&#x4E8E; <strong>&#x94FE;&#x8868;</strong> &#x5B9E;&#x73B0;&#x7684;&#xFF08;&#x901A;&#x8FC7;&#x540D;&#x5B57;&#x4E5F;&#x80FD;&#x533A;&#x5206;&#x5F00;&#x6765;&#xFF09;&#xFF0C;&#x6240;&#x4EE5;&#x5B83;&#x7684; <strong>&#x63D2;&#x5165;&#x548C;&#x5220;&#x9664;</strong> &#x64CD;&#x4F5C;&#x6BD4; <code>ArrayList</code> &#x66F4;&#x52A0;&#x9AD8;&#x6548;&#x3002;&#x4F46;&#x4E5F;&#x662F;&#x7531;&#x4E8E;&#x5176;&#x4E3A;&#x57FA;&#x4E8E;&#x94FE;&#x8868;&#x7684;&#xFF0C;&#x6240;&#x4EE5; <strong>&#x968F;&#x673A;&#x8BBF;&#x95EE;&#x7684;&#x6548;&#x7387;</strong> &#x8981;&#x6BD4; <code>ArrayList</code> &#x5DEE;&#x3002;</p>
+<p><code>LinkedList</code> &#x7EE7;&#x627F;&#x81EA; <code>AbstractSequenceList</code>&#xFF0C;&#x5B9E;&#x73B0;&#x4E86; <code>List</code>&#x3001;<code>Deque</code>&#x3001;<code>Cloneable</code>&#x3001;<code>java.io.Serializable</code> &#x63A5;&#x53E3;&#x3002;<code>AbstractSequenceList</code> &#x63D0;&#x4F9B;&#x4E86;<code>List</code>&#x63A5;&#x53E3;&#x9AA8;&#x5E72;&#x6027;&#x7684;&#x5B9E;&#x73B0;&#x4EE5;&#x51CF;&#x5C11;&#x5B9E;&#x73B0; <code>List</code> &#x63A5;&#x53E3;&#x7684;&#x590D;&#x6742;&#x5EA6;&#xFF0C;<code>Deque</code> &#x63A5;&#x53E3;&#x5B9A;&#x4E49;&#x4E86;&#x53CC;&#x7AEF;&#x961F;&#x5217;&#x7684;&#x64CD;&#x4F5C;&#x3002;</p>
+<p>&#x5728; <code>LinkedList</code> &#x4E2D;&#x9664;&#x4E86;&#x672C;&#x8EAB;&#x81EA;&#x5DF1;&#x7684;&#x65B9;&#x6CD5;&#x5916;&#xFF0C;&#x8FD8;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E9B;&#x53EF;&#x4EE5;&#x4F7F;&#x5176;&#x4F5C;&#x4E3A;&#x6808;&#x3001;&#x961F;&#x5217;&#x6216;&#x8005;&#x53CC;&#x7AEF;&#x961F;&#x5217;&#x7684;&#x65B9;&#x6CD5;&#x3002;&#x8FD9;&#x4E9B;&#x65B9;&#x6CD5;&#x53EF;&#x80FD;&#x5F7C;&#x6B64;&#x4E4B;&#x95F4;&#x53EA;&#x662F;&#x540D;&#x5B57;&#x4E0D;&#x540C;&#xFF0C;&#x4EE5;&#x4F7F;&#x5F97;&#x8FD9;&#x4E9B;&#x540D;&#x5B57;&#x5728;&#x7279;&#x5B9A;&#x7684;&#x73AF;&#x5883;&#x4E2D;&#x663E;&#x5F97;&#x66F4;&#x52A0;&#x5408;&#x9002;&#x3002;</p>
+<p><code>LinkedList</code> &#x4E5F;&#x662F; <a href="https://wiki.jikexueyuan.com/project/java-enhancement/java-thirtyfour.html" target="_blank">fail-fast</a> &#x7684;&#xFF08;&#x524D;&#x8FB9;&#x63D0;&#x8FC7;&#x5F88;&#x591A;&#x6B21;&#x4E86;&#xFF09;&#x3002;</p>
+</blockquote>
+<hr>
+<h3 id="linkedlist&#x7684;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x4ECB;&#x7ECD;"><a name="linkedlist&#x7684;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x4ECB;&#x7ECD;" class="anchor-navigation-ex-anchor" href="#linkedlist&#x7684;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x4ECB;&#x7ECD;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="linkedlist&#x7684;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x4ECB;&#x7ECD;" class="plugin-anchor" href="#linkedlist&#x7684;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x4ECB;&#x7ECD;"><i class="fa fa-link" aria-hidden="true"></i></a>LinkedList&#x7684;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x4ECB;&#x7ECD;</h3>
+<ul>
+<li><p><code>transient int size = 0;</code>&#xFF1A;&#x94FE;&#x8868;&#x957F;&#x5EA6;</p>
+</li>
+<li><p><code>transient Node&lt;E&gt; first;</code>&#xFF1A;&#x5934;&#x8282;&#x70B9;</p>
+</li>
+<li><p><code>transient Node&lt;E&gt; last;</code>&#xFF1A;&#x5C3E;&#x8282;&#x70B9;</p>
+</li>
+</ul>
+<hr>
+<h3 id="linkedlist&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;"><a name="linkedlist&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;" class="anchor-navigation-ex-anchor" href="#linkedlist&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="linkedlist&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;" class="plugin-anchor" href="#linkedlist&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;"><i class="fa fa-link" aria-hidden="true"></i></a>LinkedList&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;</h3>
+<p>&#x65E0;&#x53C2;&#x6784;&#x9020;&#x51FD;&#x6570;&#x6CA1;&#x505A;&#x5565;&#x64CD;&#x4F5C;&#xFF0C;&#x6709;&#x53C2;&#x7684;&#x5219;&#x662F;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x6DFB;&#x52A0;&#x64CD;&#x4F5C;&#xFF0C;&#x4E0B;&#x9762;&#x4F1A;&#x4ECB;&#x7ECD;&#x3002;</p>
+<pre><code>public LinkedList() {
+}
+
+public LinkedList(Collection&lt;? extends E&gt; c) {
+    this();
+    addAll(c);
+}
+</code></pre><hr>
+<h3 id="linkedlist&#x7684;&#x6570;&#x636E;&#x64CD;&#x4F5C;&#x51FD;&#x6570;"><a name="linkedlist&#x7684;&#x6570;&#x636E;&#x64CD;&#x4F5C;&#x51FD;&#x6570;" class="anchor-navigation-ex-anchor" href="#linkedlist&#x7684;&#x6570;&#x636E;&#x64CD;&#x4F5C;&#x51FD;&#x6570;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="linkedlist&#x7684;&#x6570;&#x636E;&#x64CD;&#x4F5C;&#x51FD;&#x6570;" class="plugin-anchor" href="#linkedlist&#x7684;&#x6570;&#x636E;&#x64CD;&#x4F5C;&#x51FD;&#x6570;"><i class="fa fa-link" aria-hidden="true"></i></a>LinkedList&#x7684;&#x6570;&#x636E;&#x64CD;&#x4F5C;&#x51FD;&#x6570;</h3>
+<ul>
+<li><code>node(int index)</code>&#xFF1A;&#x83B7;&#x53D6;&#x5BF9;&#x5E94;&#x8282;&#x70B9;</li>
+<li><code>addFirst(E e)</code> and <code>addLast(E e)</code>&#xFF1A; &#x6DFB;&#x52A0;&#x5934;&#x5C3E;&#x8282;&#x70B9;</li>
+<li><code>getFirst()</code> and <code>getLast()</code>&#xFF1A; &#x83B7;&#x53D6;&#x5934;&#x5C3E;&#x8282;&#x70B9;</li>
+<li><code>remove()</code> &#x3001;<code>removeFirst()</code> and <code>removeLast()</code>&#xFF1A;&#x5220;&#x9664;&#x5934;&#x5C3E;&#x8282;&#x70B9;</li>
+<li><code>remove(int index)</code> and <code>remove(Object o)</code>&#xFF1A; &#x5220;&#x9664;&#x5BF9;&#x8C61;</li>
+<li><code>get(int index)</code> and <code>set(int index, E element)</code>&#xFF1A;&#x83B7;&#x53D6;&#x548C;&#x8BBE;&#x7F6E;&#x5BF9;&#x5E94;&#x8282;&#x70B9;</li>
+<li><code>peek()</code>&#x3001;<code>peekFirst()</code> and <code>peekLast()</code>&#xFF1A;&#x83B7;&#x53D6;&#x5BF9;&#x5E94;&#x8282;&#x70B9;&#x7684;&#x503C;</li>
+<li><code>element()</code>&#xFF1A;&#x83B7;&#x53D6;&#x5934;&#x8282;&#x70B9;&#x7684;&#x503C;</li>
+<li><code>poll()</code>&#x3001;<code>pollFirst()</code> and <code>pollLast()</code>&#xFF1A;&#x8FD4;&#x56DE;&#x5BF9;&#x5E94;&#x8282;&#x70B9;&#xFF0C;&#x5E76;&#x4ECE;&#x94FE;&#x8868;&#x4E2D;&#x5220;&#x9664;</li>
+<li><code>offer(E e)</code>&#x3001;<code>offerFirst(E e)</code> and <code>offerLast(E e)</code>&#xFF1A;&#x6DFB;&#x52A0;&#x8282;&#x70B9;</li>
+<li><code>push(E e)</code>&#xFF1A;&#x63D2;&#x5165;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x5230;&#x5934;&#x90E8;</li>
+<li><code>pop()</code>&#xFF1A;&#x5220;&#x9664;&#x5934;&#x90E8;&#x4E00;&#x4E2A;&#x8282;&#x70B9;</li>
+</ul>
+<h5 id="nodeint-index-&#x83B7;&#x53D6;&#x5BF9;&#x5E94;&#x8282;&#x70B9;"><a name="nodeint-index-&#x83B7;&#x53D6;&#x5BF9;&#x5E94;&#x8282;&#x70B9;" class="anchor-navigation-ex-anchor" href="#nodeint-index-&#x83B7;&#x53D6;&#x5BF9;&#x5E94;&#x8282;&#x70B9;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="nodeint-index-&#x83B7;&#x53D6;&#x5BF9;&#x5E94;&#x8282;&#x70B9;" class="plugin-anchor" href="#nodeint-index-&#x83B7;&#x53D6;&#x5BF9;&#x5E94;&#x8282;&#x70B9;"><i class="fa fa-link" aria-hidden="true"></i></a>node(int index) &#x83B7;&#x53D6;&#x5BF9;&#x5E94;&#x8282;&#x70B9;</h5>
+<ul>
+<li>&#x6839;&#x636E;&#x7D22;&#x5F15;&#x7684;&#x4F4D;&#x7F6E;&#x9760;&#x8FD1;&#x5934;&#x8FD8;&#x662F;&#x5C3E;&#xFF0C;&#x9760;&#x8FD1;&#x90A3;&#x5934;&#x5219;&#x4ECE;&#x90A3;&#x5934;&#x5F00;&#x59CB;&#x904D;&#x5386;&#x67E5;&#x627E;&#x3002;<pre><code>Node&lt;E&gt; node(int index) {
+  if (index &lt; (size &gt;&gt; 1)) {
+      Node&lt;E&gt; x = first;
+      for (int i = 0; i &lt; index; i++)
+          x = x.next;
+      return x;
+  } else {
+      Node&lt;E&gt; x = last;
+      for (int i = size - 1; i &gt; index; i--)
+          x = x.prev;
+      return x;
+  }
+}
+</code></pre></li>
+</ul>
+<h5 id="addfirste-e-and-addlaste-e-&#x6DFB;&#x52A0;&#x5934;&#x5C3E;&#x8282;&#x70B9;"><a name="addfirste-e-and-addlaste-e-&#x6DFB;&#x52A0;&#x5934;&#x5C3E;&#x8282;&#x70B9;" class="anchor-navigation-ex-anchor" href="#addfirste-e-and-addlaste-e-&#x6DFB;&#x52A0;&#x5934;&#x5C3E;&#x8282;&#x70B9;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="addfirste-e-and-addlaste-e-&#x6DFB;&#x52A0;&#x5934;&#x5C3E;&#x8282;&#x70B9;" class="plugin-anchor" href="#addfirste-e-and-addlaste-e-&#x6DFB;&#x52A0;&#x5934;&#x5C3E;&#x8282;&#x70B9;"><i class="fa fa-link" aria-hidden="true"></i></a>addFirst(E e) and addLast(E e) &#x6DFB;&#x52A0;&#x5934;&#x5C3E;&#x8282;&#x70B9;</h5>
+<ul>
+<li><code>addFirst(E e)</code> &#x6784;&#x5EFA;&#x8282;&#x70B9;<code>newNode</code>,&#x8D4B;&#x503C;<code>first = newNode</code>&#xFF0C;&#x5982;&#x679C;&#x4E4B;&#x524D;&#x7684;&#x5934;&#x8282;&#x70B9;<code>f</code>&#x4E3A;&#x7A7A;&#x5219;&#x5C06;<code>last</code>&#x8BBE;&#x7F6E;&#x4E3A;<code>newNode</code>&#xFF0C;&#x5426;&#x5219;&#x5C06;<code>f</code>&#x7684;<code>prev</code>&#x8282;&#x70B9;&#x4E3A;<code>newNode</code>.</li>
+<li><code>addLast(E e)</code> &#x6784;&#x5EFA;&#x8282;&#x70B9;<code>newNode</code>,&#x8D4B;&#x503C;<code>last = newNode</code>&#xFF0C;&#x5982;&#x679C;&#x4E4B;&#x524D;&#x7684;&#x5C3E;&#x8282;&#x70B9;<code>l</code>&#x4E3A;&#x7A7A;&#x5219;&#x5C06;<code>first</code>&#x8BBE;&#x7F6E;&#x4E3A;<code>newNode</code>&#xFF0C;&#x5426;&#x5219;&#x5C06;<code>l</code>&#x7684;<code>next</code>&#x8282;&#x70B9;&#x4E3A;<code>newNode</code>.<pre><code>public void addFirst(E e) {
+  linkFirst(e);
+}
+private void linkFirst(E e) {
+  final Node&lt;E&gt; f = first;
+  final Node&lt;E&gt; newNode = new Node&lt;&gt;(null, e, f);
+  first = newNode;
+  if (f == null)
+      last = newNode;
+  else
+      f.prev = newNode;
+  size++;
+  modCount++;
+}
+public void addLast(E e) {
+  linkLast(e);
+}
+void linkLast(E e) {
+  final Node&lt;E&gt; l = last;
+  final Node&lt;E&gt; newNode = new Node&lt;&gt;(l, e, null);
+  last = newNode;
+  if (l == null)
+      first = newNode;
+  else
+      l.next = newNode;
+  size++;
+  modCount++;
+}
+</code></pre></li>
+</ul>
+<h5 id="element-&#x3001;getfirst-and-getlast--&#x83B7;&#x53D6;&#x5934;&#x5C3E;&#x8282;&#x70B9;"><a name="element-&#x3001;getfirst-and-getlast--&#x83B7;&#x53D6;&#x5934;&#x5C3E;&#x8282;&#x70B9;" class="anchor-navigation-ex-anchor" href="#element-&#x3001;getfirst-and-getlast--&#x83B7;&#x53D6;&#x5934;&#x5C3E;&#x8282;&#x70B9;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="element-&#x3001;getfirst-and-getlast--&#x83B7;&#x53D6;&#x5934;&#x5C3E;&#x8282;&#x70B9;" class="plugin-anchor" href="#element-&#x3001;getfirst-and-getlast--&#x83B7;&#x53D6;&#x5934;&#x5C3E;&#x8282;&#x70B9;"><i class="fa fa-link" aria-hidden="true"></i></a>element() &#x3001;getFirst() and getLast()  &#x83B7;&#x53D6;&#x5934;&#x5C3E;&#x8282;&#x70B9;</h5>
+<ul>
+<li>&#x5982;&#x679C;&#x5934;&#x5C3E;&#x8282;&#x70B9;&#x4E3A;&#x7A7A;&#x5219;&#x4F1A;&#x629B;&#x51FA;&#x5F02;&#x5E38;<code>NoSuchElementException</code>&#xFF0C;&#x5426;&#x5219;&#x8FD4;&#x56DE;&#x5BF9;&#x5E94;&#x7684;<code>item</code>&#x503C;&#x3002;<pre><code>public E element() {
+  return getFirst();
+}
+public E getFirst() {
+  final Node&lt;E&gt; f = first;
+  if (f == null)
+      throw new NoSuchElementException();
+  return f.item;
+}
+public E getLast() {
+  final Node&lt;E&gt; l = last;
+  if (l == null)
+      throw new NoSuchElementException();
+  return l.item;
+}
+</code></pre></li>
+</ul>
+<h5 id="remove&#x3001;removefirst-and-removelast--&#x5220;&#x9664;&#x5934;&#x5C3E;&#x8282;&#x70B9;"><a name="remove&#x3001;removefirst-and-removelast--&#x5220;&#x9664;&#x5934;&#x5C3E;&#x8282;&#x70B9;" class="anchor-navigation-ex-anchor" href="#remove&#x3001;removefirst-and-removelast--&#x5220;&#x9664;&#x5934;&#x5C3E;&#x8282;&#x70B9;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="remove&#x3001;removefirst-and-removelast--&#x5220;&#x9664;&#x5934;&#x5C3E;&#x8282;&#x70B9;" class="plugin-anchor" href="#remove&#x3001;removefirst-and-removelast--&#x5220;&#x9664;&#x5934;&#x5C3E;&#x8282;&#x70B9;"><i class="fa fa-link" aria-hidden="true"></i></a>remove()&#x3001;removeFirst() and removeLast()  &#x5220;&#x9664;&#x5934;&#x5C3E;&#x8282;&#x70B9;</h5>
+<ul>
+<li><code>remove()</code>&#x5373;&#x4E3A;&#x5220;&#x9664;&#x5934;&#x8282;&#x70B9;</li>
+<li>&#x5220;&#x9664;&#x5373;&#x4E3A;&#x66F4;&#x65B0;&#x8282;&#x70B9;&#x7684;<code>prev</code> &#x548C; <code>next</code> &#x8282;&#x70B9;&#x3002;<pre><code>public E remove() {
+  return removeFirst();
+}
+public E removeFirst() {
+  final Node&lt;E&gt; f = first;
+  if (f == null)
+      throw new NoSuchElementException();
+  return unlinkFirst(f);
+}
+public E removeLast() {
+  final Node&lt;E&gt; l = last;
+  if (l == null)
+      throw new NoSuchElementException();
+  return unlinkLast(l);
+}
+private E unlinkFirst(Node&lt;E&gt; f) {
+  final E element = f.item;
+  final Node&lt;E&gt; next = f.next;
+  f.item = null;
+  f.next = null; // help GC
+  first = next;
+  if (next == null)
+      last = null;
+  else
+      next.prev = null;
+  size--;
+  modCount++;
+  return element;
+}
+private E unlinkLast(Node&lt;E&gt; l) {
+  final E element = l.item;
+  final Node&lt;E&gt; prev = l.prev;
+  l.item = null;
+  l.prev = null; // help GC
+  last = prev;
+  if (prev == null)
+      first = null;
+  else
+      prev.next = null;
+  size--;
+  modCount++;
+  return element;
+}
+</code></pre></li>
+</ul>
+<h5 id="removeint-index-and-removeobject-o--&#x5220;&#x9664;&#x5BF9;&#x8C61;"><a name="removeint-index-and-removeobject-o--&#x5220;&#x9664;&#x5BF9;&#x8C61;" class="anchor-navigation-ex-anchor" href="#removeint-index-and-removeobject-o--&#x5220;&#x9664;&#x5BF9;&#x8C61;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="removeint-index-and-removeobject-o--&#x5220;&#x9664;&#x5BF9;&#x8C61;" class="plugin-anchor" href="#removeint-index-and-removeobject-o--&#x5220;&#x9664;&#x5BF9;&#x8C61;"><i class="fa fa-link" aria-hidden="true"></i></a>remove(int index) and remove(Object o)  &#x5220;&#x9664;&#x5BF9;&#x8C61;</h5>
+<ul>
+<li><code>remove(int index)</code>&#x4F1A;&#x68C0;&#x67E5;&#x4E0B;&#x6807;&#xFF0C;&#x7136;&#x540E;&#x5220;&#x9664;&#x8282;&#x70B9;</li>
+<li><code>remove(Object o)</code> &#x5219;&#x4F1A;&#x66F4;&#x5177; <code>o</code> &#x662F;&#x5426;&#x4E3A; <code>null</code>  &#x7528; <code>=</code> &#x6216; <code>equals</code> &#x627E;&#x5230;&#x5BF9;&#x5E94;&#x7684;&#x8282;&#x70B9;&#xFF0C;&#x518D;&#x5220;&#x9664;&#x3002;&#x5220;&#x9664;&#x6210;&#x529F;&#x4F1A;&#x8FD4;&#x56DE;<code>ture</code>&#xFF0C;&#x5931;&#x8D25;&#x5219;&#x4E3A;<code>false</code>.<pre><code>public E remove(int index) {
+  checkElementIndex(index);
+  return unlink(node(index));
+}
+public boolean remove(Object o) {
+  if (o == null) {
+      for (Node&lt;E&gt; x = first; x != null; x = x.next) {
+          if (x.item == null) {
+              unlink(x);
+              return true;
+          }
+      }
+  } else {
+      for (Node&lt;E&gt; x = first; x != null; x = x.next) {
+          if (o.equals(x.item)) {
+              unlink(x);
+              return true;
+          }
+      }
+  }
+  return false;
+}
+</code></pre></li>
+</ul>
+<h5 id="getint-index-and-setint-index-e-element"><a name="getint-index-and-setint-index-e-element" class="anchor-navigation-ex-anchor" href="#getint-index-and-setint-index-e-element"><i class="fa fa-link" aria-hidden="true"></i></a><a name="getint-index-and-setint-index-e-element" class="plugin-anchor" href="#getint-index-and-setint-index-e-element"><i class="fa fa-link" aria-hidden="true"></i></a>get(int index) and set(int index, E element)</h5>
+<ul>
+<li>&#x90FD;&#x5148;&#x68C0;&#x67E5;&#x7D22;&#x5F15;&#xFF0C;<code>get</code>&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#x8282;&#x70B9;&#x7684;&#x503C;&#xFF0C;<code>set</code>&#x5219;&#x4FEE;&#x6539;&#x8282;&#x70B9;&#x7684;&#x503C;&#x5E76;&#x8FD4;&#x56DE;&#x4E4B;&#x524D;&#x7684;&#x65E7;&#x503C;&#x3002;<pre><code>public E get(int index) {
+  checkElementIndex(index);
+  return node(index).item;
+}
+public E set(int index, E element) {
+  checkElementIndex(index);
+  Node&lt;E&gt; x = node(index);
+  E oldVal = x.item;
+  x.item = element;
+  return oldVal;
+}
+</code></pre></li>
+</ul>
+<h5 id="peek&#x3001;peekfirst--and-peeklast"><a name="peek&#x3001;peekfirst--and-peeklast" class="anchor-navigation-ex-anchor" href="#peek&#x3001;peekfirst--and-peeklast"><i class="fa fa-link" aria-hidden="true"></i></a><a name="peek&#x3001;peekfirst--and-peeklast" class="plugin-anchor" href="#peek&#x3001;peekfirst--and-peeklast"><i class="fa fa-link" aria-hidden="true"></i></a>peek()&#x3001;peekFirst()  and peekLast()</h5>
+<ul>
+<li>&#x8FD4;&#x56DE;&#x5934;&#x5C3E;&#x8282;&#x70B9;&#x7684;&#x503C;&#xFF0C;&#x5982;&#x679C;&#x8282;&#x70B9;&#x4E3A;<code>null</code> &#x518D;&#x8FD4;&#x56DE; <code>null</code>.<pre><code>public E peek() {
+  final Node&lt;E&gt; f = first;
+  return (f == null) ? null : f.item;
+}
+public E peekFirst() {
+  final Node&lt;E&gt; f = first;
+  return (f == null) ? null : f.item;
+}
+public E peekLast() {
+  final Node&lt;E&gt; l = last;
+  return (l == null) ? null : l.item;
+}
+</code></pre></li>
+</ul>
+<h5 id="poll&#x3001;pollfirst-and-polllast"><a name="poll&#x3001;pollfirst-and-polllast" class="anchor-navigation-ex-anchor" href="#poll&#x3001;pollfirst-and-polllast"><i class="fa fa-link" aria-hidden="true"></i></a><a name="poll&#x3001;pollfirst-and-polllast" class="plugin-anchor" href="#poll&#x3001;pollfirst-and-polllast"><i class="fa fa-link" aria-hidden="true"></i></a>poll()&#x3001;pollFirst() and pollLast()</h5>
+<ul>
+<li>&#x8FD4;&#x56DE;&#x5934;&#x5C3E;&#x8282;&#x70B9;&#xFF0C;&#x5E76;&#x603B;&#x94FE;&#x8868;&#x4E2D;&#x79FB;&#x9664;<pre><code>public E poll() {
+  final Node&lt;E&gt; f = first;
+  return (f == null) ? null : unlinkFirst(f);
+}
+public E pollFirst() {
+  final Node&lt;E&gt; f = first;
+  return (f == null) ? null : unlinkFirst(f);
+}
+public E pollLast() {
+  final Node&lt;E&gt; l = last;
+  return (l == null) ? null : unlinkLast(l);
+}
+</code></pre></li>
+</ul>
+<h5 id="offere-e&#x3001;offerfirste-e--and-offerlaste-e"><a name="offere-e&#x3001;offerfirste-e--and-offerlaste-e" class="anchor-navigation-ex-anchor" href="#offere-e&#x3001;offerfirste-e--and-offerlaste-e"><i class="fa fa-link" aria-hidden="true"></i></a><a name="offere-e&#x3001;offerfirste-e--and-offerlaste-e" class="plugin-anchor" href="#offere-e&#x3001;offerfirste-e--and-offerlaste-e"><i class="fa fa-link" aria-hidden="true"></i></a>offer(E e)&#x3001;offerFirst(E e)  and offerLast(E e)</h5>
+<ul>
+<li>&#x6DFB;&#x52A0;&#x8282;&#x70B9;<pre><code>public boolean offer(E e) {
+  return add(e);
+}
+public boolean offerFirst(E e) {
+  addFirst(e);
+  return true;
+}
+public boolean offerLast(E e) {
+  addLast(e);
+  return true;
+}
+</code></pre></li>
+</ul>
+<h5 id="pushe-e"><a name="pushe-e" class="anchor-navigation-ex-anchor" href="#pushe-e"><i class="fa fa-link" aria-hidden="true"></i></a><a name="pushe-e" class="plugin-anchor" href="#pushe-e"><i class="fa fa-link" aria-hidden="true"></i></a>push(E e)</h5>
+<ul>
+<li>&#x63D2;&#x5165;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x5230;&#x5934;&#x90E8;<pre><code>public void push(E e) {
+  addFirst(e);
+}
+</code></pre></li>
+</ul>
+<h5 id="pop"><a name="pop" class="anchor-navigation-ex-anchor" href="#pop"><i class="fa fa-link" aria-hidden="true"></i></a><a name="pop" class="plugin-anchor" href="#pop"><i class="fa fa-link" aria-hidden="true"></i></a>pop()</h5>
+<ul>
+<li>&#x5220;&#x9664;&#x5934;&#x8282;&#x70B9;<pre><code>public E pop() {
+  return removeFirst();
+}
+</code></pre></li>
+</ul>
+<hr>
+<h3 id="&#x5C0F;&#x7ED3;"><a name="&#x5C0F;&#x7ED3;" class="anchor-navigation-ex-anchor" href="#&#x5C0F;&#x7ED3;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x5C0F;&#x7ED3;" class="plugin-anchor" href="#&#x5C0F;&#x7ED3;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5C0F;&#x7ED3;</h3>
+<ul>
+<li>LinkedList&#x67E5;&#x627E;&#x7C7B;&#x4F3C;&#x4E8C;&#x5206;&#x67E5;&#x627E;&#xFF0C; &#x9760;&#x8FD1;&#x90A3;&#x8FB9;&#x5219;&#x4ECE;&#x90A3;&#x8FB9;&#x5F00;&#x59CB;&#x67E5;&#x3002;</li>
+</ul>
+<hr>
+<h3 id="&#x53C2;&#x8003;&#x6587;&#x7AE0;"><a name="&#x53C2;&#x8003;&#x6587;&#x7AE0;" class="anchor-navigation-ex-anchor" href="#&#x53C2;&#x8003;&#x6587;&#x7AE0;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x53C2;&#x8003;&#x6587;&#x7AE0;" class="plugin-anchor" href="#&#x53C2;&#x8003;&#x6587;&#x7AE0;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x53C2;&#x8003;&#x6587;&#x7AE0;</h3>
+<ul>
+<li><a href="http://wiki.jikexueyuan.com/project/java-collection/linkedlist.html" target="_blank">LinkedList &#x7684;&#x5B9E;&#x73B0;&#x539F;&#x7406;</a></li>
+</ul>
+<hr>
+<p>&#x5982;&#x679C;&#x89C9;&#x5F97;&#x4E0D;&#x9519;&#x7684;&#x8BDD;&#xFF0C;&#x8BF7;&#x5E2E;&#x5FD9;&#x70B9;&#x4E2A;&#x8D5E;&#x5457;&#x3002;</p>
+<p>&#x4EE5;&#x4E0A;</p>
+<hr>
+<p>&#x626B;&#x63CF;&#x4E0B;&#x9762;&#x7684;&#x4E8C;&#x7EF4;&#x7801;&#xFF0C;&#x5173;&#x6CE8;&#x6211;&#x7684;&#x516C;&#x4F17;&#x53F7; <strong>Android1024</strong>&#xFF0C; &#x70B9;&#x5173;&#x6CE8;&#xFF0C;&#x4E0D;&#x8FF7;&#x8DEF;&#x3002;
+<img src="https://upload-images.jianshu.io/upload_images/1709375-84aaffe67e21a7e9.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Android1024"></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="LinkedHashSet源码解析.html" class="navigation navigation-prev " aria-label="Previous page: LinkedHashSet源码解析">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="PriorityQueue源码解析.html" class="navigation navigation-next " aria-label="Next page: PriorityQueue源码解析">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"LinkedList源码解析","level":"1.2.9","depth":2,"next":{"title":"PriorityQueue源码解析","level":"1.2.10","depth":2,"path":"数据结构/PriorityQueue源码解析.md","ref":"数据结构/PriorityQueue源码解析.md","articles":[]},"previous":{"title":"LinkedHashSet源码解析","level":"1.2.8","depth":2,"path":"数据结构/LinkedHashSet源码解析.md","ref":"数据结构/LinkedHashSet源码解析.md","articles":[]},"dir":"ltr"},"config":{"plugins":["splitter","expandable-chapters-small","anchors","anchor-navigation-ex"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"expandable-chapters-small":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","author":"103style","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"103style","language":"zh-hans","gitbook":"3.2.3","description":"103style的blog"},"file":{"path":"数据结构/LinkedList源码解析.md","mtime":"2019-10-13T02:36:36.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-10-13T05:45:46.232Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
