@@ -1,0 +1,10 @@
+# Android错误解决集锦
+* [Android layout_marginEnd隐藏的坑 or setMargins无效](Android layout_marginEnd隐藏的坑 or setMargins无效.md) 
+* [Could not find class 'android.support.v4.widget.DrawerLayout$1'](Could not find class 'android.support.v4.widget.DrawerLayout$1'.md) 
+* [Duplicate id 0x7f0900af, tag null, or parent id 0xffffffff with another frag](Duplicate id 0x7f0900af, tag null, or parent id 0xffffffff with another frag.md) 
+* [Error Execution failed for task 'app transformClassesWithDexForDebug'](Error Execution failed for task 'app transformClassesWithDexForDebug'.md) 
+* [HwLauncher Launcher dialog dismiss failed](HwLauncher Launcher dialog dismiss failed.md) 
+* [java.lang.NullPointerException Attempt to invoke virtual method 'int android.widget.Editor](java.lang.NullPointerException Attempt to invoke virtual method 'int android.widget.Editor.md) 
+* [java.lang.UnsatisfiedLinkError解决方法](java.lang.UnsatisfiedLinkError解决方法.md) 
+* [RecyclerView布局异常](RecyclerView布局异常.md) 
+* [the bind value at index 2 is null](the bind value at index 2 is null.md) 
